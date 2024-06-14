@@ -1,5 +1,6 @@
+"use client";
+
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import { SkillsForm } from "./skills-form";
 import { ProfileForm } from "./profile-form";
 import { ProjectForm } from "./projects-form";
@@ -16,16 +17,8 @@ import {
 } from "lucide-react";
 
 export const ResumeForm = () => {
-    const [isHover, setIsHover] = useState(false);
-
     return (
-        <section className={cn(
-            "flex justify-center scrollbar scrollbar-track-zinc-200 scrollbar-w-3 md:h-[calc(100vh-var(--top-nav-bar-height))] md:justify-end md:overflow-y-scroll",
-            isHover && "scrollbar-thumb-zinc-400"
-        )}
-            onMouseOver={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}>
-
+        <section className="flex justify-center scrollbar scrollbar-track-zinc-200 scrollbar-w-3 h-full md:justify-end md:overflow-y-scroll">
             <article className="flex max-w-8xl w-full flex-col gap-8 p-[var(--resume-padding)]">
                 <ProfileForm />
                 <CollapsibleForm
@@ -56,7 +49,6 @@ export const ResumeForm = () => {
                 >
                     <EducationForm />
                 </CollapsibleForm>
-                <br />
             </article>
             <FlexboxSpacer maxWidth={50} className="hidden md:block" />
         </section>
