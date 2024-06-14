@@ -9,17 +9,17 @@ import { FONT_COLOR } from "@/store/resume-default-style";
 import { styles, spacing } from './resume-pdf-utils/resume-pdf-styles';
 import { ResumePDFIcon, type IconType } from "./common/resume-pdf-icon";
 
-type ResumeProfileProps = {
+type PDFProfileProps = {
     isPDF: boolean;
     profile: Profile;
     themeColor: string;
 }
 
-export const ResumeProfile = ({
+export const PDFProfile = ({
     isPDF,
     profile,
     themeColor,
-}: ResumeProfileProps) => {
+}: PDFProfileProps) => {
 
     const { name, role, email, phone, location, linkedInUrl, githubUrl, objective } = profile;
     const iconProps = { email, phone, location, linkedInUrl, githubUrl }
