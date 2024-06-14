@@ -7,17 +7,17 @@ import { View } from "@react-pdf/renderer";
 import type { Skills } from "@/store/resume-types";
 import { customHTMLParser } from "@/lib/custom-html-parser";
 
-type ResumeSkillsProps = {
+type PDFSkillsProps = {
     skills: Skills[];
     heading: string;
     themeColor: string;
 }
 
-export const ResumeSkills = ({
+export const PDFSkills = ({
     skills,
     heading,
     themeColor,
-}: ResumeSkillsProps) => {
+}: PDFSkillsProps) => {
 
     return (
         <ResumePDFSection themeColor={themeColor} heading={heading}>
