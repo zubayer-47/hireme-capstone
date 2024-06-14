@@ -1,9 +1,6 @@
 "use client";
 
-import {
-    ResumeNavBarCSR,
-    ResumeNavBarBorder
-} from './resume-navbar';
+
 import {
     useLoadFonts,
     useHyphenationCallback
@@ -11,6 +8,7 @@ import {
 import { ResumePDF } from './resume-pdf';
 import { useState, useMemo } from 'react';
 import { ResumeIframeCSR } from './resume-iframe';
+import { ResumeNavBarCSR } from './resume-navbar';
 import { useResumeStore } from '@/store/resume-store';
 import { FlexboxSpacer } from '@/components/flexbox-spacer';
 import { defaultSettings } from '@/store/resume-default-style';
@@ -29,10 +27,10 @@ export const Resume = () => {
 
     return (
         <>
-            <div className="relative flex justify-center md:justify-start">
+            <div className="relative h-screen flex justify-center md:justify-start">
                 <FlexboxSpacer maxWidth={50} className="hidden md:block" />
                 <div className="relative">
-                    <section className="h-[calc(100vh-var(--top-nav-bar-height)-var(--resume-control-bar-height))] overflow-hidden md:p-[var(--resume-padding)]">
+                    <section className="flex justify-center overflow-hidden md:p-[var(--resume-padding)]">
                         <ResumeIframeCSR
                             scale={scale}
                             enablePDFViewer={DEBUG_RESUME_PDF_FLAG}
@@ -44,6 +42,7 @@ export const Resume = () => {
                                 isPDF={DEBUG_RESUME_PDF_FLAG}
                             />
                         </ResumeIframeCSR>
+                        
                     </section>
                     <ResumeNavBarCSR
                         scale={scale}
@@ -52,8 +51,8 @@ export const Resume = () => {
                         documentSize={defaultSettings.documentSize}
                         fileName={resume.profile.name + " - Resume"}
                     />
+                    
                 </div>
-                <ResumeNavBarBorder />
             </div>
         </>
     )

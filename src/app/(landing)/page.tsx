@@ -1,3 +1,4 @@
+import { Resume } from "./_components/display";
 import { ResumeForm } from "./_components/form";
 
 export default function Home() {
@@ -8,7 +9,7 @@ export default function Home() {
           <ResumeForm />
         </article>
         <article className="col-span-3">
-          {/* <Resume /> */}
+          <Resume />
         </article>
       </section>
     </main>
