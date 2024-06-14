@@ -8,17 +8,17 @@ import type { Education } from "@/store/resume-types";
 import { customHTMLParser } from '@/lib/custom-html-parser';
 import { styles, spacing } from "./resume-pdf-utils/resume-pdf-styles";
 
-type ResumeEducationProps = {
+type PDFEducationProps = {
     heading: string;
     themeColor: string;
     educations: Education[];
 }
 
-export const ResumeEducation = ({
+export const PDFEducation = ({
     heading,
     educations,
     themeColor,
-}: ResumeEducationProps) => {
+}: PDFEducationProps) => {
     return (
         <ResumePDFSection themeColor={themeColor} heading={heading} >
             {educations.map(({
