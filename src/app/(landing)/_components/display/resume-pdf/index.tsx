@@ -10,6 +10,7 @@ import { FONT_COLOR } from "@/store/resume-default-style";
 import { Page, View, Document } from "@react-pdf/renderer";
 import { SuppressWarnings } from "./common/supress-warnings";
 import { styles, spacing } from './resume-pdf-utils/resume-pdf-styles';
+
 type ResumePDFProps = {
     resume: Resume;
     isPDF?: boolean;
