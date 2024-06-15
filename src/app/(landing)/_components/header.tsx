@@ -25,12 +25,11 @@ export const Header = () => {
 function Navbar({ className }: { className?: string }) {
     const [active, setActive] = useState<string | null>(null);
     const { isLoading, isAuthenticated } = useStoreUserEffect(); 
-
     // Add the loading skeleton here 
     
     return (
       <div
-        className={cn("fixed top-10 inset-x-0 max-w-6xl mx-auto z-50", className)}
+        className={cn("fixed top-10 inset-x-0 max-w-4xl mx-auto z-50", className)}
       >
         <Menu setActive={setActive}>
           <AppLogo height={22.5} width={22.5} />
@@ -80,7 +79,6 @@ function Navbar({ className }: { className?: string }) {
           ) : (
             <ButtonLink name="Sign In" href="/auth/sign-in" />
           )}
-          
         </Menu>
       </div>
     );
