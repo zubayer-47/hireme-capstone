@@ -3,6 +3,7 @@ import { Header } from "./_components/header";
 import { Features } from "./_components/features";
 import { Highlights } from "./_components/highlights";
 import { BentoGridFeatures } from "./_components/bento-grid-features";
+import { CTA } from "./_components/cta";
 
 export default function Home() {
     return (
@@ -13,6 +14,7 @@ export default function Home() {
                 <Features />
                 <BentoGridFeatures />
                 <Highlights />
+                <CTA />
             </section>
         </main>
     )
