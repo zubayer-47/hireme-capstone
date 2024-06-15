@@ -12,7 +12,7 @@ export const Footer = () => {
                             <AppLogo width={25} height={25} />
                         </div>
                         <p className="mt-2 text-sm text-gray-500 ">
-                            Our app is designed to simplify and enhance the job application process for the job seekers.
+                            Our app simplifies and enhance your job application process to get your dream job.
                         </p>
                     </hgroup>
                     <hgroup className="grid grid-cols-2 gap-8 mt-12 lg:grid-cols-2 lg:mt-0">
@@ -67,7 +67,7 @@ export const Footer = () => {
                     <nav className="text-left">
                         <span className="mx-auto mt-2 text-sm text-neutral-300 lg:mx-0">
                             © HireMe. By:
-                            <Link className="text-app-color hover:text-app-color/80 font-bold" href="https://developer-portfolio-sepia-phi.vercel.app/"> Alonzo Christopher</Link>
+                            <Link className="text-app-color hover:text-app-color/80 font-bold" target="_blank" href="https://developer-portfolio-sepia-phi.vercel.app/"> Alonzo Christopher</Link>
                         </span>
                     </nav>
                     <nav className="text-right">
