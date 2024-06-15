@@ -3,33 +3,32 @@
 import Link from "next/link";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { 
-  Menu, 
+import { UserButton } from "@clerk/nextjs";
+import {
+  Menu,
   MenuItem,
-  HoveredLink,  
-  ProductItem 
+  HoveredLink,
+  ProductItem
 } from "@/components/animation/navbar-menu";
 import { AppLogo } from "@/components/app-logo";
-import { useStoreUserEffect } from "@/hooks/use-store-user-effect";
 import { ButtonLink } from "@/components/button-link";
-import { UserButton } from "@clerk/nextjs";
 
-export const Header = () => {
-    return (
-        <header className="relative w-full flex items-center justify-center">
-            <Navbar className="top-2" />
-        </header>
-    )
+type HeaderProps = {
+  isLoading: boolean;
+  isAuthenticated: boolean;
 }
 
-function Navbar({ className }: { className?: string }) {
-    const [active, setActive] = useState<string | null>(null);
-    const { isLoading, isAuthenticated } = useStoreUserEffect(); 
-    // Add the loading skeleton here 
-    
-    return (
+
+export const Header = ({
+  isLoading,
+  isAuthenticated
+}: HeaderProps) => {
+  const [active, setActive] = useState<string | null>(null);
+
+  return (
+    <header className="relative w-full flex items-center justify-center">
       <div
-        className={cn("fixed top-10 inset-x-0 max-w-4xl mx-auto z-50", className)}
+        className="fixed inset-x-0 max-w-4xl mx-auto z-50 top-2"
       >
         <Menu setActive={setActive}>
           <AppLogo height={22.5} width={22.5} />
@@ -81,5 +80,6 @@ function Navbar({ className }: { className?: string }) {
           )}
         </Menu>
       </div>
-    );
-  }
+    </header>
+  )
+}
