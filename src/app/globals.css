@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 
+body, :root {
+  height: 100%;
+}
+
 :root {
+  
   --top-nav-bar-height: 3.5rem;
   --resume-control-bar-height: 3rem;
   --resume-padding: 1.5rem;
