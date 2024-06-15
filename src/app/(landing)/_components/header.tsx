@@ -29,7 +29,7 @@ function Navbar({ className }: { className?: string }) {
         className={cn("fixed top-10 inset-x-0 max-w-6xl mx-auto z-50", className)}
       >
         <Menu setActive={setActive}>
-          <AppLogo height={25} width={25} />
+          <AppLogo height={22.5} width={22.5} />
           <Link href="#" className="text-neutral-200">About</Link>
           <Link href="#" className="text-neutral-200">Contact</Link>
           <MenuItem setActive={setActive} active={active} item="Services">

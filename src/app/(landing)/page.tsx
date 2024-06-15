@@ -1,3 +1,4 @@
+import { Features } from "./_components/features";
 import { Header } from "./_components/header";
 import { Hero } from "./_components/hero";
 
@@ -7,7 +8,7 @@ export default function Home() {
             <section className="max-w-6xl mx-auto">
                 <Header />
                 <Hero />
-                
+                <Features />
             </section>
         </main>
     )

@@ -10,8 +10,8 @@ export const Hero = () => {
                         <span className="text-app-color">HireMe</span> is designed to simplify and enhance
                         <span className="text-gray-600"> the job application process for the job seekers.</span>
                     </h1>
-                    <p className="w-full mx-auto mt-4 text-base font-medium text-gray-500 text-balance">
-                        It uses smart tools to improve your resume and cover letter, gives helpful feedback, and helps you track your job applications.
+                    <p className="w-3/4 mx-auto mt-4 text-base font-medium text-gray-500 text-balance">
+                        Your tool to improve your resume and cover letter, gives helpful feedback, and helps you track your job applications.
                     </p>
                     <div className="flex flex-col items-center justify-center gap-2 mx-auto mt-8 md:flex-row">
                         <Button className="bg-app-color hover:bg-app-color/80 translate-hover" size="lg">
