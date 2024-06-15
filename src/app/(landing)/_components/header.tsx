@@ -76,7 +76,7 @@ function Navbar({ className }: { className?: string }) {
               <HoveredLink href="/enterprise">Enterprise</HoveredLink>
             </div>
           </MenuItem>
-          <Button>
+          <Button className="bg-neutral-100 hover:bg-neutral-300 text-foreground translate-hover" size="sm">
             Sign In
           </Button>
         </Menu>

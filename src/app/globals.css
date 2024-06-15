@@ -86,3 +86,11 @@ body, :root {
     @apply bg-background text-foreground;
   }
 }
+
+.translate-hover {
+  @apply transform transition-all duration-200;
+}
+
+.translate-hover:hover {
+  @apply hover:-translate-y-1;
+}
