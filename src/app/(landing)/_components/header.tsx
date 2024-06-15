@@ -10,6 +10,9 @@ import {
   ProductItem 
 } from "@/components/animation/navbar-menu";
 import { AppLogo } from "@/components/app-logo";
+import { useStoreUserEffect } from "@/hooks/use-store-user-effect";
+import { ButtonLink } from "@/components/button-link";
+import { UserButton } from "@clerk/nextjs";
 
 export const Header = () => {
     return (
@@ -21,8 +24,10 @@ export const Header = () => {
 
 function Navbar({ className }: { className?: string }) {
     const [active, setActive] = useState<string | null>(null);
+    const { isLoading, isAuthenticated } = useStoreUserEffect(); 
 
-
+    // Add the loading skeleton here 
+    
     return (
       <div
         className={cn("fixed top-10 inset-x-0 max-w-6xl mx-auto z-50", className)}
@@ -67,9 +72,15 @@ function Navbar({ className }: { className?: string }) {
               />
             </div>
           </MenuItem>
-          <Link href="/auth/sign-in" className="mr-2 h-9 px-3 py-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-neutral-200 hover:bg-accent hover:text-accent-foreground" >
-            Sign In
-          </Link>
+          {isAuthenticated ? (
+            <>
+              <ButtonLink name="Go To Feed" href={`/feed/`} />
+              <UserButton afterSignOutUrl="/" />
+            </>
+          ) : (
+            <ButtonLink name="Sign In" href="/auth/sign-in" />
+          )}
+          
         </Menu>
       </div>
     );
