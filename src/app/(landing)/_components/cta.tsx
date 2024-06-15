@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button"
 export const CTA = () => {
     return (
         <section>
-            <div className="px-8 py-12 mx-auto md:px-12 lg:px-32 max-w-7xl">
-                <div className="p-2 border border-white/[0.2] bg-neutral-800 rounded-3xl">
-                    <div className="p-10 text-center bg-neutral-950  border border-white/[0.2] shadow-lg shadow-neutral-500 md:p-20 rounded-3xl">
+            <article className="px-8 py-12 mx-auto md:px-12 lg:px-32 max-w-7xl">
+                <aside className="p-2 border border-white/[0.2] bg-neutral-800 rounded-3xl">
+                    <hgroup className="p-10 text-center bg-neutral-950  border border-white/[0.2] shadow-lg shadow-neutral-500 md:p-20 rounded-3xl">
                         <p className="text-4xl font-semibold tracking-tighter text-neutral-100">
                             Land Your Dream Job Faster
                         </p>
@@ -17,9 +17,9 @@ export const CTA = () => {
                                 Start Building
                             </Button>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </hgroup>
+                </aside>
+            </article>
         </section>
     )
 }

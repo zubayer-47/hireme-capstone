@@ -18,8 +18,8 @@ export const Hero = () => {
                             Start Building
                         </Button>
                     </div>
-                    <div className="relative h-full p-2 mt-24 overflow-hidden border border-white/[0.2] rounded-3xl">
-                        <Image src="" alt="placeholder" className="object-cover h-full border border-white/[0.2] shadow-2xl rounded-2xl" width="1000" height="500" />
+                    <div className="relative h-full p-2 mt-24 overflow-hidden bg-neutral-800 shadow- border border-white/[0.2] rounded-3xl">
+                        <Image src="" alt="placeholder" className="object-cover h-full border border-white/[0.2] bg-neutral-900 shadow-xl shadow-neutral-500 rounded-2xl" width="1000" height="500" />
                     </div>
                 </aside>
             </article>
