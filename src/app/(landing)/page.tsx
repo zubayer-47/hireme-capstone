@@ -1,7 +1,8 @@
-import { BentoGridFeatures } from "./_components/bento-grid-features";
-import { Features } from "./_components/features";
-import { Header } from "./_components/header";
 import { Hero } from "./_components/hero";
+import { Header } from "./_components/header";
+import { Features } from "./_components/features";
+import { Highlights } from "./_components/highlights";
+import { BentoGridFeatures } from "./_components/bento-grid-features";
 
 export default function Home() {
     return (
@@ -11,6 +12,7 @@ export default function Home() {
                 <Hero />
                 <Features />
                 <BentoGridFeatures />
+                <Highlights />
             </section>
         </main>
     )
