@@ -6,5 +6,5 @@ export default defineSchema({
     users: defineTable({
         name: v.string(),
         tokenIdentifier: v.string()
-    }).index("by_tokenIdentifier", ["tokenIdentifier"]),
+    }).index("by_token", ["tokenIdentifier"]),
 })
