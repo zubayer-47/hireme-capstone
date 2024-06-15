@@ -10,9 +10,6 @@ import {
   ProductItem 
 } from "@/components/animation/navbar-menu";
 import { AppLogo } from "@/components/app-logo";
-import { Button } from "@/components/ui/button";
-
-
 
 export const Header = () => {
     return (
@@ -25,7 +22,7 @@ export const Header = () => {
 function Navbar({ className }: { className?: string }) {
     const [active, setActive] = useState<string | null>(null);
 
-    
+
     return (
       <div
         className={cn("fixed top-10 inset-x-0 max-w-6xl mx-auto z-50", className)}
@@ -70,9 +67,9 @@ function Navbar({ className }: { className?: string }) {
               />
             </div>
           </MenuItem>
-          <Button className="bg-neutral-100 hover:bg-neutral-300 text-foreground translate-hover" size="sm">
+          <Link href="/auth/sign-in" className="mr-2 h-9 px-3 py-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-neutral-200 hover:bg-accent hover:text-accent-foreground" >
             Sign In
-          </Button>
+          </Link>
         </Menu>
       </div>
     );
