@@ -1,11 +1,11 @@
 "use client";
 
-import { Loader } from "@/components/loader";
+import { LoadingSpinner } from "@/components/loading-spinner";
 
 export default function Loading() {
     return (
-        <section className="h-full w-full flex items-center justify-center">  
-            <Loader />
+        <section className="h-full w-full flex items-center justify-center mx-auto">  
+            <LoadingSpinner />
         </section>
     )
 }
