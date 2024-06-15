@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { 
@@ -10,6 +9,7 @@ import {
   HoveredLink,  
   ProductItem 
 } from "@/components/animation/navbar-menu";
+import { AppLogo } from "@/components/app-logo";
 import { Button } from "@/components/ui/button";
 
 
@@ -29,9 +29,9 @@ function Navbar({ className }: { className?: string }) {
         className={cn("fixed top-10 inset-x-0 max-w-6xl mx-auto z-50", className)}
       >
         <Menu setActive={setActive}>
-          <Image src="/svg/logo.svg" alt="Letter H logo" width="25" height="25"  />
-          <Link href="#" className="text-white">About</Link>
-          <Link href="#" className="text-white">Contact</Link>
+          <AppLogo height={25} width={25} />
+          <Link href="#" className="text-neutral-200">About</Link>
+          <Link href="#" className="text-neutral-200">Contact</Link>
           <MenuItem setActive={setActive} active={active} item="Services">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/web-dev">Web Development</HoveredLink>
