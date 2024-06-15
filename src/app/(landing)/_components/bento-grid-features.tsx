@@ -8,8 +8,8 @@ export const BentoGridFeatures = () => {
                     <div className="max-w-lg min-w-full mx-auto">
                         <div className="flex h-full">
                             <div className="flex flex-col justify-center p-8 border border-white/[0.2] bg-neutral-950 rounded-3xl w-full">
-                                <h2 className="font-medium text-gray-900">
-                                    No additional restrictions
+                                <h2 className="font-semibold text-2xl text-neutral-200">
+                                    Get Your Resume Reviewed
                                 </h2>
                             </div>
                         </div>
@@ -23,10 +23,10 @@ export const BentoGridFeatures = () => {
                     </div>
                 </div>
                 <div className="grid gap-2 lg:grid-flow-col-dense lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-3">
-                    <div className="max-w-lg min-w-full mx-auto lg:col-start-3 ml-0 lg:ml-9">
+                    <div className="max-w-lg min-w-full mx-auto lg:col-start-3">
                         <div className="flex h-full">
                             <div className="flex flex-col justify-center p-8 border border-white/[0.2] bg-neutral-950 rounded-3xl w-full">
-                                <h2 className="font-medium text-gray-900">Share alike (SA) absence</h2>
+                                <h2 className="font-semibold text-2xl text-neutral-200">Create Stand-Out Resumes & Cover Letters</h2>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@ export const BentoGridFeatures = () => {
                     <div className="max-w-lg min-w-full mx-auto">
                         <div className="flex h-full">
                             <div className="flex flex-col justify-center p-8 border border-white/[0.2] bg-neutral-950 rounded-3xl w-full">
-                                <h2 className="font-medium text-gray-900">Share alike (SA) absence</h2>
+                                <h2 className="font-semibold text-2xl text-neutral-200">Never Miss An Interview Again & Keep Yourself Organized</h2>
                             </div>
                         </div>
                     </div>
