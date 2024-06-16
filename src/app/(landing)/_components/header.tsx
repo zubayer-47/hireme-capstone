@@ -30,7 +30,7 @@ export const Header = ({
         className="fixed inset-x-0 max-w-4xl mx-auto z-50 top-2"
       >
         <Menu setActive={setActive}>
-          <AppLogo height={22.5} width={22.5} />
+          <AppLogo href="/" height={22.5} width={22.5} />
           <Link href="#" className="text-neutral-200">About</Link>
           <Link href="#" className="text-neutral-200">Contact</Link>
           <MenuItem setActive={setActive} active={active} item="Services">

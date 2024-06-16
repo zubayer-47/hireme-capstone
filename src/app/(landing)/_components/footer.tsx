@@ -9,7 +9,7 @@ export const Footer = () => {
                 <aside className="pt-12 border-t border-gray-600 xl:grid xl:grid-cols-2 xl:gap-12">
                     <hgroup className="text-black">
                         <div className="inline-flex items-center gap-3">
-                            <AppLogo width={25} height={25} />
+                            <AppLogo href="/" width={25} height={25} />
                         </div>
                         <p className="mt-2 text-sm text-gray-500 ">
                             Our app simplifies and enhance your job application process to get your dream job.
