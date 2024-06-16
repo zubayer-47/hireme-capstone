@@ -18,6 +18,8 @@ import Image from "next/image";
 import { AppLogo } from "@/components/app-logo";
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@clerk/nextjs/server";
+import { dataLinks } from "../feed-lib/links";
+import { NavLinks } from "./nav-links";
 
 
 export const Sidebar = async ({ userId }: { userId: string }) => {
@@ -38,66 +40,9 @@ export const Sidebar = async ({ userId }: { userId: string }) => {
                         <h2 className="capitalize dark:text-neutral-200 text-neutral-950 text-sm">{user?.firstName} Feed</h2>
                     </hgroup>
                     
-                    <ul>
-                        <p className="font-semibold dark:text-neutral-400 text-neutral-500">Discover</p>
-                        <li>
-                            <Link
-                                href="#"
-                                className="flex items-center gap-3 rounded-lg px-3 py-2 dark:text-neutral-300 text-neutral-600 transition-all hover:text-neutral-500 hover:dark:bg-neutral-950 hover:bg-neutral-200"
-                            >
-                                <CalendarClock className="h-4 w-4" />
-                                Recent
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                href="#"
-                                className="flex items-center gap-3 rounded-lg px-3 py-2 dark:text-neutral-300 text-neutral-600 transition-all hover:text-neutral-500 hover:dark:bg-neutral-950 hover:bg-neutral-200"
-                            >
-                                <MessageSquareMore className="h-4 w-4" />
-                                Most Discussed
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                href="#"
-                                className="flex items-center gap-3 rounded-lg px-3 py-2 dark:text-neutral-300 text-neutral-600 transition-all hover:text-neutral-500 hover:dark:bg-neutral-950 hover:bg-neutral-200"
-                            >
-                                <ArrowUp className="h-4 w-4" />
-                                Most Upvotes
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                href="#"
-                                className="flex items-center gap-3 rounded-lg px-3 py-2 dark:text-neutral-300 text-neutral-600 transition-all hover:text-neutral-500 hover:dark:bg-neutral-950 hover:bg-neutral-200"
-                            >
-                                <Bookmark className="h-4 w-4" />
-                                Bookmarked
-                            </Link>
-                        </li>
-                    </ul>
-                    <ul>
-                        <p className="font-semibold dark:text-neutral-400 text-neutral-500">Resources</p>
-                        <li>
-                            <Link
-                                href="/builder"
-                                className="flex items-center gap-3 rounded-lg px-3 py-2 dark:text-neutral-300 text-neutral-600 transition-all hover:text-neutral-500 hover:dark:bg-neutral-950 hover:bg-neutral-200"
-                            >
-                                <Hammer className="h-4 w-4" />
-                                Builder
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                href="/tracker"
-                                className="flex items-center gap-3 rounded-lg px-3 py-2 dark:text-neutral-300 text-neutral-600 transition-all hover:text-neutral-500 hover:dark:bg-neutral-950 hover:bg-neutral-200"
-                            >
-                                <Sheet className="h-4 w-4" />
-                                Tracker
-                            </Link>
-                        </li>
-                    </ul>
+                    {dataLinks.map(({ titleSection, links }, index) => (
+                        <NavLinks key={index} titleSection={titleSection} links={links} />
+                    ))}
                 </nav>
             </div>
             <div className="mt-auto p-4">

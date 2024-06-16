@@ -34,7 +34,7 @@ export const MobileSidebar = () => {
                 </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
-                <nav className="grid gap-2 text-lg font-medium">
+                <nav className="grid gap-2 text-sm font-medium">
                     <AppLogo href={`/feed/`} width={20} height={20} />
                     <ul>
                         <p>Discover</p>
