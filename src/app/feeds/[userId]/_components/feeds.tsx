@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Plus, SlidersHorizontal } from "lucide-react"
+import { CardFeed } from "./card-feed"
 
 export const Feeds = () => {
     return (
@@ -14,10 +15,10 @@ export const Feeds = () => {
                     New Feed
                 </Button>
             </div>
-            <div
-                className="flex flex-1 items-center justify-center rounded-lg" x-chunk="dashboard-02-chunk-1"
-            >
-
+            <div className="grid grid-cols-3" >
+                <CardFeed />
+                <CardFeed />
+                <CardFeed />
             </div>
         </main>
     )
