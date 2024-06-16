@@ -15,7 +15,7 @@ export const AppLogo = ({
     return (
         <Link href={href} className="flex items-center gap-1">
             <Image src="/svg/logo.svg" alt="Letter H Logo & App Logo for the website HireMe" width={width} height={height} />
-            <p className="text-white text-sm font-semibold">HireMe</p>
+            <p className="text-neutral-950 dark:text-neutral-100 text-sm font-semibold">HireMe</p>
         </Link>
     )
 }
