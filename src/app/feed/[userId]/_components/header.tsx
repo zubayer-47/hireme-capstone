@@ -3,11 +3,11 @@ import { Search } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { Input } from "@/components/ui/input";
 import { MobileSidebar } from "./mobile-sidebar";
-
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const Header = () => {
     return (
-        <header className="flex h-14 items-center gap-4 border-b border-white/[0.2] bg-neutral-900 px-4 lg:h-[60px] lg:px-6">
+        <header className="flex h-14 items-center gap-4 border-b border-white/[0.2] dark:bg-neutral-900 px-4 lg:h-[60px] lg:px-6">
             <MobileSidebar />
             <div className="w-full flex-1">
                 <form>
@@ -21,6 +21,7 @@ export const Header = () => {
                     </div>
                 </form>
             </div>
+            <ThemeToggle />
             <UserButton afterSignOutUrl="/" />
         </header>
     )

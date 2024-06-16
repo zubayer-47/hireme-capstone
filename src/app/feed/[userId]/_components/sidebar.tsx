@@ -46,7 +46,7 @@ export const Sidebar = async ({ userId }: { userId: string }) => {
                                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-300 transition-all hover:text-neutral-500"
                             >
                                 <CalendarClock className="h-4 w-4" />
-                                Recent Posts
+                                Recent
                             </Link>
                         </li>
                         <li>

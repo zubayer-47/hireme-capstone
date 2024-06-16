@@ -76,7 +76,7 @@ export const Header = ({
               size="sm"
               name="Sign In" 
               href="/auth/sign-in"  
-              className="bg-neutral-200 hover:bg-accent" 
+              className="bg-neutral-200 hover:bg-accent text-neutral-950 " 
             />
           )}
         </Menu>
