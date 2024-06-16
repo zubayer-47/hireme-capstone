@@ -19,7 +19,7 @@ export const DynamicSidebar = async ({ userId }: { userId?: string }) => {
         <div className="flex h-full max-h-screen flex-col gap-2">
             <div className="flex h-14 items-center border-b border-white/[0.2] px-4 lg:h-[60px] lg:px-6">
                 <AppLogo href={`/feed/${userId!}`} width={25} height={25} />
-                <Button variant="outline" size="icon" className="ml-auto h-6 w-6 dark:bg-neutral-950 hover:dark:bg-neutral-900 bg-neutral-200 dark:border-white/[0.2] border-black/[0.2] ">
+                <Button variant="outline" size="icon" className="ml-auto h-6 w-6 dark:bg-neutral-950 hover:dark:bg-neutral-900 bg-neutral-200 dark:border-white/[0.2] border-black/[0.2] translate-hover">
                     <Plus className="h-4 w-4 dark:text-neutral-300  text-neutral-950" />
                     <span className="sr-only">Share Post</span>
                 </Button>

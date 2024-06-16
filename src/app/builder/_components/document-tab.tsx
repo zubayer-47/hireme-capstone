@@ -10,23 +10,22 @@ import { Button } from "@/components/ui/button";
 
 export const DocumentTab = () => {
     return (
-        <Tabs defaultValue="resume">
+        <Tabs defaultValue="resume" >
             <section className="flex items-center justify-between mb-8">
-                <TabsList className="grid w-full grid-cols-2 ">
-                    <TabsTrigger value="resume">Resume</TabsTrigger>
-                    <TabsTrigger value="cover-letter">Cover Letter</TabsTrigger>
+                <TabsList className="grid grid-cols-2 w-[300px] dark:bg-neutral-800 hover:dark:bg-neutral-900 transition-all">
+                    <TabsTrigger value="resume" className="dark:text-neutral-200 text-neutral-600">Resume</TabsTrigger>
+                    <TabsTrigger value="cover-letter" className="dark:text-neutral-200 text-neutral-600">Cover Letter</TabsTrigger>
                 </TabsList>
                 <div className="flex items-center gap-2">
-                    <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600" size="sm" variant="ghost">
+                    <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600 translate-hover" size="sm" variant="ghost">
                         <ArrowUpToLine className="h-4 w-4" />
                         Upload
                     </Button>
-                    <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600" size="sm" variant="ghost">
+                    <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600 bg-neutral-200 hover:bg-neutral-100  dark:bg-neutral-800 hover:dark:bg-neutral-900 translate-hover" size="sm" >
                         <Plus className="h-4 w-4" />
                         Create
                     </Button>
                 </div>
-
             </section>
             <TabsContent value="resume">
 
