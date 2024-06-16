@@ -18,7 +18,7 @@ export default function Home() {
     const route = useRouter();
 
     if (isAuthenticated) {
-        route.push(`/feed/${user?._id}`)
+        route.push(`/feeds/${user?._id}`)
     }
 
     return (

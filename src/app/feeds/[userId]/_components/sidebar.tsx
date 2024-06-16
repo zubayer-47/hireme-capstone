@@ -15,11 +15,11 @@ import {
     CardDescription,
 } from "@/components/ui/card";
 import Image from "next/image";
+import { NavLinks } from "./nav-links";
+import { dataLinks } from "../feed-utils/links";
 import { AppLogo } from "@/components/app-logo";
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@clerk/nextjs/server";
-import { dataLinks } from "../feed-lib/links";
-import { NavLinks } from "./nav-links";
 
 
 export const Sidebar = async ({ userId }: { userId: string }) => {
