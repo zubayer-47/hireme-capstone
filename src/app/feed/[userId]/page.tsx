@@ -4,8 +4,8 @@ import { Sidebar } from "./_components/sidebar";
 
 export default function FeedPage({ params }: { params: { userId: string }}) {
   return (
-    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-      <div className="hidden border-r bg-muted/40 md:block">
+    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] bg-neutral-950">
+      <div className="hidden border-r border-white/[0.2] bg-neutral-900 md:block">
         <Sidebar userId={params.userId} />
       </div>
       <div className="flex flex-col">
