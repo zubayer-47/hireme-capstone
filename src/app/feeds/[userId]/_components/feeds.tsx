@@ -1,6 +1,6 @@
+import { CardFeed } from "./card-feed"
 import { Button } from "@/components/ui/button"
 import { Plus, SlidersHorizontal } from "lucide-react"
-import { CardFeed } from "./card-feed"
 
 export const Feeds = () => {
     return (
