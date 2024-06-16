@@ -6,11 +6,11 @@ import { MobileSidebar } from "./mobile-sidebar";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { DynamicSidebar } from "./dynamic-sidebar";
 
-export const Header = ({ userId }: { userId: string }) => {
+export const Header = ({ userId }: { userId?: string }) => {
     return (
         <header className="flex h-14 items-center gap-4 border-b dark:border-white/[0.2] border-black/[0.2] bg-neutral-50 dark:bg-neutral-900 px-4 lg:h-[60px] lg:px-6">
             <MobileSidebar>
-                <DynamicSidebar userId={userId} />
+                <DynamicSidebar userId={userId!} />
             </MobileSidebar>
             <div className="w-full flex-1">
                 <form>

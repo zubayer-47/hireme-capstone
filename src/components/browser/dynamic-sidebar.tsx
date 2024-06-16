@@ -8,17 +8,17 @@ import {
 import Image from "next/image";
 import { Plus } from "lucide-react";
 import { NavLinks } from "./nav-links";
-import { dataLinks } from "../feed-utils/links";
+import { dataLinks } from "../../app/feeds/[userId]/feed-utils/links";
 import { AppLogo } from "@/components/app-logo";
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@clerk/nextjs/server";
 
-export const DynamicSidebar = async ({ userId }: { userId: string }) => {
+export const DynamicSidebar = async ({ userId }: { userId?: string }) => {
     const user = await currentUser();
     return (
         <div className="flex h-full max-h-screen flex-col gap-2">
             <div className="flex h-14 items-center border-b border-white/[0.2] px-4 lg:h-[60px] lg:px-6">
-                <AppLogo href={`/feed/${userId}`} width={25} height={25} />
+                <AppLogo href={`/feed/${userId!}`} width={25} height={25} />
                 <Button variant="outline" size="icon" className="ml-auto h-6 w-6 dark:bg-neutral-950 hover:dark:bg-neutral-900 bg-neutral-200 dark:border-white/[0.2] border-black/[0.2] ">
                     <Plus className="h-4 w-4 dark:text-neutral-300  text-neutral-950" />
                     <span className="sr-only">Share Post</span>
