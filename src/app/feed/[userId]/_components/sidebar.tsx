@@ -8,11 +8,10 @@ import {
 import Link from "next/link";
 import {
     Card,
-    CardTitle,
     CardHeader,
     CardContent,
     CardDescription,
-  } from "@/components/ui/card"
+} from "@/components/ui/card"
 import { AppLogo } from "@/components/app-logo";
 import { Button } from "@/components/ui/button";
 
