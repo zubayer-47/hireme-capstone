@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
 import { UserButton } from "@clerk/nextjs";
 import {
   Menu,
@@ -71,12 +70,14 @@ export const Header = ({
             </div>
           </MenuItem>
           {isAuthenticated ? (
-            <>
-              <ButtonLink name="Go To Feed" href={`/feed/`} />
               <UserButton afterSignOutUrl="/" />
-            </>
           ) : (
-            <ButtonLink name="Sign In" href="/auth/sign-in" />
+            <ButtonLink
+              size="sm"
+              name="Sign In" 
+              href="/auth/sign-in"  
+              className="bg-neutral-200 hover:bg-accent" 
+            />
           )}
         </Menu>
       </div>

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { ButtonLink } from "@/components/button-link"
 
 export const CTA = () => {
     return (
@@ -13,9 +13,12 @@ export const CTA = () => {
                         Build winning applications, track progress effortlessly, and join a supportive community.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-2 mx-auto mt-8 md:flex-row">
-                            <Button className="bg-app-color hover:bg-app-color/80 translate-hover" size="lg">
-                                Start Building
-                            </Button>
+                            <ButtonLink 
+                                size="lg"
+                                href="/auth/sign-in"
+                                name="Start Building"
+                                className="bg-app-color hover:bg-app-color/80 translate-hover"  
+                            />
                         </div>
                     </hgroup>
                 </aside>
