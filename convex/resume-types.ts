@@ -15,5 +15,10 @@ export const Projects = v.object({
     name: v.string(),
     url: v.string(),
     descriptions: v.string(),
-})
+});
+
+export const Skills = v.object({
+    heading: v.string(),
+    featuredSkills: v.string(),
+});
 
