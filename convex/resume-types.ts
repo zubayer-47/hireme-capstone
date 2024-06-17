@@ -10,3 +10,10 @@ export const Profile = v.object({
     githubUrl: v.string(),
     linkedInUrl: v.string(),
 })
+
+export const Projects = v.object({
+    name: v.string(),
+    url: v.string(),
+    descriptions: v.string(),
+})
+

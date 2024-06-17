@@ -1,6 +1,6 @@
 import { v } from "convex/values";
 import { defineSchema, defineTable } from "convex/server";
-import { Profile } from "./types";
+import { Profile, Projects } from "./resume-types";
 
 
 export default defineSchema({
@@ -12,6 +12,7 @@ export default defineSchema({
     resume: defineTable({
         documentName: v.string(),
         profile: Profile,
-            
+        projects: Projects,
+        
     })
 })
