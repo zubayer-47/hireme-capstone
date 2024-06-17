@@ -12,8 +12,8 @@ export const Profile = v.object({
 })
 
 export const Projects = v.object({
-    name: v.string(),
     url: v.string(),
+    name: v.string(),
     descriptions: v.string(),
 });
 
@@ -23,11 +23,19 @@ export const Skills = v.object({
 });
 
 export const WorkExperience = v.object({
+    title: v.string(),
+    company: v.string(),
+    endDate: v.string(),
+    startDate: v.string(),
+    descriptions: v.string(),
+});
+
+export const Education = v.object({  
+    gpa: v.string(),
     school: v.string(),
     degree: v.string(),
-    gpa: v.string(),
-    startDate: v.string(),
     endDate: v.string(),
+    startDate: v.string(),
     descriptions: v.string()
-});
+})
 
