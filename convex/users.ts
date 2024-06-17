@@ -35,7 +35,7 @@ export const getUser = async (
     ctx: QueryCtx | MutationCtx,
     tokenIdentifier: string
 ) => {
-    const user = await ctx.db.query("users").withIndex("by_token", (q) => q.eq("tokenIdentifier", tokenIdentifier)).first();
+    const user = await ctx.db.query("users").withIndex("by_token", (q) => q.eq("tokenIdentifier", tokenIdentifier)).unique();
 
     if (!user) throw new ConvexError("User not found!");
 
