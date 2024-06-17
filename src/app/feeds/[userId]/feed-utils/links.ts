@@ -1,6 +1,6 @@
 import {
     Sheet,
-    Hammer,
+    Blocks,
     ArrowUp,
     Bookmark,
     CalendarClock,
@@ -38,7 +38,7 @@ export const dataLinks = [
         links: [
             {
                 href: "/builder",
-                icon: Hammer,
+                icon: Blocks,
                 navLinkTitle: "Builder",
             },
             {
