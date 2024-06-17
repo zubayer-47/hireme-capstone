@@ -22,3 +22,12 @@ export const Skills = v.object({
     featuredSkills: v.string(),
 });
 
+export const WorkExperience = v.object({
+    school: v.string(),
+    degree: v.string(),
+    gpa: v.string(),
+    startDate: v.string(),
+    endDate: v.string(),
+    descriptions: v.string()
+});
+
