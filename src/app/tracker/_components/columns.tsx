@@ -47,6 +47,18 @@ export const columns: ColumnDef<Doc<"jobTracker">>[] = [
         enableHiding: false,
     },
     {
+        header: 'Company',
+        accessorKey: 'company',
+    },
+    {
+        header: 'Job Title',
+        accessorKey: 'jobTitle',
+    },
+    {
+        header: 'Date Applied',
+        accessorKey: 'dateApplied',
+    },
+    {
         accessorKey: "status",
         header: "Status",
     },
@@ -94,7 +106,7 @@ export const columns: ColumnDef<Doc<"jobTracker">>[] = [
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem
-                            onClick={() => {}}
+                            onClick={() => { }}
                         >
                             Copy payment ID
                         </DropdownMenuItem>
