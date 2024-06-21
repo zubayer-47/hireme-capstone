@@ -13,13 +13,13 @@ async function userIdentity(
         .query("users")
         .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
         .unique();
-    
+
     if (!user) return null;
 
     return user;
 }
 
-export const trackJob = mutation({
+export const createJobToTrack = mutation({
     args: {
         userId: v.id("users"),
         resumeId: v.id("resume"),
@@ -40,6 +40,21 @@ export const trackJob = mutation({
 
         return await ctx.db.insert("jobTracker", {
             ...args
-        })   
+        })
+    }
+});
+
+export const getJobListings = query({
+    args: {
+        userId: v.id("users")
+    }, handler: async (ctx, { userId }) => {
+        const hasAccess = await userIdentity(ctx);
+
+        if (!hasAccess) throw new ConvexError("Unauthorized!");
+
+        return await ctx.db
+            .query("jobTracker")
+            .withIndex("by_userId", (q) => q.eq("userId", userId))
+            .collect();
     }
 })
