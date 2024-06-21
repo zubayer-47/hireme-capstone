@@ -34,11 +34,12 @@ export const trackJob = mutation({
         applicationPlatform: v.optional(v.string()),
     }, handler: async (ctx, args) => {
 
-        const jobId = await ctx.db.insert("jobTracker", {
-            ...args
-        })
+        const hasAccess = await userIdentity(ctx);
 
-        return jobId
-        
+        if (!hasAccess) throw new ConvexError("Unauthorized!");
+
+        return await ctx.db.insert("jobTracker", {
+            ...args
+        })   
     }
 })
