@@ -8,6 +8,12 @@ import {
     WorkExperience 
 } from "./resume-types";
 
+const applicationStatus = v.union(
+    v.literal("applied"),
+    v.literal("interviewed"),
+    v.literal("offered"),
+    v.literal("rejected"),
+)
 
 export default defineSchema({
     users: defineTable({
@@ -26,4 +32,18 @@ export default defineSchema({
         score: v.optional(v.string()),
         aiFeedback: v.optional(v.string()), // Change this to have a custom object
     }).index("by_userId", ["userId"]),
+
+    jobTracker: defineTable({
+        userId: v.id("users"),
+        resumeId: v.id("resume"),
+        company: v.string(),
+        jobLink: v.string(),
+        jobTitle: v.string(),
+        location: v.string(),
+        status: applicationStatus,
+        notes: v.optional(v.string()),
+        salary: v.optional(v.string()),
+        contactInfo: v.optional(v.string()),
+        applicationPlatform:v.optional(v.string()),
+    })
 })
