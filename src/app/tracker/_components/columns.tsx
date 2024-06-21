@@ -14,14 +14,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { Doc } from "../../../../convex/_generated/dataModel";
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Payment = {
-    id: string
-    amount: number
-    status: "pending" | "processing" | "success" | "failed"
-    email: string
-}
 
 export const columns: ColumnDef<Doc<"jobTracker">>[] = [
     {
@@ -63,23 +55,27 @@ export const columns: ColumnDef<Doc<"jobTracker">>[] = [
         header: "Status",
     },
     {
-        accessorKey: "email",
-        header: ({ column }) => {
-            return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Email
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                </Button>
-            )
-        },
-
+        accessorKey: "location",
+        header: "Location",
     },
+    // {
+    //     accessorKey: "email",
+    //     header: ({ column }) => {
+    //         return (
+    //             <Button
+    //                 variant="ghost"
+    //                 onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+    //             >
+    //                 Email
+    //                 <ArrowUpDown className="ml-2 h-4 w-4" />
+    //             </Button>
+    //         )
+    //     },
+
+    // },
     {
-        accessorKey: "amount",
-        header: () => <div className="text-right">Amount</div>,
+        accessorKey: "salary",
+        header: () => <div className="text-right">Salary</div>,
         cell: ({ row }) => {
             const amount = parseFloat(row.getValue("amount"))
             const formatted = new Intl.NumberFormat("en-US", {
@@ -89,6 +85,22 @@ export const columns: ColumnDef<Doc<"jobTracker">>[] = [
 
             return <div className="text-right font-medium">{formatted}</div>
         },
+    },
+    {
+        accessorKey: "notes",
+        header: "Notes",
+    },
+    {
+        accessorKey: "notes",
+        header: "Notes",
+    },
+    {
+        accessorKey: "contactInfo",
+        header: "Recruiter Info",
+    },
+    {
+        accessorKey: "applicationPlatform",
+        header: "Application Platform",
     },
     {
         id: "actions",
