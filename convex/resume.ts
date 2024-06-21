@@ -6,7 +6,7 @@ import {
     Projects,
     Education,   
     WorkExperience 
-} from "./resume-types";
+} from "./resumeTypes";
 
 async function userIdentity(
     ctx: QueryCtx | MutationCtx,
