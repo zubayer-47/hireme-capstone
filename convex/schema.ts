@@ -6,7 +6,7 @@ import {
     Projects,
     Education,
     WorkExperience
-} from "./resume-types";
+} from "./resumeTypes";
 
 export const applicationStatus = v.union(
     v.literal("applied"),
