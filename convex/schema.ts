@@ -8,7 +8,7 @@ import {
     WorkExperience
 } from "./resume-types";
 
-const applicationStatus = v.union(
+export const applicationStatus = v.union(
     v.literal("applied"),
     v.literal("interviewed"),
     v.literal("offered"),
