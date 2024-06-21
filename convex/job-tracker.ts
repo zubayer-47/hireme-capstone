@@ -2,6 +2,22 @@ import { applicationStatus } from "./schema";
 import { v, ConvexError } from "convex/values";
 import { mutation, MutationCtx, QueryCtx, query } from "./_generated/server";
 
+async function userIdentity(
+    ctx: QueryCtx | MutationCtx,
+) {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) return null;
+
+    const user = await ctx.db
+        .query("users")
+        .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
+        .unique();
+    
+    if (!user) return null;
+
+    return user;
+}
 
 export const trackJob = mutation({
     args: {
@@ -22,6 +38,7 @@ export const trackJob = mutation({
             ...args
         })
 
+        return jobId
         
     }
 })
