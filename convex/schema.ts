@@ -40,6 +40,7 @@ export default defineSchema({
         jobLink: v.string(),
         jobTitle: v.string(),
         location: v.string(),
+        dateApplied: v.string(),
         status: applicationStatus,
         notes: v.optional(v.string()),
         salary: v.optional(v.string()),
