@@ -1,11 +1,11 @@
 import { v } from "convex/values";
 import { defineSchema, defineTable } from "convex/server";
-import { 
+import {
     Skills,
-    Profile, 
+    Profile,
     Projects,
-    Education,   
-    WorkExperience 
+    Education,
+    WorkExperience
 } from "./resume-types";
 
 const applicationStatus = v.union(
@@ -44,6 +44,8 @@ export default defineSchema({
         notes: v.optional(v.string()),
         salary: v.optional(v.string()),
         contactInfo: v.optional(v.string()),
-        applicationPlatform:v.optional(v.string()),
-    })
+        applicationPlatform: v.optional(v.string()),
+    }).index("by_userId", ["userId"])
+      .index("by_resumeId", ["resumeId"])
+      .index("by_userId_resumeId", ["userId", "resumeId"])
 })
