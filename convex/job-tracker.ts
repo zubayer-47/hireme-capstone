@@ -16,7 +16,12 @@ export const trackJob = mutation({
         salary: v.optional(v.string()),
         contactInfo: v.optional(v.string()),
         applicationPlatform: v.optional(v.string()),
-    }, handler: async (ctx,) => [
+    }, handler: async (ctx, args) => {
 
-    ]
+        const jobId = await ctx.db.insert("jobTracker", {
+            ...args
+        })
+
+        
+    }
 })
