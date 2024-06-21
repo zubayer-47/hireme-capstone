@@ -13,7 +13,7 @@ export default function JobTrackerPage() {
     return (
         <Browser>
             <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-8 w-full">
-                <DataTable columns={columns} data={data} />
+                <DataTable columns={columns} data={data!} />
             </main>
         </Browser>
     )

@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import { Doc } from "../../../../convex/_generated/dataModel";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -22,7 +23,7 @@ export type Payment = {
     email: string
 }
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Doc<"jobTracker">>[] = [
     {
         id: "select",
         header: ({ table }) => (
@@ -93,7 +94,7 @@ export const columns: ColumnDef<Payment>[] = [
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(payment.id)}
+                            onClick={() => {}}
                         >
                             Copy payment ID
                         </DropdownMenuItem>
