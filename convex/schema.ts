@@ -5,15 +5,10 @@ import {
     Profile,
     Projects,
     Education,
-    WorkExperience
-} from "./resumeTypes";
+    WorkExperience,
+    ApplicationStatus
+} from "./types";
 
-export const applicationStatus = v.union(
-    v.literal("applied"),
-    v.literal("interviewed"),
-    v.literal("offered"),
-    v.literal("rejected"),
-)
 
 export default defineSchema({
     users: defineTable({
@@ -33,14 +28,14 @@ export default defineSchema({
         aiFeedback: v.optional(v.string()), // Change this to have a custom object
     }).index("by_userId", ["userId"]),
 
-    jobTracker: defineTable({
+    applications: defineTable({
         userId: v.id("users"),
         company: v.string(),
         jobLink: v.string(),
         jobTitle: v.string(),
         location: v.string(),
         dateApplied: v.string(),
-        status: applicationStatus,
+        status: ApplicationStatus,
         notes: v.optional(v.string()),
         salary: v.optional(v.string()),
         recruiterInfo: v.optional(v.string()),

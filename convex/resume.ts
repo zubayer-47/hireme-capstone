@@ -1,12 +1,12 @@
-import { query, mutation, QueryCtx, MutationCtx, } from "./_generated/server";
-import { v, ConvexError } from "convex/values";
 import { 
     Skills,
     Profile, 
     Projects,
     Education,   
     WorkExperience 
-} from "./resumeTypes";
+} from "./types";
+import { v, ConvexError } from "convex/values";
+import { mutation, QueryCtx, MutationCtx, } from "./_generated/server";
 
 async function userIdentity(
     ctx: QueryCtx | MutationCtx,

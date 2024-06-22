@@ -1,5 +1,7 @@
 import { v } from "convex/values";
-
+/* -------------------------------------------------------------------------- */
+/*                                   Resume                                   */
+/* -------------------------------------------------------------------------- */
 export const Profile = v.object({
     name: v.string(),
     role: v.string(),
@@ -39,3 +41,12 @@ export const Education = v.object({
     descriptions: v.string()
 })
 
+/* -------------------------------------------------------------------------- */
+/*                                Applications                                */
+/* -------------------------------------------------------------------------- */
+export const ApplicationStatus = v.union(
+    v.literal("applied"),
+    v.literal("interviewed"),
+    v.literal("offered"),
+    v.literal("rejected"),
+)

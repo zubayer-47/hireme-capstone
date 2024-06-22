@@ -50,8 +50,8 @@ const formSchema = z.object({
 
 export const FormModal = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const user = useQuery(api.users.getSelf);
-    const trackJobApplication = useMutation(api.jobTracker.createJobToTrack);
+
+    const createApplication = useMutation(api.applications.createApplication);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -66,11 +66,8 @@ export const FormModal = () => {
     })
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        if (!user) return;
-
         try {
-            await trackJobApplication({
-                userId: user._id,
+            await createApplication({
                 ...values
             });
         } catch (error) {

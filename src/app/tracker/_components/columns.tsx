@@ -15,7 +15,7 @@ import { ArrowUpDown, CirclePlus, MoreHorizontal, PencilLine } from "lucide-reac
 import { Doc } from "../../../../convex/_generated/dataModel";
 
 
-export const columns: ColumnDef<Doc<"jobTracker">>[] = [
+export const columns: ColumnDef<Doc<"applications">>[] = [
     {
         id: "select",
         header: ({ table }) => (
