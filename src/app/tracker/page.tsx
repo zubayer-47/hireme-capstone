@@ -7,7 +7,7 @@ import { DataTable } from "./_components/data-table";
 import { Browser } from "@/components/browser/browser";
 
 export default function JobTrackerPage() {
-    const data = useQuery(api.jobTracker.getJobListings);
+    const data = useQuery(api.applications.readApplications);
 
     if (!data) return [];
 
