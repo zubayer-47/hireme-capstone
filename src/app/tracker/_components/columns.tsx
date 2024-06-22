@@ -1,19 +1,11 @@
 "use client"
 
-import {
-    DropdownMenu,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuContent,
-    DropdownMenuTrigger,
-    DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
+import { ActionsTable } from "./actions-table";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ArrowUpDown, CirclePlus, MoreHorizontal, PencilLine } from "lucide-react";
+import { ArrowUpDown, CirclePlus, Eye } from "lucide-react";
 import { Doc } from "../../../../convex/_generated/dataModel";
-
 
 export const columns: ColumnDef<Doc<"applications">>[] = [
     {
@@ -91,11 +83,12 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
         cell: ({ row }) => {
             const isNote = row.getValue("notes")
 
+            // add a popover modal
             return <div className="">
                 {!isNote ? (
                     <Button size="sm" variant="ghost" className="px-0 hover:px-1.5 transition-all"><CirclePlus className="h-4 w-5 mr-1" />Add Notes</Button>
                 ) : (
-                    <Button size="sm" variant="ghost" className="px-0 hover:px-1.5 transition-all"><PencilLine className="h-4 w-4 mr-1" />Edit Notes</Button>
+                    <Button size="sm" variant="ghost" className="px-0 hover:px-1.5 transition-all"><Eye className="h-4 w-4 mr-1" />Show Notes</Button>
                 )}
             </div>
         },
@@ -105,22 +98,7 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
         cell: ({ row }) => {
             const payment = row.original
 
-            return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
-                            <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            )
+            return <ActionsTable />
         },
     },
 ]
