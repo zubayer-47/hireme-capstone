@@ -14,6 +14,7 @@ import {
     useReactTable,
 } from "@tanstack/react-table";
 
+
 import {
     Table,
     TableRow,
@@ -23,12 +24,23 @@ import {
     TableHeader,
 } from "@/components/ui/table";
 import {
+    Dialog,
+    DialogTitle,
+    DialogFooter,
+    DialogHeader,
+    DialogTrigger,
+    DialogContent,
+    DialogDescription,
+} from "@/components/ui/dialog";
+import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuTrigger,
     DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu";
+
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { ListPlus, SlidersHorizontal } from "lucide-react";
 
@@ -71,15 +83,15 @@ export function DataTable<TData, TValue>({
         <div>
             <div className="flex items-center py-4">
                 <Input
-                        placeholder="Filter company..."
-                        value={(table.getColumn("company")?.getFilterValue() as string) ?? ""}
-                        onChange={(event) =>
-                            table.getColumn("company")?.setFilterValue(event.target.value)
-                        }
-                        className="max-w-sm dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 pl-8 shadow-none md:w-2/3 lg:w-1/3 border-black/[0.2]"
-                    />
+                    placeholder="Filter company..."
+                    value={(table.getColumn("company")?.getFilterValue() as string) ?? ""}
+                    onChange={(event) =>
+                        table.getColumn("company")?.setFilterValue(event.target.value)
+                    }
+                    className="max-w-sm dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 pl-8 shadow-none md:w-2/3 lg:w-1/3 border-black/[0.2]"
+                />
                 <div className="flex items-center py-4 gap-2 ml-auto">
-                <DropdownMenu>
+                    <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="ghost" size="sm">
                                 <SlidersHorizontal className="h-4 w-4 mr-2" />
@@ -108,10 +120,47 @@ export function DataTable<TData, TValue>({
                                 })}
                         </DropdownMenuContent>
                     </DropdownMenu>
-                <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600 bg-neutral-200 hover:bg-neutral-100  dark:bg-neutral-800 hover:dark:bg-neutral-900 translate-hover" size="sm">
-                    <ListPlus className="h-4 w-4" />
-                    Track
-                </Button>
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600 bg-neutral-200 hover:bg-neutral-100  dark:bg-neutral-800 hover:dark:bg-neutral-900 translate-hover" size="sm">
+                                <ListPlus className="h-4 w-4" />
+                                Start Tracking
+                            </Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px]">
+                            <DialogHeader>
+                                <DialogTitle>Edit profile</DialogTitle>
+                                <DialogDescription>
+                                    Make changes to your profile here. Click save when you're done.
+                                </DialogDescription>
+                            </DialogHeader>
+                            <div className="grid gap-4 py-4">
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="name" className="text-right">
+                                        Name
+                                    </Label>
+                                    <Input
+                                        id="name"
+                                        defaultValue="Pedro Duarte"
+                                        className="col-span-3"
+                                    />
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="username" className="text-right">
+                                        Username
+                                    </Label>
+                                    <Input
+                                        id="username"
+                                        defaultValue="@peduarte"
+                                        className="col-span-3"
+                                    />
+                                </div>
+                            </div>
+                            <DialogFooter>
+                                <Button type="submit">Save changes</Button>
+                            </DialogFooter>
+                        </DialogContent>
+                    </Dialog>
                 </div>
             </div>
 
