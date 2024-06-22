@@ -43,6 +43,8 @@ const formSchema = z.object({
     jobTitle: z.string().min(2).max(50),
     location: z.string().min(2).max(50),
     dateApplied: z.string().min(2).max(50),
+    salary: z.optional(z.string()),
+    recruiterInfo: z.optional(z.string()),
     status: z.enum(["applied", "interviewed", "offered", "rejected"]),
 })
 
@@ -56,12 +58,15 @@ export const FormModal = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            salary: "",
             company: "",
             jobLink: "",
             jobTitle: "",
             location: "",
             dateApplied: "",
+            recruiterInfo: "",
             status: "applied",
+
         },
     })
 
@@ -199,6 +204,34 @@ export const FormModal = () => {
                                                 <SelectItem value="rejected">Rejected</SelectItem>
                                             </SelectContent>
                                         </Select>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <FormField
+                                control={form.control}
+                                name="salary"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="dark:text-neutral-300 text-neutral-700">Salary</FormLabel>
+                                        <FormControl>
+                                            <Input type="number" min="0" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="recruiterInfo"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="dark:text-neutral-300 text-neutral-700">Salary</FormLabel>
+                                        <FormControl>
+                                            <Input type="text" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
+                                        </FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
