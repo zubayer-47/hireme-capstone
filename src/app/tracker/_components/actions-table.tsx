@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { useMutation } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { api } from "../../../../convex/_generated/api";
@@ -56,47 +56,51 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
 
+
 const formSchema = z.object({
-    company: z.optional(z.string().min(2).max(50)),
-    jobLink: z.optional(z.string().min(2).includes("https")),
-    jobTitle: z.optional(z.string().min(2).max(50)),
-    location: z.optional(z.string().min(2).max(50)),
-    dateApplied: z.optional(z.string().min(2).max(50)),
+    company: z.string().min(2).max(50),
+    jobLink: z.string().min(2).includes("https"),
+    jobTitle: z.string().min(2).max(50),
+    location: z.string().min(2).max(50),
+    dateApplied: z.string().min(2).max(50),
     salary: z.optional(z.string()),
     recruiterInfo: z.optional(z.string()),
-    status: z.optional(z.enum(["applied", "interviewed", "offered", "rejected"])),
-})
+    status: z.enum(["applied", "interviewed", "offered", "rejected"]),
+});
 
 export const ActionsTable = ({
     application
 }: { application: Doc<"applications"> }) => {
+    const [existingApplication, setExistingApplication] = useState<Doc<"applications"> | null>(null);
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const { toast } = useToast();
 
+    const queryResult = useQuery(api.applications.getExistingApplication, { applicationId: application._id });
     const deleteApplication = useMutation(api.applications.deleteApplication);
+
+    useEffect(() => {
+        if (queryResult) setExistingApplication(queryResult);
+    }, [queryResult]);
+
+    const defaultValues = existingApplication ? { 
+        ...existingApplication,
+    } : {}
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        defaultValues: {
-            company: "",
-            jobLink: "",
-            jobTitle: "",
-            location: "",
-            dateApplied: "",
-            status: "applied",
-        },
+        defaultValues,
     })
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
-
+            console.log(values)
             toast({
-                    title: "Success",
-                    description: "Application has been created.",
-                    variant: "default",
-                })
+                title: "Success",
+                description: "Application has been created.",
+                variant: "default",
+            })
         } catch (error) {
             console.error(error);
             toast({
@@ -141,7 +145,7 @@ export const ActionsTable = ({
             </AlertDialog>
             <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
                 <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="h-8 w-8 p-0">
+                    <Button variant="ghost" className="h-8 w-8 p-0" >
                         <span className="sr-only">Open menu</span>
                         <MoreHorizontal className="h-4 w-4" />
                     </Button>
@@ -152,7 +156,10 @@ export const ActionsTable = ({
                     {/* Open modal here */}
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                         <DialogTrigger>
-                            <DropdownMenuItem onClick={() => { }}>Edit</DropdownMenuItem>
+                            <DropdownMenuItem onClick={() => { 
+                                setIsDropdownOpen(false);
+                                setIsDialogOpen(true);
+                            }}>Edit</DropdownMenuItem>
                         </DialogTrigger>
                         <DialogContent className="sm:max-w-[425px] w-full dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
                             <DialogHeader>
@@ -257,9 +264,37 @@ export const ActionsTable = ({
                                             )}
                                         />
                                     </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                        <FormField
+                                            control={form.control}
+                                            name="salary"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Salary</FormLabel>
+                                                    <FormControl>
+                                                        <Input type="number" min="0" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="recruiterInfo"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Recruiter Info</FormLabel>
+                                                    <FormControl>
+                                                        <Input type="text" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
                                     <div className="flex justify-end gap-x-2 mt-2">
                                         <Button type="button" variant="ghost" size="sm" onClick={() => setIsDialogOpen(false)}>Cancel</Button>
-                                        <Button size="sm">Submit</Button>
+                                        <Button size="sm">Save Changes</Button>
                                     </div>
                                 </form>
                             </Form>

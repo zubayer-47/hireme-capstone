@@ -228,7 +228,7 @@ export const FormModal = () => {
                                 name="recruiterInfo"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="dark:text-neutral-300 text-neutral-700">Salary</FormLabel>
+                                        <FormLabel className="dark:text-neutral-300 text-neutral-700">Recruiter Info</FormLabel>
                                         <FormControl>
                                             <Input type="text" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
                                         </FormControl>

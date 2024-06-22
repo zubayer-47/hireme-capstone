@@ -44,6 +44,7 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
             return (
                 <Button
                     variant="ghost"
+                    className="px-0 hover:px-2"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
                     Date Applied
