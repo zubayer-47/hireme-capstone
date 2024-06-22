@@ -25,8 +25,14 @@ import {
     FormLabel,
     FormMessage,
     FormControl,
-    FormDescription,
 } from "@/components/ui/form";
+import {
+    Select,
+    SelectItem,
+    SelectValue,
+    SelectTrigger,
+    SelectContent,
+} from "@/components/ui/select";
 import {
     Table,
     TableRow,
@@ -51,12 +57,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { ListPlus, SlidersHorizontal } from "lucide-react";
 
 const formSchema = z.object({
-    username: z.string().min(2).max(50),
+    company: z.string().min(2).max(50),
+    jobLink: z.string().min(2).includes("https"),
+    jobTitle: z.string().min(2).max(50),
+    location: z.string().min(2).max(50),
+    dateApplied: z.string().min(2).max(50),
+    status: z.string().min(2).max(50),
+    notes: z.string().min(2).max(1000),
+    salary: z.string().min(2).max(50),
+    contactInfo: z.string().min(2).max(50),
+    applicationPlatform: z.string().min(2).includes("https"),
 })
 
 interface DataTableProps<TData, TValue> {
@@ -95,7 +109,16 @@ export function DataTable<TData, TValue>({
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            username: "",
+            company: "",
+            jobLink: "",
+            jobTitle: "",
+            location: "",
+            dateApplied: "",
+            status: "",
+            notes: "",
+            salary: "",
+            contactInfo: "",
+            applicationPlatform: "",
         },
     })
 
@@ -148,37 +171,115 @@ export function DataTable<TData, TValue>({
                         <DialogTrigger asChild>
                             <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600 bg-neutral-200 hover:bg-neutral-100  dark:bg-neutral-800 hover:dark:bg-neutral-900 translate-hover" size="sm">
                                 <ListPlus className="h-4 w-4" />
-                                Start Tracking
+                                Track
                             </Button>
                         </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px]">
+                        <DialogContent className="sm:max-w-[425px] w-50 dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
                             <DialogHeader>
-                                <DialogTitle>Edit profile</DialogTitle>
-                                <DialogDescription>
-                                    Make changes to your profile here. Click save when you're done.
+                                <DialogTitle className="dark:text-neutral-200 text-neutral-800">Add New Job Description</DialogTitle>
+                                <DialogDescription className="dark:text-neutral-400 text-neutral-600">
+                                    Fill out the details of the job you've applied to.
                                 </DialogDescription>
                             </DialogHeader>
                             <Form {...form}>
                                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                                    <FormField
-                                        control={form.control}
-                                        name="username"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Username</FormLabel>
-                                                <FormControl>
-                                                    <Input placeholder="shadcn" {...field} />
-                                                </FormControl>
-                                                <FormDescription>
-                                                    This is your public display name.
-                                                </FormDescription>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                        <FormField
+                                            control={form.control}
+                                            name="company"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Company Name</FormLabel>
+                                                    <FormControl>
+                                                        <Input placeholder="Apple" {...field} className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]" />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="jobTitle"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Job Title</FormLabel>
+                                                    <FormControl>
+                                                        <Input placeholder="Software Engineer (Full stack)" {...field} className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]" />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                        <FormField
+                                            control={form.control}
+                                            name="jobLink"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Job Link</FormLabel>
+                                                    <FormControl>
+                                                        <Input placeholder="https://www.apple.com/careers/ca/" {...field} className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"/>
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="location"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Location</FormLabel>
+                                                    <FormControl>
+                                                        <Input placeholder="Toronto" {...field} className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]" />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                        <FormField
+                                            control={form.control}
+                                            name="dateApplied"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Date Applied</FormLabel>
+                                                    <FormControl>
+                                                        <Input type="date" {...field} className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"/>
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="status"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Status</FormLabel>
+                                                    <Select onValueChange={field.onChange} defaultValue={field.value} >
+                                                        <FormControl>
+                                                            <SelectTrigger className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]">
+                                                                <SelectValue placeholder="Select a status for your application" />
+                                                            </SelectTrigger>
+                                                        </FormControl>
+                                                        <SelectContent className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]">
+                                                            <SelectItem value="applied">Applied</SelectItem>
+                                                            <SelectItem value="interviewed">Interviewed</SelectItem>
+                                                            <SelectItem value="offered">Offered</SelectItem>
+                                                            <SelectItem value="rejected">Rejected</SelectItem>
+                                                        </SelectContent>
+                                                    </Select>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
                                     <div className="flex justify-end gap-x-2 mt-2">
-                                        <Button type="button">Cancel</Button>
-                                        <Button type="submit">Save changes</Button>
+                                        <Button type="button" variant="ghost" size="sm">Cancel</Button>
+                                        <Button type="submit" size="sm">Save changes</Button>
                                     </div>
                                 </form>
                             </Form>
