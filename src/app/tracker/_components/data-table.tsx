@@ -18,7 +18,15 @@ import {
     useReactTable,
 } from "@tanstack/react-table";
 
-
+import {
+    Form,
+    FormItem,
+    FormField,
+    FormLabel,
+    FormMessage,
+    FormControl,
+    FormDescription,
+} from "@/components/ui/form";
 import {
     Table,
     TableRow,
@@ -30,7 +38,6 @@ import {
 import {
     Dialog,
     DialogTitle,
-    DialogFooter,
     DialogHeader,
     DialogTrigger,
     DialogContent,
@@ -93,10 +100,8 @@ export function DataTable<TData, TValue>({
     })
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
         console.log(values)
-      }
+    }
 
     return (
         <div>
@@ -153,31 +158,30 @@ export function DataTable<TData, TValue>({
                                     Make changes to your profile here. Click save when you're done.
                                 </DialogDescription>
                             </DialogHeader>
-                            <div className="grid gap-4 py-4">
-                                <div className="grid grid-cols-4 items-center gap-4">
-                                    <Label htmlFor="name" className="text-right">
-                                        Name
-                                    </Label>
-                                    <Input
-                                        id="name"
-                                        defaultValue="Pedro Duarte"
-                                        className="col-span-3"
+                            <Form {...form}>
+                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                                    <FormField
+                                        control={form.control}
+                                        name="username"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Username</FormLabel>
+                                                <FormControl>
+                                                    <Input placeholder="shadcn" {...field} />
+                                                </FormControl>
+                                                <FormDescription>
+                                                    This is your public display name.
+                                                </FormDescription>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
                                     />
-                                </div>
-                                <div className="grid grid-cols-4 items-center gap-4">
-                                    <Label htmlFor="username" className="text-right">
-                                        Username
-                                    </Label>
-                                    <Input
-                                        id="username"
-                                        defaultValue="@peduarte"
-                                        className="col-span-3"
-                                    />
-                                </div>
-                            </div>
-                            <DialogFooter>
-                                <Button type="submit">Save changes</Button>
-                            </DialogFooter>
+                                    <div className="flex justify-end gap-x-2 mt-2">
+                                        <Button type="button">Cancel</Button>
+                                        <Button type="submit">Save changes</Button>
+                                    </div>
+                                </form>
+                            </Form>
                         </DialogContent>
                     </Dialog>
                 </div>
