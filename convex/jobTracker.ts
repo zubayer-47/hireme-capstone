@@ -22,17 +22,12 @@ async function userIdentity(
 export const createJobToTrack = mutation({
     args: {
         userId: v.id("users"),
-        resumeId: v.id("resume"),
         company: v.string(),
         jobLink: v.string(),
         jobTitle: v.string(),
         location: v.string(),
         dateApplied: v.string(),
         status: applicationStatus,
-        notes: v.optional(v.string()),
-        salary: v.optional(v.string()),
-        contactInfo: v.optional(v.string()),
-        applicationPlatform: v.optional(v.string()),
     }, handler: async (ctx, args) => {
 
         const hasAccess = await userIdentity(ctx);
@@ -49,7 +44,7 @@ export const getJobListings = query({
     args: {
     }, handler: async (ctx, args) => {
         const hasAccess = await userIdentity(ctx);
-        console.log(hasAccess)
+
         if (!hasAccess) throw new ConvexError("Unauthorized!");
 
         return await ctx.db

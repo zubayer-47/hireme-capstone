@@ -35,7 +35,6 @@ export default defineSchema({
 
     jobTracker: defineTable({
         userId: v.id("users"),
-        resumeId: v.id("resume"),
         company: v.string(),
         jobLink: v.string(),
         jobTitle: v.string(),
@@ -47,6 +46,4 @@ export default defineSchema({
         contactInfo: v.optional(v.string()),
         applicationPlatform: v.optional(v.string()),
     }).index("by_userId", ["userId"])
-      .index("by_resumeId", ["resumeId"])
-      .index("by_userId_resumeId", ["userId", "resumeId"])
 })
