@@ -28,6 +28,8 @@ export const createJobToTrack = mutation({
         location: v.string(),
         dateApplied: v.string(),
         status: applicationStatus,
+        salary: v.optional(v.string()),
+        recruiterInfo: v.optional(v.string()),
     }, handler: async (ctx, args) => {
 
         const hasAccess = await userIdentity(ctx);
