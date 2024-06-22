@@ -96,9 +96,8 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
     {
         id: "actions",
         cell: ({ row }) => {
-            const payment = row.original
 
-            return <ActionsTable />
+            return <ActionsTable application={row.original} />
         },
     },
 ]
