@@ -2,13 +2,12 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-
-import { LoadingSpinner } from "@/components/loading-spinner";
 import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { ConvexClientProvider } from "@/providers/convex-client-provider";
 
-
+import { Toaster } from "@/components/ui/toaster";
+import { LoadingSpinner } from "@/components/loading-spinner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,7 +40,7 @@ export default function RootLayout({
             <ClerkLoaded>
               {children}
             </ClerkLoaded>
-            
+            <Toaster />
           </ThemeProvider>
         </body>
       </ConvexClientProvider>
