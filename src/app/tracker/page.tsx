@@ -1,15 +1,12 @@
 "use client";
 
-import { Browser } from "@/components/browser/browser";
-import { DataTable } from "./_components/data-table";
-import { columns } from "./_components/columns";
 import { useQuery } from "convex/react";
+import { columns } from "./_components/columns";
 import { api } from "../../../convex/_generated/api";
-
+import { DataTable } from "./_components/data-table";
+import { Browser } from "@/components/browser/browser";
 
 export default function JobTrackerPage() {
-    const self = useQuery(api.users.getSelf);
-
     const data = useQuery(api.jobTracker.getJobListings);
 
     if (!data) return [];
