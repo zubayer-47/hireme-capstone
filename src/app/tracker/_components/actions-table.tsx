@@ -1,8 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useMutation } from "convex/react";
+import { api } from "../../../../convex/_generated/api";
+import { Doc } from "../../../../convex/_generated/dataModel";
 
 import { MoreHorizontal } from "lucide-react";
+
 import {
     DropdownMenu,
     DropdownMenuItem,
@@ -22,15 +26,16 @@ import {
     AlertDialogDescription,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { useMutation } from "convex/react";
-import { api } from "../../../../convex/_generated/api";
-import { Doc } from "../../../../convex/_generated/dataModel";
+import { useToast } from "@/components/ui/use-toast";
+
 
 
 export const ActionsTable = ({
     application
 }: { application: Doc<"applications"> }) => {
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
+    const { toast } = useToast();
 
     const deleteApplication = useMutation(api.applications.deleteApplication)
 
@@ -52,6 +57,12 @@ export const ActionsTable = ({
                                 await deleteApplication({
                                     applicationId: application._id,
                                 });
+                                toast({
+                                    title: "Sucess",
+                                    description: "Application has been deleted.",
+                                    variant: "default"
+                                })
+                                setIsConfirmOpen(false)
                             }}
                             className="bg-primary-color/80 text-white hover:bg-primary-color/90 transform hover:-translate-y-1 transition-all duration-400"
                         >
