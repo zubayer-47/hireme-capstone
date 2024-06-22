@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { MoreHorizontal } from "lucide-react";
 import {
     DropdownMenu,
@@ -13,6 +15,9 @@ import { Button } from "@/components/ui/button";
 
 
 export const ActionsTable = () => {
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
+    
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
