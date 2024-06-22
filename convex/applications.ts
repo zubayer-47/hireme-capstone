@@ -63,6 +63,7 @@ export const createApplication = mutation({
     }
 });
 
+
 export const readApplications = query({
     args: {
     }, handler: async (ctx, args) => {
@@ -74,6 +75,15 @@ export const readApplications = query({
             .query("applications")
             .withIndex("by_userId", (q) => q.eq("userId", hasAccess._id))
             .collect();
+    }
+});
+
+export const getExistingApplication = query({
+    args: { applicationId: v.id("applications")},
+    handler: async (ctx, { applicationId }) => {
+        const { existingApplication } = await checkExistingApplication(ctx, applicationId);
+
+        return existingApplication;
     }
 })
 
