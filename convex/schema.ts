@@ -43,7 +43,6 @@ export default defineSchema({
         status: applicationStatus,
         notes: v.optional(v.string()),
         salary: v.optional(v.string()),
-        contactInfo: v.optional(v.string()),
-        applicationPlatform: v.optional(v.string()),
+        recruiterInfo: v.optional(v.string()),
     }).index("by_userId", ["userId"])
 })

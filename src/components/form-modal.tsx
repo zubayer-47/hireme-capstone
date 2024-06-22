@@ -91,7 +91,7 @@ export const FormModal = () => {
                     Track
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] w-50 dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
+            <DialogContent className="sm:max-w-[425px] w-full dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
                 <DialogHeader>
                     <DialogTitle className="dark:text-neutral-200 text-neutral-800">Add New Job Description</DialogTitle>
                     <DialogDescription className="dark:text-neutral-400 text-neutral-600">
