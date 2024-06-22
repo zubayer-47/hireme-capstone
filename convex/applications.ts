@@ -34,7 +34,10 @@ const checkExistingApplication = async (
         throw new ConvexError("Job Application not found or not authorized to access the file.")
     }
 
-    return existingApplication;
+    return {
+        hasAccess,
+        existingApplication
+    };
 }
 
 export const createApplication = mutation({
@@ -86,15 +89,7 @@ export const updateApplication = mutation({
         applicationId: v.id("applications"),
         recruiterInfo: v.optional(v.string()),
     }, handler: async (ctx, args) => {
-        const hasAccess = await userIdentity(ctx);
-
-        if (!hasAccess) throw new ConvexError("Unauthorized!");
-
-        const existingApplication = await ctx.db.get(args.applicationId);
-
-        if (!existingApplication || existingApplication.userId !== hasAccess._id) {
-            throw new ConvexError("Job Application not found or not authorized to access the file.")
-        }
+        const { existingApplication, hasAccess } = await checkExistingApplication(ctx, args.applicationId);
 
         await ctx.db.patch(existingApplication._id, {
             userId: hasAccess._id,
@@ -108,15 +103,7 @@ export const deleteApplication = mutation({
     args: {
         applicationId: v.id("applications"),
     }, handler: async (ctx, { applicationId }) => {
-        const hasAccess = await userIdentity(ctx);
-
-        if (!hasAccess) throw new ConvexError("Unauthorized!");
-
-        const existingApplication = await ctx.db.get(applicationId);
-
-        if (!existingApplication || existingApplication.userId !== hasAccess._id) {
-            throw new ConvexError("Job Application not found or not authorized to access the file.")
-        }
+        const { existingApplication } = await checkExistingApplication(ctx, applicationId);
 
         await ctx.db.delete(existingApplication._id);
     }
@@ -127,15 +114,7 @@ export const takeNotes = mutation({
         notes: v.string(),
         applicationId: v.id("applications"),
     }, handler: async (ctx, { applicationId, notes }) => {
-        const hasAccess = await userIdentity(ctx);
-
-        if (!hasAccess) throw new ConvexError("Unauthorized!");
-
-        const existingApplication = await ctx.db.get(applicationId);
-
-        if (!existingApplication || existingApplication.userId !== hasAccess._id) {
-            throw new ConvexError("Job Application not found or not authorized to access the file.")
-        }
+        const { existingApplication } = await checkExistingApplication(ctx, applicationId);
 
         await ctx.db.patch(existingApplication._id, {
             ...existingApplication,
