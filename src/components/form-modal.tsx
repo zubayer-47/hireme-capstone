@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 
 
 const formSchema = z.object({
@@ -49,6 +50,7 @@ const formSchema = z.object({
 export const FormModal = () => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const { toast } = useToast();
     const createApplication = useMutation(api.applications.createApplication);
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -65,11 +67,24 @@ export const FormModal = () => {
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
-            await createApplication({
+            const res = await createApplication({
                 ...values
             });
+
+            if (res) {
+                toast({
+                    title: "Success",
+                    description: "Application has been created.",
+                    variant: "default",
+                })
+            }
         } catch (error) {
-            console.error(error)
+            console.error(error);
+            toast({
+                title: "Error",
+                description: "Unable to create your application.",
+                variant: "default",
+            })
         }
     }
     return (
@@ -131,7 +146,7 @@ export const FormModal = () => {
                                     <FormItem>
                                         <FormLabel className="dark:text-neutral-300 text-neutral-700">Job Link</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="https://www.apple.com/careers/ca/" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field}  />
+                                            <Input placeholder="https://www.apple.com/careers/ca/" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -144,7 +159,7 @@ export const FormModal = () => {
                                     <FormItem>
                                         <FormLabel className="dark:text-neutral-300 text-neutral-700">Location</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Toronto" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field}/>
+                                            <Input placeholder="Toronto" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -159,7 +174,7 @@ export const FormModal = () => {
                                     <FormItem>
                                         <FormLabel className="dark:text-neutral-300 text-neutral-700">Date Applied</FormLabel>
                                         <FormControl>
-                                            <Input type="date" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field}  />
+                                            <Input type="date" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
