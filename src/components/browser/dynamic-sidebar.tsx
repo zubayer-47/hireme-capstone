@@ -1,4 +1,4 @@
-
+"use client";
 import {
     Card,
     CardHeader,
@@ -11,10 +11,11 @@ import { NavLinks } from "./nav-links";
 import { dataLinks } from "../../app/feeds/[userId]/feed-utils/links";
 import { AppLogo } from "@/components/app-logo";
 import { Button } from "@/components/ui/button";
-import { currentUser } from "@clerk/nextjs/server";
+import { useUser } from "@clerk/nextjs";
 
-export const DynamicSidebar = async ({ userId }: { userId?: string }) => {
-    const user = await currentUser();
+export const DynamicSidebar = ({ userId }: { userId?: string }) => {
+    const { user } =  useUser();
+
     return (
         <div className="flex h-full max-h-screen flex-col gap-2">
             <div className="flex h-14 items-center border-b border-white/[0.2] px-4 lg:h-[60px] lg:px-6">

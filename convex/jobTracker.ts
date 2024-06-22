@@ -47,15 +47,14 @@ export const createJobToTrack = mutation({
 
 export const getJobListings = query({
     args: {
-        userId: v.id("users")
-    }, handler: async (ctx, { userId }) => {
+    }, handler: async (ctx, args) => {
         const hasAccess = await userIdentity(ctx);
-
+        console.log(hasAccess)
         if (!hasAccess) throw new ConvexError("Unauthorized!");
 
         return await ctx.db
             .query("jobTracker")
-            .withIndex("by_userId", (q) => q.eq("userId", userId))
+            .withIndex("by_userId", (q) => q.eq("userId", hasAccess._id))
             .collect();
     }
 })

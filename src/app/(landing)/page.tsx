@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useQuery } from "convex/react";
 import { CTA } from "./_components/cta";
 import { Hero } from "./_components/hero";
@@ -17,10 +18,12 @@ export default function Home() {
     const user = useQuery(api.users.getSelf);
     const route = useRouter();
 
-    if (isAuthenticated) {
+    useEffect(() => {
+        if (isAuthenticated) {
         route.push(`/feeds/${user?._id}`)
     }
-
+    }, [isAuthenticated, user?._id, route]);
+    
     return (
         <main className="w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
             <section className="max-w-6xl mx-auto">
