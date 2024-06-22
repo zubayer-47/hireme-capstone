@@ -42,6 +42,28 @@ export const createJobToTrack = mutation({
     }
 });
 
+export const addNotes = mutation({
+    args: {
+        notes: v.string(),
+        jobTrackerId: v.id("jobTracker"),
+    }, handler: async (ctx, { jobTrackerId, notes }) => {
+        const hasAccess = await userIdentity(ctx);
+
+        if (!hasAccess) throw new ConvexError("Unauthorized!");
+
+        const existingApplication = await ctx.db.get(jobTrackerId);
+
+        if (!existingApplication || existingApplication.userId !== hasAccess._id) {
+            throw new ConvexError("Job Application not found or not authorized to access the file.")
+        }
+
+        await ctx.db.patch(existingApplication._id, {
+            ...existingApplication,
+            notes
+        })
+    }
+})
+
 export const getJobListings = query({
     args: {
     }, handler: async (ctx, args) => {
