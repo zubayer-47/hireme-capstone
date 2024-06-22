@@ -1,6 +1,10 @@
 "use client"
 
+import { z } from "zod";
 import * as React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import {
     ColumnDef,
     ColumnFiltersState,
@@ -44,6 +48,10 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { ListPlus, SlidersHorizontal } from "lucide-react";
 
+const formSchema = z.object({
+    username: z.string().min(2).max(50),
+})
+
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
@@ -77,7 +85,18 @@ export function DataTable<TData, TValue>({
         },
     })
 
-    console.log(table)
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            username: "",
+        },
+    })
+
+    function onSubmit(values: z.infer<typeof formSchema>) {
+        // Do something with the form values.
+        // ✅ This will be type-safe and validated.
+        console.log(values)
+      }
 
     return (
         <div>
