@@ -91,10 +91,6 @@ export const columns: ColumnDef<Doc<"jobTracker">>[] = [
         header: "Notes",
     },
     {
-        accessorKey: "notes",
-        header: "Notes",
-    },
-    {
         accessorKey: "contactInfo",
         header: "Recruiter Info",
     },
