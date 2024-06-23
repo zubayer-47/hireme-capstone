@@ -1,7 +1,10 @@
-'use client' // Error components must be Client Components
- 
-import { useEffect } from 'react'
- 
+'use client'
+
+import Image from 'next/image';
+import { useEffect } from 'react';
+import { useRouter } from "next/navigation";
+import { Button } from '@/components/ui/button';
+
 export default function Error({
   error,
   reset,
@@ -9,22 +12,27 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
+  const router = useRouter();
+
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error)
   }, [error])
- 
+
   return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <button
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
-      >
-        Try again
-      </button>
-    </div>
+    <main className="h-full w-full flex justify-center items-center mx-auto">
+      <section className="flex flex-col space-y-4 md:space-y-8">
+        <Image src="/svg/page-not-found.svg" alt="Page Not Found Icon" width="100" height="100" />
+        <h2 className="text-xl md:text-2xl dark:text-neutral-300 text-neutral-700">SOMETHING WENT WRONG</h2>
+        <Button
+          className="bg-app-color text-neutral-200"
+          size="sm"
+          onClick={
+            () => router.back()
+          }
+        >
+          GO BACK
+        </Button>
+      </section>
+    </main>
   )
 }
