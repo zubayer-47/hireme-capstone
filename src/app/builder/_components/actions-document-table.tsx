@@ -36,6 +36,7 @@ export const ActionsDocumentTable = ({
 
     const { toast } = useToast();
 
+    const deleteDocument = useMutation(api.resume.deleteDocument);
     return (
         <>
             <AlertDialog open={isAlertDialogOpen} onOpenChange={setIsAlertDialogOpen}>
@@ -51,7 +52,7 @@ export const ActionsDocumentTable = ({
                         <AlertDialogCancel className="transform hover:-translate-y-1 transition-all duration-400" onClick={() => setIsAlertDialogOpen(false)}>Cancel</AlertDialogCancel>
                         <AlertDialogAction
                             onClick={async () => {
-                                
+                                await deleteDocument({ documentId });
                                 setIsAlertDialogOpen(false);
                                 toast({
                                     title: "Sucess",
