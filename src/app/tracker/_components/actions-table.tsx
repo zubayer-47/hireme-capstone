@@ -1,6 +1,5 @@
 "use client";
 
-
 import Link from "next/link";
 import { useState } from "react";
 import { useMutation} from "convex/react";
@@ -27,7 +26,6 @@ import {
     DropdownMenuTrigger,
     DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -39,7 +37,6 @@ export const ActionsTable = ({
     const { toast } = useToast();
 
     const deleteApplication = useMutation(api.applications.deleteApplication);
-
 
     return (
         <>
@@ -83,7 +80,6 @@ export const ActionsTable = ({
                 <DropdownMenuContent align="end">
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    {/* Open modal here */}
                     <DropdownMenuItem><Link href={`/tracker/applications/${application._id}`}>Edit</Link></DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setIsAlertDialogOpen(true)}>Delete</DropdownMenuItem>
                 </DropdownMenuContent>
