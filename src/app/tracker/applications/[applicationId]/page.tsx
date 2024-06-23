@@ -44,6 +44,8 @@ export default function CreateApplications() {
         defaultValues,
     })
 
+    const isLoading = form.formState.isSubmitting;
+
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
             const res = await updateApplication({
@@ -74,7 +76,8 @@ export default function CreateApplications() {
             form={form}
             router={router}
             onSubmit={onSubmit}
-            submitButtonName="Save Changes"
+            isLoading={isLoading}
+            buttonName={isLoading ? "Loading..." : "Save Changes"}
             formHeading={`Manage Your Application for ${queryResult?.jobTitle}`}
             formSubheading={`Refine your submission for ${queryResult?.company}`}
         />

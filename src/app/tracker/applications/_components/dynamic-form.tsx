@@ -2,6 +2,8 @@
 
 import { DynamicFormProps } from "../_lib/application-lib";
 
+import { Loader2 } from "lucide-react";
+
 import {
     Form,
     FormItem,
@@ -24,9 +26,10 @@ export const DynamicForm = ({
     form,
     router,
     onSubmit,
+    isLoading,
+    buttonName,
     formHeading,
     formSubheading,
-    submitButtonName,
 }: DynamicFormProps) => {
 
     return (
@@ -160,8 +163,30 @@ export const DynamicForm = ({
                         />
                     </aside>
                     <aside className="flex justify-end gap-x-2 mt-2">
-                        <Button type="button" variant="ghost" size="sm" onClick={() => router.push("/tracker")}>Cancel</Button>
-                        <Button size="sm">{submitButtonName}</Button>
+                        <Button
+                            size="sm"
+                            type="button"
+                            variant="ghost"
+                            disabled={isLoading}
+                            className="translate-hover"
+                            onClick={() => router.push("/tracker")}
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            size="sm"
+                            disabled={isLoading}
+                            className="dark:bg-neutral-900 dark:text-neutral-300 text-neutral-700 hover:bg-neutral-800 translate-hover"
+                        >
+                            {isLoading ? (
+                                <p className="flex items-center gap-x-2">
+                                    <Loader2 className="h-4 w-4 animate-spin" />
+                                    {buttonName}
+                                </p>
+                            ) : (
+                                <p>{buttonName}</p>
+                            )}
+                        </Button>
                     </aside>
                 </form>
             </Form>

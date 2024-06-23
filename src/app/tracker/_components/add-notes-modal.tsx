@@ -8,7 +8,11 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { CirclePlus, Eye } from "lucide-react";
+import { 
+    Eye,
+    Loader2,
+    CirclePlus,  
+} from "lucide-react";
 
 import {
     Form,
@@ -58,7 +62,9 @@ export const AddNotesModal = ({
         defaultValues: {
             notes: notes || ""
         },
-    })
+    });
+
+    const isLoading = form.formState.isSubmitting;
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
@@ -120,8 +126,30 @@ export const AddNotesModal = ({
                         />
 
                         <div className="flex justify-end gap-x-2 mt-2">
-                            <Button type="button" variant="ghost" size="sm" onClick={() => setIsOpen(false)}>Cancel</Button>
-                            <Button size="sm">{notes ? "Save Change" : "Submit"}</Button>
+                            <Button 
+                                size="sm"
+                                type="button" 
+                                variant="ghost"  
+                                disabled={isLoading} 
+                                className="translate-hover"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Cancel
+                            </Button>
+                            <Button 
+                                size="sm" 
+                                disabled={isLoading} 
+                                className="dark:bg-neutral-900 dark:text-neutral-300 text-neutral-700 hover:bg-neutral-800 translate-hover"
+                            >
+                                {isLoading ? (
+                                    <p className="flex items-center gap-x-2">
+                                        <Loader2 className="h-4 w-4 animate-spin" />
+                                        Loading...
+                                    </p>
+                                ) : (
+                                    <p>{notes ? "Save Changes" : "Submit"}</p>
+                                )}
+                            </Button>
                         </div>
                     </form>
                 </Form>

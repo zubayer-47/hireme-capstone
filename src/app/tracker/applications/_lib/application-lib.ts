@@ -39,9 +39,10 @@ export type Form = UseFormReturn<FormData, any, undefined>;
 
 export type DynamicFormProps = {
     form: Form;
+    buttonName: string;
+    isLoading: boolean;
     formHeading: string;
     formSubheading: string;
-    submitButtonName: string;
     router: AppRouterInstance;
     onSubmit: (values: z.infer<typeof formSchema>) => Promise<void>;
 }

@@ -6,10 +6,9 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "convex/react";
 import { useRouter } from "next/navigation";
 import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Plus } from "lucide-react";
+import { Plus, Loader2 } from "lucide-react";
 
 import {
     Form,
@@ -60,6 +59,8 @@ export const CreateDocumentModal = () => {
         },
     })
 
+    const isLoading = form.formState.isSubmitting;
+
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
             const { documentName, documentType } = values;
@@ -74,8 +75,8 @@ export const CreateDocumentModal = () => {
                             description: `New document has been created.`,
                             variant: "default",
                         })
-
-                        router.push(`/resume/${documentId}`);
+                        setIsOpen(false);
+                        // router.push(`/builder/resume/${documentId}`);
                     }
                     break;
                 case "cover letter":
@@ -87,8 +88,8 @@ export const CreateDocumentModal = () => {
                             description: `New document has been created.`,
                             variant: "default",
                         })
-
-                        router.push(`/cover-letter/${documentId}`);
+                        setIsOpen(false);
+                        router.push(`/builder/cover-letter/${documentId}`);
                     }
                     break;
             }
@@ -158,8 +159,30 @@ export const CreateDocumentModal = () => {
                         />
 
                         <div className="flex justify-end gap-x-2 mt-2">
-                            <Button type="button" variant="ghost" size="sm" onClick={() => setIsOpen(false)}>Cancel</Button>
-                            <Button size="sm">Submit</Button>
+                            <Button 
+                                size="sm"
+                                type="button" 
+                                variant="ghost"  
+                                disabled={isLoading} 
+                                className="translate-hover"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Cancel
+                            </Button>
+                            <Button 
+                                size="sm" 
+                                disabled={isLoading}
+                                className="dark:bg-neutral-900 dark:text-neutral-300 text-neutral-700 hover:bg-neutral-800 translate-hover"
+                            >
+                                {isLoading ? (
+                                    <p className="flex items-center gap-x-2">
+                                        <Loader2 className="h-4 w-4 animate-spin" />
+                                        Loading...
+                                    </p>
+                                ) : (
+                                    <p>Submit</p>
+                                )}
+                            </Button>
                         </div>
                     </form>
                 </Form>

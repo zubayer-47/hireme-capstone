@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useMutation} from "convex/react";
+import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 
@@ -33,11 +33,20 @@ export const ActionsApplicationTable = ({
     applicationId
 }: { applicationId: Id<"applications"> }) => {
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
-
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
     const { toast } = useToast();
 
     const deleteApplication = useMutation(api.applications.deleteApplication);
 
+    const handleDelete = async () => {
+        setIsAlertDialogOpen(false);
+        await deleteApplication({ applicationId });
+        toast({
+            title: "Success",
+            description: "Application has been deleted.",
+            variant: "default"
+        })
+    }
     return (
         <>
             <AlertDialog open={isAlertDialogOpen} onOpenChange={setIsAlertDialogOpen}>
@@ -50,26 +59,17 @@ export const ActionsApplicationTable = ({
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                        <AlertDialogCancel className="transform hover:-translate-y-1 transition-all duration-400" onClick={() => setIsAlertDialogOpen(false)}>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel className="translate-hover" onClick={() => setIsAlertDialogOpen(false)}>Cancel</AlertDialogCancel>
                         <AlertDialogAction
-                            onClick={async () => {
-                                await deleteApplication({ applicationId });
-                                setIsAlertDialogOpen(false);
-                                toast({
-                                    title: "Sucess",
-                                    description: "Application has been deleted.",
-                                    variant: "default"
-                                })
-                                
-                            }}
-                            className="bg-primary-color/80 text-white hover:bg-primary-color/90 transform hover:-translate-y-1 transition-all duration-400"
+                            onClick={() => handleDelete()}
+                            className="dark:bg-neutral-900 dark:text-neutral-300 text-neutral-700 hover:bg-neutral-800 translate-hover"
                         >
                             Continue
                         </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
-            <DropdownMenu>
+            <DropdownMenu open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="h-8 w-8 p-0 dark:text-neutral-300 text-neutral-700" >
                         <span className="sr-only">Open menu</span>
@@ -80,7 +80,10 @@ export const ActionsApplicationTable = ({
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem><Link href={`/tracker/applications/${applicationId}`}>Edit</Link></DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => setIsAlertDialogOpen(true)}>Delete</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => {
+                        setIsDialogOpen(false);
+                        setIsAlertDialogOpen(true);
+                    }}>Delete</DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </>

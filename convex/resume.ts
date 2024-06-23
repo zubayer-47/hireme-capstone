@@ -114,6 +114,8 @@ export const deleteDocument = mutation({
             throw new ConvexError("Resume not found or not authorized to access the file.")
         }
 
-        await ctx.db.delete(existingResume._id)
+        await ctx.db.delete(existingResume._id);
+
+        return true;
     }
 })

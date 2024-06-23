@@ -21,6 +21,8 @@ export default function CreateApplications() {
         defaultValues,
     })
 
+    const isLoading = form.formState.isSubmitting;
+
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
             const res = await createApplication({
@@ -49,7 +51,8 @@ export default function CreateApplications() {
             form={form} 
             router={router}
             onSubmit={onSubmit} 
-            submitButtonName="Submit"
+            isLoading={isLoading}
+            buttonName={isLoading ? "Loading..." : "Submit"}
             formHeading="Start Tracking Your Job Application" 
             formSubheading="Fill out the details of the job you've applied to." 
         />
