@@ -1,3 +1,9 @@
+"use client";
+
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+
+import { ArrowUpToLine, Plus } from "lucide-react";
 
 import {
     Tabs,
@@ -5,12 +11,15 @@ import {
     TabsContent,
     TabsTrigger,
 } from "@/components/ui/tabs";
-import { ArrowUpToLine, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DocumentDataTable } from "./document-data-table";
 import { documentColumns } from './document-columns';
+import { DocumentDataTable } from "./document-data-table";
 
 export const DocumentTab = () => {
+    const data = useQuery(api.resume.readDocuments);
+
+    if (!data) return [];
+    
     return (
         <Tabs defaultValue="resume" >
             <section className="flex items-center justify-between mb-8">
