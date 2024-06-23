@@ -1,6 +1,5 @@
 "use client"
 
-import { useRouter } from "next/navigation";
 import { DynamicFormProps } from "../_lib/application-lib";
 
 import {
@@ -23,12 +22,12 @@ import { Button } from "@/components/ui/button";
 
 export const DynamicForm = ({
     form,
+    router,
     onSubmit,
     formHeading,
     formSubheading,
     submitButtonName,
 }: DynamicFormProps) => {
-    const router = useRouter();
 
     return (
         <>

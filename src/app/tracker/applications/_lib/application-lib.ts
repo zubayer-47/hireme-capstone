@@ -1,3 +1,4 @@
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { UseFormReturn } from "react-hook-form";
 import { z } from "zod"
 
@@ -41,5 +42,6 @@ export type DynamicFormProps = {
     formHeading: string;
     formSubheading: string;
     submitButtonName: string;
+    router: AppRouterInstance;
     onSubmit: (values: z.infer<typeof formSchema>) => Promise<void>;
 }

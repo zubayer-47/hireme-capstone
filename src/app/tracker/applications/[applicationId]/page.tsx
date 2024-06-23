@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useMutation, useQuery } from "convex/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { api } from "../../../../../convex/_generated/api";
@@ -15,6 +15,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { DynamicForm } from "../_components/dynamic-form";
 
 export default function CreateApplications() {
+    const router = useRouter();
     const { toast } = useToast();
     const { applicationId } = useParams<{ applicationId: Doc<"applications">["_id"] }>()
 
@@ -54,15 +55,16 @@ export default function CreateApplications() {
                 toast({
                     title: "Success",
                     description: "Application has been updated.",
-                    variant: "default",
-                })
+                    variant: "success",
+                });
+                router.push("/tracker");
             }
         } catch (error) {
             console.error(error);
             toast({
                 title: "Error",
                 description: "Unable to update your application.",
-                variant: "default",
+                variant: "destructive",
             })
         }
     }
@@ -70,6 +72,7 @@ export default function CreateApplications() {
     return (
         <DynamicForm
             form={form}
+            router={router}
             onSubmit={onSubmit}
             submitButtonName="Save Changes"
             formHeading={`Manage Your Application for ${queryResult?.jobTitle}`}

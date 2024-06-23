@@ -63,7 +63,7 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
             switch (status) {
                 case "applied": 
                     return <Badge className="bg-neutral-600/50 text-neutral-200 -py-1">
-                        <Dot className="h-8 w-8 text-neutral-200" />
+                        <Dot className="h-8 w-8 text-neutral-400" />
                         Applied
                     </Badge>
                 case "interviewed":
@@ -73,13 +73,13 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
                     </Badge>
                 case "offered":
                     return <Badge className="bg-emerald-600/50 text-neutral-200 -py-1">
-                        <Dot className="h-8 w-8 text-emerald-600" />
+                        <Dot className="h-8 w-8 text-emerald-400" />
                         Offered
                     </Badge>
-                case "offered":
+                case "rejected":
                     return <Badge className="text-neutral-200 bg-destructive/50 -py-1">
                         <Dot className="h-8 w-8 text-rose-400" />
-                        Offered
+                        Rejected
                     </Badge>
             }
         }
@@ -103,7 +103,7 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
     },
     {
         accessorKey: "recruiterInfo",
-        header: "Recruiter Info",
+        header: "Recruiter",
     },
     {
         accessorKey: "notes",

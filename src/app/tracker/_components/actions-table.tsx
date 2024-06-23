@@ -56,12 +56,13 @@ export const ActionsTable = ({
                                 await deleteApplication({
                                     applicationId: application._id,
                                 });
+                                setIsAlertDialogOpen(false);
                                 toast({
                                     title: "Sucess",
                                     description: "Application has been deleted.",
                                     variant: "default"
                                 })
-                                setIsAlertDialogOpen(false)
+                                
                             }}
                             className="bg-primary-color/80 text-white hover:bg-primary-color/90 transform hover:-translate-y-1 transition-all duration-400"
                         >
