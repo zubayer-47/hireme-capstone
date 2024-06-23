@@ -1,5 +1,6 @@
 "use client"
 
+import { formatRelative } from "date-fns";
 import { Doc } from "@/convex/_generated/dataModel";
 
 import {
@@ -11,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 
-export const documentColumns: ColumnDef<Doc<"applications">>[] = [
+export const documentColumns: ColumnDef<Doc<"resume">>[] = [
     {
         id: "select",
         header: ({ table }) => (
@@ -65,6 +66,16 @@ export const documentColumns: ColumnDef<Doc<"applications">>[] = [
 
             return <p className="dark:text-neutral-300 text-neutral-700">{data}</p>
         }
+    },
+    {
+        header: "Uploaded On",
+        cell: ({ row }) => {
+            return (
+                <div>
+                    {formatRelative(new Date(row.original._creationTime), new Date())}
+                </div>
+            );
+        },
     },
     {
         accessorKey: 'dateApplied',
