@@ -168,7 +168,7 @@ export const DynamicForm = ({
                             type="button"
                             variant="ghost"
                             disabled={isLoading}
-                            className="translate-hover"
+                            className="translate-hover dark:text-neutral-200 text-neutral-800"
                             onClick={() => router.push("/tracker")}
                         >
                             Cancel
@@ -176,7 +176,7 @@ export const DynamicForm = ({
                         <Button
                             size="sm"
                             disabled={isLoading}
-                            className="dark:bg-neutral-900 dark:text-neutral-300 text-neutral-700 hover:bg-neutral-800 translate-hover"
+                            className="bg-app-color hover:bg-app-color/80 text-neutral-200 translate-hover"
                         >
                             {isLoading ? (
                                 <p className="flex items-center gap-x-2">

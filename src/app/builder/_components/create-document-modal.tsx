@@ -148,7 +148,7 @@ export const CreateDocumentModal = () => {
                                                 <SelectValue placeholder="Select a status for your application" />
                                             </SelectTrigger>
                                         </FormControl>
-                                        <SelectContent className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]">
+                                        <SelectContent className="dark:bg-neutral-950 bg-neutral-200 dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 text-neutral-800 border-black/[0.2]">
                                             <SelectItem value="resume">Resume</SelectItem>
                                             <SelectItem value="cover letter">Cover Letter</SelectItem>
                                         </SelectContent>
@@ -164,15 +164,15 @@ export const CreateDocumentModal = () => {
                                 type="button" 
                                 variant="ghost"  
                                 disabled={isLoading} 
-                                className="translate-hover"
                                 onClick={() => setIsOpen(false)}
+                                className="translate-hover dark:text-neutral-200 text-neutral-800"
                             >
                                 Cancel
                             </Button>
                             <Button 
                                 size="sm" 
                                 disabled={isLoading}
-                                className="dark:bg-neutral-900 dark:text-neutral-300 text-neutral-700 hover:bg-neutral-800 translate-hover"
+                                className="bg-app-color text-neutral-200 hover:bg-app-color/80 translate-hover"
                             >
                                 {isLoading ? (
                                     <p className="flex items-center gap-x-2">

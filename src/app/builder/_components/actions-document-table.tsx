@@ -66,17 +66,17 @@ export const ActionsDocumentTable = ({
             <AlertDialog open={isAlertDialogOpen} onOpenChange={setIsAlertDialogOpen}>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                        <AlertDialogDescription>
+                        <AlertDialogTitle className="dark:text-neutral-200 text-neutral-800">Are you absolutely sure?</AlertDialogTitle>
+                        <AlertDialogDescription className="dark:text-neutral-400 text-neutral-700">
                             This action cannot be undone. This will permanently delete your
                             account and remove your data from our servers.
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                        <AlertDialogCancel className="translate-hover" onClick={() => setIsAlertDialogOpen(false)}>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel className="h-9 px-3 translate-hover border-none dark:text-neutral-200 text-neutral-600" onClick={() => setIsAlertDialogOpen(false)}>Cancel</AlertDialogCancel>
                         <AlertDialogAction
                             onClick={() => handleDelete()}
-                            className="dark:bg-neutral-900 dark:text-neutral-300 text-neutral-700 hover:bg-neutral-800 translate-hover"
+                            className="h-9 px-3 bg-app-color text-neutral-200  hover:bg-app-color/80 translate-hover"
                         >
                             Continue
                         </AlertDialogAction>

@@ -82,7 +82,7 @@ export function ApplicationDataTable<TData, TValue>({
                 <div className="flex items-center py-4 gap-2 ml-auto">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="sm" className="translate-hover">
+                            <Button variant="ghost" size="sm" className="translate-hover dark:text-neutral-200 text-neutral-600">
                                 <SlidersHorizontal className="h-4 w-4 mr-2" />
                                 Filter
                             </Button>
@@ -109,7 +109,7 @@ export function ApplicationDataTable<TData, TValue>({
                                 })}
                         </DropdownMenuContent>
                     </DropdownMenu>
-                    <Link href="/tracker/applications" className="flex items-center h-9 px-3 gap-2 rounded-lg dark:text-neutral-200 text-neutral-600 bg-neutral-200 hover:bg-neutral-100  dark:bg-neutral-800 hover:dark:bg-neutral-900 translate-hover">
+                    <Link href="/tracker/applications" className="flex items-center h-9 px-3 gap-2 rounded-lg dark:text-neutral-200 text-neutral-600 bg-neutral-200 hover:bg-neutral-100  dark:bg-neutral-800 hover:dark:bg-neutral-900 text-sm translate-hover">
                         <ListPlus className="h-4 w-4" />
                         Track
                     </Link>

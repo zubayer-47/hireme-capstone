@@ -40,7 +40,6 @@ export const DocumentTab = () => {
                 <DocumentDataTable columns={documentColumns} data={data} />
             </TabsContent>
             <TabsContent value="cover-letter">
-
             </TabsContent>
         </Tabs>
     )

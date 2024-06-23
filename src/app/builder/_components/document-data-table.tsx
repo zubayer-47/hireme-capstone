@@ -81,7 +81,7 @@ export function DocumentDataTable<TData, TValue>({
                 <div className="flex items-center py-4 gap-2 ml-auto">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="sm" className="translate-hover">
+                            <Button variant="ghost" size="sm" className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600 translate-hover">
                                 <SlidersHorizontal className="h-4 w-4 mr-2" />
                                 Filter
                             </Button>
