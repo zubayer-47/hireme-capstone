@@ -99,4 +99,21 @@ export const updateResumeFields = mutation({
             education,
         })
     }
+});
+
+export const deleteDocument = mutation({
+    args: { documentId: v.id("resume") }, 
+    handler: async (ctx, { documentId }) => {
+        const hasAccess = await userIdentity(ctx);
+
+        if (!hasAccess) throw new ConvexError("Unauthorized!");
+
+        const existingResume = await ctx.db.get(documentId);
+
+        if (!existingResume || existingResume.userId !== hasAccess._id) {
+            throw new ConvexError("Resume not found or not authorized to access the file.")
+        }
+
+        await ctx.db.delete(existingResume._id)
+    }
 })
