@@ -3,16 +3,17 @@
 import { z } from "zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useParams, useRouter } from "next/navigation";
+import { api } from "@/convex/_generated/api";
+import { Doc } from "@/convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "../../../../../convex/_generated/api";
-import { Doc } from "../../../../../convex/_generated/dataModel";
+import { useParams, useRouter } from "next/navigation";
 import { formSchema, defaultValues } from "../_lib/application-lib";
 
 import { useToast } from "@/components/ui/use-toast";
 
 import { DynamicForm } from "../_components/dynamic-form";
+
 
 export default function CreateApplications() {
     const router = useRouter();
@@ -37,7 +38,6 @@ export default function CreateApplications() {
             })
         }
     }, [queryResult]);
-
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),

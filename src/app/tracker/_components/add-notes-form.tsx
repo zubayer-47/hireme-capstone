@@ -4,8 +4,9 @@ import { z } from "zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { Id } from "@/convex/_generated/dataModel";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "../../../../convex/_generated/api";
 
 import { CirclePlus, Eye } from "lucide-react";
 
@@ -28,7 +29,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { Id } from "../../../../convex/_generated/dataModel";
+
 
 const formSchema = z.object({
     notes: z.string().min(2)

@@ -2,15 +2,16 @@
 
 import { useEffect } from "react";
 import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { useStoreUserEffect } from "@/hooks/use-store-user-effect";
+
 import { CTA } from "./_components/cta";
 import { Hero } from "./_components/hero";
 import { useRouter } from "next/navigation";
 import { Footer } from "./_components/footer";
 import { Header } from "./_components/header";
 import { Features } from "./_components/features";
-import { api } from "../../../convex/_generated/api";
 import { Highlights } from "./_components/highlights";
-import { useStoreUserEffect } from "@/hooks/use-store-user-effect";
 import { BentoGridFeatures } from "./_components/bento-grid-features";
 
 export default function Home() {

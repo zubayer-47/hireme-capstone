@@ -1,10 +1,9 @@
-
 import { Search } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { Input } from "@/components/ui/input";
 import { MobileSidebar } from "./mobile-sidebar";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { DynamicSidebar } from "./dynamic-sidebar";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const Header = ({ userId }: { userId?: string }) => {
     return (

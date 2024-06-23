@@ -1,17 +1,23 @@
 "use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { useUser } from "@clerk/nextjs";
+
+import { Plus } from "lucide-react";
+
 import {
     Card,
     CardHeader,
     CardContent,
     CardDescription,
 } from "@/components/ui/card";
-import Image from "next/image";
-import { Plus } from "lucide-react";
-import { NavLinks } from "./nav-links";
-import { dataLinks } from "../../app/feeds/[userId]/feed-utils/links";
 import { AppLogo } from "@/components/app-logo";
 import { Button } from "@/components/ui/button";
-import { useUser } from "@clerk/nextjs";
+
+import { NavLinks } from "./nav-links";
+import { dataLinks } from "../../app/feeds/[userId]/feed-utils/links";
+
 
 export const DynamicSidebar = ({ userId }: { userId?: string }) => {
     const { user } =  useUser();
@@ -27,7 +33,7 @@ export const DynamicSidebar = ({ userId }: { userId?: string }) => {
             </div>
             <div className="flex-1">
                 <nav className="grid items-start px-2 text-sm font-medium lg:px-4 space-y-4">
-                    <hgroup className="flex items-center gap-3 dark:bg-neutral-950 bg-neutral-200 rounded-md py-1 px-1">
+                    <Link href={`/feeds/${userId!}`} className="flex items-center gap-3 dark:bg-neutral-950 bg-neutral-200 rounded-md py-1 px-1">
                         <Image 
                             width={20} 
                             height={20}
@@ -36,7 +42,7 @@ export const DynamicSidebar = ({ userId }: { userId?: string }) => {
 
                             src={user?.imageUrl || `/svg/user-profile-placeholder.svg`}  />
                         <h2 className="capitalize dark:text-neutral-200 text-neutral-950 text-sm">{user?.firstName} Feed</h2>
-                    </hgroup>
+                    </Link>
                     
                     {dataLinks.map(({ titleSection, links }, index) => (
                         <NavLinks key={index} titleSection={titleSection} links={links} />

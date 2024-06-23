@@ -1,7 +1,7 @@
 "use client"
 
 import { ActionsTable } from "./actions-table";
-import { Doc } from "../../../../convex/_generated/dataModel";
+import { Doc } from "@/convex/_generated/dataModel";
 
 import { 
     Dot, 
@@ -9,9 +9,10 @@ import {
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
+import { AddNotesModal } from "./add-notes-form";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { AddNotesModal } from "./add-notes-form";
+
 
 export const applicationColumns: ColumnDef<Doc<"applications">>[] = [
     {
