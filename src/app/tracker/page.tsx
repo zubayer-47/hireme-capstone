@@ -1,8 +1,9 @@
 "use client";
 
 import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+
 import { columns } from "./_components/columns";
-import { api } from "../../../convex/_generated/api";
 import { DataTable } from "./_components/data-table";
 
 export default function JobTrackerPage() {

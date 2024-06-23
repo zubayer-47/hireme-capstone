@@ -4,7 +4,7 @@ import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 export default function EditJobApplicationLayout({ children }: {children: React.ReactNode }) {
     return (
         <>  
-            <ClerkLoading><LoadingSpinner /> </ ClerkLoading >
+            <ClerkLoading><LoadingSpinner /></ ClerkLoading >
             <ClerkLoaded>{children}</ClerkLoaded>
         </>
     )

@@ -24,7 +24,7 @@ export default function Error({
         <Image src="/svg/page-not-found.svg" alt="Page Not Found Icon" width="100" height="100" />
         <h2 className="text-xl md:text-2xl dark:text-neutral-300 text-neutral-700 font-bold">SOMETHING WENT WRONG</h2>
         <Button
-          className="bg-app-color text-neutral-200 text-sm"
+          className="bg-app-color translate-hover hover:bg-app-color/80 text-neutral-200 text-sm"
           size="sm"
           onClick={
             () => router.back()

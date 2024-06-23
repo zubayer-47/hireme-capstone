@@ -4,8 +4,8 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { useMutation } from "convex/react";
 import { useRouter } from "next/navigation";
+import { api } from "@/convex/_generated/api";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "../../../../convex/_generated/api";
 import { defaultValues, formSchema } from "./_lib/application-lib";
 
 import { useToast } from "@/components/ui/use-toast";
