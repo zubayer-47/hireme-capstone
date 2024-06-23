@@ -78,7 +78,7 @@ export const ActionsDocumentTable = ({
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>Share</DropdownMenuItem>
-                    <DropdownMenuItem><Link href={`/builder`}>Edit</Link></DropdownMenuItem>
+                    <DropdownMenuItem><Link href={`/resume/${documentId}`}>Edit</Link></DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setIsAlertDialogOpen(true)}>Delete</DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>

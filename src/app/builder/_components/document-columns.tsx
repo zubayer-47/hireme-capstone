@@ -6,6 +6,7 @@ import { Doc } from "@/convex/_generated/dataModel";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowUpDown } from "lucide-react";
+import { ActionsDocumentTable } from "./actions-document-table";
 
 export const documentColumns: ColumnDef<Doc<"resume">>[] = [
     {
@@ -48,6 +49,21 @@ export const documentColumns: ColumnDef<Doc<"resume">>[] = [
         }
     },
     {
+        accessorKey: 'score',
+        header: () => {
+            return (
+                <p className="text-neutral-500 dark:hover:text-neutral-300 hover:text-neutral-700">
+                    Document Score
+                </p>
+            )
+        },
+        cell: ({ row }) => {
+            const data: string = row.getValue("score");
+
+            return <p className="dark:text-neutral-300 text-neutral-700">{!data ? "unset": data}</p>
+        }
+    },
+    {
         accessorKey: "_creationTime",
         header: ({ column }) => {
             return (
@@ -71,7 +87,7 @@ export const documentColumns: ColumnDef<Doc<"resume">>[] = [
     {
         id: "actions",
         cell: ({ row }) => {
-            return <></>
+            return <ActionsDocumentTable documentId={row.original._id} />
         },
     },
 ]
