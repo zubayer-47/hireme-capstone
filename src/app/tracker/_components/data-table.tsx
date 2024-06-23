@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link";
 import * as React from "react";
 
 import {
@@ -32,7 +33,7 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { SlidersHorizontal } from "lucide-react";
+import { ListPlus, SlidersHorizontal } from "lucide-react";
 import { FormModal } from "@/components/form-modal";
 
 
@@ -83,7 +84,7 @@ export function DataTable<TData, TValue>({
                 <div className="flex items-center py-4 gap-2 ml-auto">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="sm">
+                            <Button variant="ghost" size="sm" className="translate-hover">
                                 <SlidersHorizontal className="h-4 w-4 mr-2" />
                                 Filter
                             </Button>
@@ -110,7 +111,10 @@ export function DataTable<TData, TValue>({
                                 })}
                         </DropdownMenuContent>
                     </DropdownMenu>
-                    <FormModal />
+                    <Link href="/tracker/applications" className="flex items-center h-9 px-3 gap-2 rounded-lg dark:text-neutral-200 text-neutral-600 bg-neutral-200 hover:bg-neutral-100  dark:bg-neutral-800 hover:dark:bg-neutral-900 translate-hover">
+                        <ListPlus className="h-4 w-4" />
+                        Track
+                    </Link>
                 </div>
             </div>
 
@@ -160,7 +164,7 @@ export function DataTable<TData, TValue>({
             </div>
             <div className="flex items-center justify-end space-x-2 py-4">
                 <Button
-                type="button"
+                    type="button"
                     variant="outline"
                     size="sm"
                     onClick={() => table.previousPage()}
@@ -169,7 +173,7 @@ export function DataTable<TData, TValue>({
                     Previous
                 </Button>
                 <Button
-                type="button"
+                    type="button"
                     variant="outline"
                     size="sm"
                     onClick={() => table.nextPage()}
