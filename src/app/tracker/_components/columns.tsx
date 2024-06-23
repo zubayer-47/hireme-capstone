@@ -4,8 +4,9 @@ import { ActionsTable } from "./actions-table";
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ArrowUpDown, CirclePlus, Eye } from "lucide-react";
+import { ArrowUpDown, CirclePlus, Dot, Eye } from "lucide-react";
 import { Doc } from "../../../../convex/_generated/dataModel";
+import { Badge } from "@/components/ui/badge";
 
 export const columns: ColumnDef<Doc<"applications">>[] = [
     {
@@ -56,6 +57,32 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
     {
         accessorKey: "status",
         header: "Status",
+        cell: ({ row }) => {
+            const status = row.getValue("status");
+            console.log(status)
+            switch (status) {
+                case "applied": 
+                    return <Badge className="bg-neutral-600/50 text-neutral-200 -py-1">
+                        <Dot className="h-8 w-8 text-neutral-200" />
+                        Applied
+                    </Badge>
+                case "interviewed":
+                    return <Badge className="bg-app-color/50 text-neutral-200 -py-1">
+                        <Dot className="h-8 w-8 text-app-color" />
+                        Interviewed
+                    </Badge>
+                case "offered":
+                    return <Badge className="bg-emerald-600/50 text-neutral-200 -py-1">
+                        <Dot className="h-8 w-8 text-emerald-600" />
+                        Offered
+                    </Badge>
+                case "offered":
+                    return <Badge className="text-neutral-200 bg-destructive/50 -py-1">
+                        <Dot className="h-8 w-8 text-rose-400" />
+                        Offered
+                    </Badge>
+            }
+        }
     },
     {
         accessorKey: "location",
@@ -65,13 +92,13 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
         accessorKey: "salary",
         header: () => <div className="">Salary</div>,
         cell: ({ row }) => {
-            const amount = parseFloat(row.getValue("amount"))
+            const amount = parseFloat(row.getValue("salary"))
             const formatted = new Intl.NumberFormat("en-US", {
                 style: "currency",
                 currency: "USD",
             }).format(amount)
 
-            return <div className=" ">{!!formatted ? "$0" : formatted}</div>
+            return <div className=" ">{!formatted ? "$0" : formatted}</div>
         },
     },
     {
@@ -97,7 +124,6 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
     {
         id: "actions",
         cell: ({ row }) => {
-
             return <ActionsTable application={row.original} />
         },
     },
