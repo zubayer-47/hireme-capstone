@@ -126,7 +126,7 @@ export const takeNotes = mutation({
     }, handler: async (ctx, { applicationId, notes }) => {
         const { existingApplication } = await checkExistingApplication(ctx, applicationId);
 
-        await ctx.db.patch(existingApplication._id, {
+        return await ctx.db.patch(existingApplication._id, {
             ...existingApplication,
             notes
         })

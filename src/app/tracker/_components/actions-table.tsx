@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useMutation} from "convex/react";
 import { api } from "../../../../convex/_generated/api";
-import { Doc } from "../../../../convex/_generated/dataModel";
+import { Id } from "../../../../convex/_generated/dataModel";
 
 import { MoreHorizontal } from "lucide-react";
 
@@ -30,8 +30,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
 export const ActionsTable = ({
-    application
-}: { application: Doc<"applications"> }) => {
+    applicationId
+}: { applicationId: Id<"applications"> }) => {
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
 
     const { toast } = useToast();
@@ -53,9 +53,7 @@ export const ActionsTable = ({
                         <AlertDialogCancel className="transform hover:-translate-y-1 transition-all duration-400" onClick={() => setIsAlertDialogOpen(false)}>Cancel</AlertDialogCancel>
                         <AlertDialogAction
                             onClick={async () => {
-                                await deleteApplication({
-                                    applicationId: application._id,
-                                });
+                                await deleteApplication({ applicationId });
                                 setIsAlertDialogOpen(false);
                                 toast({
                                     title: "Sucess",
@@ -81,7 +79,7 @@ export const ActionsTable = ({
                 <DropdownMenuContent align="end">
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem><Link href={`/tracker/applications/${application._id}`}>Edit</Link></DropdownMenuItem>
+                    <DropdownMenuItem><Link href={`/tracker/applications/${applicationId}`}>Edit</Link></DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setIsAlertDialogOpen(true)}>Delete</DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>

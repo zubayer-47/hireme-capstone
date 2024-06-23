@@ -1,12 +1,19 @@
 "use client"
 
 import { ActionsTable } from "./actions-table";
-import { Button } from "@/components/ui/button";
+import { Doc } from "../../../../convex/_generated/dataModel";
+
+import { 
+    Dot, 
+    Eye,
+    CirclePlus,
+    ArrowUpDown,   
+} from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ArrowUpDown, CirclePlus, Dot, Eye } from "lucide-react";
-import { Doc } from "../../../../convex/_generated/dataModel";
-import { Badge } from "@/components/ui/badge";
+import { AddNotesModal } from "./add-notes-form";
 
 export const columns: ColumnDef<Doc<"applications">>[] = [
     {
@@ -101,8 +108,8 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
                         Applied
                     </Badge>
                 case "interviewed":
-                    return <Badge className="dark:bg-app-color/50 bg-app-color dark:text-neutral-300 -py-1">
-                        <Dot className="h-8 w-8 dark:text-app-color text-app-color/80" />
+                    return <Badge className="bg-app-color/80 dark:bg-app-color/50 dark:text-neutral-300 -py-1">
+                        <Dot className="h-8 w-8 dark:text-blue-400 text-blue-200" />
                         Interviewed
                     </Badge>
                 case "offered":
@@ -177,21 +184,19 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
             )
         },
         cell: ({ row }) => {
-            const isNote = row.getValue("notes")
+            const notes: string = row.getValue("notes")
 
-            return <div className="">
-                {!isNote ? (
-                    <p className="cursor-pointer flex items-center text-nowrap dark:text-neutral-300  text-neutral-700 "><CirclePlus className="h-4 w-5 mr-1" />Add Notes</p>
-                ) : (
-                    <p className="cursor-pointer flex items-center text-nowrap dark:text-neutral-300 text-neutral-700 "><Eye className="h-4 w-4 mr-1" />Show Notes</p>
-                )}
-            </div>
+            return <AddNotesModal 
+                notes={notes} 
+                company={row.original.company}
+                jobTitle={row.original.jobTitle}
+                applicationId={row.original._id} />
         },
     },
     {
         id: "actions",
         cell: ({ row }) => {
-            return <ActionsTable application={row.original} />
+            return <ActionsTable applicationId={row.original._id} />
         },
     },
 ]

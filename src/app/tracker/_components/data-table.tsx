@@ -34,8 +34,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ListPlus, SlidersHorizontal } from "lucide-react";
-import { FormModal } from "@/components/form-modal";
-
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
