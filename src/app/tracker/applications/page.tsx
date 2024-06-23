@@ -1,13 +1,10 @@
 "use client"
 
 import { z } from "zod";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "convex/react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import { ListPlus } from "lucide-react";
 
 import {
     Form,
@@ -57,7 +54,6 @@ export default function CreateApplications() {
             dateApplied: "",
             recruiterInfo: "",
             status: "applied",
-
         },
     })
 
@@ -87,7 +83,7 @@ export default function CreateApplications() {
         <section>
             <hgroup className="my-4 pb-4 border-b dark:border-white/[0.2] border-black/[0.2]">
                 <h2 className="dark:text-neutral-200 text-neutral-800 text-md">Start Tracking Your Job Application</h2>
-                <p className="dark:text-neutral-400 text-neutral-600 text-sm">Fill out the details of the you've applied to.</p>
+                <p className="dark:text-neutral-400 text-neutral-600 text-sm">Fill out the details of the job you've applied to.</p>
             </hgroup>
         <Form {...form} >
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">

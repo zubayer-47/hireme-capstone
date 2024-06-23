@@ -1,38 +1,14 @@
 "use client";
 
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { useMutation, useQuery } from "convex/react";
-import { useState, useEffect } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
+
+import Link from "next/link";
+import { useState } from "react";
+import { useMutation} from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import { Doc } from "../../../../convex/_generated/dataModel";
 
 import { MoreHorizontal } from "lucide-react";
 
-import {
-    Dialog,
-    DialogTitle,
-    DialogHeader,
-    DialogTrigger,
-    DialogContent,
-    DialogDescription,
-} from "@/components/ui/dialog";
-import {
-    Form,
-    FormItem,
-    FormField,
-    FormLabel,
-    FormMessage,
-    FormControl,
-} from "@/components/ui/form";
-import {
-    Select,
-    SelectItem,
-    SelectValue,
-    SelectTrigger,
-    SelectContent,
-} from "@/components/ui/select";
 import {
     AlertDialog,
     AlertDialogTitle,
@@ -54,62 +30,16 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { Input } from "@/components/ui/input";
-
-
-const formSchema = z.object({
-    company: z.string().min(2).max(50),
-    jobLink: z.string().min(2).includes("https"),
-    jobTitle: z.string().min(2).max(50),
-    location: z.string().min(2).max(50),
-    dateApplied: z.string().min(2).max(50),
-    salary: z.optional(z.string()),
-    recruiterInfo: z.optional(z.string()),
-    status: z.enum(["applied", "interviewed", "offered", "rejected"]),
-});
 
 export const ActionsTable = ({
     application
 }: { application: Doc<"applications"> }) => {
-    const [existingApplication, setExistingApplication] = useState<Doc<"applications"> | null>(null);
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
     const { toast } = useToast();
 
-    const queryResult = useQuery(api.applications.getExistingApplication, { applicationId: application._id });
     const deleteApplication = useMutation(api.applications.deleteApplication);
 
-    useEffect(() => {
-        if (queryResult) setExistingApplication(queryResult);
-    }, [queryResult]);
-
-    const defaultValues = existingApplication ? { 
-        ...existingApplication,
-    } : {}
-
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues,
-    })
-
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        try {
-            console.log(values)
-            toast({
-                title: "Success",
-                description: "Application has been created.",
-                variant: "default",
-            })
-        } catch (error) {
-            console.error(error);
-            toast({
-                title: "Error",
-                description: "Unable to create your application.",
-                variant: "default",
-            })
-        }
-    }
 
     return (
         <>
@@ -143,7 +73,7 @@ export const ActionsTable = ({
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
-            <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
+            <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="h-8 w-8 p-0" >
                         <span className="sr-only">Open menu</span>
@@ -154,153 +84,7 @@ export const ActionsTable = ({
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     {/* Open modal here */}
-                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                        <DialogTrigger>
-                            <DropdownMenuItem onClick={() => { 
-                                setIsDropdownOpen(false);
-                                setIsDialogOpen(true);
-                            }}>Edit</DropdownMenuItem>
-                        </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px] w-full dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
-                            <DialogHeader>
-                                <DialogTitle className="dark:text-neutral-200 text-neutral-800">Add New Job Description</DialogTitle>
-                                <DialogDescription className="dark:text-neutral-400 text-neutral-600">
-                                    Fill out the details of the job you've applied to.
-                                </DialogDescription>
-                            </DialogHeader>
-                            <Form {...form}>
-                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                        <FormField
-                                            control={form.control}
-                                            name="company"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Company Name</FormLabel>
-                                                    <FormControl>
-                                                        <Input placeholder="Apple" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            control={form.control}
-                                            name="jobTitle"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Job Title</FormLabel>
-                                                    <FormControl>
-                                                        <Input placeholder="Software Engineer (Full stack)" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                        <FormField
-                                            control={form.control}
-                                            name="jobLink"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Job Link</FormLabel>
-                                                    <FormControl>
-                                                        <Input placeholder="https://www.apple.com/careers/ca/" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            control={form.control}
-                                            name="location"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Location</FormLabel>
-                                                    <FormControl>
-                                                        <Input placeholder="Toronto" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                        <FormField
-                                            control={form.control}
-                                            name="dateApplied"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Date Applied</FormLabel>
-                                                    <FormControl>
-                                                        <Input type="date" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            control={form.control}
-                                            name="status"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Status</FormLabel>
-                                                    <Select onValueChange={field.onChange} defaultValue={field.value} >
-                                                        <FormControl>
-                                                            <SelectTrigger className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]">
-                                                                <SelectValue placeholder="Select a status for your application" />
-                                                            </SelectTrigger>
-                                                        </FormControl>
-                                                        <SelectContent className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]">
-                                                            <SelectItem value="applied">Applied</SelectItem>
-                                                            <SelectItem value="interviewed">Interviewed</SelectItem>
-                                                            <SelectItem value="offered">Offered</SelectItem>
-                                                            <SelectItem value="rejected">Rejected</SelectItem>
-                                                        </SelectContent>
-                                                    </Select>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                        <FormField
-                                            control={form.control}
-                                            name="salary"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Salary</FormLabel>
-                                                    <FormControl>
-                                                        <Input type="number" min="0" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            control={form.control}
-                                            name="recruiterInfo"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Recruiter Info</FormLabel>
-                                                    <FormControl>
-                                                        <Input type="text" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <div className="flex justify-end gap-x-2 mt-2">
-                                        <Button type="button" variant="ghost" size="sm" onClick={() => setIsDialogOpen(false)}>Cancel</Button>
-                                        <Button size="sm">Save Changes</Button>
-                                    </div>
-                                </form>
-                            </Form>
-                        </DialogContent>
-                    </Dialog>
-
+                    <DropdownMenuItem><Link href={`/tracker/applications/${application._id}`}>Edit</Link></DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setIsAlertDialogOpen(true)}>Delete</DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
