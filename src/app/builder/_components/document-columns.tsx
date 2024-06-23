@@ -3,12 +3,6 @@
 import { formatRelative } from "date-fns";
 import { Doc } from "@/convex/_generated/dataModel";
 
-import {
-    Dot,
-    ArrowUpDown,
-} from "lucide-react";
-
-import { Badge } from "@/components/ui/badge";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 
@@ -38,31 +32,16 @@ export const documentColumns: ColumnDef<Doc<"resume">>[] = [
         enableHiding: false,
     },
     {
-        accessorKey: 'company',
+        accessorKey: 'documentName',
         header: () => {
             return (
                 <p className="text-neutral-500 dark:hover:text-neutral-300 hover:text-neutral-700">
-                    Company
+                    Document Name
                 </p>
             )
         },
         cell: ({ row }) => {
-            const data: string = row.getValue("company");
-
-            return <p className="dark:text-neutral-300 text-neutral-700">{data}</p>
-        }
-    },
-    {
-        accessorKey: 'jobTitle',
-        header: () => {
-            return (
-                <p className="text-neutral-500 dark:hover:text-neutral-300 hover:text-neutral-700">
-                    Job Title
-                </p>
-            )
-        },
-        cell: ({ row }) => {
-            const data: string = row.getValue("jobTitle");
+            const data: string = row.getValue("documentName");
 
             return <p className="dark:text-neutral-300 text-neutral-700">{data}</p>
         }
@@ -71,115 +50,11 @@ export const documentColumns: ColumnDef<Doc<"resume">>[] = [
         header: "Uploaded On",
         cell: ({ row }) => {
             return (
-                <div>
+                <p className="dark:text-neutral-300 text-neutral-700">
                     {formatRelative(new Date(row.original._creationTime), new Date())}
-                </div>
+                </p>
             );
         },
-    },
-    {
-        accessorKey: 'dateApplied',
-        header: ({ column }) => {
-            return (
-                <p
-                    className="flex items-center text-nowrap cursor-pointer text-neutral-500 dark:hover:text-neutral-300 hover:text-neutral-700"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Date Applied
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                </p>
-            )
-        },
-        cell: ({ row }) => {
-            const data: string = row.getValue("dateApplied");
-
-            return <p className="dark:text-neutral-300 text-neutral-700">{data}</p>
-        }
-    },
-    {
-        accessorKey: "status",
-        header: () => {
-            return (
-                <p className="text-neutral-500 dark:hover:text-neutral-300 hover:text-neutral-700">
-                    Status
-                </p>
-            )
-        },
-        cell: ({ row }) => {
-            const status = row.getValue("status");
-
-            switch (status) {
-                case "applied":
-                    return <Badge className="dark:bg-neutral-600/50 bg-neutral-600 dark:text-neutral-300 -py-1">
-                        <Dot className="h-8 w-8 dark:text-neutral-400 text-neutral-200" />
-                        Applied
-                    </Badge>
-                case "interviewed":
-                    return <Badge className="bg-app-color/80 dark:bg-app-color/50 dark:text-neutral-300 -py-1">
-                        <Dot className="h-8 w-8 dark:text-blue-400 text-blue-200" />
-                        Interviewed
-                    </Badge>
-                case "offered":
-                    return <Badge className="dark:bg-emerald-600/50 bg-emerald-600/80 dark:text-neutral-300 -py-1">
-                        <Dot className="h-8 w-8 dark:text-emerald-400 text-emerald-200" />
-                        Offered
-                    </Badge>
-                case "rejected":
-                    return <Badge className="dark:bg-destructive/50 bg-destructive/80 dark:text-neutral-300 -py-1">
-                        <Dot className="h-8 w-8 dark:text-rose-400 text-rose-200" />
-                        Rejected
-                    </Badge>
-            }
-        }
-    },
-    {
-        accessorKey: "location",
-        header: () => {
-            return (
-                <p className="text-neutral-500 dark:hover:text-neutral-300 hover:text-neutral-700">
-                    Location
-                </p>
-            )
-        },
-        cell: ({ row }) => {
-            const data: string = row.getValue("location");
-
-            return <p className="dark:text-neutral-300 text-neutral-700">{data}</p>
-        }
-    },
-    {
-        accessorKey: "salary",
-        header: () => {
-            return (
-                <p className="text-neutral-500 dark:hover:text-neutral-300 hover:text-neutral-700">
-                    Salary
-                </p>
-            )
-        },
-        cell: ({ row }) => {
-            const amount = parseFloat(row.getValue("salary"))
-            const formatted = new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: "USD",
-            }).format(amount)
-
-            return <div className="dark:text-neutral-300 text-neutral-700">{!formatted ? "unset" : formatted}</div>
-        },
-    },
-    {
-        accessorKey: "recruiterInfo",
-        header: () => {
-            return (
-                <p className="text-neutral-500 dark:hover:text-neutral-300 hover:text-neutral-700">
-                    Recruiter
-                </p>
-            )
-        },
-        cell: ({ row }) => {
-            const data: string = row.getValue("recruiterInfo");
-
-            return <p className="dark:text-neutral-300 text-neutral-700">{data}</p>
-        }
     },
     {
         id: "actions",

@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/tabs";
 import { ArrowUpToLine, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DocumentDataTable } from "./document-data-table";
+import { documentColumns } from './document-columns';
 
 export const DocumentTab = () => {
     return (
@@ -28,7 +30,7 @@ export const DocumentTab = () => {
                 </div>
             </section>
             <TabsContent value="resume">
-
+                <DocumentDataTable columns={documentColumns} data={data} />
             </TabsContent>
             <TabsContent value="cover-letter">
 

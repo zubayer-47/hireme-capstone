@@ -29,7 +29,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
-export const ActionsTable = ({
+export const ActionsApplicationTable = ({
     applicationId
 }: { applicationId: Id<"applications"> }) => {
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
