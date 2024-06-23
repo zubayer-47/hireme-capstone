@@ -6,7 +6,7 @@ import {
     WorkExperience 
 } from "./types";
 import { v, ConvexError } from "convex/values";
-import { mutation, QueryCtx, MutationCtx, } from "./_generated/server";
+import { mutation, QueryCtx, MutationCtx, query, } from "./_generated/server";
 
 async function userIdentity(
     ctx: QueryCtx | MutationCtx,
@@ -34,6 +34,20 @@ export const generateUploadUrl = mutation(
         return await ctx.storage.generateUploadUrl();
     }
 )
+
+export const readDocuments = query({
+    args: {},
+    handler: async(ctx, args) => {
+        const hasAccess = await userIdentity(ctx);
+
+        if (!hasAccess) throw new ConvexError("Unauthorized!");
+
+        return await ctx.db
+            .query("resume")
+            .withIndex("by_userId", (q) => q.eq("userId", hasAccess._id))
+            .collect();
+    }
+})
 
 export const initialResume = mutation({
     args: { documentName: v.string() },
