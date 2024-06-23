@@ -152,7 +152,7 @@ export function ApplicationDataTable<TData, TValue>({
                             ))
                         ) : (
                             <TableRow>
-                                <TableCell colSpan={columns.length} className="h-24 text-center">
+                                <TableCell colSpan={columns.length} className="h-24 text-center dark:text-neutral-300 text-neutral-700">
                                     No results.
                                 </TableCell>
                             </TableRow>

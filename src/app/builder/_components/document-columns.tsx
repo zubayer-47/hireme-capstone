@@ -5,6 +5,7 @@ import { Doc } from "@/convex/_generated/dataModel";
 
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
+import { ArrowUpDown } from "lucide-react";
 
 export const documentColumns: ColumnDef<Doc<"resume">>[] = [
     {
@@ -47,7 +48,18 @@ export const documentColumns: ColumnDef<Doc<"resume">>[] = [
         }
     },
     {
-        header: "Uploaded On",
+        accessorKey: "_creationTime",
+        header: ({ column }) => {
+            return (
+                <p
+                    className="flex items-center text-nowrap cursor-pointer text-neutral-500 dark:hover:text-neutral-300 hover:text-neutral-700"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                >
+                    Uploaded On
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </p>
+            )
+        },
         cell: ({ row }) => {
             return (
                 <p className="dark:text-neutral-300 text-neutral-700">
