@@ -1,21 +1,17 @@
 "use client"
 
-import { ActionsTable } from "./actions-table";
-import { Doc } from "../../../../convex/_generated/dataModel";
+import { Doc } from "@/convex/_generated/dataModel";
 
-import { 
-    Dot, 
-    Eye,
-    CirclePlus,
-    ArrowUpDown,   
+import {
+    Dot,
+    ArrowUpDown,
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { AddNotesModal } from "./add-notes-form";
 
-export const columns: ColumnDef<Doc<"applications">>[] = [
+export const documentColumns: ColumnDef<Doc<"applications">>[] = [
     {
         id: "select",
         header: ({ table }) => (
@@ -102,7 +98,7 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
             const status = row.getValue("status");
 
             switch (status) {
-                case "applied": 
+                case "applied":
                     return <Badge className="dark:bg-neutral-600/50 bg-neutral-600 dark:text-neutral-300 -py-1">
                         <Dot className="h-8 w-8 dark:text-neutral-400 text-neutral-200" />
                         Applied
@@ -175,28 +171,9 @@ export const columns: ColumnDef<Doc<"applications">>[] = [
         }
     },
     {
-        accessorKey: "notes",
-        header: () => {
-            return (
-                <p className="text-neutral-500 dark:hover:text-neutral-300 hover:text-neutral-700">
-                    Notes
-                </p>
-            )
-        },
-        cell: ({ row }) => {
-            const notes: string = row.getValue("notes")
-
-            return <AddNotesModal 
-                notes={notes} 
-                company={row.original.company}
-                jobTitle={row.original.jobTitle}
-                applicationId={row.original._id} />
-        },
-    },
-    {
         id: "actions",
         cell: ({ row }) => {
-            return <ActionsTable applicationId={row.original._id} />
+            return <></>
         },
     },
 ]

@@ -35,15 +35,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ListPlus, SlidersHorizontal } from "lucide-react";
 
-interface DataTableProps<TData, TValue> {
+interface ApplicationDataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
 }
 
-export function DataTable<TData, TValue>({
+export function ApplicationDataTable<TData, TValue>({
     columns,
     data,
-}: DataTableProps<TData, TValue>) {
+}: ApplicationDataTableProps<TData, TValue>) {
     const [sorting, setSorting] = React.useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
     const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
