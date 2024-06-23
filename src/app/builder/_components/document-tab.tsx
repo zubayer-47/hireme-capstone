@@ -14,15 +14,16 @@ import {
 import { Button } from "@/components/ui/button";
 import { documentColumns } from './document-columns';
 import { DocumentDataTable } from "./document-data-table";
+import { CreateDocumentModal } from "./create-document-modal";
 
 export const DocumentTab = () => {
     const data = useQuery(api.resume.readDocuments);
 
     if (!data) return [];
-    
+
     return (
         <Tabs defaultValue="resume" >
-            <section className="flex items-center justify-between mb-8">
+            <section className="flex items-center justify-between mb-2 md:mb-4">
                 <TabsList className="grid grid-cols-2 w-[300px] dark:bg-neutral-800 hover:dark:bg-neutral-900 transition-all">
                     <TabsTrigger value="resume" className="dark:text-neutral-200 text-neutral-600">Resume</TabsTrigger>
                     <TabsTrigger value="cover-letter" className="dark:text-neutral-200 text-neutral-600">Cover Letter</TabsTrigger>
@@ -32,10 +33,7 @@ export const DocumentTab = () => {
                         <ArrowUpToLine className="h-4 w-4" />
                         Upload
                     </Button>
-                    <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600 bg-neutral-200 hover:bg-neutral-100  dark:bg-neutral-800 hover:dark:bg-neutral-900 translate-hover" size="sm" >
-                        <Plus className="h-4 w-4" />
-                        Create
-                    </Button>
+                    <CreateDocumentModal />
                 </div>
             </section>
             <TabsContent value="resume">

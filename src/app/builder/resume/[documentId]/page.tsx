@@ -1,5 +1,5 @@
-import { Resume } from "./_components/display";
-import { ResumeForm } from "./_components/form";
+import { Resume } from "../_components/display";
+import { ResumeForm } from "../_components/form";
 
 export default function Home() {
   return (

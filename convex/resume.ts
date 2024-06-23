@@ -49,7 +49,7 @@ export const readDocuments = query({
     }
 })
 
-export const initialResume = mutation({
+export const createDocument = mutation({
     args: { documentName: v.string() },
     handler: async (ctx, {
         documentName

@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
-import { AddNotesModal } from "./add-notes-form";
+import { AddNotesModal } from "./add-notes-modal";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ActionsApplicationTable } from "./actions-application-table";
