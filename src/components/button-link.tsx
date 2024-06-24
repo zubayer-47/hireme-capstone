@@ -21,7 +21,7 @@ export const ButtonLink = ({
     className,
 }: ButtonLinkProps) => {
     return (
-        <Link href={href} className={`${size ? sizeStyle[size] : sizeStyle["default"]} ${className} inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground`} >
+        <Link href={href} className={`${size ? sizeStyle[size] : sizeStyle["default"]} ${className} inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground translate-hover`} >
             {name}
         </Link>
     )

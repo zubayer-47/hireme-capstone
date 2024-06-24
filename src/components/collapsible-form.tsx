@@ -30,19 +30,19 @@ export const CollapsibleForm = ({ children, formTitle, icon: Icon, addNewFormRef
 
     return (
         <>
-            <aside className="flex items-center justify-between px-4 py-2 border border-gray-100 shadow-md rounded-lg bg-card text-card-foreground">
+            <aside className="flex items-center justify-between px-4 py-2 border dark:border-white/[0.2] border-black/[0.2] shadow-md rounded-lg bg-card text-card-foreground">
                 <hgroup className="flex items-center gap-2">
                     <Icon className="h-5 w-5 text-app-color" />
-                    <h2 className="text-xl font-semibold leading-none tracking-tight">{formTitle}</h2>
+                    <h2 className="text-sm font-semibold leading-none tracking-tight dark:text-neutral-300 text-neutral-700">{formTitle}</h2>
                 </hgroup>
                 <div className="flex items-center gap-2">
                     <Button
                         size="icon"
                         type="button"
-                        onClick={() => addNewForm(addNewFormRef)}
                         variant="outline"
+                        onClick={() => addNewForm(addNewFormRef)}
                     >
-                        <Plus className="h-5 w-5 text-muted-foreground" />
+                        <Plus className="h-4 w-4 text-neutral-500" />
                     </Button>
                     <Button
                         size="icon"
@@ -50,7 +50,7 @@ export const CollapsibleForm = ({ children, formTitle, icon: Icon, addNewFormRef
                         onClick={toggleIsExpanded}
                         variant="outline"
                     >
-                        <ChevronDown className={cn("h-5 w-5 text-muted-foreground transition-transform duration-300", isExpanded ? "rotate-180" : "rotate-0")} />
+                        <ChevronDown className={cn("h-4 w-4 text-neutral-500 transition-transform duration-300", isExpanded ? "rotate-180" : "rotate-0")} />
                     </Button>
                 </div>
             </aside>

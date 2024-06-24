@@ -38,9 +38,9 @@ const ResumeNavbar = ({
         <div className="flex items-center justify-center gap-2 ">Loading...</div></div>)
 
     return (
-        <div className="relative border border-gray-100 shadow-md rounded-lg bg-card text-card-foreground py-2 flex items-center justify-center px-[var(--resume-padding)] text-neutral-600 md:justify-between">
+        <div className="relative border dark:border-white/[0.2] border-black/[0.2] shadow-md rounded-lg bg-card text-card-foreground py-2 flex items-center justify-center px-[var(--resume-padding)] text-neutral-600 md:justify-between">
             <div className="flex items-center gap-2">
-                <ChevronsUpDown className="h-5 w-5" aria-hidden="true" />
+                <ChevronsUpDown className="h-5 w-5 dark:text-neutral-400 text-neutral-600" aria-hidden="true" />
                 <input
                     type="range"
                     min={0.5}
@@ -53,22 +53,15 @@ const ResumeNavbar = ({
                     }}
                     className="bg-app-color"
                 />
-                <div className="w-10">{`${Math.round(scale * 100)}%`}</div>
+                <div className="w-10 dark:text-neutral-400 text-neutral-600">{`${Math.round(scale * 100)}%`}</div>
             </div>
             <Link
                 download={fileName}
                 href={instance.url!}
-                className="mr-2 h-10 px-4 py-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground"
+                className="mr-2 h-10 px-4 py-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground dark:text-neutral-200 text-neutral-800"
             >
                 <Download className="h-4 w-4 mr-2" />
                 <span className="whitespace-nowrap">Download Resume</span>
-            </Link>
-            <Link
-                href="/builder/optimize"
-                className="inline-flex h-10 animate-background-shine text-sm items-center justify-center rounded-md border border-input bg-[linear-gradient(110deg,#ffffff,45%,#edede9,55%,#ffffff)] dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-4 font-medium hover:text-accent-foreground transition-colors focus:outline-none hover:bg-accent focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50"
-            >
-                <Sparkles className="h-4 w-4 mr-2" />
-                <span className="whitespace-nowrap">Optimize Resume</span>
             </Link>
         </div>
     );
