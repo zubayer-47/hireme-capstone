@@ -94,7 +94,7 @@ export const ActionsDocumentTable = ({
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem className="cursor-pointer">Share</DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer"><Link href={`/resume/${documentId}`}>Edit</Link></DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer"><Link href={`/builder/resume/${documentId}`}>Edit</Link></DropdownMenuItem>
                     <DropdownMenuItem className="cursor-pointer" onClick={() => {
                         setIsDialogOpen(false);
                         setIsAlertDialogOpen(true);

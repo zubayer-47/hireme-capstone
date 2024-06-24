@@ -76,7 +76,7 @@ export const CreateDocumentModal = () => {
                             variant: "default",
                         })
                         setIsOpen(false);
-                        // router.push(`/builder/resume/${documentId}`);
+                        router.push(`/builder/resume/${documentId}`);
                     }
                     break;
                 case "cover letter":
