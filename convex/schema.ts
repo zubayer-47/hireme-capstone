@@ -25,9 +25,9 @@ export default defineSchema({
         workExperience: v.optional(WorkExperience),
         education: v.optional(Education),
         score: v.optional(v.string()),
-        aiFeedback: v.optional(v.string()), // Change this to have a custom object
     }).index("by_userId", ["userId"]),
 
+    // Update this to add the resume was used to apply for the application
     applications: defineTable({
         userId: v.id("users"),
         company: v.string(),
@@ -39,5 +39,16 @@ export default defineSchema({
         notes: v.optional(v.string()),
         salary: v.optional(v.string()),
         recruiterInfo: v.optional(v.string()),
-    }).index("by_userId", ["userId"])
+    }).index("by_userId", ["userId"]),
+
+    // Update this to add the resume was used to analyzed
+    results: defineTable({
+        userId: v.id("users"),
+        resumeId: v.id("resume"),
+        score: v.string(),
+        matchedKeywords: v.array(v.string()),
+        feedback: v.string()
+    }).index("by_user", ["userId"])
+      .index("by_resumeId", ["resumeId"])
+      .index("by_userId_resume_id", ["userId", "resumeId"])
 })
