@@ -1,8 +1,7 @@
-import Link from "next/link"
-import { Sparkles } from "lucide-react";
+
 import { ButtonLink } from "@/components/button-link";
-import { useParams } from "next/navigation";
-import { Button } from "@/components/ui/button";
+
+import { EnhancerTab } from "./enchancer-tab";
 
 type DocumentHeaderProps = {
     documentName: string;
@@ -22,13 +21,7 @@ export const DocumentHeader = ({
             </nav>
             <nav className="flex items-center space-x-2">
                 <ButtonLink name="Go Back" href="/builder" size="sm" />
-                <Button
-                    size="sm"
-                    className="flex items-center gap-1 text-sm bg-app-color hover:bg-app-color/80 text-neutral-200 translate-hover rounded-lg"
-                >
-                    <Sparkles className="h-4 w-4 mr-2" />
-                    <span className="whitespace-nowrap">Enhancer</span>
-                </Button>
+                <EnhancerTab />
             </nav>
         </header>
     )
