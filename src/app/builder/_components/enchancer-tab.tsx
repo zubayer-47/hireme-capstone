@@ -27,6 +27,25 @@ const schema = z.object({
 
 
 export const EnhancerTab = () => {
+    const [steps, setSteps] = useState(1);
+    const formSteps = [
+        "Welcome to Resume Enhancement",
+        "Find Job Listing",
+        "Paste Job Description",
+        "View Results"
+    ];
+
+    const nextStep = () => {
+        if (formSteps.length === steps) return;
+
+        setSteps(steps + 1);
+    }
+
+    const prevStep = () => {
+        if (steps === 1) return;
+        
+        setSteps(steps - 1);
+    }
 
     const form = useForm<z.infer<typeof schema>>({
         resolver: zodResolver(schema),
@@ -56,8 +75,10 @@ export const EnhancerTab = () => {
             </SheetTrigger>
             <SheetContent>
                 <Form {...form}>
-                    <form>
-                        
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center justify-center mx-auto h-full">
+                        <SheetHeader className="w-2/3">
+                            
+                        </SheetHeader>
                     </form>
                 </Form>
             </SheetContent>
