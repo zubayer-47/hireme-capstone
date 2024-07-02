@@ -1,5 +1,9 @@
 "use client";
 
+import { z } from "zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
     Sheet,
     SheetTitle,
@@ -14,10 +18,33 @@ import { Sparkles } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
+
+const schema = z.object({
+    description: z.string().min(2),
+})
+
 
 export const EnhancerTab = () => {
+
+    const form = useForm<z.infer<typeof schema>>({
+        resolver: zodResolver(schema),
+        defaultValues: {
+            description: ""
+        }
+    })
+
+    const onSubmit = (values: z.infer<typeof schema>) => {
+        try {
+            console.log(values)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
-        <Sheet >
+        <Sheet>
             <SheetTrigger asChild>
                 <Button
                     size="sm"
@@ -27,32 +54,12 @@ export const EnhancerTab = () => {
                     <span className="whitespace-nowrap">Enhancer</span>
                 </Button>
             </SheetTrigger>
-            <SheetContent >
-                <SheetHeader>
-                    <SheetTitle>Edit profile</SheetTitle>
-                    <SheetDescription>
-                        Make changes to your profile here. Click save when you're done.
-                    </SheetDescription>
-                </SheetHeader>
-                <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right">
-                            Name
-                        </Label>
-                        <Input id="name" value="Pedro Duarte" className="col-span-3" />
-                    </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                            Username
-                        </Label>
-                        <Input id="username" value="@peduarte" className="col-span-3" />
-                    </div>
-                </div>
-                <SheetFooter>
-                    <SheetClose asChild>
-                        <Button type="submit">Save changes</Button>
-                    </SheetClose>
-                </SheetFooter>
+            <SheetContent>
+                <Form {...form}>
+                    <form>
+                        
+                    </form>
+                </Form>
             </SheetContent>
         </Sheet>
     )
