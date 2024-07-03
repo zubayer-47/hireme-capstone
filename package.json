@@ -11,6 +11,7 @@
   "dependencies": {
     "@clerk/elements": "^0.9.1",
     "@clerk/nextjs": "^5.1.5",
+    "@google/generative-ai": "^0.14.1",
     "@hookform/resolvers": "^3.6.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-checkbox": "^1.1.0",
@@ -34,7 +35,6 @@
     "lucide-react": "^0.394.0",
     "next": "14.2.4",
     "next-themes": "^0.3.0",
-    "openai": "^4.52.3",
     "pdfjs": "^2.5.3",
     "pdfjs-dist": "^4.3.136",
     "react": "^18",

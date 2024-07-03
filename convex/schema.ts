@@ -45,9 +45,29 @@ export default defineSchema({
     results: defineTable({
         userId: v.id("users"),
         resumeId: v.id("resume"),
-        score: v.string(),
-        matchedKeywords: v.array(v.string()),
-        feedback: v.string()
+        score: v.optional(v.string()),
+        jobDescriptionSummary: v.object({
+            jobPosition: v.string(),
+            companyName: v.string(),
+            location: v.string(),
+            employmentType: v.union(v.literal("Full-Time"), v.literal("Part-Time"), v.literal("Hybrid")),
+            responsibilities: v.array(v.string()),
+            requiredSkills: v.array(v.string()),
+            preferredQualification: v.array(v.string()),
+            experienceLevel: v.string(),
+            educationalRequirements: v.string(),
+            salaryRange: v.string(),
+            benefits: v.array(v.string())
+        }),
+        extractedKeywords: v.object ({
+            highImportance: v.array(v.string()),
+            mediumImportance: v.array(v.string()),
+            lowImportance: v.array(v.string()),
+        }),
+        userFeedback: v.object({
+            missingKeywords: v.array(v.string()),
+            suggestions: v.array(v.string())
+        })
     }).index("by_user", ["userId"])
       .index("by_resumeId", ["resumeId"])
       .index("by_userId_resume_id", ["userId", "resumeId"])
