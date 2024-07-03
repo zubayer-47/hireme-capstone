@@ -20,6 +20,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
+import { useAction } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 const schema = z.object({
     description: z.string().min(2),
@@ -34,6 +36,8 @@ export const EnhancerTab = () => {
         "Paste Job Description",
         "View Results"
     ];
+
+    
 
     const nextStep = () => {
         if (formSteps.length === steps) return;
@@ -56,7 +60,7 @@ export const EnhancerTab = () => {
 
     const onSubmit = (values: z.infer<typeof schema>) => {
         try {
-            console.log(values)
+            
         } catch (error) {
             console.error(error)
         }

@@ -8,7 +8,7 @@ import {
     firstPrompt, 
     secondPrompt, 
     thirdPrompt, 
-    userResumePrompt 
+
 } from "./prompt";
 
 const llm = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
@@ -34,7 +34,7 @@ export const generateResults = action({
             ${secondPrompt}
 
             **User's Resume:**
-            ${userResumePrompt}
+            
 
             ${thirdPrompt}
         `
