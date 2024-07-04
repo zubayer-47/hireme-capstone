@@ -22,6 +22,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
 import { useAction } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { useGenerateResumePrompt } from "@/hooks/use-generate-resume-prompt";
+
 
 const schema = z.object({
     description: z.string().min(2),
@@ -36,6 +38,9 @@ export const EnhancerTab = () => {
         "Paste Job Description",
         "View Results"
     ];
+
+    const userResumePrompt = useGenerateResumePrompt();
+    const generateResults = useAction(api.gemini.generateResults);
 
     
 
@@ -58,9 +63,13 @@ export const EnhancerTab = () => {
         }
     })
 
-    const onSubmit = (values: z.infer<typeof schema>) => {
+    const onSubmit = async(values: z.infer<typeof schema>) => {
         try {
-            
+            const { description } = values;
+            await generateResults({
+                jobDescription: description, 
+                userResumePrompt
+            })
         } catch (error) {
             console.error(error)
         }

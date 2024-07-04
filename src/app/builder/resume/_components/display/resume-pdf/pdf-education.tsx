@@ -59,7 +59,7 @@ export const PDFEducation = ({
                             </View>
                         </View>
                         {showDescriptions && (
-                            <View style={{ ...styles.flexCol, marginTop: `-${spacing["4"]}` }}>
+                            <View style={{ ...styles.flexCol, marginTop: `${spacing["2"]}` }}>
                                 <ResumePDFBulletList items={customHTMLParser(descriptions || "")} />
                             </View>
                         )}

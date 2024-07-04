@@ -15,7 +15,7 @@ export const Feeds = () => {
                     New Feed
                 </Button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 space-y-4" >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 md:gap-4 lg:gap-8 " >
                 <CardFeed />
                 <CardFeed />
                 <CardFeed />

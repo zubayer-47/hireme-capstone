@@ -15,9 +15,13 @@ const llm = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 export const generateResults = action({
     args: {
-        jobDescription: v.string()
+        jobDescription: v.string(),
+        userResumePrompt: v.string(),
     },
-    handler: async (ctx, { jobDescription }) => {
+    handler: async (ctx, { 
+        jobDescription,
+        userResumePrompt 
+    }) => {
         const model = llm.getGenerativeModel({
             model: "gemini-1.5-flash", 
             generationConfig: {
@@ -34,7 +38,7 @@ export const generateResults = action({
             ${secondPrompt}
 
             **User's Resume:**
-            
+            ${userResumePrompt}
 
             ${thirdPrompt}
         `
@@ -42,6 +46,6 @@ export const generateResults = action({
         const output = await model.generateContent(prompt);
 
         const response = output.response;
-        console.log(response)
+        console.log(response.text())
     }
 })

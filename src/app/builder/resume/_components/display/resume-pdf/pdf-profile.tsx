@@ -33,14 +33,14 @@ export const PDFProfile = ({
             <ResumePDFText
                 bold={true}
                 themeColor={themeColor}
-                style={{ fontSize: "32pt", textAlign: "center" }}
+                style={{ fontSize: "12pt", textAlign: "center" }}
             >
                 {name}
             </ResumePDFText>
             <ResumePDFText
                 bold={true}
                 themeColor={FONT_COLOR}
-                style={{ fontSize: "16pt", textAlign: "center", marginTop: spacing["2"] }}
+                style={{ fontSize: "12pt", textAlign: "center", marginTop: spacing["2"] }}
             >
                 {role}
             </ResumePDFText>
@@ -93,12 +93,14 @@ export const PDFProfile = ({
                                 ...styles.flexRow,
                                 alignContent: "center",
                                 alignItems: "center",
-                                justifyContent: "center",
-                                gap: spacing["1"],
+                                justifyContent: "space-between",
+                                flexWrap: "wrap",
+                                
+                                gap: spacing["4"],
                             }}
                         >
-                            <ResumePDFIcon type={iconType} isPDF={isPDF} />
-                            <Wrapper>
+                            {/* <ResumePDFIcon type={iconType} isPDF={isPDF} /> */}
+                            <Wrapper >
                                 <ResumePDFText>{value}</ResumePDFText>
                             </Wrapper>
                         </View>
