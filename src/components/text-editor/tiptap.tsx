@@ -34,7 +34,7 @@ export const Tiptap = ({
             },
         },
         onUpdate: ({ editor }) => {
-            onChange(editor.getHTML())
+            onChange(editor.getHTML());
         },
         content: content
     })
@@ -49,7 +49,6 @@ export const Tiptap = ({
             <EditorContent 
                 editor={editor}
                 placeholder="Activate the bullet list button."
-                style={{ whiteSpace: "pre-line" }} 
             />
         </div>
     )
