@@ -49,15 +49,15 @@ export const ResumePDF = ({
                             themeColor={themeColor}
                             isPDF={isPDF!}
                         />
-                        <PDFProjects
-                            heading="PROJECTS"
-                            themeColor={themeColor}
-                            projects={projects}
-                        />
                         <PDFSkills
                             heading="SKILLS"
                             themeColor={themeColor}
                             skills={skills}
+                        />
+                        <PDFProjects
+                            heading="PROJECTS"
+                            themeColor={themeColor}
+                            projects={projects}
                         />
                         <PDFWorkExperience
                             heading="WORK EXPERIENCE"

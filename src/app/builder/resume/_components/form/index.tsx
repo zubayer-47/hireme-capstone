@@ -22,19 +22,20 @@ export const ResumeForm = () => {
             <article className="flex w-full flex-col gap-8 p-[var(--resume-padding)]">
                 <ProfileForm />
                 <CollapsibleForm
-                    formTitle="Projects"
-                    icon={FolderGit}
-                    addNewFormRef="projects"
-                >
-                    <ProjectForm />
-                </CollapsibleForm>
-                <CollapsibleForm
                     formTitle="Skills"
                     icon={Brain}
                     addNewFormRef="skills"
                 >
                     <SkillsForm />
                 </CollapsibleForm>
+                <CollapsibleForm
+                    formTitle="Projects"
+                    icon={FolderGit}
+                    addNewFormRef="projects"
+                >
+                    <ProjectForm />
+                </CollapsibleForm>
+                
                 <CollapsibleForm
                     formTitle="Work Experience"
                     icon={Briefcase}
