@@ -34,7 +34,7 @@ export const WorkExperienceForm = () => {
                             onChange={(e) => { setExperience(index, "title", e.target.value) }}
                         />
                     </hgroup>
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-2 gap-4">
                         <hgroup className="grid gap-2">
                             <DynamicInput
                                 id={`startDate-${index}`}

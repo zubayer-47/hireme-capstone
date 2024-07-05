@@ -31,6 +31,7 @@ export type Education = {
 export type Projects = {
     name: string;
     url: string;
+    role: string;
     date: string;
     industry: string;
     descriptions: string

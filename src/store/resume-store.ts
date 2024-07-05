@@ -22,6 +22,7 @@ export const defaultProfile: Profile = {
 export const defaultProjects: Projects = {
     name: "",
     url: "",
+    role: "",
     date: "",
     industry: "",
     descriptions: ""
