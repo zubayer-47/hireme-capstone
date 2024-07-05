@@ -41,16 +41,6 @@ export const ProfileForm = () => {
             </aside>
             <aside className="grid gap-2">
                 <DynamicInput
-                    id="location"
-                    type="text"
-                    labelName="Location"
-                    value={profile.location}
-                    placeholder="NY Street Downtown"
-                    onChange={(e) => { setProfile("location", e.target.value) }}
-                />
-            </aside>
-            <aside className="grid gap-2">
-                <DynamicInput
                     id="phone"
                     type="tel"
                     labelName="Phone Number"

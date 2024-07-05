@@ -33,23 +33,13 @@ export const ResumePDFSection = ({
                         fontWeight: "bold",
                         letterSpacing: "0.3pt",
                         fontSize: "12pt",
-                        paddingBottom: spacing["2"]
+                        paddingBottom: spacing["2"],
+                        color: themeColor
                     }}
                     debug={DEBUG_RESUME_PDF_FLAG}
                 >
                     {heading}
                 </Text>
-                {themeColor && (
-                    <View
-                        style={{
-                            height: "1.5pt",
-                            width: "100%",
-                            backgroundColor: themeColor,
-
-                        }}
-                        debug={DEBUG_RESUME_PDF_FLAG}
-                    />
-                )}
             </View>
             {children}
         </View>
