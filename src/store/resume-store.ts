@@ -14,7 +14,6 @@ export const defaultProfile: Profile = {
     role: "",
     email: "",
     phone: "",
-    location: "",
     linkedInUrl: "",
     githubUrl: "",
     objective: "",
@@ -23,6 +22,8 @@ export const defaultProfile: Profile = {
 export const defaultProjects: Projects = {
     name: "",
     url: "",
+    date: "",
+    industry: "",
     descriptions: ""
 }
 

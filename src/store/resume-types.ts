@@ -6,7 +6,6 @@ export type Profile = {
     role: string;
     email: string;
     phone: string;
-    location: string;
     linkedInUrl: string;
     githubUrl?: string;
     objective: string;
@@ -32,6 +31,8 @@ export type Education = {
 export type Projects = {
     name: string;
     url: string;
+    date: string;
+    industry: string;
     descriptions: string
 }
 
