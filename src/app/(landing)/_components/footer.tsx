@@ -42,7 +42,7 @@ export const Footer = () => {
                             </ul>
                         </nav>
                         <nav>
-                            <h3 className="text-neutral-200 text-sm">Products</h3>
+                            <h3 className="text-neutral-200 text-sm">Services</h3>
                             <ul role="list" className="mt-4 space-y-2">
                                 <li>
                                     <Link href="#_" className="text-sm text-gray-500 hover:text-gray-400">
