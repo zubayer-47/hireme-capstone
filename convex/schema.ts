@@ -19,12 +19,11 @@ export default defineSchema({
     resume: defineTable({
         userId: v.id("users"),
         documentName: v.string(),
+        skills: v.optional(Skills),
         profile: v.optional(Profile),
         projects: v.optional(Projects),
-        skills: v.optional(Skills),
-        workExperience: v.optional(WorkExperience),
         education: v.optional(Education),
-        score: v.optional(v.string()),
+        workExperience: v.optional(WorkExperience),
     }).index("by_userId", ["userId"]),
 
     // Update this to add the resume was used to apply for the application
@@ -47,17 +46,17 @@ export default defineSchema({
         resumeId: v.id("resume"),
         score: v.optional(v.string()),
         jobDescriptionSummary: v.object({
+            location: v.string(),
             jobPosition: v.string(),
             companyName: v.string(),
-            location: v.string(),
-            employmentType: v.union(v.literal("Full-Time"), v.literal("Part-Time"), v.literal("Hybrid")),
-            responsibilities: v.array(v.string()),
-            requiredSkills: v.array(v.string()),
-            preferredQualification: v.array(v.string()),
-            experienceLevel: v.string(),
-            educationalRequirements: v.string(),
             salaryRange: v.string(),
-            benefits: v.array(v.string())
+            experienceLevel: v.string(),
+            benefits: v.array(v.string()),
+            educationalRequirements: v.string(),
+            requiredSkills: v.array(v.string()),
+            responsibilities: v.array(v.string()),
+            preferredQualification: v.array(v.string()),
+            employmentType: v.union(v.literal("Full-Time"), v.literal("Part-Time"), v.literal("Hybrid")),
         }),
         extractedKeywords: v.object ({
             highImportance: v.array(v.string()),
