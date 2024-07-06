@@ -7,15 +7,17 @@ export const Profile = v.object({
     role: v.string(),
     email: v.string(),
     phone: v.string(),
-    location: v.string(),
     objective: v.string(),
-    githubUrl: v.string(),
     linkedInUrl: v.string(),
+    githubUrl: v.optional(v.string()),
 })
 
 export const Projects = v.object({
     url: v.string(),
     name: v.string(),
+    role: v.string(),
+    date: v.string(),
+    industry: v.string(),
     descriptions: v.string(),
 });
 
@@ -29,16 +31,16 @@ export const WorkExperience = v.object({
     company: v.string(),
     endDate: v.string(),
     startDate: v.string(),
+    location: v.string(),
     descriptions: v.string(),
 });
 
 export const Education = v.object({  
-    gpa: v.string(),
     school: v.string(),
     degree: v.string(),
+    location: v.string(),
     endDate: v.string(),
     startDate: v.string(),
-    descriptions: v.string()
 })
 
 /* -------------------------------------------------------------------------- */
