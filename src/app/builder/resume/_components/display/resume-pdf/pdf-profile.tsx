@@ -21,8 +21,8 @@ export const PDFProfile = ({
     themeColor,
 }: PDFProfileProps) => {
 
-    const { name, role, email, phone, location, linkedInUrl, githubUrl, objective } = profile;
-    const iconProps = { email, phone, location, linkedInUrl, githubUrl }
+    const { name, role, email, phone, linkedInUrl, githubUrl, objective } = profile;
+    const iconProps = { email, phone, linkedInUrl, githubUrl }
 
     return (
         <View style={{
@@ -44,7 +44,7 @@ export const PDFProfile = ({
             >
                 {name}
             </ResumePDFText>
-            <Text>|</Text>
+            {role && <Text>|</Text>}
             <ResumePDFText
                 bold={true}
                 themeColor={FONT_COLOR}

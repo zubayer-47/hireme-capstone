@@ -31,8 +31,7 @@ export const ResumePDFSection = ({
                 <Text
                     style={{
                         fontWeight: "bold",
-                        letterSpacing: "0.3pt",
-                        fontSize: "12pt",
+                        fontSize: "11pt",
                         paddingBottom: spacing["2"],
                         color: themeColor
                     }}
@@ -87,7 +86,7 @@ export const ResumePDFLink = ({
 }: ResumePDFLinkProps) => {
     if (isPDF) {
         return (
-            <Link src={src} style={{ textDecoration: "none" }} >
+            <Link src={src} style={{ fontWeight: "bold" }} >
                 {children}
             </Link>
         )
@@ -123,12 +122,9 @@ export const ResumePDFHeadingLink = ({
             target="_blank"
             rel="noreferrer"
             style={{
-                fontSize: "12pt",
+                fontSize: "11pt",
                 fontWeight: "bold",
                 color: themeColor,
-                letterSpacing: "0.3pt",
-                textDecoration: "none",
-                paddingBottom: spacing["2"]
             }}
         >
             {children}

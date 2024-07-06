@@ -34,6 +34,7 @@ export const WorkExperienceForm = () => {
                             onChange={(e) => { setExperience(index, "title", e.target.value) }}
                         />
                     </hgroup>
+
                     <div className="grid grid-cols-2 gap-4">
                         <hgroup className="grid gap-2">
                             <DynamicInput
@@ -56,6 +57,16 @@ export const WorkExperienceForm = () => {
                             />
                         </hgroup>
                     </div>
+                    <hgroup className="grid gap-2">
+                        <DynamicInput
+                            id={`location-${index}`}
+                            type="text"
+                            labelName="Job Location"
+                            value={experience.location}
+                            placeholder="Enter your job location..."
+                            onChange={(e) => { setExperience(index, "location", e.target.value) }}
+                        />
+                    </hgroup>
                     <hgroup className="grid gap-2">
                         <label htmlFor={`descriptions-${index}`} className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Job Descriptions</label>
                         <Tiptap content={experience.descriptions}  onChange={(newText: string) => setExperience(index, "descriptions", newText)} />

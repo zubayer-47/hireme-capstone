@@ -3,7 +3,7 @@ import {
     ResumePDFSection,
     ResumePDFBulletList,
 } from './common/resume-pdf-components';
-import { View } from "@react-pdf/renderer";
+import { View, Text } from "@react-pdf/renderer";
 import type { Experiences } from "@/store/resume-types";
 import { customHTMLParser } from '@/lib/custom-html-parser';
 import { styles, spacing } from "./resume-pdf-utils/resume-pdf-styles";
@@ -27,44 +27,44 @@ export const PDFWorkExperience = ({
                 company,
                 endDate,
                 startDate,
+                location,
                 descriptions,
             }, index) => (
                 <View
                     key={index}
                     style={{
-                        marginTop: spacing["2"],
+                        paddingBottom: spacing["1"],
                     }}
                 >
                     <View
                         style={{
-                            ...styles.flexRowBetween,
-                            marginTop: spacing["2"]
+                            ...styles.flexCol,
                         }}
                     >
                         <View style={{
                             ...styles.flexRow,
                             alignItems: "center",
-                            gap: spacing["2"]
+                            gap: spacing["2"],
+                            paddingBottom: spacing["1"]
                         }}>
+                            <ResumePDFText bold={true}>{title}</ResumePDFText>
+                            {company && <Text> | </Text>}
                             <ResumePDFText bold={true}>{company}</ResumePDFText>
-                            <ResumePDFText>
-                                {title ? "|" : ""}
-                            </ResumePDFText>
-                            <ResumePDFText>{title}</ResumePDFText>
                         </View>
                         <View style={{
                             ...styles.flexRow,
                             alignItems: "center",
-                            gap: spacing["2"]
+                            gap: spacing["2"],
+                            paddingBottom: spacing["2"]
                         }}>
                             <ResumePDFText>{startDate}</ResumePDFText>
-                            <ResumePDFText>
-                                {endDate ? "|" : ""}
-                            </ResumePDFText>
+                            {endDate && <Text> - </Text> }
                             <ResumePDFText>{endDate}</ResumePDFText>
+                            {location && <Text> | </Text> }
+                            <ResumePDFText>{location}</ResumePDFText>
                         </View>
                     </View>
-                    <View style={{ ...styles.flexCol, marginTop: `-${spacing["4"]}` }}>
+                    <View style={{ ...styles.flexCol }}>
                         <ResumePDFBulletList items={customHTMLParser(descriptions)} />
                     </View>
                 </View>

@@ -16,16 +16,16 @@ export type Experiences = {
     title: string;
     startDate: string;
     endDate: string;
+    location: string;
     descriptions: string;
 }
 
 export type Education = {
     school: string;
     degree: string;
-    gpa: string;
     startDate: string;
     endDate: string;
-    descriptions?: string
+    location: string;
 }
 
 export type Projects = {

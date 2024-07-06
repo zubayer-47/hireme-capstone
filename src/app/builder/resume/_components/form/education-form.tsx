@@ -34,16 +34,6 @@ export const EducationForm = () => {
                             onChange={(e) => { setEducation(index, "degree", e.target.value) }}
                         />
                     </hgroup>
-                    <hgroup className="grid gap-2">
-                        <DynamicInput
-                            id={`gpa-${index}`}
-                            type="number"
-                            labelName="GPA"
-                            value={education.gpa}
-                            placeholder="Enter your gpa..."
-                            onChange={(e) => { setEducation(index, "gpa", e.target.value) }}
-                        />
-                    </hgroup>
                     <div className="grid grid-cols-2 gap-4">
                         <hgroup className="grid gap-2">
                             <DynamicInput
@@ -66,12 +56,16 @@ export const EducationForm = () => {
                             />
                         </hgroup>
                     </div>
-
                     <hgroup className="grid gap-2">
-                        <label htmlFor={`descriptions-${index}`} className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Descriptions</label>
-                        <Tiptap content={education.descriptions || ""} onChange={(newText: string) => setEducation(index, "descriptions", newText)} />
-                    </hgroup>
-
+                            <DynamicInput
+                                id={`location-${index}`}
+                                type="text"
+                                labelName="Location"
+                                value={education.location}
+                                placeholder="New York, NY"
+                                onChange={(e) => { setEducation(index, "location", e.target.value) }}
+                            />
+                        </hgroup>
                     {educations.length > 1 && (
                         <Button className="w-full mt-4" variant="destructive" size="sm" onClick={() => deleteForm(index, "education")}>
                             Delete

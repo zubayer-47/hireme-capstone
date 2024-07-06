@@ -6,7 +6,8 @@ export const customHTMLParser = (node: string) => {
     const regex = /<ul class="([^"]+)">\s*<li><p>([^<]+)<\/p><\/li>\s*<\/ul>/g;
     const matches = Array.from(node.matchAll(regex));
     const textArray = matches.map(match => match[2]?.trim()).filter(Boolean);
-  
+    
+    console.log(textArray)
     return textArray;
   };
   

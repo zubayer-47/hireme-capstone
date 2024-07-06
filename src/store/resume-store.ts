@@ -38,16 +38,16 @@ export const defaultWork: Experiences = {
     title: "",
     startDate: "",
     endDate: "",
+    location: "",
     descriptions: "",
 }
 
 export const defaultEducation: Education = {
     school: "",
     degree: "",
-    gpa: "",
     startDate: "",
     endDate: "",
-    descriptions: ""
+    location: ""
 }
 
 export const defaultResume: Resume = {

@@ -8,7 +8,7 @@ import { DynamicInput } from "@/components/dynamic-input";
 
 export const ProjectForm = () => {
     const { projects, setProjects, deleteForm } = useResumeStore();
-
+    
     return (
         <Card>
             {projects.map((project, index) => (
@@ -41,10 +41,10 @@ export const ProjectForm = () => {
                             <hgroup className="grid gap-2">
                                 <DynamicInput
                                     id={`date-${index}`}
-                                    type="date"
+                                    type="text"
                                     labelName="Date Created"
                                     value={project.date}
-                                    placeholder="July 2024"
+                                    placeholder="Month Year"
                                     onChange={(e) => { setProjects(index, "date", e.target.value) }}
                                 />
                             </hgroup>
@@ -54,7 +54,7 @@ export const ProjectForm = () => {
                                     type="text"
                                     labelName="Industry"
                                     value={project.industry}
-                                    placeholder="Enter the industry you worked on this project..."
+                                    placeholder="Enter the industry you worked for this project..."
                                     onChange={(e) => { setProjects(index, "industry", e.target.value) }}
                                 />
                             </hgroup>

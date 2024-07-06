@@ -8,7 +8,7 @@ import { DynamicInput } from "@/components/dynamic-input";
 
 export const SkillsForm = () => {
     const { skills, setSkills, deleteForm } = useResumeStore();
-
+    console.log(skills[0].featuredSkills)
     return (
         <Card >
             {skills.map((skill, index) => (
