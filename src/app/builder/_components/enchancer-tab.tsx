@@ -4,31 +4,34 @@ import { z } from "zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAction } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { useGenerateResumePrompt } from "@/hooks/use-generate-resume-prompt";
+
+import { Sparkles } from "lucide-react";
+
+import { 
+    Form, 
+    FormItem,
+    FormField, 
+    FormControl, 
+    FormMessage 
+} from "@/components/ui/form";
 import {
     Sheet,
     SheetTitle,
-    SheetClose,
     SheetFooter,
     SheetHeader,
     SheetTrigger,
     SheetContent,
     SheetDescription,
 } from "@/components/ui/sheet";
-import { Sparkles } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
-import { useAction } from "convex/react";
-import { api } from "@/convex/_generated/api";
-import { useGenerateResumePrompt } from "@/hooks/use-generate-resume-prompt";
-
 
 const schema = z.object({
     description: z.string().min(2),
 })
-
 
 export const EnhancerTab = () => {
     const [steps, setSteps] = useState(1);

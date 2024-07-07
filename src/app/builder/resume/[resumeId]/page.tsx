@@ -5,14 +5,16 @@ import { Id } from "@/convex/_generated/dataModel";
 import { Resume } from "../_components/display";
 import { ResumeForm } from "../_components/form";
 import { DocumentHeader } from "../../_components/document-header";
-import { useQuery } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { LoadingSpinner } from "@/components/loading-spinner";
 
 export default function Home({ params }: { params: { resumeId: Id<"resume"> } }) {
   console.log(params.resumeId)
   const resume = useQuery(api.resume.getResume, { resumeId: params.resumeId });
+  
 
-  if (!resume) return <></>
+  if (!resume) return <LoadingSpinner />;
 
   return (
     <>
@@ -28,3 +30,4 @@ export default function Home({ params }: { params: { resumeId: Id<"resume"> } })
     </>
   );
 }
+

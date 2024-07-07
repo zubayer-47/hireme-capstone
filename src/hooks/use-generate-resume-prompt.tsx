@@ -17,7 +17,6 @@ export const useGenerateResumePrompt = () => {
         Role: ${profile.role},
         Email: ${profile.email},
         Phone: ${profile.phone},
-        Location: ${profile.location},
         LinkedInUrl: ${profile.linkedInUrl},
         githubUrl: ${profile.githubUrl},
         objective: ${profile.objective}
@@ -25,7 +24,9 @@ export const useGenerateResumePrompt = () => {
       PROJECTS: 
       ${projects.map((project) => (
         `Name: ${project.name}, 
-        Description: ${project.descriptions}`
+        Description: ${project.descriptions.map((desc) => (
+          `${desc}`
+        ))}`
     ))}
       ,
       SKILLS:
@@ -38,17 +39,20 @@ export const useGenerateResumePrompt = () => {
       ${experiences.map((exp) => (
         `Company: ${exp.company}, 
         Title: ${exp.title}, 
+        Location: ${exp.location},
         Dates: ${exp.startDate} - ${exp.endDate}, 
-        Description: ${exp.descriptions}`
+        Description: ${exp.descriptions.map((desc) => (
+          `${desc}`
+        ))}`
     ))}
       ,
       EDUCATION:
       ${education.map((edu) => (
         `School: ${edu.school}, 
         Degree: ${edu.degree}, 
-        GPA: ${edu.gpa}, 
+        Location: ${edu.location}, 
         Dates: ${edu.startDate} - ${edu.endDate}, 
-        Description: ${edu.descriptions}`
+        `
     ))}
       `;
 
