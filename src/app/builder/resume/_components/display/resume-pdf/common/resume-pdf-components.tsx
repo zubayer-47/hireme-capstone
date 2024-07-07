@@ -77,7 +77,10 @@ export const ResumePDFText = ({
 type ResumePDFLinkProps = {
     src: string;
     isPDF: boolean;
+    isBold?: boolean;
+    fontSize: string;
     themeColor?: string;
+    noTextDecoration?: boolean;
     children: React.ReactNode;
 }
 
@@ -85,18 +88,21 @@ export const ResumePDFLink = ({
     src,
     isPDF,
     children,
+    fontSize,
     themeColor,
+    isBold,
+    noTextDecoration
 }: ResumePDFLinkProps) => {
     if (isPDF) {
         return (
-            <Link 
-                src={src} 
-                style={{ 
-                    fontWeight: "bold",
-                    textDecoration: "none",
-                    fontSize: "10pt",
-                    color: themeColor ? themeColor : FONT_COLOR
-                }} 
+            <Link
+                src={src}
+                style={{
+                    fontWeight: isBold ? "bold" : "normal",
+                    fontSize: fontSize,
+                    color: themeColor ? themeColor : FONT_COLOR,
+                    textDecoration: noTextDecoration ? "none" : "underline"
+                }}
             >
                 {children}
             </Link>
@@ -108,10 +114,11 @@ export const ResumePDFLink = ({
             href={src}
             target="_blank"
             rel="noreferrer"
-            style={{ 
-                fontWeight: "bold",
-                fontSize: "10pt",
-                color: themeColor
+            style={{
+                fontWeight: isBold ? "bold" : "normal",
+                fontSize: fontSize,
+                color: themeColor ? themeColor : FONT_COLOR,
+                textDecoration: noTextDecoration ? "none" : "underline"
             }}
         >
             {children}
@@ -130,21 +137,21 @@ export const ResumePDFBulletList = ({
     return (
         <>
             {items && items.map((item, idx) => (
-                <View style={{ ...styles.flexCol, gap: spacing["2"]}} key={idx}>
-                <View style={{ ...styles.flexRow }} >
-                    <ResumePDFText
-                        style={{
-                            lineHeight: "1.3",
-                            paddingLeft: spacing["2"],
-                            paddingRight: spacing["2"],
-                        }}
-                    >
-                        {"•"}
-                    </ResumePDFText>
-                    <ResumePDFText style={{ lineHeight: "1.3", flexGrow: 1, flexBasis: 0 }}>
-                        {item || ""}
-                    </ResumePDFText>
-                </View>
+                <View style={{ ...styles.flexCol, gap: spacing["2"] }} key={idx}>
+                    <View style={{ ...styles.flexRow }} >
+                        <ResumePDFText
+                            style={{
+                                lineHeight: "1.3",
+                                paddingLeft: spacing["2"],
+                                paddingRight: spacing["2"],
+                            }}
+                        >
+                            {"•"}
+                        </ResumePDFText>
+                        <ResumePDFText style={{ lineHeight: "1.3", flexGrow: 1, flexBasis: 0 }}>
+                            {item || ""}
+                        </ResumePDFText>
+                    </View>
                 </View>
             ))}
         </>

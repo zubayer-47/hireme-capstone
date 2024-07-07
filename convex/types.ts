@@ -18,12 +18,12 @@ export const Projects = v.object({
     role: v.string(),
     date: v.string(),
     industry: v.string(),
-    descriptions: v.string(),
+    descriptions: v.array(v.string()),
 });
 
 export const Skills = v.object({
     heading: v.string(),
-    featuredSkills: v.string(),
+    featuredSkills: v.array(v.string()),
 });
 
 export const WorkExperience = v.object({
@@ -32,7 +32,7 @@ export const WorkExperience = v.object({
     endDate: v.string(),
     startDate: v.string(),
     location: v.string(),
-    descriptions: v.string(),
+    descriptions: v.array(v.string()),
 });
 
 export const Education = v.object({  

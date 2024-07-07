@@ -1,13 +1,12 @@
 import {
     ResumePDFText,
-    ResumePDFLink,
-    ResumePDFSection
+    ResumePDFSection,
+    ResumePDFLink
 } from "./common/resume-pdf-components";
-import { View, Text } from "@react-pdf/renderer";
+import { View, Text, } from "@react-pdf/renderer";
 import type { Profile } from "@/store/resume-types";
 import { FONT_COLOR } from "@/store/resume-default-style";
 import { styles, spacing } from './resume-pdf-utils/resume-pdf-styles';
-import { ResumePDFIcon, type IconType } from "./common/resume-pdf-icon";
 
 type PDFProfileProps = {
     isPDF: boolean;
@@ -22,7 +21,6 @@ export const PDFProfile = ({
 }: PDFProfileProps) => {
 
     const { name, role, email, phone, linkedInUrl, githubUrl, objective } = profile;
-    const srcLinks = { email, phone, linkedInUrl, githubUrl }
 
     return (
         <View style={{
@@ -59,22 +57,43 @@ export const PDFProfile = ({
                 }}
             >
                 <View style={{ ...styles.flexRow, alignItems: "center", gap: spacing["1"] }}>
-                        <ResumePDFLink src={`mailto:${email}`} isPDF={isPDF}>
-                            {email}
-                        </ResumePDFLink>
-                        {phone && <Text>|</Text>}
-                        <ResumePDFLink src={`tel:${phone}`} isPDF={isPDF}>
-                            {phone}
-                        </ResumePDFLink>
+                    <ResumePDFLink
+                        src={`mailto:${email}`}
+                        isPDF={isPDF}
+                        fontSize="9pt"
+                        noTextDecoration
+                    >
+                        {email}
+                    </ResumePDFLink>
+
+                    {phone && <Text>|</Text>}
+                    <ResumePDFLink
+                        src={`tel:${phone}`}
+                        isPDF={isPDF}
+                        fontSize="9pt"
+                        noTextDecoration
+                    >
+                        {phone}
+                    </ResumePDFLink>
                 </View>
                 <View style={{ ...styles.flexRow, alignItems: "center", gap: spacing["1"] }}>
-                        <ResumePDFLink src={linkedInUrl} isPDF={isPDF}>
-                            {linkedInUrl}
-                        </ResumePDFLink>
-                        {githubUrl && <Text>|</Text>}
-                        <ResumePDFLink src={githubUrl || ""} isPDF={isPDF}>
-                            {githubUrl || ""}
-                        </ResumePDFLink>
+                    <ResumePDFLink
+                        src={linkedInUrl}
+                        isPDF={isPDF}
+                        fontSize="9pt"
+                        noTextDecoration
+                    >
+                        {linkedInUrl}
+                    </ResumePDFLink>
+                    {githubUrl && <Text>|</Text>}
+                    {githubUrl && <ResumePDFLink
+                        src={githubUrl}
+                        isPDF={isPDF}
+                        fontSize="9pt"
+                        noTextDecoration
+                    >
+                        {githubUrl}
+                    </ResumePDFLink>}
                 </View>
             </View>
 

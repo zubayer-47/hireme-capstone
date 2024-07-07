@@ -19,11 +19,11 @@ export default defineSchema({
     resume: defineTable({
         userId: v.id("users"),
         documentName: v.string(),
-        skills: v.optional(Skills),
+        skills: v.optional(v.array(Skills)),
         profile: v.optional(Profile),
-        projects: v.optional(Projects),
-        education: v.optional(Education),
-        workExperience: v.optional(WorkExperience),
+        projects: v.optional(v.array(Projects)),
+        education: v.optional(v.array(Education)),
+        workExperience: v.optional(v.array(WorkExperience)),
     }).index("by_userId", ["userId"]),
 
     // Update this to add the resume was used to apply for the application

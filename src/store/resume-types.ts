@@ -29,8 +29,8 @@ export type Education = {
 }
 
 export type Projects = {
-    name: string;
     url: string;
+    name: string;
     role: string;
     date: string;
     industry: string;

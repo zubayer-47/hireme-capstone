@@ -40,7 +40,16 @@ export const PDFProjects = ({
                     }}>
                         <ResumePDFText bold={true}>{role}</ResumePDFText>
                         {role && <Text >|</Text>}
-                        <ResumePDFLink src={url} isPDF={isPDF} themeColor={themeColor}>{name}</ResumePDFLink>
+                        <ResumePDFLink 
+                            src={url} 
+                            isPDF={isPDF} 
+                            fontSize="10pt"
+                            isBold
+                            themeColor={themeColor}
+                            noTextDecoration={false}
+                            >
+                                {name}
+                        </ResumePDFLink>
                     </View>
                     
                     <View style={{

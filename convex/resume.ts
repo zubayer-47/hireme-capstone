@@ -86,10 +86,10 @@ export const updateResumeFields = mutation({
     args: {
         resumeId: v.id("resume"),
         profile: v.optional(Profile),
-        projects: v.optional(Projects),
-        skills: v.optional(Skills),
-        workExperience: v.optional(WorkExperience),
-        education: v.optional(Education),
+        projects: v.optional(v.array(Projects)),
+        skills: v.optional(v.array(Skills)),
+        workExperience: v.optional(v.array(WorkExperience)),
+        education: v.optional(v.array(Education)),
     }, handler: async (ctx, {
         resumeId,
         profile,

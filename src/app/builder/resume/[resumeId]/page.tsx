@@ -18,7 +18,7 @@ export default function Home({ params }: { params: { resumeId: Id<"resume"> } })
 
   return (
     <>
-      <DocumentHeader documentName={resume.documentName} />
+      <DocumentHeader documentName={resume.documentName} resumeId={params.resumeId} />
       <section className="grid grid-cols-3 md:grid-cols-6">
         <article className="col-span-3">
           <ResumeForm />

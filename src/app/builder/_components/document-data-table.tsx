@@ -72,9 +72,9 @@ export function DocumentDataTable<TData, TValue>({
             <div className="flex items-center py-4">
                 <Input
                     placeholder="Search document..."
-                    value={(table.getColumn("company")?.getFilterValue() as string) ?? ""}
+                    value={(table.getColumn("documentName")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
-                        table.getColumn("company")?.setFilterValue(event.target.value)
+                        table.getColumn("documentName")?.setFilterValue(event.target.value)
                     }
                     className="max-w-sm dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 pl-8 shadow-none md:w-2/3 lg:w-1/3 border-black/[0.2]"
                 />
