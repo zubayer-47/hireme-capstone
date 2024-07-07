@@ -3,7 +3,6 @@
 import { Card } from "@/components/card";
 import { Button } from "@/components/ui/button";
 import { useResumeStore } from "@/store/resume-store"
-import { Tiptap } from "@/components/text-editor/tiptap";
 import { DynamicInput } from "@/components/dynamic-input";
 import { BulletListTextarea } from "@/components/bullet-list-textarea";
 
