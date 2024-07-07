@@ -124,42 +124,42 @@ Job hunting can be one of the most stressful experiences, especially for recent 
 #### Landing Page
 
 - **Header & Hero**
-  ![Header & Hero](header-hero.png)
+  ![Header & Hero](./public/markdown-images/header-hero.png)
 
 - **Features**
-  ![Features](features.png)
+  ![Features](./public/markdown-images/features.png)
 
 - **Call to Action (CTA)**
-  ![CTA](cta.png)
+  ![CTA](./public/markdown-images/cta.png)
 
 - **Footer**
-  ![Footer](footer.png)
+  ![Footer](./public/markdown-images/footer.png)
 
 #### Feeds Page
 
-![Feeds](feeds.png)
+![Feeds](./public/markdown-images/feeds.png)
 
 #### Builder Page
 
 - **Builder Main Page**
-  ![Builder](builder.png)
+  ![Builder](./public/markdown-images/builder.png)
 
 - **Resume Builder Main Page**
-  ![Resume Builder](resume-builder.png)
+  ![Resume Builder](./public/markdown-images/resume-builder.png)
 
 - **Enhance Tab**
-  ![Enhance Tab](enhance-tab.png)
+  ![Enhance Tab](./public/markdown-images/enhance-tab.png)
 
 - **Stepper Form**
-  ![Stepper Form](stepper-form.png)
+  ![Stepper Form](./public/markdown-images/stepper-form.png)
 
 #### Job Tracker Page
 
-![Tracker](tracker.png)
+![Tracker](./public/markdown-images/tracker.png)
 
 ### Data Schema
 
-![Schema Diagram](schema-diagram.png)
+![Schema Diagram](./public/markdown-images/schema-diagram.png)
 
 ### Server HTTP Methods Functions
 
