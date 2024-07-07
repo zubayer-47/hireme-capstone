@@ -13,13 +13,13 @@ import { useResumeStore } from '@/store/resume-store';
 import { FlexboxSpacer } from '@/components/flexbox-spacer';
 import { defaultSettings } from '@/store/resume-default-style';
 import { DEBUG_RESUME_PDF_FLAG } from '@/lib/resume-dimensions';
+import { Doc } from '@/convex/_generated/dataModel';
 
-export const Resume = () => {
+export const Resume = ({ resumeDetails } : { resumeDetails: Doc<"resume"> }) => {
     const [scale, setScale] = useState(0.8);
     const resume = useResumeStore();
-
     const document = useMemo(() => 
-        <ResumePDF resume={resume} settings={defaultSettings} isPDF={true} />
+        <ResumePDF resumeDetails={resumeDetails} resume={resume} settings={defaultSettings} isPDF={true} />
     , [resume, defaultSettings]);
     
     useLoadFonts();
@@ -38,6 +38,7 @@ export const Resume = () => {
                         >
                             <ResumePDF
                                 resume={resume}
+                                resumeDetails={resumeDetails}
                                 settings={defaultSettings}
                                 isPDF={DEBUG_RESUME_PDF_FLAG}
                             />

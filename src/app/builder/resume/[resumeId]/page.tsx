@@ -24,7 +24,7 @@ export default function Home({ params }: { params: { resumeId: Id<"resume"> } })
           <ResumeForm resume={resume} />
         </article>
         <article className="col-span-3">
-          <Resume />
+          <Resume resumeDetails={resume} />
         </article>
       </section>
     </>

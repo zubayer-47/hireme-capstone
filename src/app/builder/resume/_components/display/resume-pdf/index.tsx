@@ -10,17 +10,20 @@ import { FONT_COLOR } from "@/store/resume-default-style";
 import { Page, View, Document } from "@react-pdf/renderer";
 import { SuppressWarnings } from "./common/supress-warnings";
 import { styles, spacing } from './resume-pdf-utils/resume-pdf-styles';
+import { Doc } from "@/convex/_generated/dataModel";
 
 type ResumePDFProps = {
     resume: Resume;
     isPDF?: boolean;
     settings: Settings;
+    resumeDetails: Doc<"resume">
 }
 
 export const ResumePDF = ({
     resume,
     settings,
-    isPDF
+    isPDF,
+    resumeDetails
 }: ResumePDFProps) => {
     const { profile, projects, skills, experiences, education } = resume;
     const { themeColor: appColor, documentSize, fontFamily, fontSize } = settings;
@@ -45,30 +48,30 @@ export const ResumePDF = ({
                         }}
                     >
                         <PDFProfile
-                            profile={profile}
+                            profile={resumeDetails.profile ?? profile}
                             themeColor={themeColor}
                             isPDF={isPDF!}
                         />
                         <PDFSkills
                             heading="SKILLS"
                             themeColor={themeColor}
-                            skills={skills}
+                            skills={resumeDetails.skills ?? skills}
                         />
                         <PDFProjects
                             heading="PROJECTS"
                             themeColor={themeColor}
-                            projects={projects}
+                            projects={resumeDetails.projects ??projects}
                             isPDF={isPDF!}
                         />
                         <PDFWorkExperience
                             heading="WORK EXPERIENCE"
                             themeColor={themeColor}
-                            experiences={experiences}
+                            experiences={resumeDetails.workExperience ??experiences}
                         />
                         <PDFEducation
                             heading="EDUCATION"
                             themeColor={themeColor}
-                            educations={education}
+                            educations={resumeDetails.education ??education}
                         />
                     </View>
                 </Page>
