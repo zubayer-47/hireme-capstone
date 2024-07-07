@@ -25,7 +25,7 @@ export const defaultProjects: Projects = {
     role: "",
     date: "",
     industry: "",
-    descriptions: ""
+    descriptions: [""]
 }
 
 export const defaultSkills: Skills = {

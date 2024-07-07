@@ -5,9 +5,14 @@ import { Button } from "@/components/ui/button";
 import { useResumeStore } from "@/store/resume-store"
 import { Tiptap } from "@/components/text-editor/tiptap";
 import { DynamicInput } from "@/components/dynamic-input";
+import { BulletListTextarea } from "@/components/bullet-list-textarea";
 
 export const ProjectForm = () => {
     const { projects, setProjects, deleteForm } = useResumeStore();
+
+    const handleDescriptionsUpdate = (index: number, newDescriptions: string[]) => {
+        setProjects(index, 'descriptions', newDescriptions);
+      };
     
     return (
         <Card>
@@ -71,7 +76,11 @@ export const ProjectForm = () => {
                             </hgroup>
                         <hgroup className="grid gap-2">
                             <label htmlFor={`descriptions-${index}`} className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Descriptions</label>
-                            <Tiptap content={project.descriptions} onChange={(newText: string) => setProjects(index, "descriptions", newText)} />
+                            {/* <Tiptap content={project.descriptions} onChange={(newText: string) => setProjects(index, "descriptions", newText)} /> */}
+                            <BulletListTextarea 
+                                descriptions={project.descriptions}
+                                onUpdate={(newDescriptions) => handleDescriptionsUpdate(index, newDescriptions)}
+                            />
                         </hgroup>
                     </div>
                     {projects.length > 1 && (

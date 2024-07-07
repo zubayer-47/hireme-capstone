@@ -34,7 +34,7 @@ export type Projects = {
     role: string;
     date: string;
     industry: string;
-    descriptions: string
+    descriptions: string[]
 }
 
 export type Skills = {

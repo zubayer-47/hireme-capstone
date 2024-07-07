@@ -55,7 +55,7 @@ export const PDFProjects = ({
                         style={{
                             ...styles.flexCol,
                         }}>
-                        <ResumePDFBulletList items={customHTMLParser(descriptions)} />
+                        <ResumePDFBulletList items={descriptions} />
                     </View>
                 </View>
             ))}
