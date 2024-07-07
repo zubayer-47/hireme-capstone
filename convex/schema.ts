@@ -44,7 +44,6 @@ export default defineSchema({
     results: defineTable({
         userId: v.id("users"),
         resumeId: v.id("resume"),
-        score: v.optional(v.string()),
         jobDescriptionSummary: v.object({
             location: v.string(),
             jobPosition: v.string(),

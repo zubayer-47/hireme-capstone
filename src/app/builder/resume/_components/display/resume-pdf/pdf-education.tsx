@@ -28,7 +28,6 @@ export const PDFEducation = ({
                 startDate,
                 location,
             }, index) => {
-
                 return (
                     <View key={index} style={{ paddingBottom: spacing["1"]}}>
                         <View style={{

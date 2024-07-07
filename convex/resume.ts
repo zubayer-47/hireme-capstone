@@ -49,6 +49,23 @@ export const readDocuments = query({
     }
 })
 
+export const getResume = query({
+    args: { resumeId: v.id("resume") },
+    handler: async (ctx, {resumeId}) => {
+        const hasAccess = await userIdentity(ctx);
+
+        if (!hasAccess) throw new ConvexError("Unauthorized!");
+
+        const existingResume = await ctx.db.get(resumeId);
+
+        if (!existingResume || existingResume.userId !== hasAccess._id) {
+            throw new ConvexError("Resume not found or not authorized to access the file.")
+        }
+
+        return existingResume;
+    }
+})
+
 export const createDocument = mutation({
     args: { documentName: v.string() },
     handler: async (ctx, {
@@ -67,14 +84,14 @@ export const createDocument = mutation({
 
 export const updateResumeFields = mutation({
     args: {
-        documentId: v.id("resume"),
+        resumeId: v.id("resume"),
         profile: v.optional(Profile),
         projects: v.optional(Projects),
         skills: v.optional(Skills),
         workExperience: v.optional(WorkExperience),
         education: v.optional(Education),
     }, handler: async (ctx, {
-        documentId,
+        resumeId,
         profile,
         projects,
         skills,
@@ -85,7 +102,7 @@ export const updateResumeFields = mutation({
 
         if (!hasAccess) throw new ConvexError("Unauthorized!");
 
-        const existingResume = await ctx.db.get(documentId);
+        const existingResume = await ctx.db.get(resumeId);
 
         if (!existingResume || existingResume.userId !== hasAccess._id) {
             throw new ConvexError("Resume not found or not authorized to access the file.")
@@ -102,13 +119,13 @@ export const updateResumeFields = mutation({
 });
 
 export const deleteDocument = mutation({
-    args: { documentId: v.id("resume") }, 
-    handler: async (ctx, { documentId }) => {
+    args: { resumeId: v.id("resume") }, 
+    handler: async (ctx, { resumeId }) => {
         const hasAccess = await userIdentity(ctx);
 
         if (!hasAccess) throw new ConvexError("Unauthorized!");
 
-        const existingResume = await ctx.db.get(documentId);
+        const existingResume = await ctx.db.get(resumeId);
 
         if (!existingResume || existingResume.userId !== hasAccess._id) {
             throw new ConvexError("Resume not found or not authorized to access the file.")

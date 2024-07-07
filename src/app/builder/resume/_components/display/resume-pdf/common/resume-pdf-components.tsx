@@ -130,8 +130,8 @@ export const ResumePDFBulletList = ({
     return (
         <>
             {items && items.map((item, idx) => (
-                <View style={{ ...styles.flexCol, gap: spacing["2"]}}>
-                <View style={{ ...styles.flexRow }} key={idx}>
+                <View style={{ ...styles.flexCol, gap: spacing["2"]}} key={idx}>
+                <View style={{ ...styles.flexRow }} >
                     <ResumePDFText
                         style={{
                             lineHeight: "1.3",

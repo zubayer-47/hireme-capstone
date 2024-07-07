@@ -42,7 +42,6 @@ export const getResults = query({
 export const saveResults = internalMutation({
     args: {
         resumeId: v.id("resume"),
-        score: v.optional(v.string()),
         jobDescriptionSummary: v.object({
             jobPosition: v.string(),
             companyName: v.string(),
