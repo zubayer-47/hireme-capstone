@@ -6,8 +6,21 @@ import { useResumeStore } from "@/store/resume-store"
 import { DynamicInput } from "@/components/dynamic-input";
 import { BulletListTextarea } from "@/components/bullet-list-textarea";
 
-export const WorkExperienceForm = () => {
+type WorkExperienceFormProps = {
+    resumeWorkExperience?: {
+        descriptions: string[];
+        location: string;
+        endDate: string;
+        startDate: string;
+        title: string;
+        company: string;
+    }[] | undefined
+}
+
+export const WorkExperienceForm = ({ resumeWorkExperience } : WorkExperienceFormProps) => {
     const { experiences, setExperience, deleteForm } = useResumeStore();
+
+    const combineWorkExperience = resumeWorkExperience && resumeWorkExperience.length > 0 ? resumeWorkExperience : experiences;
 
     const handleDescriptionsUpdate = (index: number, newDescriptions: string[]) => {
         setExperience(index, 'descriptions', newDescriptions);
@@ -15,7 +28,7 @@ export const WorkExperienceForm = () => {
 
     return (
         <Card>
-            {experiences.map((experience, index) => (
+            {combineWorkExperience.map((experience, index) => (
                 <div className="space-y-4" key={index}>
                     <hgroup className="grid gap-2">
                         <DynamicInput

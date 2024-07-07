@@ -42,7 +42,7 @@ export const ResumeForm = ({ resume }: { resume: Doc<"resume">}) => {
                     icon={Briefcase}
                     addNewFormRef="experience"
                 >
-                    <WorkExperienceForm   />
+                    <WorkExperienceForm resumeWorkExperience={resume.workExperience}  />
                 </CollapsibleForm>
                 <CollapsibleForm
                     formTitle="Education"
