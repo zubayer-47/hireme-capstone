@@ -21,13 +21,13 @@ export const ResumeForm = ({ resume }: { resume: Doc<"resume">}) => {
     return (
         <section className="flex justify-center scrollbar scrollbar-track-zinc-300 scrollbar-w-3 h-full md:justify-end md:overflow-y-scroll">
             <article className="flex w-full flex-col gap-8 p-[var(--resume-padding)]">
-                <ProfileForm userProfile={resume.profile} />
+                <ProfileForm resumeProfile={resume.profile} />
                 <CollapsibleForm
                     formTitle="Skills"
                     icon={Brain}
                     addNewFormRef="skills"
                 >
-                    <SkillsForm  />
+                    <SkillsForm resumeSkills={resume.skills} />
                 </CollapsibleForm>
                 <CollapsibleForm
                     formTitle="Projects"

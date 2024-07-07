@@ -5,7 +5,7 @@ import { useResumeStore } from "@/store/resume-store";
 import { DynamicInput } from "@/components/dynamic-input";
 
 type ProfileFormProps = {
-    userProfile?: {
+    resumeProfile?: {
         githubUrl?: string | undefined;
         name: string;
         role: string;
@@ -16,7 +16,7 @@ type ProfileFormProps = {
     } | undefined
 }
 
-export const ProfileForm = ({ userProfile } : ProfileFormProps) => {
+export const ProfileForm = ({ resumeProfile } : ProfileFormProps) => {
     const { profile, setProfile } = useResumeStore();
 
     return (
@@ -26,7 +26,7 @@ export const ProfileForm = ({ userProfile } : ProfileFormProps) => {
                     id="name"
                     type="text"
                     labelName="Full Name"
-                    value={userProfile?.name ?? profile.name}
+                    value={resumeProfile?.name ?? profile.name}
                     placeholder="Steve Jobs"
                     onChange={(e) => { setProfile("name", e.target.value) }}
                 />
@@ -36,7 +36,7 @@ export const ProfileForm = ({ userProfile } : ProfileFormProps) => {
                     id="role"
                     type="text"
                     labelName="Role"
-                    value={userProfile?.role ?? profile.role}
+                    value={resumeProfile?.role ?? profile.role}
                     placeholder="The role you are applying for?"
                     onChange={(e) => { setProfile("role", e.target.value) }}
                 />
@@ -46,7 +46,7 @@ export const ProfileForm = ({ userProfile } : ProfileFormProps) => {
                     id="email"
                     type="email"
                     labelName="Email"
-                    value={userProfile?.email ??profile.email}
+                    value={resumeProfile?.email ??profile.email}
                     placeholder="steve.jobs@apple.com"
                     onChange={(e) => { setProfile("email", e.target.value) }}
                 />
@@ -56,7 +56,7 @@ export const ProfileForm = ({ userProfile } : ProfileFormProps) => {
                     id="phone"
                     type="tel"
                     labelName="Phone Number"
-                    value={userProfile?.phone ??profile.phone}
+                    value={resumeProfile?.phone ??profile.phone}
                     placeholder="+1 234 567 890"
                     onChange={(e) => { setProfile("phone", e.target.value) }}
                 />
@@ -67,7 +67,7 @@ export const ProfileForm = ({ userProfile } : ProfileFormProps) => {
                         id="linkedInUrl"
                         type="url"
                         labelName="LinkedIn URL"
-                        value={userProfile?.linkedInUrl ??profile.linkedInUrl}
+                        value={resumeProfile?.linkedInUrl ??profile.linkedInUrl}
                         placeholder="www.linkedin.com/in/username"
                         onChange={(e) => { setProfile("linkedInUrl", e.target.value) }}
                     />
@@ -77,7 +77,7 @@ export const ProfileForm = ({ userProfile } : ProfileFormProps) => {
                         id="githubUrl"
                         type="url"
                         labelName="Github URL"
-                        value={userProfile?.githubUrl ?? profile.githubUrl ?? ""}
+                        value={resumeProfile?.githubUrl ?? profile.githubUrl ?? ""}
                         placeholder="www.github.com/username"
                         onChange={(e) => { setProfile("githubUrl", e.target.value) }}
                     />
@@ -88,7 +88,7 @@ export const ProfileForm = ({ userProfile } : ProfileFormProps) => {
                 <textarea
                     required
                     id="objective"
-                    value={userProfile?.objective ??profile.objective}
+                    value={resumeProfile?.objective ??profile.objective}
                     placeholder="Tell who you are under 2-3 sentences..."
                     onChange={(e) => setProfile("objective", e.target.value)}
                     className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
