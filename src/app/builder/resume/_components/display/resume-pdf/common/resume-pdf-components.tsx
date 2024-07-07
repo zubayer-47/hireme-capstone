@@ -23,7 +23,7 @@ export const ResumePDFSection = ({
             style={{
                 ...styles.flexCol,
                 gap: spacing["2"],
-                marginTop: spacing["5"],
+                marginTop: spacing["1.5"],
                 ...style,
             }}
         >
@@ -31,8 +31,7 @@ export const ResumePDFSection = ({
                 <Text
                     style={{
                         fontWeight: "bold",
-                        fontSize: "11pt",
-                        paddingBottom: spacing["2"],
+                        fontSize: "10pt",
                         color: themeColor
                     }}
                     debug={DEBUG_RESUME_PDF_FLAG}
@@ -64,7 +63,9 @@ export const ResumePDFText = ({
             style={{
                 color: themeColor || FONT_COLOR,
                 fontWeight: bold ? "bold" : "normal",
+                fontSize: "10pt",
                 ...style,
+
             }}
             debug={DEBUG_RESUME_PDF_FLAG}
         >
@@ -76,17 +77,27 @@ export const ResumePDFText = ({
 type ResumePDFLinkProps = {
     src: string;
     isPDF: boolean;
+    themeColor?: string;
     children: React.ReactNode;
 }
 
 export const ResumePDFLink = ({
     src,
     isPDF,
-    children
+    children,
+    themeColor,
 }: ResumePDFLinkProps) => {
     if (isPDF) {
         return (
-            <Link src={src} style={{ fontWeight: "bold" }} >
+            <Link 
+                src={src} 
+                style={{ 
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                    fontSize: "10pt",
+                    color: themeColor ? themeColor : FONT_COLOR
+                }} 
+            >
                 {children}
             </Link>
         )
@@ -97,41 +108,17 @@ export const ResumePDFLink = ({
             href={src}
             target="_blank"
             rel="noreferrer"
-            style={{ textDecoration: "none" }}
-        >
-            {children}
-        </a>
-    )
-}
-
-
-type ResumePDFHeadingLinkProps = {
-    src: string;
-    themeColor: string;
-    children: React.ReactNode;
-}
-
-export const ResumePDFHeadingLink = ({
-    src,
-    children,
-    themeColor,
-}: ResumePDFHeadingLinkProps) => {
-    return (
-        <a
-            href={src}
-            target="_blank"
-            rel="noreferrer"
-            style={{
-                fontSize: "11pt",
+            style={{ 
                 fontWeight: "bold",
-                color: themeColor,
+                fontSize: "10pt",
+                color: themeColor
             }}
         >
             {children}
         </a>
     )
-
 }
+
 
 type ResumePDFBulletList = {
     items: string[];

@@ -22,133 +22,63 @@ export const PDFProfile = ({
 }: PDFProfileProps) => {
 
     const { name, role, email, phone, linkedInUrl, githubUrl, objective } = profile;
-    const iconProps = { email, phone, linkedInUrl, githubUrl }
+    const srcLinks = { email, phone, linkedInUrl, githubUrl }
 
     return (
         <View style={{
             ...styles.flexCol,
-            gap: spacing["2"],
-            marginTop: spacing["5"],
+            gap: spacing["1"],
         }} >
             <View
                 style={{
                     ...styles.flexRow,
-                    alignItems: "flex-end",
-                    gap: spacing["2"]
+                    alignItems: "center",
+                    gap: spacing["1"]
                 }}
             >
-            <ResumePDFText
-                bold={true}
-                themeColor={themeColor}
-                style={{ fontSize: "12pt" }}
-            >
-                {name}
-            </ResumePDFText>
-            {role && <Text>|</Text>}
-            <ResumePDFText
-                bold={true}
-                themeColor={FONT_COLOR}
-                style={{ fontSize: "11pt" }}
-            >
-                {role}
-            </ResumePDFText>
+                <ResumePDFText
+                    bold={true}
+                    themeColor={themeColor}
+                    style={{ fontSize: "12pt" }}
+                >
+                    {name}
+                </ResumePDFText>
+                {role && <Text>|</Text>}
+                <ResumePDFText
+                    bold={true}
+                    themeColor={FONT_COLOR}
+                    style={{ fontSize: "11pt" }}
+                >
+                    {role}
+                </ResumePDFText>
             </View>
             <View
-    style={{
-        ...styles.flexRowBetween,
-        flexWrap: "wrap",
-        marginTop: spacing["0.5"],
-    }}
->
-    <View style={{ ...styles.flexRow, flexWrap: "wrap", gap: spacing["4"] }}>
-        {Object.entries(iconProps)
-            .filter(([key]) => ["email", "phone"].includes(key))
-            .map(([key, value]) => {
-                if (!value) return null;
-
-                let iconType = key as IconType;
-                const links = ["email", "phone"].includes(key);
-
-                const Wrapper = ({ children }: { children: React.ReactNode }) => {
-                    if (!links) return <>{children}</>;
-
-                    let src = "";
-                    switch (key) {
-                        case "email": {
-                            src = `mailto:${value}`;
-                            break;
-                        }
-                        case "phone": {
-                            src = `tel:${value.replace(/[^\d+]/g, "")}`;
-                            break;
-                        }
-                    }
-
-                    return (
-                        <ResumePDFLink src={src} isPDF={isPDF}>
-                            {children}
+                style={{
+                    ...styles.flexCol,
+                    marginTop: spacing["0.5"],
+                }}
+            >
+                <View style={{ ...styles.flexRow, alignItems: "center", gap: spacing["1"] }}>
+                        <ResumePDFLink src={`mailto:${email}`} isPDF={isPDF}>
+                            {email}
                         </ResumePDFLink>
-                    );
-                };
-
-                return (
-                    <View
-                        key={key}
-                        style={{
-                            ...styles.flexRow,
-                            alignContent: "center",
-                            alignItems: "center",
-                            gap: spacing["4"],
-                        }}
-                    >
-                        <Wrapper>
-                            <ResumePDFText>{value}</ResumePDFText>
-                        </Wrapper>
-                    </View>
-                );
-            })}
-    </View>
-    <View style={{ ...styles.flexRow, flexWrap: "wrap", gap: spacing["4"] }}>
-        {Object.entries(iconProps)
-            .filter(([key]) => ["linkedInUrl", "githubUrl", "url"].includes(key))
-            .map(([key, value]) => {
-                if (!value) return null;
-
-                let iconType = key as IconType;
-                const links = ["linkedInUrl", "githubUrl", "url"].includes(key);
-
-                const Wrapper = ({ children }: { children: React.ReactNode }) => {
-                    if (!links) return <>{children}</>;
-
-                    let src = value.startsWith("http") ? value : `https://${value}`;
-
-                    return (
-                        <ResumePDFLink src={src} isPDF={isPDF}>
-                            {children}
+                        {phone && <Text>|</Text>}
+                        <ResumePDFLink src={`tel:${phone}`} isPDF={isPDF}>
+                            {phone}
                         </ResumePDFLink>
-                    );
-                };
+                </View>
+                <View style={{ ...styles.flexRow, alignItems: "center", gap: spacing["1"] }}>
+                        <ResumePDFLink src={linkedInUrl} isPDF={isPDF}>
+                            {linkedInUrl}
+                        </ResumePDFLink>
+                        {githubUrl && <Text>|</Text>}
+                        <ResumePDFLink src={githubUrl || ""} isPDF={isPDF}>
+                            {githubUrl || ""}
+                        </ResumePDFLink>
+                </View>
+            </View>
 
-                return (
-                    <View
-                        key={key}
-                        style={{
-                            ...styles.flexRow,
-                            alignContent: "center",
-                            alignItems: "center",
-                            gap: spacing["4"],
-                        }}
-                    >
-                        <Wrapper>
-                            <ResumePDFText>{value}</ResumePDFText>
-                        </Wrapper>
-                    </View>
-                );
-            })}
-    </View>
-</View>
-
-            <ResumePDFSection heading="PROFILE" style={{ marginTop: spacing["4"] }} themeColor={themeColor}>
+            <ResumePDFSection heading="PROFILE" style={{ marginTop: spacing["1.5"], paddingBottom: spacing["0.5"] }} themeColor={themeColor}>
                 <ResumePDFText>{objective}</ResumePDFText>
             </ResumePDFSection>
         </View>

@@ -25,8 +25,9 @@ export const generateResults = action({
         const model = llm.getGenerativeModel({
             model: "gemini-1.5-flash", 
             generationConfig: {
-                temperature: 0
-            }
+                temperature: 0,
+                responseMimeType: "applicaton/json"
+            },
         });
 
         const prompt = `

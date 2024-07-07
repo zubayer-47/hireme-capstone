@@ -33,7 +33,7 @@ export const PDFEducation = ({
                     <View key={index} style={{ paddingBottom: spacing["1"]}}>
                         <View style={{
                             ...styles.flexRow,
-                            gap: spacing["2"]
+                            gap: spacing["1"]
                         }}>
                         <ResumePDFText bold={true}>{school}</ResumePDFText>
                         {degree && <Text > | </Text>}
@@ -42,12 +42,12 @@ export const PDFEducation = ({
                         
                         <View style={{
                             ...styles.flexRowBetween,
-                            marginTop: spacing["2"]
+                            marginTop: spacing["1"]
                         }}
                         >
                             <View style={{
                                 ...styles.flexRow,
-                                gap: spacing["2"],
+                                gap: spacing["1"],
                                 alignItems: "center"
                             }}
                             >
@@ -58,7 +58,7 @@ export const PDFEducation = ({
                                 <ResumePDFText>
                                     {endDate}
                                 </ResumePDFText>
-                                {location && <Text style={{ paddingRight: spacing["1"]}}> | </Text>}
+                                {location && <Text>|</Text>}
                                 <ResumePDFText>
                                     {location}
                                 </ResumePDFText>

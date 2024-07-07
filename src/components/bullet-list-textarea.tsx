@@ -34,7 +34,7 @@ export const BulletListTextarea = ({
 
   return (
     <Textarea
-        rows={10}
+        rows={5}
         className="w-full"
         value={content}
         onChange={handleInputChange}

@@ -41,7 +41,7 @@ export const ResumePDF = ({
                     <View
                         style={{
                             ...styles.flexCol,
-                            padding: `${spacing[10]} ${spacing[20]}`
+                            padding: `${spacing[5]} ${spacing[10]}`
                         }}
                     >
                         <PDFProfile
@@ -58,6 +58,7 @@ export const ResumePDF = ({
                             heading="PROJECTS"
                             themeColor={themeColor}
                             projects={projects}
+                            isPDF={isPDF!}
                         />
                         <PDFWorkExperience
                             heading="WORK EXPERIENCE"

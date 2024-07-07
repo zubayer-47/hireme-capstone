@@ -5,7 +5,6 @@ import {
 } from './common/resume-pdf-components';
 import { View, Text } from "@react-pdf/renderer";
 import type { Experiences } from "@/store/resume-types";
-import { customHTMLParser } from '@/lib/custom-html-parser';
 import { styles, spacing } from "./resume-pdf-utils/resume-pdf-styles";
 
 type PDFWorkExperienceProps = {
@@ -44,8 +43,8 @@ export const PDFWorkExperience = ({
                         <View style={{
                             ...styles.flexRow,
                             alignItems: "center",
-                            gap: spacing["2"],
-                            paddingBottom: spacing["1"]
+                            gap: spacing["1"],
+                            paddingBottom: spacing["0.5"]
                         }}>
                             <ResumePDFText bold={true}>{title}</ResumePDFText>
                             {company && <Text> | </Text>}
@@ -54,18 +53,18 @@ export const PDFWorkExperience = ({
                         <View style={{
                             ...styles.flexRow,
                             alignItems: "center",
-                            gap: spacing["2"],
-                            paddingBottom: spacing["2"]
+                            gap: spacing["1"],
+                            paddingBottom: spacing["1"]
                         }}>
                             <ResumePDFText>{startDate}</ResumePDFText>
-                            {endDate && <Text> - </Text> }
+                            {endDate && <Text>-</Text> }
                             <ResumePDFText>{endDate}</ResumePDFText>
-                            {location && <Text> | </Text> }
+                            {location && <Text>|</Text> }
                             <ResumePDFText>{location}</ResumePDFText>
                         </View>
                     </View>
                     <View style={{ ...styles.flexCol }}>
-                        <ResumePDFBulletList items={customHTMLParser(descriptions)} />
+                        <ResumePDFBulletList items={descriptions} />
                     </View>
                 </View>
             ))}

@@ -1,21 +1,22 @@
 import {
     ResumePDFText,
+    ResumePDFLink,
     ResumePDFSection,
-    ResumePDFHeadingLink,
-    ResumePDFBulletList,
+    ResumePDFBulletList
 } from './common/resume-pdf-components';
 import { Text, View } from "@react-pdf/renderer";
 import type { Projects } from "@/store/resume-types";
-import { customHTMLParser } from '@/lib/custom-html-parser';
 import { spacing, styles } from "./resume-pdf-utils/resume-pdf-styles";
 
 type PDFProjectsProps = {
+    isPDF: boolean; 
     heading: string;
     themeColor: string;
     projects: Projects[];
 }
 
 export const PDFProjects = ({
+    isPDF,
     heading,
     projects,
     themeColor
@@ -33,13 +34,13 @@ export const PDFProjects = ({
                 <View key={index} style={{ ...styles.flexCol }}>
                     <View style={{
                         ...styles.flexRow,
-                        alignItems: "flex-start",
-                        gap: spacing["2"],
-                        paddingBottom: spacing["1"]
+                        alignItems: "center",
+                        gap: spacing["1"],
+                        paddingBottom: spacing["0.5"]
                     }}>
                         <ResumePDFText bold={true}>{role}</ResumePDFText>
-                        {role && <Text > | </Text>}
-                        <ResumePDFHeadingLink src={url} themeColor={themeColor}>{name}</ResumePDFHeadingLink>
+                        {role && <Text >|</Text>}
+                        <ResumePDFLink src={url} isPDF={isPDF} themeColor={themeColor}>{name}</ResumePDFLink>
                     </View>
                     
                     <View style={{
