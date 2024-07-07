@@ -15,25 +15,26 @@ import {
     FolderGit,
     GraduationCap
 } from "lucide-react";
+import { Doc } from "@/convex/_generated/dataModel";
 
-export const ResumeForm = () => {
+export const ResumeForm = ({ resume }: { resume: Doc<"resume">}) => {
     return (
         <section className="flex justify-center scrollbar scrollbar-track-zinc-300 scrollbar-w-3 h-full md:justify-end md:overflow-y-scroll">
             <article className="flex w-full flex-col gap-8 p-[var(--resume-padding)]">
-                <ProfileForm />
+                <ProfileForm userProfile={resume.profile} />
                 <CollapsibleForm
                     formTitle="Skills"
                     icon={Brain}
                     addNewFormRef="skills"
                 >
-                    <SkillsForm />
+                    <SkillsForm  />
                 </CollapsibleForm>
                 <CollapsibleForm
                     formTitle="Projects"
                     icon={FolderGit}
                     addNewFormRef="projects"
                 >
-                    <ProjectForm />
+                    <ProjectForm  />
                 </CollapsibleForm>
                 
                 <CollapsibleForm
@@ -41,7 +42,7 @@ export const ResumeForm = () => {
                     icon={Briefcase}
                     addNewFormRef="experience"
                 >
-                    <WorkExperienceForm />
+                    <WorkExperienceForm   />
                 </CollapsibleForm>
                 <CollapsibleForm
                     formTitle="Education"
