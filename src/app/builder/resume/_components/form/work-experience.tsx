@@ -5,9 +5,14 @@ import { Button } from "@/components/ui/button";
 import { useResumeStore } from "@/store/resume-store"
 import { Tiptap } from "@/components/text-editor/tiptap";
 import { DynamicInput } from "@/components/dynamic-input";
+import { BulletListTextarea } from "@/components/bullet-list-textarea";
 
 export const WorkExperienceForm = () => {
     const { experiences, setExperience, deleteForm } = useResumeStore();
+
+    const handleDescriptionsUpdate = (index: number, newDescriptions: string[]) => {
+        setExperience(index, 'descriptions', newDescriptions);
+    };
 
     return (
         <Card>
@@ -69,7 +74,11 @@ export const WorkExperienceForm = () => {
                     </hgroup>
                     <hgroup className="grid gap-2">
                         <label htmlFor={`descriptions-${index}`} className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Job Descriptions</label>
-                        <Tiptap content={experience.descriptions}  onChange={(newText: string) => setExperience(index, "descriptions", newText)} />
+                        <BulletListTextarea
+                            descriptions={experience.descriptions}
+                            onUpdate={(newDescriptions) => handleDescriptionsUpdate(index, newDescriptions)}
+                            placeholder="Write an accomplishment statement to highlight your achievements, contributions, and skills used."
+                        />
                     </hgroup>
                     {experiences.length > 1 && (
                         <Button className="w-full mt-4" variant="destructive" size="sm" onClick={() => deleteForm(index, "experience")}>

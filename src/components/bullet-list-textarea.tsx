@@ -4,11 +4,16 @@ import { useState, useEffect } from "react";
 import { Textarea } from "./ui/textarea";
 
 type BulletListTextareaProps = {
+  placeholder: string,
   descriptions: string[],
   onUpdate: (descriptions: string[]) => void;
 }
 
-export const BulletListTextarea = ({ descriptions, onUpdate }: BulletListTextareaProps) => {
+export const BulletListTextarea = ({ 
+  placeholder, 
+  descriptions, 
+  onUpdate 
+}: BulletListTextareaProps) => {
   const [content, setContent] = useState(descriptions.map(line => `• ${line}`).join('\n'));
 
   // This makes sure that when the component is rendered the bullet points is visible
@@ -33,6 +38,7 @@ export const BulletListTextarea = ({ descriptions, onUpdate }: BulletListTextare
         className="w-full"
         value={content}
         onChange={handleInputChange}
+        placeholder={placeholder}
       />
   )
 }

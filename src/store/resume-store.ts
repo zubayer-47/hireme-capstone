@@ -30,7 +30,7 @@ export const defaultProjects: Projects = {
 
 export const defaultSkills: Skills = {
     heading: "",
-    featuredSkills: ""
+    featuredSkills: [""]
 }
 
 export const defaultWork: Experiences = {

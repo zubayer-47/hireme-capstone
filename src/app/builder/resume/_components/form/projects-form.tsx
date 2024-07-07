@@ -79,6 +79,7 @@ export const ProjectForm = () => {
                             <BulletListTextarea 
                                 descriptions={project.descriptions}
                                 onUpdate={(newDescriptions) => handleDescriptionsUpdate(index, newDescriptions)}
+                                placeholder="Write an accomplishment statement to highlight your achievements, contributions, and skills used."
                             />
                         </hgroup>
                     </div>

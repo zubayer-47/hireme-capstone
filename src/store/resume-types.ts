@@ -39,7 +39,7 @@ export type Projects = {
 
 export type Skills = {
     heading: string;
-    featuredSkills: string;
+    featuredSkills: string[];
 }
 
 export type Resume = {
