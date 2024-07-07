@@ -39,7 +39,7 @@ export const defaultWork: Experiences = {
     startDate: "",
     endDate: "",
     location: "",
-    descriptions: "",
+    descriptions: [""],
 }
 
 export const defaultEducation: Education = {

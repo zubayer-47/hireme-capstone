@@ -76,7 +76,6 @@ export const ProjectForm = () => {
                             </hgroup>
                         <hgroup className="grid gap-2">
                             <label htmlFor={`descriptions-${index}`} className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Descriptions</label>
-                            {/* <Tiptap content={project.descriptions} onChange={(newText: string) => setProjects(index, "descriptions", newText)} /> */}
                             <BulletListTextarea 
                                 descriptions={project.descriptions}
                                 onUpdate={(newDescriptions) => handleDescriptionsUpdate(index, newDescriptions)}

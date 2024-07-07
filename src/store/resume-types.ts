@@ -17,7 +17,7 @@ export type Experiences = {
     startDate: string;
     endDate: string;
     location: string;
-    descriptions: string;
+    descriptions: string[];
 }
 
 export type Education = {
