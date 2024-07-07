@@ -49,7 +49,7 @@ export const ResumeForm = ({ resume }: { resume: Doc<"resume">}) => {
                     icon={GraduationCap}
                     addNewFormRef="education"
                 >
-                    <EducationForm />
+                    <EducationForm resumeEducation={resume.education} />
                 </CollapsibleForm>
             </article>
             <FlexboxSpacer maxWidth={50} className="hidden md:block" />

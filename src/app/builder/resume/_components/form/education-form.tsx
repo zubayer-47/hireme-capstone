@@ -5,13 +5,24 @@ import { Button } from "@/components/ui/button";
 import { useResumeStore } from "@/store/resume-store"
 import { DynamicInput } from "@/components/dynamic-input";
 
+type EducationFormProps = {
+    resumeEducation?: {
+        school: string;
+        degree: string;
+        location: string;
+        endDate: string;
+        startDate: string;
+    }[] | undefined
+}
 
-export const EducationForm = () => {
+export const EducationForm = ({ resumeEducation }: EducationFormProps) => {
     const { education: educations, setEducation, deleteForm } = useResumeStore();
+
+    const combineEducation = resumeEducation && resumeEducation.length > 0 ? resumeEducation : educations
 
     return (
         <Card>
-            {educations.map((education, index) => (
+            {combineEducation.map((education, index) => (
                 <div className="space-y-4" key={index}>
                     <hgroup className="grid gap-2">
                         <DynamicInput
