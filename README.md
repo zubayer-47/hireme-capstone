@@ -166,30 +166,229 @@ Job hunting can be one of the most stressful experiences, especially for recent 
 #### Fetching & Storing User to the Database
 
 - **Get Self Function**: Fetch current login user.
+- **POST /auth.sign-up**: Create new user
+> Both endpoints don't need any parameters and have the same response
+
+RESPONSE:
+```
+_id: j690v3qbgp5wz7havc97042fcs8v9erq,
+_creationTime: 1718490378117.305,
+name: John Doe,
+tokenIdentifier: https://prompt-shiner-30.clerk.accounts.dev|user_0gFlb69T0j8EBOBlBJIOUkfpAAkq
+```
 
 #### Job Tracker
 
-- **GET /tracker**: Retrieve all user applications.
+- **GET: /tracker**: Retrieve all user applications.
+> No parameters needed
+
+RESPONSE:
+```
+_id: j690v3qbgp5wz7havc97042fcs8v9erq,
+_creationTime: 1718490378117.305,
+userId: 9bc46cb7-b00e-4957-af8b-a817b6355cfd,
+company: Amazon,
+jobLink: https://www.linkedin.com/jobs/view/3931258842,
+jobTitle: Software Development Engineer, AWS AppFabric,
+location: Vancouver, BC,
+dateApplied: July 06, 2024,
+status: Applied,
+notes: null,
+salary: 114,800 - 191,800
+recruiterInfo: null,
+```
 
 - **POST /tracker/application**: Create new application.
 
+Parameters
+- company
+- jobLink
+- jobTitle
+- location
+- dateApplied
+- status
+- salary
+- recruiterInfo
+
+RESPONSE:
+```
+_id: j690v3qbgp5wz7havc97042fcs8v9erq,
+_creationTime: 1718490378117.305,
+userId: 9bc46cb7-b00e-4957-af8b-a817b6355cfd,
+company: Amazon,
+jobLink: https://www.linkedin.com/jobs/view/3931258842,
+jobTitle: Software Development Engineer, AWS AppFabric,
+location: Vancouver, BC,
+dateApplied: July 06, 2024,
+status: Applied,
+notes: null,
+salary: 114,800 - 191,800
+recruiterInfo: null,
+```
+
 - **PUT or PATCH /tracker/application/:applicationId**: Update existing application.
 
+Parameters (they will be all optional except applicationId):
+- applicationId
+- company
+- jobLink
+- jobTitle
+- location
+- dateApplied
+- status
+- salary
+- recruiterInfo
+
+RESPONSE:
+```
+_id: j690v3qbgp5wz7havc97042fcs8v9erq,
+_creationTime: 1718490378117.305,
+userId: 9bc46cb7-b00e-4957-af8b-a817b6355cfd,
+company: Amazon,
+jobLink: https://www.linkedin.com/jobs/view/3931258842,
+jobTitle: Software Development Engineer, AWS AppFabric,
+location: Vancouver, BC,
+dateApplied: July 06, 2024,
+status: Applied,
+notes: null,
+salary: 114,800 - 191,800
+recruiterInfo: null,
+```
+
 - **DELETE /tracker**: Delete existing application.
+
+Parameters
+- applicationId
+
+RESPONSE:
+```
+null
+```
 
 #### Builder
 
 - **GET /builder**: Retrieve documents.
+- **PUT or PATCH /builder/resume/:resumeId**: Edit existing document.
+> Both have the same response
+> For the GET request no parameters needed
+
+Parameter:
+- resumeId
+
+RESPONSE:
+```
+_id: j690v3qbgp5wz7havc97042fcs8v9erq,
+_creationTime: 1718490378117.305,
+userId: 9bc46cb7-b00e-4957-af8b-a817b6355cfd,
+documentName: Untitled,
+skills: {
+    heading: Frontend,
+    featuredSkills: HTML, CSS, Javascript,
+},
+profile: {
+    name: John Doe,
+    role: Software Engineer,
+    email: john.doe@gmail.com,
+    phone: 123-456-7890,
+    objective: I'm john doe,
+    linkedInUrl: www.linkedin.com/in/johndoe,
+    githubUrl: www.github.com/johndoe,
+},
+projects: {
+    url: https://johndoe-portfolio.com,
+    name: My Portfolio,
+    role: Lead Coder,
+    date: July 2024,
+    industry: BrainStation,
+    descriptions: Amazing experience!,
+},
+education: {
+    school: BrainStation,
+    degree: Diploma, Software Engineer,
+    location: Remote,
+    endDate: July 2024,
+    startDate: Apr 2024,
+},
+workExperience: {
+    title: Senior Software Developer III,
+    company: Google,
+    endDate: Present,
+    startDate: Sept 2019,
+    location: Remote,
+    descriptions: Amazing experience!,
+},
+```
 
 - **POST /builder**: Create new document.
 
-- **PUT or PATCH /builder/resume/:resumeId**: Edit existing document.
+Parameters:
+- DocumentName
+
+Response:
+```
+_id: j690v3qbgp5wz7havc97042fcs8v9erq,
+_creationTime: 1718490378117.305,
+userId: 9bc46cb7-b00e-4957-af8b-a817b6355cfd,
+documentName: Untitled,
+skills: null,
+profile: null,
+projects: null,
+education: null,
+workExperience: null,
+```
 
 - **DELETE /builder**: Delete existing document.
 
-#### AI Results
+Parameter:
+- resumeId
+
+RESPONSE:
+```
+null
+```
+
+#### FETCH & Generate AI Results
 
 - **GET /builder/resume/:resumeId**: Query AI results.
+- **POST /builder/resume/:resumeId**: Generate AI feedback.
+> Both have the same response
+
+
+Parameters(Query AI Result):
+- resumeId 
+
+Parameters(Generating AI Result):
+- jobDescription
+- resumePrompt
+
+RESPONSE:
+```
+_id: Unix Timestamp,
+_creationTime: Unix Timestamp,
+resumeId: Number,
+jobDescriptionSummary: {
+	jobPosition: String,
+	companyName: String,
+	location: String,
+	employmentType: Full-Time | Part-Time | Remote,
+	responsibilities: String,
+	requiredSkills: Array of Strings,
+	preferredQualification: String,
+	experienceLevel: String,
+	educationalRequirements: String,
+	salaryRange: String,
+	benefits: String
+},
+extractedKeywords: {
+	highImportance: Array of String,
+	mediumImportance: Array of String,
+	lowImportance: Array of String,
+},
+userFeedback: {
+	missingKeywords: Array of String,
+	suggestions: Array of String
+}
+```
 
 ## Roadmap
 
