@@ -34,7 +34,7 @@ export const ResumeForm = ({ resume }: { resume: Doc<"resume">}) => {
                     icon={FolderGit}
                     addNewFormRef="projects"
                 >
-                    <ProjectForm  />
+                    <ProjectForm resumeProjects={resume.projects} />
                 </CollapsibleForm>
                 
                 <CollapsibleForm

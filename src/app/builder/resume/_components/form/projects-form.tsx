@@ -6,8 +6,21 @@ import { useResumeStore } from "@/store/resume-store"
 import { DynamicInput } from "@/components/dynamic-input";
 import { BulletListTextarea } from "@/components/bullet-list-textarea";
 
-export const ProjectForm = () => {
+type ProjectFormProps = {
+    resumeProjects?: {
+        name: string;
+        role: string;
+        url: string;
+        date: string;
+        industry: string;
+        descriptions: string[];
+    }[] | undefined
+}
+
+export const ProjectForm = ({ resumeProjects }: ProjectFormProps ) => {
     const { projects, setProjects, deleteForm } = useResumeStore();
+
+    const combinedProjects = resumeProjects && resumeProjects.length > 0 ? resumeProjects : projects;
 
     const handleDescriptionsUpdate = (index: number, newDescriptions: string[]) => {
         setProjects(index, 'descriptions', newDescriptions);
@@ -15,7 +28,7 @@ export const ProjectForm = () => {
     
     return (
         <Card>
-            {projects.map((project, index) => (
+            {combinedProjects.map((project, index) => (
                 <div key={index}>
                     <div className="space-y-4 mt-4">
                         <div className="grid grid-cols-2 gap-4">
