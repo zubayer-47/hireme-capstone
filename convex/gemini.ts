@@ -8,10 +8,9 @@ import {
     firstPrompt, 
     secondPrompt, 
     thirdPrompt, 
-
 } from "./prompt";
 
-const llm = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 export const generateResults = action({
     args: {
@@ -22,11 +21,11 @@ export const generateResults = action({
         jobDescription,
         userResumePrompt 
     }) => {
-        const model = llm.getGenerativeModel({
+        const model = genAI.getGenerativeModel({
             model: "gemini-1.5-flash", 
             generationConfig: {
                 temperature: 0,
-                responseMimeType: "applicaton/json"
+                responseMimeType: "application/json" 
             },
         });
 
@@ -44,9 +43,9 @@ export const generateResults = action({
             ${thirdPrompt}
         `
 
-        const output = await model.generateContent(prompt);
+        let result = await model.generateContent(prompt)
+        console.log(result.response.text());
 
-        const response = output.response;
-        console.log(response.text())
+        return result.response.text();
     }
 })

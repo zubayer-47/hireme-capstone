@@ -26,8 +26,12 @@ import {
     SheetContent,
     SheetDescription,
 } from "@/components/ui/sheet";
+import { Analyzing } from "./analyzing";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+
+import ResultType from "../_types/ai-result-type";
+import { AIResults } from "./ai-results";
 
 const schema = z.object({
     description: z.string().min(2),
@@ -35,6 +39,9 @@ const schema = z.object({
 
 export const EnhancerTab = () => {
     const [steps, setSteps] = useState(1);
+    const [pending, setPending] = useState(false);
+    const [results, setResults] = useState<ResultType | null>(null);
+
     const formSteps = [
         "Welcome to Resume Enhancement",
         "Find Job Listing",
@@ -45,17 +52,13 @@ export const EnhancerTab = () => {
     const userResumePrompt = useGenerateResumePrompt();
     const generateResults = useAction(api.gemini.generateResults);
 
-    
-
     const nextStep = () => {
         if (formSteps.length === steps) return;
-
         setSteps(steps + 1);
     }
 
     const prevStep = () => {
         if (steps === 1) return;
-        
         setSteps(steps - 1);
     }
 
@@ -64,18 +67,22 @@ export const EnhancerTab = () => {
         defaultValues: {
             description: ""
         }
-    })
+    });
 
-    const onSubmit = async(values: z.infer<typeof schema>) => {
+    const onSubmit = async (values: z.infer<typeof schema>) => {
+        setPending(true);
         try {
             const { description } = values;
-            await generateResults({
+            const result = await generateResults({
                 jobDescription: description, 
                 userResumePrompt
-            })
+            });
+            setResults(JSON.parse(result) as ResultType);
+            setPending(false);
         } catch (error) {
-            console.error(error)
-        }
+            console.error(error);
+            setPending(false);
+        } 
     }
 
     return (
@@ -103,44 +110,49 @@ export const EnhancerTab = () => {
                             {steps === 2 && (
                                 <aside className="flex flex-col gap-2 text-sm">
                                     <SheetDescription>Find the job listing you are applying for and copy the job description text.</SheetDescription>
-                                    <div className="border-2 rounded-2xl bg-neutral-600 border-neutral-600 p-1"><video autoPlay muted src="/videos/how-to-copy-job-description.mov" className="w-100 h-100 rounded-2xl border-2 border-neutral-500" /></div>
+                                    <div className="border-2 rounded-2xl bg-neutral-600 border-neutral-600 p-1">
+                                        <video autoPlay muted src="/videos/how-to-copy-job-description.mov" className="w-100 h-100 rounded-2xl border-2 border-neutral-500" />
+                                    </div>
                                 </aside>
                             )}
                             {steps === 3 && (
                                 <aside className="flex flex-col gap-2 text-sm w-full">
                                     <SheetDescription>Paste the job description text into the field below for analysis.</SheetDescription>
-                                    {/* Add the form here */}
                                     <FormField
-                                            control={form.control}
-                                            name="description"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormControl>
-                                                        <Textarea 
-                                                            {...field}
-                                                            rows={20} 
-                                                            cols={20} 
-                                                            placeholder="Paste job description here" 
-                                                            className="w-full h-full rounded-2xl border-2 border-neutral-500" />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
+                                        control={form.control}
+                                        name="description"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormControl>
+                                                    <Textarea 
+                                                        {...field}
+                                                        rows={20} 
+                                                        cols={20} 
+                                                        placeholder="Paste job description here" 
+                                                        className="w-full h-full rounded-2xl border-2 border-neutral-500" 
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
                                 </aside>
                             )}
                             {steps === 4 && (
-                                <aside className="flex flex-col gap-2 text-sm w-full">
+                                <aside className="flex flex-col gap-2 text-sm w-full overflow-y-auto">
                                     <SheetDescription>View the matched keywords, suggestions for improvement, and your match score.</SheetDescription>
-                                    {/* Show the loading stream here and the progress while the AI is analyzing the results */}
-                                    {/* Once the AI is done analyzing show the result like a typewriter */}
+                                    {pending ? (
+                                        <Analyzing />
+                                    ) : (
+                                        <AIResults results={results} />
+                                    )}
                                 </aside>
                             )}
                         </SheetHeader>
 
                         <SheetFooter className="flex items-center flex-end gap-2 w-2/3 pt-4">
-                            <Button type="button" size="sm" onClick={prevStep} disabled={steps === 1}>Prev</Button>
-                            <Button type={steps === 4 ? "submit" : "button"} size="sm" onClick={nextStep} >
+                            <Button type="button" size="sm" onClick={prevStep} disabled={steps === 1 || pending}>Prev</Button>
+                            <Button type={steps === 4 ? "submit" : "button"} size="sm" onClick={steps === 4 ? form.handleSubmit(onSubmit) : nextStep} disabled={pending}>
                                 {steps < 4 && "Next"}
                                 {steps === 4 && "Analyze"}
                             </Button>

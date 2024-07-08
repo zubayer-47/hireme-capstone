@@ -10,9 +10,7 @@ import { api } from "@/convex/_generated/api";
 import { LoadingSpinner } from "@/components/loading-spinner";
 
 export default function Home({ params }: { params: { resumeId: Id<"resume"> } }) {
-  console.log(params.resumeId)
   const resume = useQuery(api.resume.getResume, { resumeId: params.resumeId });
-  
 
   if (!resume) return <LoadingSpinner />;
 
