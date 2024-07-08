@@ -1,0 +1,83 @@
+{
+  "job_description_summary": {
+    "Job Position": "Software Development Engineer",
+    "Company Name": "Amazon Development Centre Canada ULC",
+    "Location": "Toronto, Canada",
+    "Employment Type": "Full-time",
+    "Responsibilities": [
+      "Building hyper-scale database services in the cloud",
+      "Revolutionizing the way databases are built for the cloud",
+      "Having direct and immediate impact on hundreds of thousands of users who use AWS database services",
+      "Owning the design and development of significant system software components critical to our industry leading database services architected for the cloud",
+      "Architecting, designing, and implementing highly scalable distributed database systems that provide availability, reliability and performance guarantees",
+      "Building rock-solid components",
+      "Mentoring other developers"
+    ],
+    "Required Skills": [
+      "Programming with at least one software programming language",
+      "Relational databases",
+      "Large scale storage system technologies"
+    ],
+    "Preferred Qualifications": [
+      "3+ years of full software development life cycle, including coding standards, code reviews, source control management, build processes, testing, and operations experience",
+      "Bachelor's degree in computer science or equivalent"
+    ],
+    "Experience Level": "Mid-level",
+    "Educational Requirements": "Bachelor's degree in computer science or equivalent",
+    "Salary Range": null,
+    "Benefits": null
+  },
+  "extracted_keywords": {
+    "high_importance": [
+      { "keyword": "Relational databases" },
+      { "keyword": "Large scale storage system technologies" },
+      { "keyword": "Software development" },
+      { "keyword": "Cloud" },
+      { "keyword": "Distributed systems" }
+    ],
+    "medium_importance": [
+      { "keyword": "AWS" },
+      { "keyword": "Aurora" },
+      { "keyword": "Database services" },
+      { "keyword": "Scalability" },
+      { "keyword": "Availability" },
+      { "keyword": "Reliability" },
+      { "keyword": "Performance" }
+    ],
+    "low_importance": [
+      { "keyword": "Design patterns" },
+      { "keyword": "Coding standards" },
+      { "keyword": "Code reviews" },
+      { "keyword": "Source control management" },
+      { "keyword": "Build processes" },
+      { "keyword": "Testing" },
+      { "keyword": "Operations" }
+    ]
+  },
+  "user_feedback": {
+    "matching_elements": [],
+    "missing_elements": [
+      "Relational databases",
+      "Large scale storage system technologies",
+      "AWS",
+      "Aurora",
+      "Cloud",
+      "Distributed systems",
+      "Scalability",
+      "Availability",
+      "Reliability",
+      "Performance",
+      "Software development",
+      "Design patterns",
+      "Coding standards",
+      "Code reviews",
+      "Source control management",
+      "Build processes",
+      "Testing",
+      "Operations"
+    ],
+    "suggestions": [
+      "Highlight experience with relational databases and large scale storage system technologies. If you have experience with AWS, Aurora, or other cloud platforms, be sure to mention it. Emphasize your skills in areas like scalability, availability, reliability, and performance. Showcase your software development experience, including your knowledge of design patterns, coding standards, code reviews, source control management, build processes, testing, and operations."
+    ]
+  }
+}

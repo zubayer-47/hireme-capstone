@@ -34,6 +34,8 @@ import {ResultType} from "../_types/ai-result-type";
 import { AIResults } from "./ai-results/ai-results";
 import { useToast } from "@/components/ui/use-toast";
 
+import MockData from "./mock-ai-result.json";
+
 const schema = z.object({
     description: z.string().min(2),
 })
@@ -41,8 +43,8 @@ const schema = z.object({
 export const EnhancerTab = () => {
     const [steps, setSteps] = useState(1);
     const [pending, setPending] = useState(false);
-    const [results, setResults] = useState<ResultType | null>(null);
-
+    // const [results, setResults] = useState<ResultType | null>(null);
+    const [results, setResults] = useState(null);
     const { toast } = useToast();
 
     const formSteps = [
@@ -60,6 +62,14 @@ export const EnhancerTab = () => {
         setSteps(steps + 1);
     }
 
+    const handleButtonClick = () => {
+        if (steps === 4) {
+            form.handleSubmit(onSubmit)();
+        } else {
+            nextStep();
+        }
+    };
+
     const prevStep = () => {
         if (steps === 1) return;
         setSteps(steps - 1);
@@ -76,11 +86,11 @@ export const EnhancerTab = () => {
         setPending(true);
         try {
             const { description } = values;
-            const result = await generateResults({
-                jobDescription: description, 
-                userResumePrompt
-            });
-            setResults(JSON.parse(result) as ResultType);
+            // const result = await generateResults({
+            //     jobDescription: description, 
+            //     userResumePrompt
+            // });
+            // setResults(JSON.parse(result) as ResultType);
             toast({
                 title: "Success",
                 description: `Your feedback has been generated.`,
@@ -112,11 +122,11 @@ export const EnhancerTab = () => {
             </SheetTrigger>
             <SheetContent>
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center justify-center mx-auto h-full">
-                        <SheetHeader className="w-2/3">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={`flex flex-col items-center justify-center mx-auto ${steps === 4 ? "h-50" : "h-full"} overflow-y-auto `}>
+                        <SheetHeader className="w-2/3 ">
                             <SheetTitle>{formSteps[steps - 1]}</SheetTitle>
                             {steps === 1 && (
-                                <SheetDescription>
+                                <SheetDescription className="">
                                     Take advantage of this feature to tailor your resume to match specific job descriptions.
                                     We'll analyze key terms and provide actionable suggestions to help you stand out.
                                 </SheetDescription>
@@ -153,22 +163,22 @@ export const EnhancerTab = () => {
                                 </aside>
                             )}
                             {steps === 4 && (
-                                <aside className="flex flex-col gap-2 text-sm w-full overflow-y-auto">
+                                <aside className="flex flex-col gap-2 text-sm w-full">
                                     <SheetDescription>View the matched keywords, suggestions for improvement, and your match score.</SheetDescription>
                                     {pending ? (
                                         <Analyzing />
-                                    ) : (
-                                        <AIResults results={results} />
+                                    ) : ( 
+                                        <AIResults results={MockData} />
                                     )}
                                 </aside>
                             )}
                         </SheetHeader>
 
-                        <SheetFooter className="flex items-center flex-end gap-2 w-2/3 pt-4">
+                        <SheetFooter className="flex items-center flex-end gap-2 w-2/3 pt-8">
                             <Button type="button" size="sm" onClick={prevStep} disabled={steps === 1 || pending}>Prev</Button>
-                            <Button type={steps === 4 ? "submit" : "button"} size="sm" onClick={steps === 4 ? form.handleSubmit(onSubmit) : nextStep} disabled={pending}>
+                            <Button type={steps === 4 ? "submit" : "button"} size="sm" onClick={handleButtonClick} disabled={pending}>
                                 {steps < 4 && "Next"}
-                                {steps === 4 && "Analyze"}
+                                {steps === 4 && "Generate Another Feedback"}
                             </Button>
                         </SheetFooter>
                     </form>

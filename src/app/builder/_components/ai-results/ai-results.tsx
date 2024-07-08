@@ -1,4 +1,5 @@
-import {ResultType} from "../../_types/ai-result-type";
+import { ResultType } from "../../_types/ai-result-type";
+import { CollapsibleDetails } from "./collapsible-details";
 import { ExtractedKeywords } from "./extracted-keywords";
 import { JobDescriptionSummary } from "./job-description-summary";
 import { UserFeedback } from "./user-feedback";
@@ -14,9 +15,16 @@ export const AIResults = ({ results }: { results: ResultType | null }) => {
     console.log(job_description_summary)
     return (
         <>
-            <JobDescriptionSummary jobDescriptionSummary={job_description_summary} />
-            <ExtractedKeywords extractedKeywords={extracted_keywords} />
-            <UserFeedback userFeedback={user_feedback} />
+            <CollapsibleDetails title="Job Description Summary">
+                <JobDescriptionSummary jobDescriptionSummary={job_description_summary} />
+            </CollapsibleDetails>
+            <CollapsibleDetails title="Extracted Keywords">
+                <ExtractedKeywords extractedKeywords={extracted_keywords} />
+            </CollapsibleDetails>
+
+            <CollapsibleDetails title="User Feedback">
+                <UserFeedback userFeedback={user_feedback} />
+            </CollapsibleDetails>
         </>
     );
 }
