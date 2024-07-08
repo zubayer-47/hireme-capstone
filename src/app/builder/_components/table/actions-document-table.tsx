@@ -30,8 +30,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
 export const ActionsDocumentTable = ({
-    documentId
-}: { documentId: Id<"resume"> }) => {
+    resumeId
+}: { resumeId: Id<"resume"> }) => {
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -43,7 +43,7 @@ export const ActionsDocumentTable = ({
 
         try {
             setIsAlertDialogOpen(false);
-            const res = await deleteDocument({ documentId });
+            const res = await deleteDocument({ resumeId });
             
             if (res) {
                toast({
@@ -94,7 +94,7 @@ export const ActionsDocumentTable = ({
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem className="cursor-pointer">Share</DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer"><Link href={`/builder/resume/${documentId}`}>Open</Link></DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer"><Link href={`/builder/resume/${resumeId}`}>Open</Link></DropdownMenuItem>
                     <DropdownMenuItem className="cursor-pointer" onClick={() => {
                         setIsDialogOpen(false);
                         setIsAlertDialogOpen(true);

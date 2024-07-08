@@ -4,7 +4,7 @@ import { Id } from "@/convex/_generated/dataModel";
 
 import { Resume } from "../_components/display";
 import { ResumeForm } from "../_components/form";
-import { DocumentHeader } from "../../_components/document-header";
+import { DocumentHeader } from "../../_components/browser/document-header";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { LoadingSpinner } from "@/components/loading-spinner";

@@ -87,7 +87,7 @@ export const documentColumns: ColumnDef<Doc<"resume">>[] = [
     {
         id: "actions",
         cell: ({ row }) => {
-            return <ActionsDocumentTable documentId={row.original._id} />
+            return <ActionsDocumentTable resumeId={row.original._id} />
         },
     },
 ]
