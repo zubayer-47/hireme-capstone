@@ -32,6 +32,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import {ResultType} from "../_types/ai-result-type";
 import { AIResults } from "./ai-results/ai-results";
+import { useToast } from "@/components/ui/use-toast";
 
 const schema = z.object({
     description: z.string().min(2),
@@ -41,6 +42,8 @@ export const EnhancerTab = () => {
     const [steps, setSteps] = useState(1);
     const [pending, setPending] = useState(false);
     const [results, setResults] = useState<ResultType | null>(null);
+
+    const { toast } = useToast();
 
     const formSteps = [
         "Welcome to Resume Enhancement",
@@ -78,10 +81,21 @@ export const EnhancerTab = () => {
                 userResumePrompt
             });
             setResults(JSON.parse(result) as ResultType);
+            toast({
+                title: "Success",
+                description: `Your feedback has been generated.`,
+                variant: "success",
+            })
             setPending(false);
         } catch (error) {
             console.error(error);
+            toast({
+                title: "Error",
+                description: `Something went wrong. We couldn't generate your feedback. Please try again later.`,
+                variant: "destructive",
+            })
             setPending(false);
+
         } 
     }
 
