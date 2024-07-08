@@ -1,4 +1,4 @@
-interface JobDescriptionSummary {
+export interface JobDescriptionSummary {
     "Job Position": string;
     "Company Name": string;
     "Location": string;
@@ -12,26 +12,25 @@ interface JobDescriptionSummary {
     "Benefits": string | null;
 }
 
-interface Keyword {
+export interface Keyword {
     keyword: string;
 }
 
-interface ExtractedKeywords {
+export interface ExtractedKeywords {
     high_importance: Keyword[];
     medium_importance: Keyword[];
     low_importance: Keyword[];
 }
 
-interface UserFeedback {
+export interface UserFeedback {
     matching_elements: string[];
     missing_elements: string[];
     suggestions: string[];
 }
 
-interface ResultType {
+export interface ResultType {
     job_description_summary: JobDescriptionSummary;
     extracted_keywords: ExtractedKeywords;
     user_feedback: UserFeedback;
 }
 
-export default ResultType;

@@ -30,8 +30,8 @@ import { Analyzing } from "./analyzing";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
-import ResultType from "../_types/ai-result-type";
-import { AIResults } from "./ai-results";
+import {ResultType} from "../_types/ai-result-type";
+import { AIResults } from "./ai-results/ai-results";
 
 const schema = z.object({
     description: z.string().min(2),

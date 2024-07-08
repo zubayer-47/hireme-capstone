@@ -1,4 +1,4 @@
-import ResultType from "../_types/ai-result-type";
+import {ResultType} from "../../_types/ai-result-type";
 
 export const AIResults = ({ results }: { results: ResultType | null }) => {
     if (!results) return null;
