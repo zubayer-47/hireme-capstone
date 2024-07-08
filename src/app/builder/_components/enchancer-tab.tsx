@@ -176,10 +176,10 @@ export const EnhancerTab = () => {
 
                         <SheetFooter className="flex items-center flex-end gap-2 w-2/3 pt-8">
                             <Button type="button" size="sm" onClick={prevStep} disabled={steps === 1 || pending}>Prev</Button>
-                            <Button type={steps === 4 ? "submit" : "button"} size="sm" onClick={handleButtonClick} disabled={pending}>
-                                {steps < 4 && "Next"}
-                                {steps === 4 && "Generate Another Feedback"}
-                            </Button>
+                            {steps < 4 && <Button type={steps === 4 ? "submit" : "button"} size="sm" onClick={handleButtonClick} disabled={pending}>
+                                {steps < 3 && "Next"}
+                                {steps === 3 && "Analyze"}
+                            </Button>}
                         </SheetFooter>
                     </form>
                 </Form>
