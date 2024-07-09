@@ -30,7 +30,7 @@ export const generateUploadUrl = mutation(
 )
 
 export const getFeeds = query({
-    args: { bookmarked: v.boolean() },
+    args: { bookmarked: v.optional(v.boolean()) },
     handler: async (ctx, { bookmarked }) => {
         const identity = await userIdentity(ctx);
 
