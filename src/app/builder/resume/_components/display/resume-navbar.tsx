@@ -38,7 +38,7 @@ const ResumeNavbar = ({
         <div className="flex items-center justify-center gap-2 ">Loading...</div></div>)
 
     return (
-        <div className="relative border dark:border-white/[0.2] border-black/[0.2] shadow-md rounded-lg bg-card text-card-foreground py-2 flex items-center justify-center px-[var(--resume-padding)] text-neutral-600 md:justify-between">
+        <div className="relative border dark:border-white/[0.2] border-black/[0.2] shadow-md rounded-lg bg-card text-card-foreground py-2 flex items-center justify-center px-1 sm:px-2 md:px-4 flex-grow text-neutral-600 md:justify-between">
             <div className="flex items-center gap-2">
                 <ChevronsUpDown className="h-5 w-5 dark:text-neutral-400 text-neutral-600" aria-hidden="true" />
                 <input

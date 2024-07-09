@@ -3,7 +3,11 @@ export const firstPrompt = `
     ---
 
     ### Task Overview
-    You have three tasks to help the user build a resume that fits the job description. Each task must be completed sequentially. Ensure that each task is fully completed before moving on to the next. You don't have to write down the results you got from the First and Second Task. Combine these two results and output the JSON format that was asked in the Third Task.
+    You have three tasks to help the user build a resume that fits the job description. 
+    Each task must be completed sequentially. Ensure that each task is fully completed before moving on to the next. 
+    You don't have to write down the results you got from the First and Second Task. 
+    Combine these two results and MAKE SURE THE OUTPUT IS IN -> JSON format that was asked in the Third Task. Don't add any \n on the output 
+    unnecessary characters what JSON looks like.
 
     ---
 
@@ -27,29 +31,29 @@ export const firstPrompt = `
 
     **Example:**
     {
-        "Job Position": "Software Development Engineer",
-        "Company Name": "Amazon Canada Fulfillment Services, ULC",
-        "Location": "Canada",
-        "Employment Type": "Full-time",
-        "Responsibilities": [
+        "jobPosition": "Software Development Engineer",
+        "companyName": "Amazon Canada Fulfillment Services, ULC",
+        "location": "Canada",
+        "employmentType": "Full-time",
+        "responsibilities": [
             "Designing and implementing scalable, low-latent, high-availability multimodal frontend applications",
             "Owning and influencing architecture and design",
             "Contributing to all aspects of agile software development lifecycle"
         ],
-        "Required Skills": [
+        "requiredSkills": [
             "JavaScript",
             "HTML",
             "CSS",
             "Agile software development methodology"
         ],
-        "Preferred Qualifications": [
+        "preferredQualifications": [
             "Experience with JavaScript frameworks like Angular and React",
             "Professional front end development experience"
         ],
-        "Experience Level": "Mid-level",
-        "Educational Requirements": "Bachelor's degree in Computer Science or equivalent",
-        "Salary Range": "$114,800/year up to $191,800/year",
-        "Benefits": [
+        "experienceLevel": "Mid-level",
+        "educationalRequirement": "Bachelor's degree in Computer Science or equivalent",
+        "salaryRange": "$114,800/year up to $191,800/year",
+        "benefits": [
             "Health insurance",
             "Retirement plans",
             "Equity and sign-on payments"
@@ -71,13 +75,13 @@ export const secondPrompt = `
 
     **Example Analysis:**
     {
-        "matching_elements": [
+        "matchingElements": [
             "JavaScript",
             "HTML",
             "CSS",
             "Agile software development methodology"
         ],
-        "missing_elements": [
+        "missingElements": [
             "Experience with JavaScript frameworks like Angular and React",
             "Professional front end development experience",
             "Designing scalable applications"
@@ -104,60 +108,60 @@ export const thirdPrompt = `
 
     **Example Output:**
     {
-        "job_description_summary": {
-            "Job Position": "Software Development Engineer",
-            "Company Name": "Amazon Canada Fulfillment Services, ULC",
-            "Location": "Canada",
-            "Employment Type": "Full-time",
-            "Responsibilities": [
+        "jobDescriptionSummary": {
+            "jobPosition": "Software Development Engineer",
+            "companyName": "Amazon Canada Fulfillment Services, ULC",
+            "location": "Canada",
+            "employmentType": "Full-time",
+            "responsibilities": [
                 "Designing and implementing scalable, low-latent, high-availability multimodal frontend applications",
                 "Owning and influencing architecture and design",
                 "Contributing to all aspects of agile software development lifecycle"
             ],
-            "Required Skills": [
+            "requiredSkills": [
                 "JavaScript",
                 "HTML",
                 "CSS",
                 "Agile software development methodology"
             ],
-            "Preferred Qualifications": [
+            "preferredQualifications": [
                 "Experience with JavaScript frameworks like Angular and React",
                 "Professional front end development experience"
             ],
-            "Experience Level": "Mid-level",
-            "Educational Requirements": "Bachelor's degree in Computer Science or equivalent",
-            "Salary Range": "$114,800/year up to $191,800/year",
-            "Benefits": [
+            "experienceLevel": "Mid-level",
+            "educationalRequirement": "Bachelor's degree in Computer Science or equivalent",
+            "salaryRange": "$114,800/year up to $191,800/year",
+            "benefits": [
                 "Health insurance",
                 "Retirement plans",
                 "Equity and sign-on payments"
             ]
         },
-        "extracted_keywords": {
-            "high_importance": [
-                { "keyword": "JavaScript" },
-                { "keyword": "HTML" },
-                { "keyword": "CSS" },
-                { "keyword": "Agile software development" }
+        "extractedKeywords": {
+            "highImportance": [
+                "JavaScript",
+                "HTML",
+                "CSS",
+                "Agile software development"
             ],
-            "medium_importance": [
-                { "keyword": "Angular" },
-                { "keyword": "React" },
-                { "keyword": "Front end development" }
+            "mediumImportance": [
+                "Angular",
+                "React",
+                "Front end development"
             ],
-            "low_importance": [
-                { "keyword": "Scalable applications" },
-                { "keyword": "Architecture design" }
+            "lowImportance": [
+                "Scalable applications",
+                "Architecture design"
             ]
         },
-        "user_feedback": {
-            "matching_elements": [
+        "userFeedback": {
+            "matchingElements": [
                 "JavaScript",
                 "HTML",
                 "CSS",
                 "Agile software development methodology"
             ],
-            "missing_elements": [
+            "missingElements": [
                 "Angular",
                 "React",
                 "Front end development experience",

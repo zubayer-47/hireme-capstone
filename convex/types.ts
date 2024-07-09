@@ -52,3 +52,40 @@ export const ApplicationStatus = v.union(
     v.literal("offered"),
     v.literal("rejected"),
 )
+
+/* -------------------------------------------------------------------------- */
+/*                                 AI RESULTS                                 */
+/* -------------------------------------------------------------------------- */
+export interface JobDescriptionSummary {
+    jobPosition: string;
+    companyName: string;
+    location: string;
+    employmentType: string;
+    salaryRange: string;
+    experienceLevel: string;
+    benefits: string[];
+    requiredSkills: string[];
+    responsibilities: string[];
+    educationalRequirement: string;
+    preferredQualifications: string[];
+}
+
+export interface ExtractedKeywords {
+    highImportance: string[];
+    mediumImportance: string[];
+    lowImportance: string[];
+}
+
+export interface UserFeedback {
+    matchingElements: string[];
+    missingElements: string[];
+    suggestions: string[];
+}
+
+export interface ResultType {
+    jobDescriptionSummary: JobDescriptionSummary;
+    extractedKeywords: ExtractedKeywords;
+    userFeedback: UserFeedback;
+}
+
+

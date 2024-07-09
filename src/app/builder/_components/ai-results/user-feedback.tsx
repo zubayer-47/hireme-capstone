@@ -6,8 +6,8 @@ export const UserFeedback = ({ userFeedback }: { userFeedback: UserFeedbackType}
         <h3 className="mt-6 text-lg font-semibold">User Feedback</h3>
             <h4 className="mt-4 text-md font-semibold">Matching Elements</h4>
             <ul className="list-disc pl-5">
-                {userFeedback.matching_elements.length > 0 ? (
-                    userFeedback.matching_elements.map((element, index) => (
+                {userFeedback.matchingElements.length > 0 ? (
+                    userFeedback.matchingElements.map((element, index) => (
                         <li key={index}>{element}</li>
                     ))
                 ) : (
@@ -16,7 +16,7 @@ export const UserFeedback = ({ userFeedback }: { userFeedback: UserFeedbackType}
             </ul>
             <h4 className="mt-4 text-md font-semibold">Missing Elements</h4>
             <ul className="list-disc pl-5">
-                {userFeedback.missing_elements.map((element, index) => (
+                {userFeedback.missingElements.map((element, index) => (
                     <li key={index}>{element}</li>
                 ))}
             </ul>

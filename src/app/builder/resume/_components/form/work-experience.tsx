@@ -92,7 +92,7 @@ export const WorkExperienceForm = ({ resumeWorkExperience } : WorkExperienceForm
                             placeholder="Write an accomplishment statement to highlight your achievements, contributions, and skills used."
                         />
                     </hgroup>
-                    {experiences.length > 1 && (
+                    {combineWorkExperience.length > 1 && (
                         <Button className="w-full mt-4" variant="destructive" size="sm" onClick={() => deleteForm(index, "experience")}>
                             Delete
                         </Button>

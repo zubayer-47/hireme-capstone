@@ -17,11 +17,13 @@ export default function Home({ params }: { params: { resumeId: Id<"resume"> } })
   return (
     <>
       <DocumentHeader documentName={resume.documentName} resumeId={params.resumeId} />
-      <section className="grid grid-cols-3 md:grid-cols-6">
+      <section className="relative grid grid-cols-3 md:grid-cols-6">
         <article className="col-span-3">
+          <div className="sticky top-0 h-screen overflow-y-auto">
           <ResumeForm resume={resume} />
+          </div>
         </article>
-        <article className="col-span-3">
+        <article className="col-span-3 ">
           <Resume resumeDetails={resume} />
         </article>
       </section>

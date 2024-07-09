@@ -32,9 +32,8 @@ export const getResults = query({
             .withIndex("by_userId_resume_id", (q) => q.eq("userId", identity._id).eq("resumeId", resumeId))
             .unique();
 
-
-        if (!results) throw new ConvexError("Unable to find the AI Feedback Result");
-
+        if (!results) return null;
+        
         return results;
     }
 });
@@ -43,25 +42,26 @@ export const saveResults = internalMutation({
     args: {
         resumeId: v.id("resume"),
         jobDescriptionSummary: v.object({
+            location: v.string(),
             jobPosition: v.string(),
             companyName: v.string(),
-            location: v.string(),
-            employmentType: v.union(v.literal("Full-Time"), v.literal("Part-Time"), v.literal("Hybrid")),
-            responsibilities: v.array(v.string()),
-            requiredSkills: v.array(v.string()),
-            preferredQualification: v.array(v.string()),
-            experienceLevel: v.string(),
-            educationalRequirements: v.string(),
             salaryRange: v.string(),
-            benefits: v.array(v.string())
+            employmentType: v.string(),
+            experienceLevel: v.string(),
+            benefits: v.array(v.string()),
+            educationalRequirement: v.string(),
+            requiredSkills: v.array(v.string()),
+            responsibilities: v.array(v.string()),
+            preferredQualifications: v.array(v.string()),
         }),
-        extractedKeywords: v.object ({
+        extractedKeywords: v.object({
             highImportance: v.array(v.string()),
             mediumImportance: v.array(v.string()),
             lowImportance: v.array(v.string()),
         }),
         userFeedback: v.object({
-            missingKeywords: v.array(v.string()),
+            matchingElements: v.array(v.string()),
+            missingElements: v.array(v.string()),
             suggestions: v.array(v.string())
         })
     },
@@ -70,9 +70,22 @@ export const saveResults = internalMutation({
 
         if (!identity) throw new ConvexError("Unauthorized!");
 
-        await ctx.db.insert("results", {
-            userId: identity._id,
-            ...args
-        })
+        const existingAIResults = await ctx.db
+            .query("results")
+            .withIndex("by_userId_resume_id", (q) => q.eq("userId", identity._id).eq("resumeId", args.resumeId))
+            .unique();
+
+        // If the current resumeId being formatted doesn't have AI results generated
+        // Create a new one else patch the exisitng one.    
+        if (!existingAIResults) {
+            await ctx.db.insert("results", {
+                userId: identity._id,
+                ...args
+            })
+        } else {
+            await ctx.db.patch(existingAIResults._id, {
+                ...args
+            })
+        }
     }
 })

@@ -16,6 +16,7 @@ import type {
 } from "convex/server";
 import type * as applications from "../applications.js";
 import type * as gemini from "../gemini.js";
+import type * as openai from "../openai.js";
 import type * as prompt from "../prompt.js";
 import type * as results from "../results.js";
 import type * as resume from "../resume.js";
@@ -33,6 +34,7 @@ import type * as users from "../users.js";
 declare const fullApi: ApiFromModules<{
   applications: typeof applications;
   gemini: typeof gemini;
+  openai: typeof openai;
   prompt: typeof prompt;
   results: typeof results;
   resume: typeof resume;

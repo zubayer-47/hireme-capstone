@@ -26,7 +26,7 @@ export const CollapsibleDetails = ({ children, title  }: CollapsibleDetailsProps
 
     return (
         <>
-            <aside className="flex items-center justify-between px-4 py-2 border dark:border-white/[0.2] border-black/[0.2] shadow-md rounded-lg bg-card text-card-foreground">
+            <aside className="flex items-center justify-between px-4 py-2 border dark:border-white/[0.2] hover:dark:border-white/[0.5] border-black/[0.2] shadow-md rounded-lg bg-card text-card-foreground">
                 <h2 className="text-sm font-semibold leading-none tracking-tight dark:text-neutral-300 text-neutral-700">{title}</h2>
 
                 <div className="flex items-center gap-2">

@@ -52,7 +52,7 @@ export const DocumentHeader = ({
             </nav>
             <nav className="flex items-center space-x-2">
                 <ButtonLink onSave={handleSaveResults} href="/builder" size="sm" name="Go Back" />
-                <EnhancerTab />
+                <EnhancerTab resumeId={resumeId} />
             </nav>
         </header>
     )

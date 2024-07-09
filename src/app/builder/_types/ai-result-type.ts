@@ -1,36 +1,40 @@
+import { Id } from "@/convex/_generated/dataModel";
+
 export interface JobDescriptionSummary {
-    "Job Position": string;
-    "Company Name": string;
-    "Location": string;
-    "Employment Type": string;
-    "Responsibilities": string[];
-    "Required Skills": string[];
-    "Preferred Qualifications": string[];
-    "Experience Level": string;
-    "Educational Requirements": string;
-    "Salary Range": string | null;
-    "Benefits": string | null;
+    jobPosition: string;
+    companyName: string;
+    location: string;
+    employmentType: string;
+    responsibilities: string[];
+    requiredSkills: string[];
+    preferredQualifications: string[];
+    experienceLevel: string;
+    educationalRequirement: string;
+    salaryRange: string;
+    benefits: string[];
 }
 
-export interface Keyword {
-    keyword: string;
-}
 
 export interface ExtractedKeywords {
-    high_importance: Keyword[];
-    medium_importance: Keyword[];
-    low_importance: Keyword[];
+    highImportance: string[];
+    mediumImportance: string[];
+    lowImportance: string[];
 }
 
 export interface UserFeedback {
-    matching_elements: string[];
-    missing_elements: string[];
+    matchingElements: string[];
+    missingElements: string[];
     suggestions: string[];
 }
 
 export interface ResultType {
-    job_description_summary: JobDescriptionSummary;
-    extracted_keywords: ExtractedKeywords;
-    user_feedback: UserFeedback;
+    _id: Id<"results">;
+    _creationTime: number;
+    userId: Id<"users">;
+    resumeId: Id<"resume">;
+    jobDescriptionSummary: JobDescriptionSummary;
+    extractedKeywords: ExtractedKeywords;
+    userFeedback: UserFeedback;
 }
+
 

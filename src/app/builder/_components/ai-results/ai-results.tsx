@@ -4,26 +4,26 @@ import { ExtractedKeywords } from "./extracted-keywords";
 import { JobDescriptionSummary } from "./job-description-summary";
 import { UserFeedback } from "./user-feedback";
 
-export const AIResults = ({ results }: { results: ResultType | null }) => {
+export const AIResults = ({ results }: { results: ResultType | null | undefined }) => {
     if (!results) return null;
 
     const {
-        job_description_summary,
-        extracted_keywords,
-        user_feedback
+        jobDescriptionSummary,
+        extractedKeywords,
+        userFeedback
     } = results;
-    console.log(job_description_summary)
+    console.log(jobDescriptionSummary)
     return (
         <>
             <CollapsibleDetails title="Job Description Summary">
-                <JobDescriptionSummary jobDescriptionSummary={job_description_summary} />
+                <JobDescriptionSummary jobDescriptionSummary={jobDescriptionSummary} />
             </CollapsibleDetails>
             <CollapsibleDetails title="Extracted Keywords">
-                <ExtractedKeywords extractedKeywords={extracted_keywords} />
+                <ExtractedKeywords extractedKeywords={extractedKeywords} />
             </CollapsibleDetails>
 
             <CollapsibleDetails title="User Feedback">
-                <UserFeedback userFeedback={user_feedback} />
+                <UserFeedback userFeedback={userFeedback} />
             </CollapsibleDetails>
         </>
     );

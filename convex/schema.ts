@@ -49,13 +49,13 @@ export default defineSchema({
             jobPosition: v.string(),
             companyName: v.string(),
             salaryRange: v.string(),
+            employmentType: v.string(),
             experienceLevel: v.string(),
             benefits: v.array(v.string()),
-            educationalRequirements: v.string(),
+            educationalRequirement: v.string(),
             requiredSkills: v.array(v.string()),
             responsibilities: v.array(v.string()),
-            preferredQualification: v.array(v.string()),
-            employmentType: v.union(v.literal("Full-Time"), v.literal("Part-Time"), v.literal("Hybrid")),
+            preferredQualifications: v.array(v.string()),
         }),
         extractedKeywords: v.object ({
             highImportance: v.array(v.string()),
@@ -63,7 +63,8 @@ export default defineSchema({
             lowImportance: v.array(v.string()),
         }),
         userFeedback: v.object({
-            missingKeywords: v.array(v.string()),
+            matchingElements: v.array(v.string()),
+            missingElements: v.array(v.string()),
             suggestions: v.array(v.string())
         })
     }).index("by_user", ["userId"])

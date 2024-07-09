@@ -95,7 +95,7 @@ export const ProjectForm = ({ resumeProjects }: ProjectFormProps ) => {
                             />
                         </hgroup>
                     </div>
-                    {projects.length > 1 && (
+                    {combinedProjects.length > 1 && (
                         <Button className="w-full mt-4" variant="destructive" size="sm" onClick={() => deleteForm(index, "projects")}>
                             Delete
                         </Button>

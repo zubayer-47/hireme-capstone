@@ -76,7 +76,7 @@ export const EducationForm = ({ resumeEducation }: EducationFormProps) => {
                                 onChange={(e) => { setEducation(index, "location", e.target.value) }}
                             />
                         </hgroup>
-                    {educations.length > 1 && (
+                    {combineEducation.length > 1 && (
                         <Button className="w-full mt-4" variant="destructive" size="sm" onClick={() => deleteForm(index, "education")}>
                             Delete
                         </Button>
