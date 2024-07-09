@@ -71,8 +71,7 @@ export const UploadPDFDropzone = ({ onFileUrlChange }: { onFileUrlChange: (fileU
             onDrop={onDrop}
         >
             <aside className="text-center">
-                <FileText className="h-14 w-14 mx-auto" />
-
+                <FileText className="h-14 w-14 mx-auto text-app-color" />
                 {!hasFile ? (
                     <p className="pt-3 dark:text-neutral-200 text-neutral-800 text-lg font-semibold">
                         Drag & Drop PDF File here
