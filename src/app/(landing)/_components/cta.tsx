@@ -1,6 +1,9 @@
-import { ButtonLink } from "@/components/button-link"
+import { Id } from "@/convex/_generated/dataModel";
+import Link from "next/link";
 
-export const CTA = () => {
+export const CTA = ({ isAuthenticated, userId }: { isAuthenticated: boolean; userId: Id<"users">; }) => {
+    const path = isAuthenticated ? `/feeds/${userId}` : "/auth/sign-in";
+
     return (
         <section>
             <article className="px-8 py-12 mx-auto md:px-12 lg:px-32 max-w-7xl">
@@ -10,15 +13,12 @@ export const CTA = () => {
                             Land Your Dream Job Faster
                         </p>
                         <p className="mt-4 text-base text-gray-500">
-                        Build winning applications, track progress effortlessly, and join a supportive community.
+                            Build winning applications, track progress effortlessly, and join a supportive community.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-2 mx-auto mt-8 md:flex-row">
-                            <ButtonLink 
-                                size="lg"
-                                href="/auth/sign-in"
-                                name="Start Building"
-                                className="bg-app-color hover:bg-app-color/80 translate-hover"  
-                            />
+                            <Link href={path} className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground translate-hover bg-app-color hover:bg-app-color/80 translate-hover">
+                                Start Building
+                            </Link>
                         </div>
                     </hgroup>
                 </aside>
