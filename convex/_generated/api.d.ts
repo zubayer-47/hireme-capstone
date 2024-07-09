@@ -15,6 +15,7 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as applications from "../applications.js";
+import type * as feeds from "../feeds.js";
 import type * as gemini from "../gemini.js";
 import type * as openai from "../openai.js";
 import type * as prompt from "../prompt.js";
@@ -33,6 +34,7 @@ import type * as users from "../users.js";
  */
 declare const fullApi: ApiFromModules<{
   applications: typeof applications;
+  feeds: typeof feeds;
   gemini: typeof gemini;
   openai: typeof openai;
   prompt: typeof prompt;

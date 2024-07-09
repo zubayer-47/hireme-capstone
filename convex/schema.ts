@@ -73,6 +73,7 @@ export default defineSchema({
     feeds: defineTable({
         bio: v.string(),
         userId: v.id("users"),
+        fileId: v.id("_storage"),
         fileUrl: v.string(),
         upvotes: v.number(),
         downVotes: v.number(),
