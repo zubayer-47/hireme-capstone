@@ -58,12 +58,14 @@ export const CreateFeedModal = () => {
         try {
             // call the generate upload url here
             // take the _storageId 
-
-            console.log()
+            
+            console.log(values)
         } catch (err) {
             console.error(err)
         }
-    }
+    };
+
+    const isLoading = form.formState.isSubmitting;
     return (
         <Dialog
             open={isOpen}
@@ -113,6 +115,33 @@ export const CreateFeedModal = () => {
                                 </FormItem>
                             )}
                         />
+
+                        <div className="flex justify-end gap-x-2 mt-2">
+                            <Button
+                                size="sm"
+                                type="button"
+                                variant="ghost"
+                                disabled={isLoading}
+                                className="translate-hover"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Cancel
+                            </Button>
+                            <Button
+                                size="sm"
+                                disabled={isLoading}
+                                className="dark:bg-neutral-900 dark:text-neutral-300 text-neutral-700 hover:bg-neutral-800 translate-hover"
+                            >
+                                {isLoading ? (
+                                    <p className="flex items-center gap-x-2">
+                                        <Loader2 className="h-4 w-4 animate-spin" />
+                                        Loading...
+                                    </p>
+                                ) : (
+                                    <p>Submit</p>
+                                )}
+                            </Button>
+                        </div>
                     </form>
                 </Form>
             </DialogContent>
