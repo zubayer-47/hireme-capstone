@@ -1,5 +1,6 @@
 import { v, ConvexError } from "convex/values";
 import { mutation, QueryCtx, MutationCtx, query, } from "./_generated/server";
+import { reducer } from '../src/components/ui/use-toast';
 
 async function userIdentity(
     ctx: QueryCtx | MutationCtx,
@@ -36,6 +37,7 @@ export const getFeeds = query({
         if (!identity) throw new ConvexError("Unauthorized!");
 
         return await ctx.db.query("feeds").collect();
+
     }
 });
 
@@ -73,12 +75,11 @@ export const editBioTagFeed = mutation({
 
         if (!feed) throw new ConvexError("The feed you requested doesn't exist.");
 
-        const updatedFeed = await ctx.db.patch(feedId, {
+        return await ctx.db.patch(feedId, {
             bio,
             tags,
         });
 
-        return updatedFeed;
     }
 });
 
@@ -111,6 +112,31 @@ export const vote = mutation({
                 downvoteCount
             });
         }
+    }
+});
+
+export const comment = mutation({
+    args: {
+        commenterId: v.id("users"),
+        comment: v.string(),
+        feedId: v.id("feeds")
+    },
+    handler: async (ctx, { comment, commenterId, feedId }) => {
+        const identity = await userIdentity(ctx);
+
+        if (!identity) throw new ConvexError("Unauthorized!");
+
+        const feed = await ctx.db.get(feedId);
+
+        if (!feed) throw new ConvexError("The feed you requested doesn't exist.");
+
+        const newComment = { commenterId, comment };
+
+        const updatedComments = feed.comments ? [...feed.comments, newComment] : [newComment];
+       
+        return await ctx.db.patch(feed._id, {
+            comments: updatedComments
+        })
     }
 })
 

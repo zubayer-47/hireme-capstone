@@ -79,11 +79,10 @@ export default defineSchema({
         downvoteCount: v.number(),
         username: v.string(),
         tags: v.array(v.string()),
-    }),
-
-    comments: defineTable({
-        userId: v.id("users"),
-        feedsId: v.id("feeds"),
-        comment: v.string(),
+        comments: v.optional(v.array(v.object({
+            commenterId: v.id("users"),
+            comment: v.string(),
+        })))
     })
+
 })
