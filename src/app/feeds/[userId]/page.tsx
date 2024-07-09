@@ -1,9 +1,9 @@
 import { Feeds } from "./_components/feeds";
 import { Browser } from "@/components/browser/browser";
 
-export default function FeedPage({ params }: { params: { userId: string }}) {
+export default function FeedPage() {
   return (
-    <Browser userId={params.userId}>
+    <Browser >
       <Feeds />
     </Browser>
   )
