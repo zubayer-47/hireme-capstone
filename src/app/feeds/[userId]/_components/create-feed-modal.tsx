@@ -40,7 +40,7 @@ import { TagsInput } from "./tags-input";
 
 export const CreateFeedModal = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const [pdfFileUrl, setPdfFileUrl] = useState("");
     const { toast } = useToast();
     const createFeed = useMutation(api.feeds.createFeed);
     const generateUploadUrl = useMutation(api.feeds.generateUploadUrl);
@@ -58,7 +58,7 @@ export const CreateFeedModal = () => {
         try {
             // call the generate upload url here
             // take the _storageId 
-            
+
             console.log(values)
         } catch (err) {
             console.error(err)
@@ -66,6 +66,7 @@ export const CreateFeedModal = () => {
     };
 
     const isLoading = form.formState.isSubmitting;
+    console.log(pdfFileUrl)
     return (
         <Dialog
             open={isOpen}
@@ -86,7 +87,7 @@ export const CreateFeedModal = () => {
                     <DialogDescription className="dark:text-neutral-400 text-neutral-600">Start filling up the details and get feedback from your peers.</DialogDescription>
                 </DialogHeader>
                 {/* Add the upload dropzone here */}
-                {/* <UploadPDFDropzone /> */}
+                <UploadPDFDropzone onFileUrlChange={setPdfFileUrl} />
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                         <FormField

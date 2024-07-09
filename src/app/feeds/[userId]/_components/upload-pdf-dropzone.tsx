@@ -59,7 +59,6 @@ export const UploadPDFDropzone = ({ onFileUrlChange }: { onFileUrlChange: (fileU
     };
 
 
-
     return (
         <section
             className={cn("flex justify-center rounded-lg dark:border-white/[0.2] border-black/[0.2] px-6", isHovered && "dark:border-white/[0.5] border-black/[0.5]")}
@@ -71,17 +70,17 @@ export const UploadPDFDropzone = ({ onFileUrlChange }: { onFileUrlChange: (fileU
             onDrop={onDrop}
         >
             <aside className="text-center">
-                <FileText className="h-14 w-14 mx-auto text-app-color" />
+                <FileText className="h-10 w-10 mx-auto text-app-color" />
                 {!hasFile ? (
-                    <p className="pt-3 dark:text-neutral-200 text-neutral-800 text-lg font-semibold">
+                    <p className="pt-3 dark:text-neutral-200 text-neutral-800 text-base font-semibold">
                         Drag & Drop PDF File here
                     </p>
                 ) : (
                     <hgroup className="flex items-center justify-center gap-3 pt-3">
-                        <h3 className="text-base pl-7 font-semibold dark:text-neutral-200 text-neutral-800">
+                        <h3 className="text-sm pl-7 font-semibold dark:text-neutral-200 text-neutral-800">
                             {file.name} - {getFileSizeString(file.size)}
                         </h3>
-                        <Button type="button" variant="ghost" size="icon" className="rounded-full" >
+                        <Button onClick={() => onRemove()} type="button" variant="ghost" size="icon" className="rounded-full" >
                             <X className="h-6 w-6" />
                         </Button>
                     </hgroup>
@@ -89,10 +88,11 @@ export const UploadPDFDropzone = ({ onFileUrlChange }: { onFileUrlChange: (fileU
                 <div className="pt-4">
                     {!hasFile ? (
                         <>
-                            <Label htmlFor="pdf-file" className="text-sm dark:text-neutral-400 text-neutral-600">
+                            <Label htmlFor="pdf-file" id="pdf-file" className="text-sm dark:text-neutral-400 text-neutral-600">
                                 Browse File
-                                <Input
+                                <input
                                     name="pdf-file"
+                                    id="pdf-file"
                                     type="file"
                                     className="sr-only"
                                     accept=".pdf"
