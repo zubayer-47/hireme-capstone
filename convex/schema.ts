@@ -55,7 +55,7 @@ export default defineSchema({
             responsibilities: v.array(v.string()),
             preferredQualifications: v.array(v.string()),
         }),
-        extractedKeywords: v.object ({
+        extractedKeywords: v.object({
             highImportance: v.array(v.string()),
             mediumImportance: v.array(v.string()),
             lowImportance: v.array(v.string()),
@@ -66,10 +66,10 @@ export default defineSchema({
             suggestions: v.array(v.string())
         })
     }).index("by_user", ["userId"])
-      .index("by_resumeId", ["resumeId"])
-      .index("by_userId_resume_id", ["userId", "resumeId"]),
+        .index("by_resumeId", ["resumeId"])
+        .index("by_userId_resume_id", ["userId", "resumeId"]),
 
-    
+
     feeds: defineTable({
         bio: v.string(),
         userId: v.id("users"),
@@ -83,6 +83,6 @@ export default defineSchema({
             commenterId: v.id("users"),
             comment: v.string(),
         })))
-    })
+    }).index("by_userId", ["userId"])
 
 })

@@ -133,10 +133,21 @@ export const comment = mutation({
         const newComment = { commenterId, comment };
 
         const updatedComments = feed.comments ? [...feed.comments, newComment] : [newComment];
-       
+
         return await ctx.db.patch(feed._id, {
             comments: updatedComments
         })
+    }
+});
+
+export const deleteFeed = mutation({
+    args: { feedId: v.id("feeds")},
+    handler: async (ctx, { feedId }) => {
+        const identity = await userIdentity(ctx);
+
+        if (!identity) throw new ConvexError("Unauthorized!");
+
+        return await ctx.db.delete(feedId);
     }
 })
 
