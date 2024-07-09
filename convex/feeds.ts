@@ -30,13 +30,24 @@ export const generateUploadUrl = mutation(
 )
 
 export const getFeeds = query({
-    args: {},
-    handler: async (ctx, args) => {
+    args: { bookmarked: v.boolean() },
+    handler: async (ctx, { bookmarked }) => {
         const identity = await userIdentity(ctx);
 
         if (!identity) throw new ConvexError("Unauthorized!");
 
-        return await ctx.db.query("feeds").collect();
+        let feeds = await ctx.db.query("feeds").collect();
+
+        if (bookmarked) {
+            const saved = await ctx.db
+                .query("isSaved")
+                .withIndex("by_userId", q => q.eq("userId", identity._id))
+                .collect();
+            
+            feeds = feeds.filter(feed => saved.some((s) => s.feedId === feed._id));
+        }
+
+        return feeds;
 
     }
 });
@@ -141,7 +152,7 @@ export const comment = mutation({
 });
 
 export const deleteFeed = mutation({
-    args: { feedId: v.id("feeds")},
+    args: { feedId: v.id("feeds") },
     handler: async (ctx, { feedId }) => {
         const identity = await userIdentity(ctx);
 

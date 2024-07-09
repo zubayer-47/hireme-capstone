@@ -83,6 +83,11 @@ export default defineSchema({
             commenterId: v.id("users"),
             comment: v.string(),
         })))
+    }).index("by_userId", ["userId"]),
+
+    isSaved: defineTable({
+        feedId: v.id("feeds"),
+        userId: v.id("users"),
     }).index("by_userId", ["userId"])
 
 })
