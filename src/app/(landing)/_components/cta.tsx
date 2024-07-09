@@ -16,7 +16,7 @@ export const CTA = ({ isAuthenticated, userId }: { isAuthenticated: boolean; use
                             Build winning applications, track progress effortlessly, and join a supportive community.
                         </p>
                         <div className="flex flex-col items-center justify-center gap-2 mx-auto mt-8 md:flex-row">
-                            <Link href={path} className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground translate-hover bg-app-color hover:bg-app-color/80 translate-hover">
+                            <Link href={path} className="h-11 px-8 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground translate-hover bg-app-color hover:bg-app-color/80 translate-hover">
                                 Start Building
                             </Link>
                         </div>
