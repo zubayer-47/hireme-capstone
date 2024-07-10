@@ -72,25 +72,30 @@ export default defineSchema({
 
     feeds: defineTable({
         bio: v.string(),
+        fileUrl: v.string(),
+        username: v.string(),
+        profImgUrl: v.string(),
         userId: v.id("users"),
         fileId: v.id("_storage"),
-        fileUrl: v.string(),
-        profImgUrl: v.string(),
-        upvoteCount: v.number(),
-        downvoteCount: v.number(),
-        username: v.string(),
         tags: v.array(v.string()),
-        comments: v.optional(v.array(v.object({
-            commenterId: v.id("users"),
-            commenterName: v.string(),
-            dateCreated: v.string(),
-            comment: v.string(),
-        })))
     }).index("by_userId", ["userId"]),
+
+    comments: defineTable({
+        comment: v.string(),
+        userId: v.id("users"),
+        feedId: v.id("feeds"),
+    }).index("by_userId_feedId", ["userId", "feedId"]),
+
+    votes: defineTable({
+        
+        userId: v.id("users"),
+        feedId: v.id("feeds"),
+        voteType: v.union(v.literal("upvote"), v.literal("downvote")),
+    }).index("by_userId_feedId", ["userId", "feedId"]),
 
     isSaved: defineTable({
         feedId: v.id("feeds"),
         userId: v.id("users"),
-    }).index("by_userId", ["userId"])
+    }).index("by_userId", ["userId"]),
 
 })

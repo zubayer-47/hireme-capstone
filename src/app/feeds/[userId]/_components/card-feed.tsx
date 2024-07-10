@@ -24,12 +24,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CardActionsDropdown } from "./card-actions-dropdown";
 import { PreviewFeedModal } from "./preview-feed-modal";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 
 export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const handleVote = async (option: string) => {
+        
+    }
 
-    
     return (
         <Card className="w-[350px] rounded-2xl dark:bg-neutral-900 dark:border-white/[0.2] hover:dark:border-white/[0.5]">
             <CardHeader>
@@ -79,17 +83,17 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
 
             </CardContent>
             <CardFooter className="flex items-center justify-between gap-2">
-                <Button variant="ghost" size="sm" className="gap-1">
+                <Button variant="ghost" size="sm" className="gap-1" onClick={() => handleVote("upvote")}>
                     <ArrowUp className="w-4 h-4" />
-                    {feed.upvoteCount}
+
                 </Button>
-                <Button variant="ghost" size="sm" className="gap-1">
+                <Button variant="ghost" size="sm" className="gap-1" onClick={() => handleVote("downvote")}>
                     <ArrowDown className="w-4 h-4" />
-                    {feed.downvoteCount}
+
                 </Button>
                 <Button variant="ghost" size="sm" className="gap-1">
                     <MessageCircle className="w-4 h-4" />
-                    {feed.comments?.length}
+                    
                 </Button>
                 {/* Highlight the button if the post is already bookmarked */}
                 <Button variant="ghost" size="sm" className="gap-1">

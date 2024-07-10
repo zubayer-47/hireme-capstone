@@ -110,62 +110,6 @@ export const editBioTagFeed = mutation({
     }
 });
 
-export const vote = mutation({
-    args: {
-        upvote: v.boolean(),
-        upvoteCount: v.number(),
-        downvoteCount: v.number(),
-        feedId: v.id("feeds")
-    },
-    handler: async (ctx, {
-        upvote,
-        downvoteCount,
-        upvoteCount,
-        feedId }) => {
-        const identity = await userIdentity(ctx);
-
-        if (!identity) throw new ConvexError("Unauthorized!");
-
-        const feed = await ctx.db.get(feedId);
-
-        if (!feed) throw new ConvexError("The feed you requested doesn't exist.");
-
-        if (upvote) {
-            await ctx.db.patch(feedId, {
-                upvoteCount
-            });
-        } else {
-            await ctx.db.patch(feedId, {
-                downvoteCount
-            });
-        }
-    }
-});
-
-export const comment = mutation({
-    args: {
-        commenterId: v.id("users"),
-        comment: v.string(),
-        feedId: v.id("feeds")
-    },
-    handler: async (ctx, { comment, commenterId, feedId }) => {
-        const identity = await userIdentity(ctx);
-
-        if (!identity) throw new ConvexError("Unauthorized!");
-
-        const feed = await ctx.db.get(feedId);
-
-        if (!feed) throw new ConvexError("The feed you requested doesn't exist.");
-
-        const newComment = { commenterId, comment };
-
-        const updatedComments = feed.comments ? [...feed.comments, newComment] : [newComment];
-
-        return await ctx.db.patch(feed._id, {
-            comments: updatedComments
-        })
-    }
-});
 
 export const deleteFeed = mutation({
     args: { feedId: v.id("feeds") },
