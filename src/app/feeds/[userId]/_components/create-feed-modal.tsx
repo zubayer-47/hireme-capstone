@@ -38,8 +38,10 @@ import { createFeedSchema } from "../feed-utils/create-feed-type";
 import { UploadPDFDropzone } from "./upload-pdf-dropzone";
 import { TagsInput } from "./tags-input";
 import { convertPDFToImages } from "../feed-utils/convert-pdf-to-image";
+import { useUser } from "@clerk/nextjs";
 
 export const CreateFeedModal = () => {
+    const { user } = useUser();
     const [isOpen, setIsOpen] = useState(false);
     const [pdfFileUrl, setPdfFileUrl] = useState("");
     const { toast } = useToast();
@@ -82,13 +84,23 @@ export const CreateFeedModal = () => {
 
             const storageIds = await Promise.all(uploadPromises);
 
-            await createFeed({ 
+            const res = await createFeed({ 
                 ...values, 
                 fileId: storageIds[0],
                 upvoteCount: 0,
                 downvoteCount: 0,
-                username: ""
-            })
+                username: user?.firstName!,
+                profImgUrl: user?.imageUrl!
+            });
+
+            if (res) {
+                toast({
+                    title: "Success",
+                    description: `Your feed has been created!`,
+                    variant: "success",
+                });
+                setIsOpen(false);
+            } 
 
         } catch (err) {
             console.error(err);

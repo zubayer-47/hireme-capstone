@@ -75,6 +75,7 @@ export default defineSchema({
         userId: v.id("users"),
         fileId: v.id("_storage"),
         fileUrl: v.string(),
+        profImgUrl: v.string(),
         upvoteCount: v.number(),
         downvoteCount: v.number(),
         username: v.string(),

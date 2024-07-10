@@ -13,6 +13,10 @@ const nextConfig = {
             protocol: "https",
             hostname: "img.clerk.com",
           },
+          {
+            protocol: "https",
+            hostname: "adept-weasel-331.convex.cloud"
+          }
         ],
       },
 };

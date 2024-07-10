@@ -1,63 +1,74 @@
 import Image from "next/image";
+import { formatRelative } from "date-fns";
+import { Doc } from "@/convex/_generated/dataModel";
 
-import { 
+import {
+    ArrowUp,
+    ArrowDown,
+    Bookmark,
+    MessageCircle,
+    MoreVertical
+} from "lucide-react";
+
+import {
     Card,
     CardFooter,
     CardHeader,
     CardContent,
     CardDescription,
 } from "@/components/ui/card";
-import { ArrowDown, ArrowUp, Bookmark, MessageCircle, MoreVertical } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
-export const CardFeed = () => {
+export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
+    
     return (
         <Card className="w-[350px] rounded-2xl dark:bg-neutral-900 dark:border-white/[0.2] hover:dark:border-white/[0.5]">
             <CardHeader>
                 <section className="flex items-center justify-between">
                     <article className="flex items-center gap-2">
-                        <Image src="/svg/user-profile-placeholder.svg" alt="User Profile Placeholder" width="20" height="20" className="rounded-full object-cover" />
+                        <Image src={feed.profImgUrl} alt={`${feed.username} Profile Placeholder`} width="20" height="20" className="rounded-full object-cover" />
                         <hgroup>
-                            <h2 className="text-xs dark:text-neutral-200 font-semibold">Username</h2>
-                            <p className="text-xs dark:text-neutral-400">Date Posted</p>
+                            <h2 className="text-xs dark:text-neutral-200 font-semibold capitalize">{feed.username}</h2>
+                            <p className="text-xs dark:text-neutral-400">{formatRelative(new Date(feed._creationTime), new Date())}</p>
                         </hgroup>
                     </article>
                     <Button className="outline-none" size="sm" variant="ghost">
                         <MoreVertical className="h-4 w-4" />
                     </Button>
                 </section>
-                {/* Limit only 4 badges here */}
-                <div className="pt-4 space-x-1">
-                    <Badge className="dark:bg-neutral-950 dark:text-neutral-500" >#Apple</Badge>
-                    <Badge className="dark:bg-neutral-950 dark:text-neutral-500">#Microsoft</Badge>
-                    <Badge className="dark:bg-neutral-950 dark:text-neutral-500">#Meta</Badge>
-                    <Badge className="dark:bg-neutral-950 dark:text-neutral-500">#Nvidia</Badge>
-                </div>
-                
-                <CardDescription className="truncate text-sm dark:text-neutral-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores consectetur mollitia eveniet accusamus nihil nesciunt corrupti aperiam blanditiis dicta, totam officiis similique quasi non accusantium saepe beatae debitis omnis possimus.
-                </CardDescription>
             </CardHeader>
+
             <CardContent >
-                <Image src="" alt="" width="300" height="250" className="object-cover h-full w-full border border-white/[0.2] shadow-2xl rounded-2xl" />
+                <hgroup className="py-2">
+                    <CardDescription className="truncate text-sm dark:text-neutral-400">
+                        {feed.bio}
+                    </CardDescription>
+
+                    <div className="flex items-center  flex-wrap space-x-0.5 pt-2">
+                        {feed.tags.map((tag, index) => (
+                        <Badge key={index} className="mb-1 dark:bg-neutral-950 dark:text-neutral-500 w-fit">#{tag}</Badge>
+                    ))}
+                    </div>
+                </hgroup>
+                <Image src={feed.fileUrl} alt="User Resume Image" width="200" height="200" priority className="object-cover overflow-hidden h-auto w-auto border border-white/[0.2] shadow-2xl rounded-2xl" />
             </CardContent>
             <CardFooter className="flex items-center justify-between gap-2">
                 <Button variant="ghost" size="sm" className="gap-1">
                     <ArrowUp className="w-4 h-4" />
-                    0
+                    {feed.upvoteCount}
                 </Button>
                 <Button variant="ghost" size="sm" className="gap-1">
                     <ArrowDown className="w-4 h-4" />
-                    0
+                    {feed.downvoteCount}
                 </Button>
                 <Button variant="ghost" size="sm" className="gap-1">
                     <MessageCircle className="w-4 h-4" />
-                    0
+                    {feed.comments?.length}
                 </Button>
+                {/* Highlight the button if the post is already bookmarked */}
                 <Button variant="ghost" size="sm" className="gap-1">
                     <Bookmark className="w-4 h-4" />
-                    0
                 </Button>
 
             </CardFooter>

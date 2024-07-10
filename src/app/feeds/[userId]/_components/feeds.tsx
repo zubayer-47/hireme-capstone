@@ -10,6 +10,7 @@ import { CreateFeedModal } from "./create-feed-modal";
 export const Feeds = () => {
     // call all the feed here
     const feeds = useQuery(api.feeds.getFeeds, {});
+
     return (
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
             <div className="flex items-center justify-between">
@@ -20,10 +21,9 @@ export const Feeds = () => {
                 <CreateFeedModal />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 md:gap-4 lg:gap-8 " >
-                <CardFeed />
-                <CardFeed />
-                <CardFeed />
-                <CardFeed />
+                {feeds && feeds.map((feed) => (
+                    <CardFeed key={feed._id} feed={feed} />
+                ))}
             </div>
         </main>
     )

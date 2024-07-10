@@ -60,6 +60,7 @@ export const createFeed = mutation({
         downvoteCount: v.number(),
         username: v.string(),
         tags: v.array(v.string()),
+        profImgUrl: v.string(),
     },
     handler: async (ctx, args) => {
         const identity = await userIdentity(ctx);
