@@ -43,7 +43,7 @@ export const CreateFeedModal = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [pdfFileUrl, setPdfFileUrl] = useState("");
     const { toast } = useToast();
-    
+
     const createFeed = useMutation(api.feeds.createFeed);
     const generateUploadUrl = useMutation(api.feeds.generateUploadUrl);
 
@@ -66,8 +66,6 @@ export const CreateFeedModal = () => {
         }
 
         try {
-            // pass in the storageId into createFeed mutation
-            // createFeed({ ...values, storageId})
             const imageUrls = await convertPDFToImages(pdfFileUrl);
 
             const uploadPromises = imageUrls.map(async (imageUrl) => {
@@ -83,9 +81,15 @@ export const CreateFeedModal = () => {
             })
 
             const storageIds = await Promise.all(uploadPromises);
-            console.log(storageIds)
 
-            console.log(values)
+            await createFeed({ 
+                ...values, 
+                fileId: storageIds[0],
+                upvoteCount: 0,
+                downvoteCount: 0,
+                username: ""
+            })
+
         } catch (err) {
             console.error(err);
             toast({

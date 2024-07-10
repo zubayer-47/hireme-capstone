@@ -56,7 +56,6 @@ export const createFeed = mutation({
     args: {
         bio: v.string(),
         fileId: v.id("_storage"),
-        fileUrl: v.string(),
         upvoteCount: v.number(),
         downvoteCount: v.number(),
         username: v.string(),
@@ -67,7 +66,12 @@ export const createFeed = mutation({
 
         if (!identity) throw new ConvexError("Unauthorized!");
 
-        return await ctx.db.insert("feeds", { ...args, userId: identity._id })
+        const fileUrl = await ctx.storage.getUrl(args.fileId);
+        return await ctx.db.insert("feeds", { 
+            ...args, 
+            userId: identity._id,
+            fileUrl: fileUrl ?? ""
+        })
     }
 });
 
