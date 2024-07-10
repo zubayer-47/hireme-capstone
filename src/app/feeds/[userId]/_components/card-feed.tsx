@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { CardActionsDropdown } from "./card-actions-dropdown";
 
 export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
     
@@ -33,9 +34,7 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
                             <p className="text-xs dark:text-neutral-400">{formatRelative(new Date(feed._creationTime), new Date())}</p>
                         </hgroup>
                     </article>
-                    <Button className="outline-none" size="sm" variant="ghost">
-                        <MoreVertical className="h-4 w-4" />
-                    </Button>
+                    <CardActionsDropdown feedId={feed._id} />
                 </section>
             </CardHeader>
 
@@ -51,7 +50,7 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
                     ))}
                     </div>
                 </hgroup>
-                <Image src={feed.fileUrl} alt="User Resume Image" width="200" height="200" priority className="object-cover overflow-hidden h-auto w-auto border border-white/[0.2] shadow-2xl rounded-2xl" />
+                <Image src={feed.fileUrl} alt="User Resume Image" width="300" height="200" priority className="object-cover overflow-hidden h-[14rem] w-[300px]  border border-white/[0.2] shadow-2xl rounded-2xl" />
             </CardContent>
             <CardFooter className="flex items-center justify-between gap-2">
                 <Button variant="ghost" size="sm" className="gap-1">

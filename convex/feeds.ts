@@ -52,6 +52,17 @@ export const getFeeds = query({
     }
 });
 
+export const getFeedWithId = query({
+    args: { feedId: v.id("feeds")},
+    handler: async (ctx, { feedId }) => {
+        const identity = await userIdentity(ctx);
+
+        if (!identity) throw new ConvexError("Unauthorized");
+
+        return await ctx.db.get(feedId);
+    }
+})
+
 export const createFeed = mutation({
     args: {
         bio: v.string(),

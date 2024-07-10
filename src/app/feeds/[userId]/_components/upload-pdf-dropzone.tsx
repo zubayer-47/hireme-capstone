@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { FileText, X } from "lucide-react";
+import { FileText, Inbox, X } from "lucide-react";
 import { useState } from "react";
 
 const defaultFileState = {
@@ -69,26 +69,31 @@ export const UploadPDFDropzone = ({ onFileUrlChange }: { onFileUrlChange: (fileU
             onDragLeave={() => setIsHovered(false)}
             onDrop={onDrop}
         >
-            <aside className="text-center">
-                <FileText className="h-10 w-10 mx-auto text-app-color" />
+            <aside className="text-center space-y-2">
                 {!hasFile ? (
-                    <p className="pt-3 dark:text-neutral-200 text-neutral-800 text-base font-semibold">
-                        Drag & Drop PDF File here
-                    </p>
+                    <>
+                        <Inbox className="h-10 w-10 mx-auto text-app-color" />
+                        <p className="pt-3 dark:text-neutral-200 text-neutral-800 text-base font-semibold">
+                            Drag & Drop Your PDF File here
+                        </p>
+                    </>
                 ) : (
-                    <hgroup className="flex items-center justify-center gap-3 pt-3">
-                        <h3 className="text-sm pl-7 font-semibold dark:text-neutral-200 text-neutral-800">
-                            {file.name} - {getFileSizeString(file.size)}
-                        </h3>
-                        <Button onClick={() => onRemove()} type="button" variant="ghost" size="icon" className="rounded-full" >
-                            <X className="h-6 w-6" />
-                        </Button>
-                    </hgroup>
+                    <>
+                        <FileText className="h-10 w-10 mx-auto text-app-color" />
+                        <hgroup className="flex items-center justify-center gap-3 pt-3">
+                            <h3 className="text-sm pl-7 font-semibold dark:text-neutral-200 text-neutral-800">
+                                {file.name} - {getFileSizeString(file.size)}
+                            </h3>
+                            <Button onClick={() => onRemove()} type="button" variant="ghost" size="icon" className="rounded-full" >
+                                <X className="h-6 w-6" />
+                            </Button>
+                        </hgroup>
+                    </>
                 )}
                 <div className="pt-4">
                     {!hasFile ? (
                         <>
-                            <label  className="cursor-pointer text-sm dark:text-neutral-400 text-neutral-600 hover:text-app-color transition-all">
+                            <label className="cursor-pointer text-sm dark:text-neutral-400 text-neutral-600 hover:text-app-color transition-all">
                                 Browse File
                                 <input
                                     type="file"
