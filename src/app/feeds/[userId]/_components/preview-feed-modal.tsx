@@ -40,15 +40,17 @@ const commentSchema = z.object({
 })
 
 export const PreviewFeedModal = ({
-    feed
+    feed,
+    comments
 }: {
-    feed: Doc<"feeds">
+    feed: Doc<"feeds">;
+    comments: Doc<"comments">[] | undefined;
 }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const { toast } = useToast();
 
-    const user = useQuery(api.users.getSelf);
+    const addComment = useMutation(api.comments.createComment);
 
     const form = useForm<z.infer<typeof commentSchema>>({
         resolver: zodResolver(commentSchema),
@@ -59,7 +61,10 @@ export const PreviewFeedModal = ({
 
     const onSubmit = async (values: z.infer<typeof commentSchema>) => {
         try {
-
+            await addComment({
+                feedId: feed._id,
+                ...values
+            })
 
         } catch (err) {
             console.error(err);
@@ -121,19 +126,21 @@ export const PreviewFeedModal = ({
                         </aside>
                         <p className="text-md dark:text-gray-300 text-gray-700">{feed.bio}</p>
                         <div className="flex-1 space-y-4">
-                            <div className="flex flex-col gap-2 rounded-lg p-3 border dark:border-gray-600 border-gray-300 hover:dark:border-gray-400 hover:border-gray-500 transition duration-200">
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <h2 className="text-sm font-semibold capitalize dark:text-white text-gray-900"></h2>
-                                        <p className="text-xs dark:text-gray-400 text-gray-600"></p>
+                            {comments && comments.map((comment) => (
+                                <div key={comment._id} className="flex flex-col gap-2 rounded-lg p-3 border dark:border-gray-600 border-gray-300 hover:dark:border-gray-400 hover:border-gray-500 transition duration-200">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <h2 className="text-sm font-semibold capitalize dark:text-white text-gray-900"></h2>
+                                            <p className="text-xs dark:text-gray-400 text-gray-600">{formatRelative(new Date(comment._creationTime), new Date())}</p>
+                                        </div>
+                                        <Button size="icon" variant="ghost">
+                                            <MoreVertical className="h-4 w-4 dark:text-gray-400 text-gray-600" />
+                                        </Button>
                                     </div>
-                                    <Button size="icon" variant="ghost">
-                                        <MoreVertical className="h-4 w-4 dark:text-gray-400 text-gray-600" />
-                                    </Button>
+                                    <p className="text-sm dark:text-gray-400 text-gray-600">{comment.comment}</p>
                                 </div>
-                                <p className="text-sm dark:text-gray-400 text-gray-600"></p>
-                            </div>
-
+                            ))
+                            }
                         </div>
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -154,7 +161,12 @@ export const PreviewFeedModal = ({
                                         </FormItem>
                                     )}
                                 />
-                                <Button type="submit" className="w-full bg-app-color hover:bg-app-color/90 text-white font-semibold py-2 rounded-lg transition duration-200">Submit</Button>
+                                <Button 
+                                    type="submit" 
+                                    disabled={isLoading}
+                                    className="w-full bg-app-color hover:bg-app-color/90 text-white font-semibold py-2 rounded-lg transition duration-200">
+                                        {isLoading ? <p className="flex items-center gap-1 text-neutral-500 "><Loader2 className="h-4 w-4 animate-spin" /> Submitting...</p>:"Submit"}
+                                    </Button>
                             </form>
                         </Form>
                     </article>

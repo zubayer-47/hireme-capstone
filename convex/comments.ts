@@ -42,7 +42,8 @@ export const createComment = mutation({
 
         await ctx.db.insert("comments", {
             ...args,
-            userId: identity._id
+            userId: identity._id,
+            username: identity.name
         })
     }
 });

@@ -81,6 +81,7 @@ export default defineSchema({
     }).index("by_userId", ["userId"]),
 
     comments: defineTable({
+        username: v.string(),
         comment: v.string(),
         userId: v.id("users"),
         feedId: v.id("feeds"),

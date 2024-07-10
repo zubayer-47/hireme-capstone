@@ -87,8 +87,6 @@ export const CreateFeedModal = () => {
             const res = await createFeed({ 
                 ...values, 
                 fileId: storageIds[0],
-                upvoteCount: 0,
-                downvoteCount: 0,
                 username: user?.firstName!,
                 profImgUrl: user?.imageUrl!
             });

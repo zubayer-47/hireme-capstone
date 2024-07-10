@@ -67,8 +67,6 @@ export const createFeed = mutation({
     args: {
         bio: v.string(),
         fileId: v.id("_storage"),
-        upvoteCount: v.number(),
-        downvoteCount: v.number(),
         username: v.string(),
         tags: v.array(v.string()),
         profImgUrl: v.string(),

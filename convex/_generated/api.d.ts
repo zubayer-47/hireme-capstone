@@ -24,6 +24,7 @@ import type * as results from "../results.js";
 import type * as resume from "../resume.js";
 import type * as types from "../types.js";
 import type * as users from "../users.js";
+import type * as votes from "../votes.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -44,6 +45,7 @@ declare const fullApi: ApiFromModules<{
   resume: typeof resume;
   types: typeof types;
   users: typeof users;
+  votes: typeof votes;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,

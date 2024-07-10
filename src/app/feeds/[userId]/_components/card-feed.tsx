@@ -24,15 +24,18 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CardActionsDropdown } from "./card-actions-dropdown";
 import { PreviewFeedModal } from "./preview-feed-modal";
-import { useMutation } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
 
 export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
     const [isHovered, setIsHovered] = useState(false);
+
+    const comments = useQuery(api.comments.getAllCommentsOnFeed, { feedId: feed._id })
     const handleVote = async (option: string) => {
         
     }
+
 
     return (
         <Card className="w-[350px] rounded-2xl dark:bg-neutral-900 dark:border-white/[0.2] hover:dark:border-white/[0.5]">
@@ -68,7 +71,7 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
                 >
                     {isHovered && (
                         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                            <PreviewFeedModal feed={feed} />
+                            <PreviewFeedModal feed={feed} comments={comments} />
                         </div>
                     )}
                     <Image
