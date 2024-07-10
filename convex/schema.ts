@@ -82,6 +82,8 @@ export default defineSchema({
         tags: v.array(v.string()),
         comments: v.optional(v.array(v.object({
             commenterId: v.id("users"),
+            commenterName: v.string(),
+            dateCreated: v.string(),
             comment: v.string(),
         })))
     }).index("by_userId", ["userId"]),
