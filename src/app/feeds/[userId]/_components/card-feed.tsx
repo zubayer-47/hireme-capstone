@@ -23,6 +23,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CardActionsDropdown } from "./card-actions-dropdown";
+import { PreviewFeedModal } from "./preview-feed-modal";
 
 
 export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
@@ -63,14 +64,7 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
                 >
                     {isHovered && (
                         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                            <Button
-                                size="sm"
-                                type="button"
-                                variant="outline"
-                                onClick={() => { }}
-                            >
-                                PREVIEW
-                            </Button>
+                            <PreviewFeedModal feed={feed} />
                         </div>
                     )}
                     <Image

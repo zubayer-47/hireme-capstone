@@ -1,17 +1,14 @@
 "use client"
 
 import { z } from "zod";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
+import { useMutation, useQuery } from "convex/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import {
-    Plus,
-    Loader2,
-} from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 import {
     Form,
@@ -25,7 +22,6 @@ import {
     Dialog,
     DialogTitle,
     DialogHeader,
-    DialogTrigger,
     DialogContent,
     DialogDescription,
 } from "@/components/ui/dialog";
@@ -72,7 +68,7 @@ export const EditFeedModal = ({
 
     const onSubmit = async (values: z.infer<typeof createFeedSchema>) => {
         try {
-            const res = await editFeed({
+            await editFeed({
                 feedId,
                 ...values
             })
