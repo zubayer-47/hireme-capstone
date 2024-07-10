@@ -37,11 +37,13 @@ import { useToast } from "@/components/ui/use-toast";
 import { createFeedSchema } from "../feed-utils/create-feed-type";
 import { UploadPDFDropzone } from "./upload-pdf-dropzone";
 import { TagsInput } from "./tags-input";
+import { convertPDFToImages } from "../feed-utils/convert-pdf-to-image";
 
 export const CreateFeedModal = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [pdfFileUrl, setPdfFileUrl] = useState("");
     const { toast } = useToast();
+    
     const createFeed = useMutation(api.feeds.createFeed);
     const generateUploadUrl = useMutation(api.feeds.generateUploadUrl);
 
@@ -53,15 +55,44 @@ export const CreateFeedModal = () => {
         }
     });
 
-    const onSubmit = (values: z.infer<typeof createFeedSchema>) => {
+    const onSubmit = async (values: z.infer<typeof createFeedSchema>) => {
+        if (!pdfFileUrl) {
+            toast({
+                title: "Error",
+                description: `Please upload a PDF file to continue.`,
+                variant: "destructive",
+            });
+            return;
+        }
 
         try {
-            // call the generate upload url here
-            // take the _storageId 
+            // pass in the storageId into createFeed mutation
+            // createFeed({ ...values, storageId})
+            const imageUrls = await convertPDFToImages(pdfFileUrl);
+
+            const uploadPromises = imageUrls.map(async (imageUrl) => {
+                const postUrl = await generateUploadUrl();
+                const result = await fetch(postUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "image/png" },
+                    body: await (await fetch(imageUrl)).blob()
+                });
+
+                const { storageId } = await result.json();
+                return storageId;
+            })
+
+            const storageIds = await Promise.all(uploadPromises);
+            console.log(storageIds)
 
             console.log(values)
         } catch (err) {
-            console.error(err)
+            console.error(err);
+            toast({
+                title: "Error",
+                description: `An error occured while creating the feed.`,
+                variant: "destructive",
+            });
         }
     };
 
@@ -82,7 +113,7 @@ export const CreateFeedModal = () => {
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:w-2/3 w-full dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
-                <DialogHeader>
+                <DialogHeader className="pb-2">
                     <DialogTitle className="dark:text-neutral-200 text-neutral-800 capitalize">Share Your Resume to the Community</DialogTitle>
                     <DialogDescription className="dark:text-neutral-400 text-neutral-600">Start filling up the details and get feedback from your peers.</DialogDescription>
                 </DialogHeader>

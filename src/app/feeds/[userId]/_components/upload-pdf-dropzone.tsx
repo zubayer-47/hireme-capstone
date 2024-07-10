@@ -88,17 +88,15 @@ export const UploadPDFDropzone = ({ onFileUrlChange }: { onFileUrlChange: (fileU
                 <div className="pt-4">
                     {!hasFile ? (
                         <>
-                            <Label htmlFor="pdf-file" id="pdf-file" className="text-sm dark:text-neutral-400 text-neutral-600">
+                            <label  className="cursor-pointer text-sm dark:text-neutral-400 text-neutral-600 hover:text-app-color transition-all">
                                 Browse File
                                 <input
-                                    name="pdf-file"
-                                    id="pdf-file"
                                     type="file"
                                     className="sr-only"
                                     accept=".pdf"
                                     onChange={onInputChange}
                                 />
-                            </Label>
+                            </label>
                             {hasNonPdfFile && (
                                 <p className="mt-6 dark:text-rose-400 text-rose-600">Only PDF file is supported.</p>
                             )}
