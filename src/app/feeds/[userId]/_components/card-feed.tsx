@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { formatRelative } from "date-fns";
 import { Doc } from "@/convex/_generated/dataModel";
 
@@ -21,7 +24,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CardActionsDropdown } from "./card-actions-dropdown";
 
+
 export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
     
     return (
         <Card className="w-[350px] rounded-2xl dark:bg-neutral-900 dark:border-white/[0.2] hover:dark:border-white/[0.5]">
@@ -46,11 +52,37 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
 
                     <div className="flex items-center  flex-wrap space-x-0.5 pt-2">
                         {feed.tags.map((tag, index) => (
-                        <Badge key={index} className="mb-1 dark:bg-neutral-950 dark:text-neutral-500 w-fit">#{tag}</Badge>
-                    ))}
+                            <Badge key={index} className="mb-1 dark:bg-neutral-950 dark:text-neutral-500 w-fit">#{tag}</Badge>
+                        ))}
                     </div>
                 </hgroup>
-                <Image src={feed.fileUrl} alt="User Resume Image" width="300" height="200" priority className="object-cover overflow-hidden h-[14rem] w-[300px]  border border-white/[0.2] shadow-2xl rounded-2xl" />
+                <aside
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    className="relative w-[300px] h-[14rem] border border-white/[0.2] shadow-2xl rounded-2xl overflow-hidden"
+                >
+                    {isHovered && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                            <Button
+                                size="sm"
+                                type="button"
+                                variant="outline"
+                                onClick={() => { }}
+                            >
+                                PREVIEW
+                            </Button>
+                        </div>
+                    )}
+                    <Image
+                        src={feed.fileUrl}
+                        alt="User Resume Image"
+                        width={300}
+                        height={200}
+                        priority
+                        className="object-cover w-full h-full"
+                    />
+                </aside>
+
             </CardContent>
             <CardFooter className="flex items-center justify-between gap-2">
                 <Button variant="ghost" size="sm" className="gap-1">
