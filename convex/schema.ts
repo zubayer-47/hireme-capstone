@@ -87,7 +87,6 @@ export default defineSchema({
     }).index("by_userId_feedId", ["userId", "feedId"]),
 
     votes: defineTable({
-        
         userId: v.id("users"),
         feedId: v.id("feeds"),
         voteType: v.union(v.literal("upvote"), v.literal("downvote")),
