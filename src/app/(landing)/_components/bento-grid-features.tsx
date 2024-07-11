@@ -3,8 +3,8 @@ import Image from "next/image"
 export const BentoGridFeatures = () => {
     return (
         <section className="scroll-mt-24" id="features">
-            <div className="flex flex-col h-full gap-2 px-8 py-12 mx-auto md:px-12 lg:px-32 max-w-7xl">
-                <div className="grid gap-2 lg:grid-flow-col-dense lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-3">
+            <article className="flex flex-col h-full gap-2 px-8 py-12 mx-auto md:px-12 lg:px-32 max-w-7xl">
+                <aside className="grid gap-2 lg:grid-flow-col-dense lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-3">
                     <div className="max-w-lg min-w-full mx-auto">
                         <div className="flex h-full">
                             <div className="flex flex-col justify-center p-8 border border-white/[0.2] bg-neutral-950 rounded-3xl w-full">
@@ -21,8 +21,8 @@ export const BentoGridFeatures = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="grid gap-2 lg:grid-flow-col-dense lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-3">
+                </aside>
+                <aside className="grid gap-2 lg:grid-flow-col-dense lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-3">
                     <div className="max-w-lg min-w-full mx-auto lg:col-start-3">
                         <div className="flex h-full">
                             <div className="flex flex-col justify-center p-8 border border-white/[0.2] bg-neutral-950 rounded-3xl w-full">
@@ -37,8 +37,8 @@ export const BentoGridFeatures = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="grid gap-2 lg:grid-flow-col-dense lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-3">
+                </aside>
+                <aside className="grid gap-2 lg:grid-flow-col-dense lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-3">
                     <div className="max-w-lg min-w-full mx-auto">
                         <div className="flex h-full">
                             <div className="flex flex-col justify-center p-8 border border-white/[0.2] bg-neutral-950 rounded-3xl w-full">
@@ -53,8 +53,8 @@ export const BentoGridFeatures = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </aside>
+            </article>
         </section>
     )
 }
