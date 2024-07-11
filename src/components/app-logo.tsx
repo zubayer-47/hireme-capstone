@@ -5,17 +5,20 @@ type AppLogoProps = {
     href: string;
     width: number;
     height: number;
+    className?: string;
 }
 
 export const AppLogo = ({
     href,
     width,
     height,
-} : AppLogoProps ) => {
+    className
+}: AppLogoProps) => {
     return (
-        <Link href={href} className="flex items-center gap-0.5">
-            <Image src="/svg/logo.svg" alt="Letter H Logo & App Logo for the website HireMe" width={width} height={height} />
-            <p className="text-neutral-950 dark:text-neutral-100 text-sm font-semibold">HireMe</p>
+        <Link href={href} className={`flex items-center gap-0.5 group transition ${className}`}>
+            <Image src="/svg/logo.svg" alt="Letter H Logo & App Logo for the website HireMe" width={width} height={height} className="group-hover:animate-spin" />
+            <p className="text-neutral-800 dark:text-neutral-200 text-sm font-semibold group-hover:dark:text-neutral-300 group-hover:text-neutral-700">HireMe</p>
         </Link>
+
     )
 }

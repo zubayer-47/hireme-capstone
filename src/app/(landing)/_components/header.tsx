@@ -23,13 +23,12 @@ export const Header = ({
   return (
     <header className="relative w-full flex items-center justify-center">
       <div
-        className="fixed inset-x-0 sm:px-0 px-2 max-w-4xl mx-auto z-50 top-2"
+        className="fixed max-w-xl mx-auto px-2 z-50 top-2 w-full"
       >
-        <Menu setActive={setActive}>
+        <Menu setActive={setActive} isAuthenticated={isAuthenticated}>
           <AppLogo href="/" height={22.5} width={22.5} />
-
-          <Link href="/about" className="text-neutral-200">About</Link>
-          <Link href="/contact" className="text-neutral-200">Contact</Link>
+          <Link href="/about" className="text-neutral-200 hover:opacity-[0.8]">About</Link>
+          <Link href="/contact" className="text-neutral-200 hover:opacity-[0.8]">Contact</Link>
           <MenuItem setActive={setActive} active={active} item="Services">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/builder">Resume Builder</HoveredLink>
