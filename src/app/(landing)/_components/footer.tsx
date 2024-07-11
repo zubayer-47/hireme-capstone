@@ -20,22 +20,22 @@ export const Footer = () => {
                             <h3 className="text-neutral-200 text-sm">Resources</h3>
                             <ul role="list" className="mt-4 space-y-2">
                                 <li>
-                                    <Link href="#_" className="text-sm text-gray-500 hover:text-gray-400">
+                                    <Link href="/about" className="text-sm text-gray-500 hover:text-gray-400">
                                         About
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="#_" className="text-sm text-gray-500 hover:text-gray-400">
+                                    <Link href="/contact" className="text-sm text-gray-500 hover:text-gray-400">
                                         Contact
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="#_" className="text-sm text-gray-500 hover:text-gray-400">
+                                    <Link href="#" className="text-sm text-gray-500 hover:text-gray-400">
                                         Privacy Policy
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="#_" className="text-sm text-gray-500 hover:text-gray-400">
+                                    <Link href="#" className="text-sm text-gray-500 hover:text-gray-400">
                                         Terms of service
                                     </Link>
                                 </li>
@@ -45,17 +45,17 @@ export const Footer = () => {
                             <h3 className="text-neutral-200 text-sm">Services</h3>
                             <ul role="list" className="mt-4 space-y-2">
                                 <li>
-                                    <Link href="#_" className="text-sm text-gray-500 hover:text-gray-400">
+                                    <Link href="/feeds" className="text-sm text-gray-500 hover:text-gray-400">
                                         Social Feed
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="#_" className="text-sm text-gray-500 hover:text-gray-400">
+                                    <Link href="/builder" className="text-sm text-gray-500 hover:text-gray-400">
                                         Builder Tool
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="#_" className="text-sm text-gray-500 hover:text-gray-400">
+                                    <Link href="/tracker" className="text-sm text-gray-500 hover:text-gray-400">
                                         Job Tracker
                                     </Link>
                                 </li>
@@ -63,7 +63,7 @@ export const Footer = () => {
                         </nav>
                     </hgroup>
                 </aside>
-                <aside className="flex flex-col pt-12 md:flex-row md:items-center md:justify-between">
+                <aside className="flex flex-col gap-2 md:gap-0 pt-12 md:flex-row md:items-center md:justify-between">
                     <nav className="text-left">
                         <span className="mx-auto mt-2 text-sm text-neutral-300 lg:mx-0">
                             © HireMe. By:
