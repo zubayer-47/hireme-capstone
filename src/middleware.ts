@@ -6,6 +6,8 @@ import {
  const isPublicRoute = createRouteMatcher([
   '/sign-in(.*)', 
   '/sign-up(.*)',
+  '/about',
+  '/contact',
   '/'
  ])
 
