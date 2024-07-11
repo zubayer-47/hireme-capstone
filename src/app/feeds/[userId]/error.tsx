@@ -17,7 +17,7 @@ export default function Error({
   useEffect(() => {
     console.error(error)
   }, [error])
-
+  
   return (
     <main className="h-full w-full flex justify-center items-center mx-auto">
       <section className="flex flex-col items-center space-y-4 md:space-y-8">
