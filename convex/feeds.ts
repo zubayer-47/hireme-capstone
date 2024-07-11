@@ -1,5 +1,6 @@
 import { v, ConvexError } from "convex/values";
 import { mutation, QueryCtx, MutationCtx, query, } from "./_generated/server";
+import { paginationOptsValidator } from "convex/server";
 
 async function userIdentity(
     ctx: QueryCtx | MutationCtx,
@@ -29,15 +30,17 @@ export const generateUploadUrl = mutation(
 )
 
 export const getFeeds = query({
-    args: { bookmarked: v.optional(v.boolean()) },
+    args: { 
+        bookmarked: v.optional(v.boolean()),
+    },
     handler: async (ctx, { bookmarked }) => {
         const identity = await userIdentity(ctx);
 
         if (!identity) throw new ConvexError("Unauthorized!");
 
-        let feeds = await ctx.db.query("feeds").collect();
+        let feeds = await ctx.db.query("feeds").order("desc").collect();
 
-        if (bookmarked) {
+        if (bookmarked === true) {
             const saved = await ctx.db
                 .query("isSaved")
                 .withIndex("by_userId", q => q.eq("userId", identity._id))

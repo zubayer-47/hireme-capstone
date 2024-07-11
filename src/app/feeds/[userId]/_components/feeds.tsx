@@ -3,13 +3,14 @@
 import { CardFeed } from "./card-feed"
 import { Button } from "@/components/ui/button"
 import { api } from "@/convex/_generated/api";
-import { useQuery } from "convex/react";
+import { usePaginatedQuery, useQuery } from "convex/react";
 import { SlidersHorizontal } from "lucide-react"
 import { CreateFeedModal } from "./create-feed-modal";
 
 export const Feeds = () => {
     // call all the feed here
-    const feeds = useQuery(api.feeds.getFeeds, {});
+    const feeds = useQuery(api.feeds.getFeeds, { bookmarked: false });
+
 
     return (
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
