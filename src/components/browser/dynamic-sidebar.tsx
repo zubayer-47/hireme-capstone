@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 import { useUser } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 import { Id } from "@/convex/_generated/dataModel";
 
 import { Plus } from "lucide-react";
@@ -19,8 +21,10 @@ import { Button } from "@/components/ui/button";
 import { NavLinks } from "./nav-links";
 import { dataLinks } from "../../app/feeds/[userId]/feed-utils/links";
 
+
 export const DynamicSidebar = ({ userId }: { userId: Id<"users"> } ) => {
     const { user } =  useUser();
+    const pathname = usePathname();
     
     return (
         <div className="flex h-full max-h-screen flex-col gap-2">
@@ -33,7 +37,9 @@ export const DynamicSidebar = ({ userId }: { userId: Id<"users"> } ) => {
             </div>
             <div className="flex-1">
                 <nav className="grid items-start px-2 text-sm font-medium lg:px-4 space-y-4">
-                    <Link href={`/feeds/${userId}`} className="flex items-center gap-3 dark:bg-neutral-950 bg-neutral-200 rounded-md py-1 px-1">
+                    <Link 
+                        href={`/feeds/${userId}`} 
+                        className={cn(pathname.includes("feeds") && "dark:bg-neutral-950 bg-neutral-200 rounded-md py-1 px-1","flex items-center gap-3")}>
                         <Image 
                             width={20} 
                             height={20}
@@ -45,7 +51,12 @@ export const DynamicSidebar = ({ userId }: { userId: Id<"users"> } ) => {
                     </Link>
                     
                     {dataLinks.map(({ titleSection, links }, index) => (
-                        <NavLinks key={index} titleSection={titleSection} links={links} />
+                        <NavLinks 
+                            key={index} 
+                            links={links}
+                            pathname={pathname}
+                            titleSection={titleSection}  
+                        />
                     ))}
                 </nav>
             </div>

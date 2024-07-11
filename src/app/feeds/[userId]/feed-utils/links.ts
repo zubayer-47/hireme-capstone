@@ -12,22 +12,22 @@ export const dataLinks = [
         titleSection: "Discover",
         links: [
             {
-                href: "#",
+                href: "/feeds?filter=recent",
                 icon: CalendarClock,
                 navLinkTitle: "Recent",
             },
             {
-                href: "#",
+                href: "/feeds?filter=most-discussed",
                 icon: MessageSquareMore,
                 navLinkTitle: "Most Discussed",
             },
             {
-                href: "#",
+                href: "/feeds?filter=most-upvotes",
                 icon: ArrowUp,
                 navLinkTitle: "Most Upvotes",
             },
             {
-                href: "#",
+                href: "/feeds?filter=bookmarks",
                 icon: Bookmark,
                 navLinkTitle: "Bookmarks",
             },
@@ -39,12 +39,12 @@ export const dataLinks = [
             {
                 href: "/builder",
                 icon: Blocks,
-                navLinkTitle: "Builder",
+                navLinkTitle: "builder",
             },
             {
                 href: "/tracker",
                 icon: Sheet,
-                navLinkTitle: "Tracker",
+                navLinkTitle: "tracker",
             },
         ]
     }
