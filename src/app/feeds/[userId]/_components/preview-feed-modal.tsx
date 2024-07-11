@@ -91,7 +91,6 @@ export const PreviewFeedModal = ({
                     size="sm"
                     type="button"
                     variant="outline"
-                    onClick={() => { }}
                 >
                     PREVIEW
                 </Button>
@@ -130,7 +129,7 @@ export const PreviewFeedModal = ({
                                 <div key={comment._id} className="flex flex-col gap-2 rounded-lg p-3 border dark:border-gray-600 border-gray-300 hover:dark:border-gray-400 hover:border-gray-500 transition duration-200">
                                     <div className="flex items-center justify-between">
                                         <div>
-                                            <h2 className="text-sm font-semibold capitalize dark:text-white text-gray-900"></h2>
+                                            <h2 className="text-sm font-semibold capitalize dark:text-white text-gray-900">{comment.username}</h2>
                                             <p className="text-xs dark:text-gray-400 text-gray-600">{formatRelative(new Date(comment._creationTime), new Date())}</p>
                                         </div>
                                         <Button size="icon" variant="ghost">
@@ -139,8 +138,7 @@ export const PreviewFeedModal = ({
                                     </div>
                                     <p className="text-sm dark:text-gray-400 text-gray-600">{comment.comment}</p>
                                 </div>
-                            ))
-                            }
+                            ))}
                         </div>
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">

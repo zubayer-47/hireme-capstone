@@ -34,7 +34,10 @@ export const getAllCommentsOnFeed = query({
 })
 
 export const createComment = mutation({
-    args: { feedId: v.id("feeds"), comment: v.string() },
+    args: { 
+        feedId: v.id("feeds"), 
+        comment: v.string(),
+    },
     handler: async (ctx, args) => {
         const identity = await userIdentity(ctx);
 
@@ -43,7 +46,8 @@ export const createComment = mutation({
         await ctx.db.insert("comments", {
             ...args,
             userId: identity._id,
-            username: identity.name
+            username: identity.name,   
+            profileUrl: identity.profileUrl 
         })
     }
 });

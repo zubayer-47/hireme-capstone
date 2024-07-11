@@ -13,6 +13,7 @@ import {
 export default defineSchema({
     users: defineTable({
         name: v.string(),
+        profileUrl: v.string(),
         tokenIdentifier: v.string()
     }).index("by_token", ["tokenIdentifier"]),
 
@@ -69,7 +70,6 @@ export default defineSchema({
         .index("by_resumeId", ["resumeId"])
         .index("by_userId_resume_id", ["userId", "resumeId"]),
 
-
     feeds: defineTable({
         bio: v.string(),
         fileUrl: v.string(),
@@ -78,6 +78,12 @@ export default defineSchema({
         userId: v.id("users"),
         fileId: v.id("_storage"),
         tags: v.array(v.string()),
+        upVoteCount: v.number(),
+        downVoteCount: v.number(),
+        voterIds: v.array(v.object({
+            voterId: v.string(),
+            voteType: v.union(v.literal("upvote"), v.literal("downvote"))
+        })),
     }).index("by_userId", ["userId"]),
 
     comments: defineTable({
@@ -85,13 +91,9 @@ export default defineSchema({
         comment: v.string(),
         userId: v.id("users"),
         feedId: v.id("feeds"),
+        profileUrl: v.string(),
     }).index("by_userId_feedId", ["userId", "feedId"]),
 
-    votes: defineTable({
-        userId: v.id("users"),
-        feedId: v.id("feeds"),
-        voteType: v.union(v.literal("upvote"), v.literal("downvote")),
-    }).index("by_userId_feedId", ["userId", "feedId"]),
 
     isSaved: defineTable({
         feedId: v.id("feeds"),

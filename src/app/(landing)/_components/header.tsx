@@ -10,7 +10,7 @@ import {
   ProductItem
 } from "@/components/animation/navbar-menu";
 import { AppLogo } from "@/components/app-logo";
-import { ButtonLink } from "@/components/button-link";
+
 
 type HeaderProps = {
   isLoading: boolean;
@@ -27,10 +27,11 @@ export const Header = ({
   return (
     <header className="relative w-full flex items-center justify-center">
       <div
-        className="fixed inset-x-0 max-w-4xl mx-auto z-50 top-2"
+        className="fixed inset-x-0 sm:px-0 px-2 max-w-4xl mx-auto z-50 top-2"
       >
         <Menu setActive={setActive}>
           <AppLogo href="/" height={22.5} width={22.5} />
+
           <Link href="#" className="text-neutral-200">About</Link>
           <Link href="#" className="text-neutral-200">Contact</Link>
           <MenuItem setActive={setActive} active={active} item="Services">
@@ -72,12 +73,9 @@ export const Header = ({
           {isAuthenticated ? (
               <UserButton afterSignOutUrl="/" />
           ) : (
-            <ButtonLink
-              size="sm"
-              name="Sign In" 
-              href="/auth/sign-in"  
-              className="bg-neutral-200 hover:bg-accent text-neutral-950 " 
-            />
+            <Link href="/auth/sign-in" className="h-9 px-3 bg-neutral-200 hover:bg-accent text-neutral-950 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground translate-hover" >
+              Sign In
+            </Link>
           )}
         </Menu>
       </div>

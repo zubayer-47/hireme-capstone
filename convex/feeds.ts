@@ -1,6 +1,5 @@
 import { v, ConvexError } from "convex/values";
 import { mutation, QueryCtx, MutationCtx, query, } from "./_generated/server";
-import { reducer } from '../src/components/ui/use-toast';
 
 async function userIdentity(
     ctx: QueryCtx | MutationCtx,
@@ -43,7 +42,7 @@ export const getFeeds = query({
                 .query("isSaved")
                 .withIndex("by_userId", q => q.eq("userId", identity._id))
                 .collect();
-            
+
             feeds = feeds.filter(feed => saved.some((s) => s.feedId === feed._id));
         }
 
@@ -53,7 +52,7 @@ export const getFeeds = query({
 });
 
 export const getFeedWithId = query({
-    args: { feedId: v.id("feeds")},
+    args: { feedId: v.id("feeds") },
     handler: async (ctx, { feedId }) => {
         const identity = await userIdentity(ctx);
 
@@ -67,7 +66,6 @@ export const createFeed = mutation({
     args: {
         bio: v.string(),
         fileId: v.id("_storage"),
-        username: v.string(),
         tags: v.array(v.string()),
         profImgUrl: v.string(),
     },
@@ -77,10 +75,14 @@ export const createFeed = mutation({
         if (!identity) throw new ConvexError("Unauthorized!");
 
         const fileUrl = await ctx.storage.getUrl(args.fileId);
-        return await ctx.db.insert("feeds", { 
-            ...args, 
+        return await ctx.db.insert("feeds", {
+            ...args,
             userId: identity._id,
-            fileUrl: fileUrl ?? ""
+            fileUrl: fileUrl ?? "",
+            username: identity.name,
+            upVoteCount: 0,
+            downVoteCount: 0,
+            voterIds: [],
         })
     }
 });
@@ -117,6 +119,59 @@ export const deleteFeed = mutation({
         if (!identity) throw new ConvexError("Unauthorized!");
 
         return await ctx.db.delete(feedId);
+    }
+});
+
+
+export const vote = mutation({
+    args: {
+        feedId: v.id("feeds"),
+        voteType: v.union(v.literal("upvote"), v.literal("downvote"))
+    },
+    handler: async (ctx, { feedId, voteType }) => {
+        const identity = await userIdentity(ctx);
+
+        if (!identity) throw new ConvexError("Unauthorized!");
+
+        const feed = await ctx.db.get(feedId);
+
+        if (!feed) throw new ConvexError("The ID you provided is invalid.");
+
+        const voterIndex = feed.voterIds.findIndex(v => v.voterId === identity._id);
+        if (voterIndex !== -1) {
+            const existingVote = feed.voterIds[voterIndex]
+            if (existingVote.voterId === identity._id) {
+                if (voteType === "upvote") {
+                    feed.upVoteCount -= 1;
+                } else if (voteType === "downvote") {
+                    feed.downVoteCount -= 1;
+                }
+                feed.voterIds.splice(voterIndex, 1);
+            } else {
+                if (existingVote.voteType === "upvote") {
+                    feed.upVoteCount -= 1;
+                    feed.downVoteCount += 1;
+                } else if (existingVote.voteType === "downvote") {
+                    feed.downVoteCount -= 1;
+                    feed.upVoteCount += 1;
+                }
+                feed.voterIds[voterIndex].voteType = voteType;
+            }
+
+        } else {
+            if (voteType === "upvote") {
+                feed.upVoteCount += 1;
+            } else if (voteType === "downvote") {
+                feed.downVoteCount += 1;
+            }
+            feed.voterIds.push({ voterId: identity._id, voteType })
+        }
+
+        await ctx.db.patch(feedId, {
+            upVoteCount: feed.upVoteCount,
+            downVoteCount: feed.downVoteCount,
+            voterIds: feed.voterIds,
+        })
     }
 })
 

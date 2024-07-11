@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { formatRelative } from "date-fns";
 import { Doc } from "@/convex/_generated/dataModel";
 
@@ -26,16 +26,48 @@ import { CardActionsDropdown } from "./card-actions-dropdown";
 import { PreviewFeedModal } from "./preview-feed-modal";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-
+import { useToast } from "@/components/ui/use-toast";
+import { cn } from "@/lib/utils";
 
 export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const [userVoteType, setUserVoteType] = useState<"upvote" | "downvote" | null>(null);
+    const { toast } = useToast();
 
-    const comments = useQuery(api.comments.getAllCommentsOnFeed, { feedId: feed._id })
-    const handleVote = async (option: string) => {
-        
-    }
+    const user = useQuery(api.users.getSelf);
+    const comments = useQuery(api.comments.getAllCommentsOnFeed, { feedId: feed._id });
+    const vote = useMutation(api.feeds.vote);
 
+    useEffect(() => {
+        const checkIfUserVoted = () => {
+            if (user) {
+                const userVote = feed.voterIds.find(v => v.voterId === user._id);
+                if (userVote) {
+                    setUserVoteType(userVote.voteType)
+                } else {
+                    setUserVoteType(null)
+                }
+            }
+        }
+
+        checkIfUserVoted();
+    }, [user, feed.voterIds])
+
+    const handleVote = async (voterAction: "upvote" | "downvote") => {
+        try {
+            await vote({
+                feedId: feed._id,
+                voteType: voterAction
+            });
+
+
+        } catch (err) {
+            console.error(err);
+
+        }
+    };
+
+    console.log(userVoteType)
 
     return (
         <Card className="w-[350px] rounded-2xl dark:bg-neutral-900 dark:border-white/[0.2] hover:dark:border-white/[0.5]">
@@ -52,13 +84,13 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
                 </section>
             </CardHeader>
 
-            <CardContent >
+            <CardContent>
                 <hgroup className="py-2">
                     <CardDescription className="truncate text-sm dark:text-neutral-400">
                         {feed.bio}
                     </CardDescription>
 
-                    <div className="flex items-center  flex-wrap space-x-0.5 pt-2">
+                    <div className="flex items-center flex-wrap space-x-0.5 pt-2">
                         {feed.tags.map((tag, index) => (
                             <Badge key={index} className="mb-1 dark:bg-neutral-950 dark:text-neutral-500 w-fit">#{tag}</Badge>
                         ))}
@@ -83,27 +115,25 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
                         className="object-cover w-full h-full"
                     />
                 </aside>
-
             </CardContent>
             <CardFooter className="flex items-center justify-between gap-2">
-                <Button variant="ghost" size="sm" className="gap-1" onClick={() => handleVote("upvote")}>
+                <Button variant="ghost" size="sm" className={cn(userVoteType === "upvote" ? "text-app-color" : "" ,`gap-1`)} onClick={() => handleVote("upvote")}>
                     <ArrowUp className="w-4 h-4" />
-
+                    {feed.upVoteCount}
                 </Button>
-                <Button variant="ghost" size="sm" className="gap-1" onClick={() => handleVote("downvote")}>
+                <Button variant="ghost" size="sm" className={cn(userVoteType === "downvote" ? "text-app-color" : "", `gap-1`)} onClick={() => handleVote("downvote")}>
                     <ArrowDown className="w-4 h-4" />
-
+                    {feed.downVoteCount}
                 </Button>
                 <Button variant="ghost" size="sm" className="gap-1">
                     <MessageCircle className="w-4 h-4" />
-                    
+                    {comments && comments.length}
                 </Button>
                 {/* Highlight the button if the post is already bookmarked */}
                 <Button variant="ghost" size="sm" className="gap-1">
                     <Bookmark className="w-4 h-4" />
                 </Button>
-
             </CardFooter>
         </Card>
-    )
-}
+    );
+};
