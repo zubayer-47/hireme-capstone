@@ -19,7 +19,7 @@ import { AppLogo } from "@/components/app-logo";
 import { Button } from "@/components/ui/button";
 
 import { NavLinks } from "./nav-links";
-import { dataLinks } from "../../app/feeds/[userId]/feed-utils/links";
+import { dataLinks } from "../../lib/links";
 
 
 export const DynamicSidebar = ({ userId }: { userId: Id<"users"> } ) => {

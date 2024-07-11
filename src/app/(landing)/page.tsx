@@ -15,7 +15,7 @@ import { Highlights } from "./_components/highlights";
 import { BentoGridFeatures } from "./_components/bento-grid-features";
 
 export default function Home() {
-    const { isLoading, isAuthenticated } = useStoreUserEffect(); 
+    const { isAuthenticated } = useStoreUserEffect(); 
     const user = useQuery(api.users.getSelf);
     const route = useRouter();
 

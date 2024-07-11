@@ -1,64 +1,65 @@
-export const AboutPage = () => {
+"use client";
+
+import { useStoreUserEffect } from "@/hooks/use-store-user-effect";
+import { Header } from "../(landing)/_components/header";
+import { Footer } from "../(landing)/_components/footer";
+import { AnimatedTextUnderline } from "@/components/animation/animated-text-underline";
+import { Blocks, HeartHandshake, Sheet } from "lucide-react";
+
+export default function AboutPage() {
+    const { isAuthenticated } = useStoreUserEffect();
+
     return (
-
-        <section>
-            <div className="px-8 py-24 mx-auto md:px-12 lg:px-32 max-w-7xl">
-                <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-24">
-                    <div>
-                        <h1 className="text-4xl font-semibold tracking-tighter text-gray-900 lg:text-5xl text-balance">
-                            Building one pagers together,
-                            <span className="text-gray-600">wherever and anywhere</span>
+        <main className="flex flex-col h-screen w-full mx-auto">
+            <Header isAuthenticated={isAuthenticated} />
+            <section className="flex-1 flex-grow mt-24 h-full w-full flex items-center justify-center px-8 py-24 mx-auto md:px-12 lg:px-32 max-w-7xl">
+                <article className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-24">
+                    <hgroup>
+                        <AnimatedTextUnderline />
+                        <h1 className="mt-2 text-2xl sm:text-4xl font-semibold tracking-tighter text-gray-200 lg:text-5xl text-balance">
+                            We Simplify Your Job Application Process.
                         </h1>
-                        <p className="mt-4 text-base font-medium text-gray-500 text-balance">
-                            Control and added security. With decentralization, users have more
-                            control over their data and transactions, and the platform is less
-                            susceptible to malicious attacks.
+                        <p className="mt-4 text-base font-medium text-neutral-400 text-balance">
+                            Hireme is designed to simplify and enhance the job application process for job seekers.
+                            Our app offers powerful tools to increase your chances of landing a job.
+                            From building and enhancing resumes and cover letters to sharing your journey with a supportive community and tracking your applications,
+                            Hireme is your comprehensive solution for job hunting success.
                         </p>
-                    </div>
-                    <div className="flex flex-col gap-y-12 text-balance">
-                        <div className="flex flex-col gap-4 lg:flex-row">
-                            <div>
-                                <span className="flex items-center justify-center bg-gray-100 rounded-full size-8"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" className="text-gray-600 size-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"></path></svg></span>
-                            </div>
-                            <div>
-                                <h3 className="font-medium text-gray-900">Persistence</h3>
-                                <p className="mt-2 text-sm text-gray-500">
-                                    spotless will remember all your changes to every element so you
-                                    can copy all changes at once!
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-4 lg:flex-row">
-                            <div>
-                                <span className="flex items-center justify-center bg-gray-100 rounded-full size-8"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" className="text-gray-600 size-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"></path></svg></span>
-                            </div>
-                            <div>
-                                <h3 className="font-medium text-gray-900">Screenshot tool</h3>
-                                <p className="mt-2 text-sm text-gray-500">
-                                    Make screenshots of a particular part of the screen to share quick
-                                    and easy!
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-4 lg:flex-row">
-                            <div>
-                                <span className="flex items-center justify-center bg-gray-100 rounded-full size-8"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" className="text-gray-600 size-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"></path></svg></span>
-                            </div>
-                            <div>
-                                <h3 className="font-medium text-gray-900">Breakpoint info</h3>
-                                <p className="mt-2 text-sm text-gray-500">
-                                    Instantly know what Tailwind breakpoint you're currently on.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    </hgroup>
+                    <aside className="flex flex-col gap-y-12 text-balance">
 
+                            <hgroup>
+                                <h3 className="text-sm sm:text-base text-neutral-200">Community Support Social Feed</h3>
+                                <p className="mt-2 text-xs sm:text-sm text-neutral-400">
+                                    Join a vibrant community of job seekers.
+                                    Share your journey, post your resume, and get valuable feed from peers.
+                                    Engage in discussion, ask questions, and support other.
+                                    Together, we can navigate the challenges of job hunting and celebrate successes.
+                                </p>
+                            </hgroup>
+
+                        <hgroup>
+                                <h3 className="text-sm sm:text-base text-neutral-200">Resume and Cover Letter with AI Feature Enhancer</h3>
+                                <p className="mt-2 text-xs sm:text-sm text-neutral-400">
+                                    Let's elevate your job application with our AI-enhanced resume and cover letter builder.
+                                    Create professional documents tailored to your target job description.
+                                    Our AI feature provides actionable feedback to help you optimize your resume and cover letter,
+                                    ensuring you make a strong impression on potential employers.
+                                </p>
+                            </hgroup>
+ 
+                        <hgroup>
+                                <h3 className="text-sm sm:text-base text-neutral-200">Job Tracker Board</h3>
+                                <p className="mt-2 text-xs sm:text-sm text-neutral-400">
+                                    Stay on top of your job search with Hireme's Job Tracker Board. 
+                                    Log every application, update its status, and keep track of important dates and deadlines. 
+                                    Our intuitive tracking system helps you stay organized and ensures you never miss an opportunity.
+                                </p>
+                            </hgroup>
+                    </aside>
+                </article>
+            </section>
+            <Footer />
+        </main>
     )
 }
