@@ -29,7 +29,6 @@ export const getAllCommentsOnFeed = query({
             .withIndex("by_feedId", (q) => q.eq("feedId", feedId))
             .order("desc")
             .collect();
- 
     }
 })
 
