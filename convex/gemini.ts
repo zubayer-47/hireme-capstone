@@ -70,7 +70,6 @@ export const generateResults = action({
         `
 
         let result = await model.generateContent(prompt)
-        console.log(result.response.text());
 
         const parsedResponse: ResultType = JSON.parse(result.response.text());
 

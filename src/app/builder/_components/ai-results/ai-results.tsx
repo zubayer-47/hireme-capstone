@@ -12,7 +12,7 @@ export const AIResults = ({ results }: { results: ResultType | null | undefined 
         extractedKeywords,
         userFeedback
     } = results;
-    console.log(jobDescriptionSummary)
+
     return (
         <>
             <CollapsibleDetails title="Job Description Summary">

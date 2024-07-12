@@ -41,10 +41,10 @@ export const generateResults = action({
             });
 
             const messageContent = completion.choices[0].message.content;
-            console.log(messageContent)
+
             if (messageContent) {
                 const parsedResponse: ResultType = JSON.parse(messageContent);
-                console.log(parsedResponse)
+
                 await ctx.runMutation(internal.results.saveResults, {
                     resumeId,
                     jobDescriptionSummary: parsedResponse.jobDescriptionSummary,

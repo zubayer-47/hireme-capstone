@@ -56,7 +56,7 @@ export const getSelf = query({
         const user = await getUser(ctx, identity.tokenIdentifier);
 
         if (!user) return null;
-        console.log(user);
+
         return user;
     }
 })

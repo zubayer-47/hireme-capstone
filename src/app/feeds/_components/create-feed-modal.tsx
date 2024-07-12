@@ -110,7 +110,7 @@ export const CreateFeedModal = () => {
     };
 
     const isLoading = form.formState.isSubmitting;
-    console.log(pdfFileUrl)
+ 
     return (
         <Dialog
             open={isOpen}

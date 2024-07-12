@@ -67,7 +67,6 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
         }
     };
 
-    console.log(userVoteType)
 
     return (
         <Card className="w-[350px] rounded-2xl dark:bg-neutral-900 dark:border-white/[0.2] hover:dark:border-white/[0.5]">
