@@ -1,5 +1,7 @@
 
 "use client";
+
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export const AnimatedTextUnderline = () => {
@@ -15,7 +17,7 @@ export const AnimatedTextUnderline = () => {
     }
   };
   return (
-    <div>
+    <Link href="/">
       <h1 className="text-5xl font-bold tracking-tight text-neutral-800 sm:text-7xl">
         {' '}
         <span className="relative whitespace-nowrap text-app-color font-alliance">
@@ -40,6 +42,6 @@ export const AnimatedTextUnderline = () => {
           <span className="relative text-blue-700 font-alliance">HireMe</span>
         </span>
       </h1>
-    </div>
+    </Link>
   );
 };
