@@ -124,7 +124,7 @@ export const EnhancerTab = ({ resumeId } : {resumeId: Id<"resume"> }) => {
                             {steps === 1 && (
                                 <SheetDescription className="dark:text-neutral-400 text-neutral-600 text-sm">
                                     Take advantage of this feature to tailor your resume to match specific job descriptions.
-                                    We'll analyze key terms and provide actionable suggestions to help you stand out.
+                                    We&apos;ll analyze key terms and provide actionable suggestions to help you stand out.
                                 </SheetDescription>
                             )}
                             {steps === 2 && (
