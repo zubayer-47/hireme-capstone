@@ -85,3 +85,21 @@ export const services = [
         title: "Job Tracker"
     },
 ]
+
+export const features = [
+    {
+        title: "Get Your Resume Reviewed",
+        imagePath: "/landing-images/feeds.png",
+        alt: "Social Feed & Supportive Community Page"
+    }, 
+    {
+        title: "Create Stand-Out Resumes & Cover Letters",
+        imagePath: "/landing-images/builder.png",
+        alt: "Resume & Cover Letter Builder Form and Displaying PDF"
+    },
+    {
+        title: "Never Miss An Interview Again & Keep Yourself Organized",
+        imagePath: "/landing-images/tracker.png",
+        alt: "Table Job Application Tracker"
+    }
+]
