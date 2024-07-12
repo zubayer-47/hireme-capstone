@@ -26,7 +26,7 @@ export const getAllCommentsOnFeed = query({
         if (!identity) throw new ConvexError("Unauthorized!");
 
         return await ctx.db.query("comments")
-            .withIndex("by_userId_feedId", (q) => q.eq("userId", identity._id).eq("feedId", feedId))
+            .withIndex("by_feedId", (q) => q.eq("feedId", feedId))
             .order("desc")
             .collect();
  

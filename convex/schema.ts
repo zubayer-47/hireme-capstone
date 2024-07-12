@@ -92,7 +92,7 @@ export default defineSchema({
         userId: v.id("users"),
         feedId: v.id("feeds"),
         profileUrl: v.string(),
-    }).index("by_userId_feedId", ["userId", "feedId"]),
+    }).index("by_feedId", ["feedId"]),
 
 
     isSaved: defineTable({
