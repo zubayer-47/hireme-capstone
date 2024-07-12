@@ -40,7 +40,7 @@ export default function AboutPage() {
                         <hgroup>
                                 <h3 className="text-sm sm:text-base text-neutral-200">Resume and Cover Letter with AI Feature Enhancer</h3>
                                 <p className="mt-2 text-xs sm:text-sm text-neutral-400">
-                                    Let's elevate your job application with our AI-enhanced resume and cover letter builder.
+                                    Let&apos;s elevate your job application with our AI-enhanced resume and cover letter builder.
                                     Create professional documents tailored to your target job description.
                                     Our AI feature provides actionable feedback to help you optimize your resume and cover letter,
                                     ensuring you make a strong impression on potential employers.
@@ -50,7 +50,7 @@ export default function AboutPage() {
                         <hgroup>
                                 <h3 className="text-sm sm:text-base text-neutral-200">Job Tracker Board</h3>
                                 <p className="mt-2 text-xs sm:text-sm text-neutral-400">
-                                    Stay on top of your job search with Hireme's Job Tracker Board. 
+                                    Stay on top of your job search with Hireme&apos;s Job Tracker Board. 
                                     Log every application, update its status, and keep track of important dates and deadlines. 
                                     Our intuitive tracking system helps you stay organized and ensures you never miss an opportunity.
                                 </p>
