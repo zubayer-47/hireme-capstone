@@ -19,7 +19,7 @@ export const Resume = ({ resumeDetails } : { resumeDetails: Doc<"resume"> }) => 
     const resume = useResumeStore();
     const document = useMemo(() => 
         <ResumePDF resumeDetails={resumeDetails} resume={resume} settings={defaultSettings} isPDF={true} />
-    , [resume, defaultSettings]);
+    , [resume, resumeDetails]);
     
     useLoadFonts();
     useHyphenationCallback(defaultSettings.fontFamily)
