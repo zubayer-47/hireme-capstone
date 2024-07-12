@@ -47,7 +47,7 @@ export const PDFWorkExperience = ({
                             paddingBottom: spacing["0.5"]
                         }}>
                             <ResumePDFText bold={true}>{title}</ResumePDFText>
-                            {company && <Text> | </Text>}
+                            {company && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
                             <ResumePDFText bold={true}>{company}</ResumePDFText>
                         </View>
                         <View style={{
@@ -57,9 +57,9 @@ export const PDFWorkExperience = ({
                             paddingBottom: spacing["1"]
                         }}>
                             <ResumePDFText>{startDate}</ResumePDFText>
-                            {endDate && <Text>-</Text> }
+                            {endDate && <Text style={{ color: "#737373", fontWeight: "bold"}}>-</Text> }
                             <ResumePDFText>{endDate}</ResumePDFText>
-                            {location && <Text>|</Text> }
+                            {location && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text> }
                             <ResumePDFText>{location}</ResumePDFText>
                         </View>
                     </View>

@@ -100,7 +100,7 @@ export const ResumePDFLink = ({
                 style={{
                     fontWeight: isBold ? "bold" : "normal",
                     fontSize: fontSize,
-                    color: themeColor ? themeColor : FONT_COLOR,
+                    color: themeColor ? themeColor : "#404040",
                     textDecoration: noTextDecoration ? "none" : "underline"
                 }}
             >

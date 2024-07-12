@@ -39,7 +39,7 @@ export const PDFProjects = ({
                         paddingBottom: spacing["0.5"]
                     }}>
                         <ResumePDFText bold={true}>{role}</ResumePDFText>
-                        {role && <Text >|</Text>}
+                        {role && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
                         <ResumePDFLink 
                             src={url} 
                             isPDF={isPDF} 

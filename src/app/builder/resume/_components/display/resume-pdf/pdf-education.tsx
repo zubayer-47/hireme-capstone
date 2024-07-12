@@ -5,7 +5,6 @@ import {
 } from './common/resume-pdf-components';
 import { View, Text } from "@react-pdf/renderer";
 import type { Education } from "@/store/resume-types";
-import { customHTMLParser } from '@/lib/custom-html-parser';
 import { styles, spacing } from "./resume-pdf-utils/resume-pdf-styles";
 
 type PDFEducationProps = {
@@ -35,7 +34,7 @@ export const PDFEducation = ({
                             gap: spacing["1"]
                         }}>
                         <ResumePDFText bold={true}>{school}</ResumePDFText>
-                        {degree && <Text > | </Text>}
+                        {degree && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
                         <ResumePDFText bold={true}>{degree}</ResumePDFText>
                         </View>
                         
@@ -57,7 +56,7 @@ export const PDFEducation = ({
                                 <ResumePDFText>
                                     {endDate}
                                 </ResumePDFText>
-                                {location && <Text>|</Text>}
+                                {location && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
                                 <ResumePDFText>
                                     {location}
                                 </ResumePDFText>

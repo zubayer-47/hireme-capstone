@@ -41,7 +41,7 @@ export const PDFProfile = ({
                 >
                     {name}
                 </ResumePDFText>
-                {role && <Text>|</Text>}
+                {role && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
                 <ResumePDFText
                     bold={true}
                     themeColor={FONT_COLOR}
@@ -66,7 +66,7 @@ export const PDFProfile = ({
                         {email}
                     </ResumePDFLink>
 
-                    {phone && <Text>|</Text>}
+                    {phone && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
                     <ResumePDFLink
                         src={`tel:${phone}`}
                         isPDF={isPDF}
@@ -85,7 +85,7 @@ export const PDFProfile = ({
                     >
                         {linkedInUrl}
                     </ResumePDFLink>
-                    {githubUrl && <Text>|</Text>}
+                    {githubUrl && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
                     {githubUrl && <ResumePDFLink
                         src={githubUrl}
                         isPDF={isPDF}
