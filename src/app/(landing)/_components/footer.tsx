@@ -21,13 +21,15 @@ export const Footer = () => {
                             <h3 className="text-neutral-200 text-sm">Resources</h3>
                             <ul role="list" className="mt-4 space-y-2">
 
-                                <li>
+                                
                                     {resources.map(({ href, title }, index) => (
-                                        <Link key={index} href={href} className="text-sm text-gray-500 hover:text-gray-400">
+                                        <li key={index}>
+                                        <Link href={href} className="text-sm text-gray-500 hover:text-gray-400">
                                             {title}
                                         </Link>
+                                        </li>
                                     ))}
-                                </li>
+                                
                             </ul>
                         </nav>
                         <nav>
