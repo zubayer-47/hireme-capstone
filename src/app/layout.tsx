@@ -1,20 +1,17 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lato } from "next/font/google";
 import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { ConvexClientProvider } from "@/providers/convex-client-provider";
 
 import { Toaster } from "@/components/ui/toaster";
 import { LoadingSpinner } from "@/components/loading-spinner";
+import { constructMetadata } from "@/lib/metadata";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Lato({ weight: ["100", "300", "400", "700", "900"], subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "HireMe",
-  description: "",
-};
+export const metadata = constructMetadata();
 
 export default function RootLayout({
   children,
@@ -24,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <ConvexClientProvider>
-        <body className={inter.className}>
+        <body className={font.className}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
