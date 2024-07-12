@@ -10,8 +10,8 @@ import {
 import { Id } from "@/convex/_generated/dataModel";
 import { AnimatedTextUnderline } from "@/components/animation/animated-text-underline";
 
-export const Hero = ({ isAuthenticated, userId }: { isAuthenticated: boolean; userId: Id<"users"> }) => {
-    const path = isAuthenticated ? `/feeds/${userId}` : "/auth/sign-in";
+export const Hero = ({ isAuthenticated }: { isAuthenticated: boolean; }) => {
+    const path = isAuthenticated ? "/feeds" : "/auth/sign-in";
 
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({

@@ -16,24 +16,24 @@ import { BentoGridFeatures } from "./_components/bento-grid-features";
 
 export default function Home() {
     const { isAuthenticated } = useStoreUserEffect(); 
-    const user = useQuery(api.users.getSelf);
+
     const route = useRouter();
 
     useEffect(() => {
         if (isAuthenticated) {
-        route.push(`/feeds/${user?._id}`)
+        route.push("/feeds")
     }
-    }, [isAuthenticated, user?._id, route]);
+    }, [isAuthenticated, route]);
     
     return (
         <main className="w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
             <section className="max-w-6xl mx-auto">
                 <Header isAuthenticated={isAuthenticated} />
-                <Hero isAuthenticated={isAuthenticated} userId={user?._id!}/>
+                <Hero isAuthenticated={isAuthenticated}/>
                 <Features />
                 <BentoGridFeatures />
                 <Highlights />
-                <CTA isAuthenticated={isAuthenticated} userId={user?._id!}/>
+                <CTA isAuthenticated={isAuthenticated} />
                 <Footer />
             </section>
         </main>

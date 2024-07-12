@@ -1,8 +1,8 @@
 import { Id } from "@/convex/_generated/dataModel";
 import Link from "next/link";
 
-export const CTA = ({ isAuthenticated, userId }: { isAuthenticated: boolean; userId: Id<"users">; }) => {
-    const path = isAuthenticated ? `/feeds/${userId}` : "/auth/sign-in";
+export const CTA = ({ isAuthenticated }: { isAuthenticated: boolean; }) => {
+    const path = isAuthenticated ? "/feeds" : "/auth/sign-in";
 
     return (
         <section>
