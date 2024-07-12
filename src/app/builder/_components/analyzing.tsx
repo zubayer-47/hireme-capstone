@@ -12,7 +12,6 @@ export const Analyzing = () => {
                 wrapperClass="blocks-wrapper"
                 visible={true}
             />
-            <p className="dark:text-neutral-300 text-neutral-700 text-lg animate-pulse">Analyzing...</p>
         </div>
     )
 }

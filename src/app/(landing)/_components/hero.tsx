@@ -7,7 +7,6 @@ import {
     motion, 
     useScroll, 
     useTransform } from "framer-motion";
-import { Id } from "@/convex/_generated/dataModel";
 import { AnimatedTextUnderline } from "@/components/animation/animated-text-underline";
 
 export const Hero = ({ isAuthenticated }: { isAuthenticated: boolean; }) => {

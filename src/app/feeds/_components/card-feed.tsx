@@ -1,16 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 import { formatRelative } from "date-fns";
+import { useEffect, useState } from "react";
+import { api } from "@/convex/_generated/api";
 import { Doc } from "@/convex/_generated/dataModel";
+import { useMutation, useQuery } from "convex/react";
 
 import {
     ArrowUp,
-    ArrowDown,
     Bookmark,
+    ArrowDown,
     MessageCircle,
-    MoreVertical
 } from "lucide-react";
 
 import {
@@ -22,12 +24,9 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CardActionsDropdown } from "./card-actions-dropdown";
-import { PreviewFeedModal } from "./preview-feed-modal";
-import { useMutation, useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
 import { useToast } from "@/components/ui/use-toast";
-import { cn } from "@/lib/utils";
+import { PreviewFeedModal } from "./preview-feed-modal";
+import { CardActionsDropdown } from "./card-actions-dropdown";
 
 export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
     const [isHovered, setIsHovered] = useState(false);

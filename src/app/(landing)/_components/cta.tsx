@@ -1,4 +1,3 @@
-import { Id } from "@/convex/_generated/dataModel";
 import Link from "next/link";
 
 export const CTA = ({ isAuthenticated }: { isAuthenticated: boolean; }) => {

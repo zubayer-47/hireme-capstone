@@ -1,4 +1,4 @@
-import { JobDescriptionSummary as JobDescriptionSummaryType } from "../../_types/ai-result-type"
+import { JobDescriptionSummary as JobDescriptionSummaryType } from "../../_lib/ai-result-type"
 
 import {
     BriefcaseBusiness,

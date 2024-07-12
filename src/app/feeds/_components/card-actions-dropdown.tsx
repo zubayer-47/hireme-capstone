@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
@@ -27,8 +26,9 @@ import {
     DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
 import { EditFeedModal } from "./edit-feed-modal";
+import { useToast } from "@/components/ui/use-toast";
+
 
 export const CardActionsDropdown = ({ feedId }: { feedId: Id<"feeds"> }) => {
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);

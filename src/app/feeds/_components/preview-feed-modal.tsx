@@ -2,13 +2,12 @@
 
 import { z } from "zod";
 import Image from "next/image";
-import { useUser } from "@clerk/nextjs";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { formatRelative } from "date-fns";
+import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { formatRelative, subDays } from "date-fns";
-import { Doc, Id } from "@/convex/_generated/dataModel";
-import { useMutation, useQuery } from "convex/react";
+import { Doc } from "@/convex/_generated/dataModel";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Loader2, MoreVertical } from "lucide-react";
@@ -23,13 +22,9 @@ import {
 } from "@/components/ui/form";
 import {
     Dialog,
-    DialogTitle,
-    DialogHeader,
     DialogContent,
-    DialogDescription,
     DialogTrigger,
 } from "@/components/ui/dialog";
-import { TagsInput } from "./tags-input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";

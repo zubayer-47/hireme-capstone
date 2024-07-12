@@ -1,4 +1,4 @@
-import { UserFeedback as UserFeedbackType } from "../../_types/ai-result-type"
+import { UserFeedback as UserFeedbackType } from "../../_lib/ai-result-type"
 
 export const UserFeedback = ({ userFeedback }: { userFeedback: UserFeedbackType}) => {
     return (

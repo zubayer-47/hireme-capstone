@@ -1,10 +1,9 @@
 "use client";
 
-import { useStoreUserEffect } from "@/hooks/use-store-user-effect";
 import { Header } from "../(landing)/_components/header";
 import { Footer } from "../(landing)/_components/footer";
+import { useStoreUserEffect } from "@/hooks/use-store-user-effect";
 import { AnimatedTextUnderline } from "@/components/animation/animated-text-underline";
-import { Blocks, HeartHandshake, Sheet } from "lucide-react";
 
 export default function AboutPage() {
     const { isAuthenticated } = useStoreUserEffect();

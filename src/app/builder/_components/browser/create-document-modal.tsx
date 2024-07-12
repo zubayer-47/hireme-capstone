@@ -36,8 +36,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
-
-
 const formSchema = z.object({
     documentName: z.string().min(2),
     documentType: z.enum(["resume", "cover letter"])

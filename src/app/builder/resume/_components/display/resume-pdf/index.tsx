@@ -1,16 +1,18 @@
+import type { Resume } from "@/store/resume-types";
+import { Doc } from "@/convex/_generated/dataModel";
+import type { Settings } from "@/store/resume-types";
+import { FONT_COLOR } from "@/store/resume-default-style";
 
 import { PDFSkills } from "./pdf-skills";
 import { PDFProfile } from "./pdf-profile";
 import { PDFProjects } from "./pdf-projects";
 import { PDFEducation } from "./pdf-education";
-import type { Resume } from "@/store/resume-types";
-import type { Settings } from "@/store/resume-types";
+
 import { PDFWorkExperience } from "./pdf-work-experience";
-import { FONT_COLOR } from "@/store/resume-default-style";
 import { Page, View, Document } from "@react-pdf/renderer";
 import { SuppressWarnings } from "./common/supress-warnings";
 import { styles, spacing } from './resume-pdf-utils/resume-pdf-styles';
-import { Doc } from "@/convex/_generated/dataModel";
+
 
 type ResumePDFProps = {
     resume: Resume;
@@ -28,7 +30,6 @@ export const ResumePDF = ({
     const { profile, projects, skills, experiences, education } = resume;
     const { themeColor: appColor, documentSize, fontFamily, fontSize } = settings;
     const themeColor = appColor || FONT_COLOR;
-
 
     return (
         <>

@@ -1,15 +1,8 @@
 "use client";
 
-import {
-    useState,
-    useCallback,
-    RefAttributes,
-    ForwardRefExoticComponent,
-} from "react";
 import { cn } from "@/lib/utils";
-
-import { ChevronDown, LucideProps } from "lucide-react";
-
+import { ChevronDown} from "lucide-react";
+import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 
 type CollapsibleDetailsProps = {

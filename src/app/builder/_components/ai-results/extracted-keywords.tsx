@@ -1,4 +1,4 @@
-import { ExtractedKeywords as ExtractedKeywordsType } from '../../_types/ai-result-type';
+import { ExtractedKeywords as ExtractedKeywordsType } from '../../_lib/ai-result-type';
 
 export const ExtractedKeywords = ({ extractedKeywords }: { extractedKeywords: ExtractedKeywordsType }) => {
 

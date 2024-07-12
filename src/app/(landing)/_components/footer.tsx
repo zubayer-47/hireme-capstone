@@ -1,6 +1,7 @@
-import { AppLogo } from "@/components/app-logo";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { AppLogo } from "@/components/app-logo";
+import { resources, services } from "../_lib/data";
 
 export const Footer = () => {
     return (
@@ -19,25 +20,13 @@ export const Footer = () => {
                         <nav>
                             <h3 className="text-neutral-200 text-sm">Resources</h3>
                             <ul role="list" className="mt-4 space-y-2">
+
                                 <li>
-                                    <Link href="/about" className="text-sm text-gray-500 hover:text-gray-400">
-                                        About
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/contact" className="text-sm text-gray-500 hover:text-gray-400">
-                                        Contact
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="#" className="text-sm text-gray-500 hover:text-gray-400">
-                                        Privacy Policy
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="#" className="text-sm text-gray-500 hover:text-gray-400">
-                                        Terms of service
-                                    </Link>
+                                    {resources.map(({ href, title }, index) => (
+                                        <Link key={index} href={href} className="text-sm text-gray-500 hover:text-gray-400">
+                                            {title}
+                                        </Link>
+                                    ))}
                                 </li>
                             </ul>
                         </nav>
@@ -45,20 +34,13 @@ export const Footer = () => {
                             <h3 className="text-neutral-200 text-sm">Services</h3>
                             <ul role="list" className="mt-4 space-y-2">
                                 <li>
-                                    <Link href="/feeds" className="text-sm text-gray-500 hover:text-gray-400">
-                                        Social Feed
-                                    </Link>
+                                    {services.map(({ href, title }) => (
+                                        <Link href={href} className="text-sm text-gray-500 hover:text-gray-400">
+                                            {title}
+                                        </Link>
+                                    ))}
                                 </li>
-                                <li>
-                                    <Link href="/builder" className="text-sm text-gray-500 hover:text-gray-400">
-                                        Builder Tool
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/tracker" className="text-sm text-gray-500 hover:text-gray-400">
-                                        Job Tracker
-                                    </Link>
-                                </li>
+
                             </ul>
                         </nav>
                     </hgroup>

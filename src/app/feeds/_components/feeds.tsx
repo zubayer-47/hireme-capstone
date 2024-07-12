@@ -1,14 +1,13 @@
 "use client";
 
-import { CardFeed } from "./card-feed"
-import { Button } from "@/components/ui/button"
+import { CardFeed } from "./card-feed";
+import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { usePaginatedQuery, useQuery } from "convex/react";
-import { SlidersHorizontal } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { SlidersHorizontal } from "lucide-react";
 import { CreateFeedModal } from "./create-feed-modal";
 
 export const Feeds = () => {
-    // call all the feed here
     const feeds = useQuery(api.feeds.getFeeds, { bookmarked: false });
 
     return (

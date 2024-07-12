@@ -13,7 +13,6 @@ type PDFWorkExperienceProps = {
     experiences: Experiences[]
 }
 
-
 export const PDFWorkExperience = ({
     heading,
     themeColor,

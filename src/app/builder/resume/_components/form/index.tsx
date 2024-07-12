@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { SkillsForm } from "./skills-form";
 import { ProfileForm } from "./profile-form";
 import { ProjectForm } from "./projects-form";

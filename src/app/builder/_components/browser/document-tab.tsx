@@ -3,7 +3,7 @@
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
-import { ArrowUpToLine, Plus } from "lucide-react";
+import { ArrowUpToLine } from "lucide-react";
 
 import {
     Tabs,
@@ -13,8 +13,8 @@ import {
 } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { documentColumns } from '../table/document-columns';
-import { DocumentDataTable } from "../table/document-data-table";
 import { CreateDocumentModal } from "./create-document-modal";
+import { DocumentDataTable } from "../table/document-data-table";
 
 export const DocumentTab = () => {
     const data = useQuery(api.resume.readDocuments);

@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Suppress ResumePDF development errors.
+ * Suppressing ResumePDF development errors.
  */
 if (typeof window !== "undefined" && window.location.hostname === "localhost") {
     const consoleError = console.error;

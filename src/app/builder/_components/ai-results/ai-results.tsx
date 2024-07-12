@@ -1,4 +1,4 @@
-import { ResultType } from "../../_types/ai-result-type";
+import { ResultType } from "../../_lib/ai-result-type";
 import { CollapsibleDetails } from "./collapsible-details";
 import { ExtractedKeywords } from "./extracted-keywords";
 import { JobDescriptionSummary } from "./job-description-summary";

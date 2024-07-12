@@ -2,17 +2,17 @@
 
 import { z } from "zod";
 import { useState } from "react";
+import { useUser } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { createFeedSchema } from "../_lib/create-feed-type";
+import { convertPDFToImages } from "../_lib/convert-pdf-to-image";
 
 import {
-    Eye,
-    Loader2,
-    CirclePlus,
     Plus,
+    Loader2,
 } from "lucide-react";
 
 import {
@@ -31,14 +31,11 @@ import {
     DialogContent,
     DialogDescription,
 } from "@/components/ui/dialog";
+import { TagsInput } from "./tags-input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { createFeedSchema } from "../feed-utils/create-feed-type";
 import { UploadPDFDropzone } from "./upload-pdf-dropzone";
-import { TagsInput } from "./tags-input";
-import { convertPDFToImages } from "../feed-utils/convert-pdf-to-image";
-import { useUser } from "@clerk/nextjs";
 
 export const CreateFeedModal = () => {
     const { user } = useUser();

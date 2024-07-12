@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { usePDF } from "@react-pdf/renderer";
-import { Download, ChevronsUpDown, Sparkles } from "lucide-react";
+import { Download, ChevronsUpDown } from "lucide-react";
 import { useSetDefaultScale } from "@/hooks/use-set-default-scale";
 
 type ResumeNavbarProps = {
@@ -26,7 +26,6 @@ const ResumeNavbar = ({
         setScale,
         documentSize
     });
-
 
     const [instance, update] = usePDF({ document });
 

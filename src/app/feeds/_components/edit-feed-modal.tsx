@@ -29,7 +29,7 @@ import { TagsInput } from "./tags-input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { createFeedSchema } from "../feed-utils/create-feed-type";
+import { createFeedSchema } from "../_lib/create-feed-type";
 
 
 
