@@ -91,16 +91,17 @@ export const PreviewFeedModal = ({
                 </Button>
             </DialogTrigger>
             <DialogContent className=" h-full w-[200rem] max-w-6xl dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
-                <section className="relative flex flex-col md:flex-row gap-4 p-4 rounded-lg shadow-lg">
-                    <article className="md:w-1/2 w-full">
-                        <div className="sticky top-0 h-full overflow-y-auto">
+                <section className="relative flex flex-col md:flex-row gap-8 p-4 rounded-lg shadow-lg">
+                    <article className="md:w-1/2 w-full rounded-xl">
+                        <div className="sticky top-0 h-full overflow-y-auto rounded-lg">
                             <Image
                                 src={feed.fileUrl}
                                 alt="User Resume Image"
                                 width={500}
                                 height={500}
+                                quality={100}
                                 priority
-                                className="object-cover w-full h-full rounded-lg"
+                                className="object-contain w-full h-full rounded-lg"
                             />
                         </div>
                     </article>

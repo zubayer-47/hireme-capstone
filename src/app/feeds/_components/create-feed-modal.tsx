@@ -127,7 +127,6 @@ export const CreateFeedModal = () => {
                     <DialogTitle className="dark:text-neutral-200 text-neutral-800 capitalize">Share Your Resume to the Community</DialogTitle>
                     <DialogDescription className="dark:text-neutral-400 text-neutral-600">Start filling up the details and get feedback from your peers.</DialogDescription>
                 </DialogHeader>
-                {/* Add the upload dropzone here */}
                 <UploadPDFDropzone onFileUrlChange={setPdfFileUrl} />
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">

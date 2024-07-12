@@ -127,7 +127,6 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
                     <MessageCircle className="w-4 h-4" />
                     {comments && comments.length}
                 </Button>
-                {/* Highlight the button if the post is already bookmarked */}
                 <Button variant="ghost" size="sm" className="gap-1">
                     <Bookmark className="w-4 h-4" />
                 </Button>
