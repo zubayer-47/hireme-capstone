@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useRef } from "react";
 import { 
     motion, 
@@ -44,13 +43,11 @@ export const Hero = ({ isAuthenticated }: { isAuthenticated: boolean; }) => {
                         ref={ref}
                         style={{ scale, opacity }}
                         className="relative h-full p-2 mt-16 sm:mt-24 overflow-hidden bg-neutral-800 shadow- border border-white/[0.2] rounded-3xl">
-                        <Image
-                            src=""
-                            priority
-                            width="1000"
-                            height="500"
-                            alt="placeholder"
-                            className="object-cover h-full border border-white/[0.2] bg-neutral-900 shadow-xl shadow-neutral-500 rounded-2xl"
+                        <video 
+                            muted
+                            autoPlay
+                            src="/videos/landing-hero-video.mov" 
+                            className="object-cover h-full w-full border border-white/[0.2] bg-neutral-900 shadow-xl shadow-neutral-500 rounded-2xl"
                         />
                     </motion.div>
                 </aside>
