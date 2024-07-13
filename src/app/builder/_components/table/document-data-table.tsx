@@ -33,6 +33,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { SlidersHorizontal } from "lucide-react";
+import { CreateDocumentModal } from "../browser/create-document-modal";
 
 interface DocumentDataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -68,7 +69,7 @@ export function DocumentDataTable<TData, TValue>({
     })
 
     return (
-        <div>
+        <>
             <div className="flex items-center py-4">
                 <Input
                     placeholder="Search document..."
@@ -76,7 +77,7 @@ export function DocumentDataTable<TData, TValue>({
                     onChange={(event) =>
                         table.getColumn("documentName")?.setFilterValue(event.target.value)
                     }
-                    className="max-w-sm dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 pl-8 shadow-none md:w-2/3 lg:w-1/3 border-black/[0.2]"
+                    className="max-w-sm dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] hover:dark:border-white/[0.5] placeholder:text-neutral-400 dark:text-neutral-200 pl-8 shadow-none md:w-2/3 lg:w-1/3 border-black/[0.2] hover:border-black/[0.5]"
                 />
                 <div className="flex items-center py-4 gap-2 ml-auto">
                     <DropdownMenu>
@@ -148,7 +149,9 @@ export function DocumentDataTable<TData, TValue>({
                         ) : (
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center dark:text-neutral-300 text-neutral-700">
-                                    No results.
+                                    <h2 className="text-base sm:text-lg dark:text-neutral-200 text-neutral-800">Nothing here yet!</h2>
+                                    <p className="text-sm dark:text-neutral-400 text-neutral-600">Start tracking your application.</p>
+                                    <CreateDocumentModal />
                                 </TableCell>
                             </TableRow>
                         )}
@@ -175,6 +178,6 @@ export function DocumentDataTable<TData, TValue>({
                     Next
                 </Button>
             </div>
-        </div>
+        </>
     )
 }

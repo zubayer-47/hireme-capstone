@@ -110,7 +110,7 @@ export const CreateDocumentModal = () => {
             }}
         >
             <DialogTrigger asChild>
-                <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600 bg-neutral-200 hover:bg-neutral-100  dark:bg-neutral-800 hover:dark:bg-neutral-900 translate-hover" size="sm" >
+                <Button className="flex items-center gap-2 bg-app-color hover:bg-app-color/80 text-neutral-100 translate-hover" size="sm" >
                     <Plus className="h-4 w-4" />
                     Create
                 </Button>
