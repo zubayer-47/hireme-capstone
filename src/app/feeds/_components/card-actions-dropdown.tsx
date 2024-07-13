@@ -77,7 +77,7 @@ export const CardActionsDropdown = ({ feedId }: { feedId: Id<"feeds"> }) => {
               <AlertDialogCancel className="h-9 px-3 translate-hover border-none dark:text-neutral-200 text-neutral-600" onClick={() => setIsAlertDialogOpen(false)}>Cancel</AlertDialogCancel>
               <AlertDialogAction
                 onClick={handleDelete}
-                className="bg-app-color h-9 px-3 text-neutral-200 hover:bg-app-color/80 translate-hover"
+                className="bg-app-color h-9 px-3 text-neutral-100 hover:bg-app-color/80 translate-hover"
               >
                 Continue
               </AlertDialogAction>

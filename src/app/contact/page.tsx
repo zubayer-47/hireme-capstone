@@ -142,7 +142,7 @@ export default function ContactPage() {
                             />
                         </div>
 
-                        <Button size="sm" className="bg-app-color hover:bg-app-color/80 translate-hover text-neutral-200 w-full">
+                        <Button size="sm" className="bg-app-color hover:bg-app-color/80 translate-hover text-neutral-100 w-full">
                             Get In Touch
                         </Button>
                     </form>

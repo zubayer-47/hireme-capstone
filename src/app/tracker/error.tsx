@@ -35,7 +35,7 @@ export default function Error({
             REFRESH
           </Button>
           <Button
-            className="bg-app-color translate-hover hover:bg-app-color/80 text-neutral-200 text-sm w-full"
+            className="bg-app-color translate-hover hover:bg-app-color/80 text-neutral-100 text-sm w-full"
             size="sm"
             onClick={
               () => router.back()

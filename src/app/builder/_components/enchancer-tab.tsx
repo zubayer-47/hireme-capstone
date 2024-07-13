@@ -110,7 +110,7 @@ export const EnhancerTab = ({ resumeId } : {resumeId: Id<"resume"> }) => {
             <SheetTrigger asChild>
                 <Button
                     size="sm"
-                    className="flex items-center gap-1 text-sm bg-app-color hover:bg-app-color/80 text-neutral-200 translate-hover rounded-lg"
+                    className="flex items-center gap-1 text-sm bg-app-color hover:bg-app-color/80 text-neutral-100 translate-hover rounded-lg"
                 >
                     <Sparkles className="h-4 w-4 mr-2" />
                     <span className="whitespace-nowrap">Enhancer</span>
@@ -176,7 +176,7 @@ export const EnhancerTab = ({ resumeId } : {resumeId: Id<"resume"> }) => {
                             {steps < 4 && (
                                 <>
                                 {steps < 3 && <Button type="button" size="sm" variant="ghost" onClick={nextStep} className="translate-hover">Next</Button>}
-                                {steps === 3 && <Button type="button" size="sm" className="bg-app-color hover:bg-app-color/90 text-neutral-200 translate-hover" disabled={pending} onClick={() => startAnalyzing()}>{results ? "See Results" : "Analyze"}</Button>}
+                                {steps === 3 && <Button type="button" size="sm" className="bg-app-color hover:bg-app-color/80 text-neutral-100 translate-hover" disabled={pending} onClick={() => startAnalyzing()}>{results ? "See Results" : "Analyze"}</Button>}
                                 </>
                             )}
                         </SheetFooter>

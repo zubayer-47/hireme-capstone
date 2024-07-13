@@ -170,7 +170,7 @@ export const CreateDocumentModal = () => {
                             <Button 
                                 size="sm" 
                                 disabled={isLoading}
-                                className="bg-app-color text-neutral-200 hover:bg-app-color/80 translate-hover"
+                                className="bg-app-color text-neutral-100 hover:bg-app-color/80 translate-hover"
                             >
                                 {isLoading ? (
                                     <p className="flex items-center gap-x-2">

@@ -158,7 +158,7 @@ export const PreviewFeedModal = ({
                                 <Button 
                                     type="submit" 
                                     disabled={isLoading}
-                                    className="w-full bg-app-color hover:bg-app-color/90 text-white font-semibold py-2 rounded-lg transition duration-200">
+                                    className="w-full bg-app-color hover:bg-app-color/80 text-neutral-100 font-semibold py-2 rounded-lg transition duration-200">
                                         {isLoading ? <p className="flex items-center gap-1 text-neutral-500 "><Loader2 className="h-4 w-4 animate-spin" /> Submitting...</p>:"Submit"}
                                     </Button>
                             </form>

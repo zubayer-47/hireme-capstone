@@ -5,9 +5,8 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
-import { Id } from "@/convex/_generated/dataModel";
 
-import { Plus } from "lucide-react";
+import { Bell } from "lucide-react";
 
 import {
     Card,
@@ -31,8 +30,8 @@ export const DynamicSidebar = () => {
             <div className="flex h-14 items-center border-b border-white/[0.2] px-4 lg:h-[60px] lg:px-6">
                 <AppLogo href={"/feeds"} width={25} height={25} />
                 <Button variant="outline" size="icon" className="ml-auto h-6 w-6 dark:bg-neutral-950 hover:dark:bg-neutral-900 bg-neutral-200 dark:border-white/[0.2] border-black/[0.2] translate-hover">
-                    <Plus className="h-4 w-4 dark:text-neutral-300  text-neutral-950" />
-                    <span className="sr-only">Share Post</span>
+                    <Bell className="h-4 w-4 dark:text-neutral-300  text-neutral-950" />
+                    <span className="sr-only">Notification</span>
                 </Button>
             </div>
             <div className="flex-1">
@@ -61,14 +60,14 @@ export const DynamicSidebar = () => {
                 </nav>
             </div>
             <div className="mt-auto p-4">
-                <Card className="dark:bg-neutral-900 bg-neutral-50 border-white/[0.2] shadow-md shadow-neutral-800">
+                <Card className="dark:bg-neutral-900 bg-neutral-50 dark:border-white/[0.2] hover:dark:border-white/[0.5] border-black/[0.2] hover:border-black/[0.5]">
                     <CardHeader>
-                        <CardDescription className="dark:text-neutral-400 text-neutral-600">
+                        <CardDescription className="dark:text-neutral-400 text-neutral-600 text-center">
                             We value your feedback. It helps us make things better!
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <Button size="sm" className="w-full bg-app-color hover:bg-app-color/80 text-neutral-100">
+                        <Button type="button" size="sm" className="w-full bg-app-color hover:bg-app-color/80 text-neutral-100 translate-hover">
                             Share Your Feedback
                         </Button>
                     </CardContent>
