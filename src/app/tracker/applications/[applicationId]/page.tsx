@@ -4,7 +4,7 @@ import { z } from "zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { api } from "@/convex/_generated/api";
-import { Doc } from "@/convex/_generated/dataModel";
+import { Id } from "@/convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams, useRouter } from "next/navigation";
@@ -18,7 +18,7 @@ import { DynamicForm } from "../_components/dynamic-form";
 export default function CreateApplications() {
     const router = useRouter();
     const { toast } = useToast();
-    const { applicationId } = useParams<{ applicationId: Doc<"applications">["_id"] }>()
+    const { applicationId } = useParams<{ applicationId: Id<"applications"> }>()
 
     const updateApplication = useMutation(api.applications.updateApplication);
     const queryResult = useQuery(api.applications.getExistingApplication, { applicationId });
@@ -48,19 +48,17 @@ export default function CreateApplications() {
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
-            const res = await updateApplication({
+            await updateApplication({
                 applicationId,
                 ...values
             });
 
-            if (res) {
-                toast({
+            toast({
                     title: "Success",
                     description: "Application has been updated.",
                     variant: "success",
-                });
-                router.push("/tracker");
-            }
+            });
+            router.push("/tracker");
         } catch (error) {
             console.error(error);
             toast({

@@ -77,7 +77,7 @@ export function ApplicationDataTable<TData, TValue>({
                     onChange={(event) =>
                         table.getColumn("company")?.setFilterValue(event.target.value)
                     }
-                    className="max-w-sm dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 pl-8 shadow-none md:w-2/3 lg:w-1/3 border-black/[0.2]"
+                    className="max-w-sm dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 pl-8 shadow-none md:w-2/3 lg:w-1/3 border-black/[0.2]"
                 />
                 <div className="flex items-center py-4 gap-2 ml-auto">
                     <DropdownMenu>
@@ -109,7 +109,7 @@ export function ApplicationDataTable<TData, TValue>({
                                 })}
                         </DropdownMenuContent>
                     </DropdownMenu>
-                    <Link href="/tracker/applications" className="flex items-center h-9 px-3 gap-2 rounded-lg dark:text-neutral-200 text-neutral-600 bg-neutral-200 hover:bg-neutral-100  dark:bg-neutral-800 hover:dark:bg-neutral-900 text-sm translate-hover">
+                    <Link href="/tracker/applications" className="flex items-center h-9 px-3 gap-2 rounded-lg text-neutral-100 bg-app-color hover:bg-app-color/80 text-sm translate-hover">
                         <ListPlus className="h-4 w-4" />
                         Track
                     </Link>
@@ -118,7 +118,7 @@ export function ApplicationDataTable<TData, TValue>({
 
             <div className="rounded-md border dark:border-white/[0.2] border-black/[0.2]">
                 <Table>
-                    <TableHeader>
+                    <TableHeader >
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
@@ -153,7 +153,12 @@ export function ApplicationDataTable<TData, TValue>({
                         ) : (
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center dark:text-neutral-300 text-neutral-700">
-                                    No results.
+                                    <h2 className="text-base sm:text-lg dark:text-neutral-200 text-neutral-800">Nothing here yet!</h2>
+                                    <p className="text-sm dark:text-neutral-400 text-neutral-600">Don&apos;t be shy. Be the first one to create a feed.</p>
+                                    <Link href="/tracker/applications" className="flex items-center h-9 px-3 gap-2 rounded-lg text-neutral-100 bg-app-color hover:bg-app-color/80 text-sm translate-hover">
+                                        <ListPlus className="h-4 w-4" />
+                                        Track
+                                    </Link>
                                 </TableCell>
                             </TableRow>
                         )}

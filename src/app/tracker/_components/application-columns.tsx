@@ -102,22 +102,22 @@ export const applicationColumns: ColumnDef<Doc<"applications">>[] = [
 
             switch (status) {
                 case "applied": 
-                    return <Badge className="dark:bg-neutral-600/50 bg-neutral-600 dark:text-neutral-300 -py-1">
+                    return <Badge className="dark:bg-neutral-600/50 hover:dark:bg-neutral-800 bg-neutral-600 hover:bg-neutral-800 dark:text-neutral-300 -py-1">
                         <Dot className="h-8 w-8 dark:text-neutral-400 text-neutral-200" />
                         Applied
                     </Badge>
                 case "interviewed":
-                    return <Badge className="bg-app-color/80 dark:bg-app-color/50 dark:text-neutral-300 -py-1">
+                    return <Badge className="bg-app-color/80  dark:bg-app-color/50 dark:hover:bg-app-color/70 hover:bg-app-color dark:text-neutral-300 -py-1">
                         <Dot className="h-8 w-8 dark:text-blue-400 text-blue-200" />
                         Interviewed
                     </Badge>
                 case "offered":
-                    return <Badge className="dark:bg-emerald-600/50 bg-emerald-600/80 dark:text-neutral-300 -py-1">
+                    return <Badge className="dark:bg-emerald-600/50 hover:dark:bg-emerald-600/80 bg-emerald-600/80 hover:bg-emerald-600 dark:text-neutral-300 -py-1">
                         <Dot className="h-8 w-8 dark:text-emerald-400 text-emerald-200" />
                         Offered
                     </Badge>
                 case "rejected":
-                    return <Badge className="dark:bg-destructive/50 bg-destructive/80 dark:text-neutral-300 -py-1">
+                    return <Badge className="dark:bg-destructive/50 hover:dark:bg-destructive/80 bg-destructive/80 hover:bg-destructive dark:text-neutral-300 -py-1">
                         <Dot className="h-8 w-8 dark:text-rose-400 text-rose-200" />
                         Rejected
                     </Badge>

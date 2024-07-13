@@ -100,10 +100,12 @@ export const updateApplication = mutation({
         recruiterInfo: v.optional(v.string()),
     }, handler: async (ctx, args) => {
         const { existingApplication, hasAccess } = await checkExistingApplication(ctx, args.applicationId);
+        
+        const { applicationId, ...updatedArgs } = args;
 
         await ctx.db.patch(existingApplication._id, {
             userId: hasAccess._id,
-            ...args
+            ...updatedArgs
         })
 
     }
@@ -114,7 +116,7 @@ export const deleteApplication = mutation({
         applicationId: v.id("applications"),
     }, handler: async (ctx, { applicationId }) => {
         const { existingApplication } = await checkExistingApplication(ctx, applicationId);
-
+        
         await ctx.db.delete(existingApplication._id);
     }
 })
@@ -125,7 +127,7 @@ export const takeNotes = mutation({
         applicationId: v.id("applications"),
     }, handler: async (ctx, { applicationId, notes }) => {
         const { existingApplication } = await checkExistingApplication(ctx, applicationId);
-
+        
         return await ctx.db.patch(existingApplication._id, {
             ...existingApplication,
             notes
