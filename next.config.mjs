@@ -2,7 +2,7 @@
 const nextConfig = {
     env: {
       OPENAI_API_KEY: process.env.OPENAI_API_KEY,
-      WEBSITE_URL: process.env.WEBSITE_URL
+      WEBSITE_URL: process.env.WEBSITE_URL,
     },
     images: {
         remotePatterns: [
