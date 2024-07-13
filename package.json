@@ -11,6 +11,7 @@
   "dependencies": {
     "@clerk/elements": "^0.9.1",
     "@clerk/nextjs": "^5.1.5",
+    "@emailjs/browser": "^4.4.1",
     "@hookform/resolvers": "^3.6.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-checkbox": "^1.1.0",

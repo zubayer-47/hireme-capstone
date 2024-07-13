@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/card";
 import { AppLogo } from "@/components/app-logo";
 import { Button } from "@/components/ui/button";
+import { FeedbackModal } from "./feedback-modal";
 
 import { NavLinks } from "./nav-links";
 import { dataLinks } from "../../lib/links";
@@ -67,9 +68,7 @@ export const DynamicSidebar = () => {
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <Button type="button" size="sm" className="w-full bg-app-color hover:bg-app-color/80 text-neutral-100 translate-hover">
-                            Share Your Feedback
-                        </Button>
+                        <FeedbackModal />
                     </CardContent>
                 </Card>
             </div>
