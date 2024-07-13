@@ -148,7 +148,7 @@ export const CreateFeedModal = () => {
                             name="tags"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Bio</FormLabel>
+                                    <FormLabel className="dark:text-neutral-300 text-neutral-700">Tags</FormLabel>
                                     <FormControl>
                                         <TagsInput value={field.value} onChange={field.onChange} />
                                     </FormControl>
