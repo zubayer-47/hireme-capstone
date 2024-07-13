@@ -1,7 +1,7 @@
 "use client"
 
 import { z } from "zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
@@ -53,9 +53,14 @@ export const AddNotesModal = ({
     applicationId
 }: AddNotesModalProps) => {
     const [isOpen, setIsOpen] = useState(false);
-
     const { toast } = useToast();
     const takeNotes = useMutation(api.applications.takeNotes);
+
+    useEffect(() => {
+        form.reset({
+            notes: notes || ""
+        })
+    }, [notes])
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -68,18 +73,19 @@ export const AddNotesModal = ({
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
-            const res = await takeNotes({
+            await takeNotes({
                 applicationId,
                 ...values
             })
 
-            if (res) {
-                toast({
+            toast({
                     title: "Success",
                     description: `Notes has been added to your ${jobTitle} for ${company} application.`,
-                    variant: "default",
-                })
-            }
+                    variant: "success",
+            });
+
+            setIsOpen(false);
+            
         } catch (error) {
             console.error(error);
             toast({

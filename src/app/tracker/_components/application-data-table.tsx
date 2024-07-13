@@ -69,7 +69,7 @@ export function ApplicationDataTable<TData, TValue>({
     })
 
     return (
-        <div>
+        <>
             <div className="flex items-center py-4">
                 <Input
                     placeholder="Filter company..."
@@ -180,6 +180,6 @@ export function ApplicationDataTable<TData, TValue>({
                     Next
                 </Button>
             </div>
-        </div>
+        </>
     )
 }
