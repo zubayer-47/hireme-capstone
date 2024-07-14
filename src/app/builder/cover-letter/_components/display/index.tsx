@@ -19,8 +19,8 @@ export const CoverLetter = ({ coverLetterDetails }: { coverLetterDetails: Doc<"c
     const [scale, setScale] = useState(0.8);
     const coverLetter = useCoverLetterStore();
     const document = useMemo(() => 
-        <CoverLetterPdf  coverLetter={coverLetter} settings={defaultSettings} isPDF={true} />
-    , [coverLetter]);
+        <CoverLetterPdf coverLetterDetails={coverLetterDetails}  coverLetter={coverLetter} settings={defaultSettings} isPDF={true} />
+    , [coverLetter, coverLetterDetails]);
     
     useLoadFonts();
     useHyphenationCallback(defaultSettings.fontFamily)
@@ -40,6 +40,7 @@ export const CoverLetter = ({ coverLetterDetails }: { coverLetterDetails: Doc<"c
                                 coverLetter={coverLetter}
                                 settings={defaultSettings}
                                 isPDF={DEBUG_PDF_FLAG}
+                                coverLetterDetails={coverLetterDetails}
                             />
                         </PDFIframeCSR>
                         
@@ -50,7 +51,7 @@ export const CoverLetter = ({ coverLetterDetails }: { coverLetterDetails: Doc<"c
                         document={document}
                         buttonName="Cover Letter"
                         documentSize={defaultSettings.documentSize}
-                        fileName={"Cover Letter"}
+                        fileName={coverLetter.heading.name + " - Cover Letter"}
                     />
                     
                 </div>

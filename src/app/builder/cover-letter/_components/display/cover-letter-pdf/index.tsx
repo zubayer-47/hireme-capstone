@@ -13,24 +13,27 @@ import { PDFClosingParagraph } from "./pdf-closing-paragraph";
 import { styles, spacing } from "@/app/builder/_components/pdf-styles";
 import { PDFText } from "@/app/builder/_components/common/pdf-components";
 import { SuppressWarnings } from "@/app/builder/_components/supress-warnings";
+import { Doc } from "@/convex/_generated/dataModel";
 
 type CoverLetterPdfProps = {
     isPDF?: boolean;
     settings: Settings;
     coverLetter: CoverLetter;
+    coverLetterDetails: Doc<"coverLetter">
 }
 
 export const CoverLetterPdf = ({
     isPDF,
     settings,
-    coverLetter
+    coverLetter,
+    coverLetterDetails
 }: CoverLetterPdfProps) => {
     const { heading, recruiterInfo, greeting, firstParagraph, middleParagraph, closingParagraph } = coverLetter;
     const { themeColor: appColor, documentSize, fontFamily, fontSize } = settings;
     const themeColor = appColor || FONT_COLOR;
     return (
         <>
-            <Document title={"Cover Letter"} author={"Me"} producer={"Hireme"}>
+            <Document title={`${coverLetterDetails?.heading?.name!} Cover Letter`} author={`${coverLetterDetails?.heading?.name!}`} producer={"Hireme"}>
                 <Page
                     size={documentSize === "A4" ? "A4" : "LETTER"}
                     style={{
@@ -48,23 +51,23 @@ export const CoverLetterPdf = ({
                     >
                         <PDFHeading
                             isPDF={isPDF!}
-                            heading={heading}
+                            heading={coverLetterDetails.heading ?? heading}
                             themeColor={themeColor}
                         />
                         <PDFRecruiterInfo
-                            recruiterInfo={recruiterInfo}
+                            recruiterInfo={coverLetterDetails.recruiterInfo ?? recruiterInfo}
                         />
                         <PDFGreeting
-                            greeting={greeting}
+                            greeting={coverLetterDetails.greeting ?? greeting}
                         />
                         <PDFFirstParagraph
-                            firstParagraph={firstParagraph}
+                            firstParagraph={coverLetterDetails.firstParagraph ?? firstParagraph}
                         />
                         <PDFMiddleParagraph
-                            middleParagraph={middleParagraph}
+                            middleParagraph={coverLetterDetails.middleParagraph ?? middleParagraph}
                         />
                         <PDFClosingParagraph
-                            closingParagraph={closingParagraph}
+                            closingParagraph={coverLetterDetails.closingParagraph ?? closingParagraph}
                         />
                         <View style={{ ...styles.flexCol, gap: spacing["1.5"], marginTop: spacing["4"] }}>
                             <PDFText
@@ -81,7 +84,7 @@ export const CoverLetterPdf = ({
                                     fontSize: "10pt",
                                 }}
                             >
-                                {heading.name}
+                                {coverLetterDetails?.heading?.name! ?? heading.name}
                             </PDFText>
                         </View>
 

@@ -33,7 +33,7 @@ export const ResumePDF = ({
 
     return (
         <>
-            <Document title={`${profile.name} Resume`} author={profile.name} producer={"HireMe"}>
+            <Document title={`${profile.name} Resume`} author={profile.name} producer={"Hireme"}>
                 <Page
                     size={documentSize === "A4" ? "A4" : "LETTER"}
                     style={{

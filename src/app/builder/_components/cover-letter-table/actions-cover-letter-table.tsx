@@ -94,7 +94,6 @@ export const ActionsCoverLetterTable = ({
                 <DropdownMenuContent align="end">
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="cursor-pointer">Share</DropdownMenuItem>
                     <DropdownMenuItem className="cursor-pointer"><Link href={`/builder/cover-letter/${coverLetterId}`}>Open</Link></DropdownMenuItem>
                     <DropdownMenuItem className="cursor-pointer" onClick={() => {
                         setIsDialogOpen(false);
