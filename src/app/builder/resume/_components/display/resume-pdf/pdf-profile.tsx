@@ -98,7 +98,7 @@ export const PDFProfile = ({
             </View>
 
             <PDFSection heading="PROFILE" style={{ marginTop: spacing["1.5"], paddingBottom: spacing["0.5"] }} themeColor={themeColor}>
-                <PDFText>{objective}</PDFText>
+                <PDFText style={{ textAlign: "justify" }}>{objective}</PDFText>
             </PDFSection>
         </View>
     )

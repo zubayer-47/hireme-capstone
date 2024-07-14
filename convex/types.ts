@@ -44,6 +44,45 @@ export const Education = v.object({
 })
 
 /* -------------------------------------------------------------------------- */
+/*                             Cover Letter                                   */
+/* -------------------------------------------------------------------------- */
+export const Heading = v.object({
+    name: v.string(),
+    role: v.string(),
+    email: v.string(),
+    phone: v.string(),
+    date: v.string(),
+    linkedInUrl: v.string(),
+    githubUrl: v.optional(v.string()),
+})
+
+export const RecruiterInfo = v.object({
+    name: v.string(),
+    title: v.string(),
+    companyName: v.string(),
+    address: v.string(),
+    cityStateZip: v.string(),
+});
+
+export const Greeting = v.object({
+    greeting: v.string()
+});
+
+export const FirstParagraph = v.object({
+    text: v.string()
+});
+
+export const MiddleParagraph = v.object({
+    text: v.string()
+});
+
+export const ClosingParagraph = v.object({
+    text: v.string()
+});
+
+
+
+/* -------------------------------------------------------------------------- */
 /*                                Applications                                */
 /* -------------------------------------------------------------------------- */
 export const ApplicationStatus = v.union(

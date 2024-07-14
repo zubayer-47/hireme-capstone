@@ -6,7 +6,13 @@ import {
     Projects,
     Education,
     WorkExperience,
-    ApplicationStatus
+    ApplicationStatus,
+    Heading,
+    RecruiterInfo,
+    Greeting,
+    FirstParagraph,
+    MiddleParagraph,
+    ClosingParagraph
 } from "./types";
 
 
@@ -25,6 +31,17 @@ export default defineSchema({
         projects: v.optional(v.array(Projects)),
         education: v.optional(v.array(Education)),
         workExperience: v.optional(v.array(WorkExperience)),
+    }).index("by_userId", ["userId"]),
+
+    coverLeter: defineTable({
+        userId: v.id("users"),
+        documentName: v.string(),
+        heading: v.optional(Heading),
+        greeeting:  v.optional(Greeting),
+        recruiterInfo:  v.optional(RecruiterInfo),
+        firstParagraph:  v.optional(FirstParagraph),
+        middleParagraph:  v.optional(MiddleParagraph),
+        closingParagraph:  v.optional(ClosingParagraph),
     }).index("by_userId", ["userId"]),
 
     applications: defineTable({

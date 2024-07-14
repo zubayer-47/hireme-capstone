@@ -49,6 +49,7 @@ export const Resume = ({ resumeDetails } : { resumeDetails: Doc<"resume"> }) => 
                         scale={scale}
                         setScale={setScale}
                         document={document}
+                        buttonName="Resume"
                         documentSize={defaultSettings.documentSize}
                         fileName={resume.profile.name + " - Resume"}
                     />

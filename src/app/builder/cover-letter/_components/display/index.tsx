@@ -47,6 +47,7 @@ export const CoverLetter = () => {
                         scale={scale}
                         setScale={setScale}
                         document={document}
+                        buttonName="Cover Letter"
                         documentSize={defaultSettings.documentSize}
                         fileName={"Cover Letter"}
                     />

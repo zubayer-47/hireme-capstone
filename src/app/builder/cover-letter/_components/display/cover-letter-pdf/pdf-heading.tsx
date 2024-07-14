@@ -58,7 +58,8 @@ export const PDFHeading = ({
                 ...styles.flexRow,
                 alignItems: "center",
                 gap: spacing["1"],
-                marginTop: spacing["1"]
+                marginTop: spacing["1"],
+                marginBottom: spacing["0.5"]
             }}
             >
                 <PDFLink
@@ -102,6 +103,7 @@ export const PDFHeading = ({
                 style={{
                 height: "3.75pt",
                 width: "100%",
+                
                 backgroundColor: themeColor,
             }}
                 debug={DEBUG_PDF_FLAG}
