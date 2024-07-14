@@ -70,16 +70,16 @@ export const HeadingForm = () => {
                         onChange={(e) => { setHeading("githubUrl", e.target.value) }}
                     />
                 </aside>
-                <aside className="grid gap-2">
-                    <DynamicInput
-                        id="dateApplied"
-                        type="dateApplied"
-                        labelName="Date Applied"
-                        value={heading.date}
-                        placeholder="www.github.com/username"
-                        onChange={(e) => { setHeading("date", e.target.value) }}
-                    />
-                </aside>
+            </aside>
+            <aside className="grid gap-2">
+                <DynamicInput
+                    id="dateApplied"
+                    type="dateApplied"
+                    labelName="Date Applied"
+                    value={heading.date}
+                    placeholder="www.github.com/username"
+                    onChange={(e) => { setHeading("date", e.target.value) }}
+                />
             </aside>
         </Card>
     )
