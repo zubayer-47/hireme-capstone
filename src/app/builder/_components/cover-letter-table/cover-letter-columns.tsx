@@ -6,9 +6,9 @@ import { Doc } from "@/convex/_generated/dataModel";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowUpDown } from "lucide-react";
-import { ActionsDocumentTable } from "./actions-document-table";
+import { ActionsCoverLetterTable } from "./actions-cover-letter-table";
 
-export const documentColumns: ColumnDef<Doc<"resume">>[] = [
+export const CoverLetterTable: ColumnDef<Doc<"coverLetter">>[] = [
     {
         id: "select",
         header: ({ table }) => (
@@ -87,7 +87,7 @@ export const documentColumns: ColumnDef<Doc<"resume">>[] = [
     {
         id: "actions",
         cell: ({ row }) => {
-            return <ActionsDocumentTable resumeId={row.original._id} />
+            return <ActionsCoverLetterTable coverLetterId={row.original._id} />
         },
     },
 ]

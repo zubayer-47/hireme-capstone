@@ -1,3 +1,5 @@
+"use client";
+
 import { Id } from "@/convex/_generated/dataModel";
 import { CoverLetter } from "../_components/display";
 import { CoverLetterForm } from "../_components/forms";

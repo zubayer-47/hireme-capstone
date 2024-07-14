@@ -35,15 +35,15 @@ import { Button } from "@/components/ui/button";
 import { SlidersHorizontal } from "lucide-react";
 import { CreateDocumentModal } from "../browser/create-document-modal";
 
-interface DocumentDataTableProps<TData, TValue> {
+interface CoverLetterDataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
 }
 
-export function DocumentDataTable<TData, TValue>({
+export function CoverLetterDataTable<TData, TValue>({
     columns,
     data,
-}: DocumentDataTableProps<TData, TValue>) {
+}: CoverLetterDataTableProps<TData, TValue>) {
     const [sorting, setSorting] = React.useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
     const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
@@ -148,10 +148,12 @@ export function DocumentDataTable<TData, TValue>({
                             ))
                         ) : (
                             <TableRow>
-                                <TableCell colSpan={columns.length} className="h-24 text-center dark:text-neutral-300 text-neutral-700">
-                                    <h2 className="text-base sm:text-lg dark:text-neutral-200 text-neutral-800">Nothing here yet!</h2>
-                                    <p className="text-sm dark:text-neutral-400 text-neutral-600">Start tracking your application.</p>
-                                    <CreateDocumentModal />
+                                <TableCell colSpan={columns.length} className="h-24  gap-2 text-center dark:text-neutral-300 text-neutral-700">
+                                    <div className="flex flex-col items-center justify-center py-24">
+                                        <h2 className="text-base sm:text-lg dark:text-neutral-200 text-neutral-800">Start Crafting Your Cover Letter!</h2>
+                                        <p className="text-sm dark:text-neutral-400 text-neutral-600 pb-4">Don't have a cover letter yet? No problem! Start building one here.</p>
+                                        <CreateDocumentModal />
+                                    </div>
                                 </TableCell>
                             </TableRow>
                         )}

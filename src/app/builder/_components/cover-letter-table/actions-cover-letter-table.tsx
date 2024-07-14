@@ -29,36 +29,37 @@ import {
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
-export const ActionsDocumentTable = ({
-    resumeId
-}: { resumeId: Id<"resume"> }) => {
+export const ActionsCoverLetterTable = ({
+    coverLetterId
+}: { coverLetterId: Id<"coverLetter"> }) => {
     const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const { toast } = useToast();
 
-    const deleteDocument = useMutation(api.resume.deleteDocument);
+    const deleteDocument = useMutation(api.coverLetter.deleteDocument);
 
     const handleDelete = async () => {
-
         try {
             setIsAlertDialogOpen(false);
-            const res = await deleteDocument({ resumeId });
+            const res = await deleteDocument({ coverLetterId });
             
-            if (res) {
+            if (res === true) {
                toast({
                     title: "Success",
                     description: "Document has been deleted.",
                     variant: "default"
                 }); 
+                setIsAlertDialogOpen(false);
             }
-            
         } catch (error) {
+            console.error(error)
             toast({
                 title: "Error",
                 description: "Failed to delete document.",
                 variant: "destructive"
             }); 
+            setIsAlertDialogOpen(false);
         }
     }
     return (
@@ -94,7 +95,7 @@ export const ActionsDocumentTable = ({
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem className="cursor-pointer">Share</DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer"><Link href={`/builder/resume/${resumeId}`}>Open</Link></DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer"><Link href={`/builder/cover-letter/${coverLetterId}`}>Open</Link></DropdownMenuItem>
                     <DropdownMenuItem className="cursor-pointer" onClick={() => {
                         setIsDialogOpen(false);
                         setIsAlertDialogOpen(true);

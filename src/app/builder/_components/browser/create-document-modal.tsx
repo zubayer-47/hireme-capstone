@@ -47,7 +47,8 @@ export const CreateDocumentModal = () => {
     const { toast } = useToast();
     const router = useRouter();
 
-    const createDocument = useMutation(api.resume.createDocument)
+    const createResumeDocument = useMutation(api.resume.createDocument)
+    const createCoverLetterDocument = useMutation(api.coverLetter.createDocument);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -65,7 +66,7 @@ export const CreateDocumentModal = () => {
             let documentId;
             switch (documentType) {
                 case "resume":
-                    documentId = await createDocument({ documentName });
+                    documentId = await createResumeDocument({ documentName });
 
                     if (documentId) {
                         toast({
@@ -78,7 +79,7 @@ export const CreateDocumentModal = () => {
                     }
                     break;
                 case "cover letter":
-                    documentId = await createDocument({ documentName });
+                    documentId = await createCoverLetterDocument({ documentName });
 
                     if (documentId) {
                         toast({

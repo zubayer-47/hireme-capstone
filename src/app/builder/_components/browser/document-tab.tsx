@@ -12,14 +12,17 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { documentColumns } from '../resume-table/document-columns';
+import { resumeTable } from '../resume-table/resume-columns';
 import { CreateDocumentModal } from "./create-document-modal";
-import { DocumentDataTable } from "../resume-table/document-data-table";
+import { ResumeDataTable } from "../resume-table/resume-data-table";
+import { CoverLetterTable } from '../cover-letter-table/cover-letter-columns';
+import { CoverLetterDataTable } from "../cover-letter-table/cover-letter-data-table";
 
 export const DocumentTab = () => {
-    const data = useQuery(api.resume.readDocuments);
-
-    if (!data) return [];
+    const resumeData = useQuery(api.resume.readDocuments);
+    const coverLetterData = useQuery(api.coverLetter.readDocuments);
+    
+    if (!resumeData || !coverLetterData) return [];
 
     return (
         <Tabs defaultValue="resume" >
@@ -37,9 +40,10 @@ export const DocumentTab = () => {
                 </div>
             </section>
             <TabsContent value="resume">
-                <DocumentDataTable columns={documentColumns} data={data} />
+                <ResumeDataTable columns={resumeTable} data={resumeData} />
             </TabsContent>
             <TabsContent value="cover-letter">
+                <CoverLetterDataTable columns={CoverLetterTable} data={coverLetterData} />
             </TabsContent>
         </Tabs>
     )

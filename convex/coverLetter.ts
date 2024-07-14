@@ -67,7 +67,7 @@ export const createDocument = mutation({
 
         if (!hasAccess) throw new ConvexError("Unauthorized!");
 
-        return await ctx.db.insert("resume", {
+        return await ctx.db.insert("coverLetter", {
             userId: hasAccess._id,
             documentName,
         });
