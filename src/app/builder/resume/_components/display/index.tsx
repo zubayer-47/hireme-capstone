@@ -10,7 +10,7 @@ import { ResumeIframeCSR } from './resume-iframe';
 import { ResumeNavBarCSR } from './resume-navbar';
 import { useResumeStore } from '@/store/resume-store';
 import { FlexboxSpacer } from '@/components/flexbox-spacer';
-import { defaultSettings } from '@/store/resume-default-style';
+import { defaultSettings } from '@/store/document-default-style';
 import { DEBUG_RESUME_PDF_FLAG } from '@/lib/resume-dimensions';
 import { Doc } from '@/convex/_generated/dataModel';
 

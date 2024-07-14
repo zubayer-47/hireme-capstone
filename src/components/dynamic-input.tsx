@@ -3,7 +3,7 @@ interface DynamicInputProps {
     type: string;
     value: string;
     labelName: string;
-    placeholder: string;
+    placeholder?: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

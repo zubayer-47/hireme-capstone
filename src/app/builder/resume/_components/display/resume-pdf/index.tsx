@@ -1,7 +1,7 @@
 import type { Resume } from "@/store/resume-types";
 import { Doc } from "@/convex/_generated/dataModel";
 import type { Settings } from "@/store/resume-types";
-import { FONT_COLOR } from "@/store/resume-default-style";
+import { FONT_COLOR } from "@/store/document-default-style";
 
 import { PDFSkills } from "./pdf-skills";
 import { PDFProfile } from "./pdf-profile";

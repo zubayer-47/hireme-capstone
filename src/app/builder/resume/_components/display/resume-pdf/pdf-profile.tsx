@@ -5,7 +5,7 @@ import {
 } from "./common/resume-pdf-components";
 import { View, Text, } from "@react-pdf/renderer";
 import type { Profile } from "@/store/resume-types";
-import { FONT_COLOR } from "@/store/resume-default-style";
+import { FONT_COLOR } from "@/store/document-default-style";
 import { styles, spacing } from './resume-pdf-utils/resume-pdf-styles';
 
 type PDFProfileProps = {
