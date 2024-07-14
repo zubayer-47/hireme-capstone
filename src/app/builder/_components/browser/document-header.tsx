@@ -5,7 +5,7 @@ import { api } from "@/convex/_generated/api";
 import { Doc } from "@/convex/_generated/dataModel";
 import { useResumeStore } from "@/store/resume-store";
 
-import { EnhancerTab } from "../enchancer-tab";
+import { EnhancerTab } from "./enchancer-tab";
 import { ButtonLink } from "@/components/button-link";
 
 export const DocumentHeader = ({

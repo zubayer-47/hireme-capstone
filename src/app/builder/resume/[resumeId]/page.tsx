@@ -8,7 +8,7 @@ import { Resume } from "../_components/display";
 import { ResumeForm } from "../_components/form";
 import { DocumentHeader } from "../../_components/browser/document-header";
 
-export default function Home({ params }: { params: { resumeId: Id<"resume"> } }) {
+export default function ResumeBuilderPage({ params }: { params: { resumeId: Id<"resume"> } }) {
   const resume = useQuery(api.resume.getResume, { resumeId: params.resumeId });
 
   if (!resume) return <></>;

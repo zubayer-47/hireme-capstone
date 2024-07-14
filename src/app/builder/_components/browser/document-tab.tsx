@@ -12,9 +12,9 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { documentColumns } from '../table/document-columns';
+import { documentColumns } from '../resume-table/document-columns';
 import { CreateDocumentModal } from "./create-document-modal";
-import { DocumentDataTable } from "../table/document-data-table";
+import { DocumentDataTable } from "../resume-table/document-data-table";
 
 export const DocumentTab = () => {
     const data = useQuery(api.resume.readDocuments);

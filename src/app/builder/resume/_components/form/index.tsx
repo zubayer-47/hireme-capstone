@@ -1,5 +1,3 @@
-"use client";
-
 import { SkillsForm } from "./skills-form";
 import { ProfileForm } from "./profile-form";
 import { ProjectForm } from "./projects-form";
