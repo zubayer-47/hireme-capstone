@@ -15,7 +15,7 @@ export default function ResumeBuilderPage({ params }: { params: { resumeId: Id<"
 
   return (
     <>
-      <DocumentHeader resume={resume} />
+      <DocumentHeader resume={resume} isResume={true} />
       <section className="relative grid grid-cols-3 md:grid-cols-6">
         <article className="col-span-3">
           <div className="sticky top-0 h-screen overflow-y-auto">

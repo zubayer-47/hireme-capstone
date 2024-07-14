@@ -37,7 +37,7 @@ export default defineSchema({
         userId: v.id("users"),
         documentName: v.string(),
         heading: v.optional(Heading),
-        greeeting: v.optional(Greeting),
+        greeting: v.optional(Greeting),
         recruiterInfo: v.optional(RecruiterInfo),
         firstParagraph: v.optional(FirstParagraph),
         middleParagraph: v.optional(MiddleParagraph),
