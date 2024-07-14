@@ -4,16 +4,15 @@ import { CoverLetter } from "@/store/cover-letter-types";
 import { FONT_COLOR } from "@/store/document-default-style";
 
 import { PDFHeading } from "./pdf-heading";
-
-import { PDFRecruiterInfo } from "./pdf-recruiter-info";
 import { PDFGreeting } from "./pdf-greeting";
-import { SuppressWarnings } from "@/app/builder/_components/supress-warnings";
-import { styles, spacing } from "@/app/builder/_components/pdf-styles";
+import { PDFRecruiterInfo } from "./pdf-recruiter-info";
 import { PDFFirstParagraph } from "./pdf-first-paragraph";
 import { PDFMiddleParagraph } from "./pdf-middle-paragraph";
+import { PDFClosingParagraph } from "./pdf-closing-paragraph";
 
-
-
+import { styles, spacing } from "@/app/builder/_components/pdf-styles";
+import { PDFText } from "@/app/builder/_components/common/pdf-components";
+import { SuppressWarnings } from "@/app/builder/_components/supress-warnings";
 
 type CoverLetterPdfProps = {
     isPDF?: boolean;
@@ -21,12 +20,12 @@ type CoverLetterPdfProps = {
     coverLetter: CoverLetter;
 }
 
-export const CoverLetterPdf = ({ 
+export const CoverLetterPdf = ({
     isPDF,
     settings,
     coverLetter
 }: CoverLetterPdfProps) => {
-    const { heading, recruiterInfo, greeting, firstParagraph, middleParagraph, closingParagraph} = coverLetter;
+    const { heading, recruiterInfo, greeting, firstParagraph, middleParagraph, closingParagraph } = coverLetter;
     const { themeColor: appColor, documentSize, fontFamily, fontSize } = settings;
     const themeColor = appColor || FONT_COLOR;
     return (
@@ -47,7 +46,7 @@ export const CoverLetterPdf = ({
                             padding: `${spacing[10]} ${spacing[20]}`
                         }}
                     >
-                        <PDFHeading 
+                        <PDFHeading
                             isPDF={isPDF!}
                             heading={heading}
                             themeColor={themeColor}
@@ -55,19 +54,37 @@ export const CoverLetterPdf = ({
                         <PDFRecruiterInfo
                             recruiterInfo={recruiterInfo}
                         />
-                        <PDFGreeting 
+                        <PDFGreeting
                             greeting={greeting}
                         />
-                        <PDFFirstParagraph 
+                        <PDFFirstParagraph
                             firstParagraph={firstParagraph}
                         />
-                        <PDFMiddleParagraph 
+                        <PDFMiddleParagraph
                             middleParagraph={middleParagraph}
                         />
-                        {/*
-                        <PDFClosingParagraph 
+                        <PDFClosingParagraph
                             closingParagraph={closingParagraph}
-                        /> */}
+                        />
+                        <View style={{ ...styles.flexCol, gap: spacing["1.5"], marginTop: spacing["4"] }}>
+                            <PDFText
+                                themeColor={FONT_COLOR}
+                                style={{
+                                    fontSize: "10pt",
+                                }}
+                            >
+                                Sincerely,
+                            </PDFText>
+                            <PDFText
+                                themeColor={FONT_COLOR}
+                                style={{
+                                    fontSize: "10pt",
+                                }}
+                            >
+                                {heading.name}
+                            </PDFText>
+                        </View>
+
                     </View>
                 </Page>
             </Document>
