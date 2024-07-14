@@ -2,9 +2,10 @@
 
 import { Card } from "@/components/card";
 import { DynamicInput } from "@/components/dynamic-input";
+import { Doc } from "@/convex/_generated/dataModel";
 import { useCoverLetterStore } from "@/store/cover-letter-store";
 
-export const RecruiterInfoForm = () => {
+export const RecruiterInfoForm = ({ coverLetterRecruiterInfo }: { coverLetterRecruiterInfo: Doc<"coverLetter">["recruiterInfo"]}) => {
     const { recruiterInfo, setRecruiterInfo } = useCoverLetterStore();
 
     return (
@@ -14,7 +15,7 @@ export const RecruiterInfoForm = () => {
                     id="name"
                     type="text"
                     labelName="Full Name"
-                    value={recruiterInfo.name}
+                    value={coverLetterRecruiterInfo?.name ?? recruiterInfo.name}
                     placeholder="Jenny Johnson"
                     onChange={(e) => { setRecruiterInfo("name", e.target.value) }}
                 />
@@ -24,7 +25,7 @@ export const RecruiterInfoForm = () => {
                     id="role"
                     type="text"
                     labelName="Job RecruiterTitle"
-                    value={recruiterInfo.title}
+                    value={coverLetterRecruiterInfo?.title ?? recruiterInfo.title}
                     placeholder="Human Resource"
                     onChange={(e) => { setRecruiterInfo("title", e.target.value) }}
                 />
@@ -34,7 +35,7 @@ export const RecruiterInfoForm = () => {
                     id="companyName"
                     type="text"
                     labelName="Company Name"
-                    value={recruiterInfo.companyName}
+                    value={coverLetterRecruiterInfo?.companyName ?? recruiterInfo.companyName}
                     placeholder="Apple"
                     onChange={(e) => { setRecruiterInfo("companyName", e.target.value) }}
                 />
@@ -46,7 +47,7 @@ export const RecruiterInfoForm = () => {
                         id="address"
                         type="text"
                         labelName="Address"
-                        value={recruiterInfo.address}
+                        value={coverLetterRecruiterInfo?.address ?? recruiterInfo.address}
                         placeholder="55 Bixby Way"
                         onChange={(e) => { setRecruiterInfo("address", e.target.value) }}
                     />
@@ -56,7 +57,7 @@ export const RecruiterInfoForm = () => {
                         id="cityStateCode"
                         type="text"
                         labelName="City | State | Code"
-                        value={recruiterInfo.cityStateZip}
+                        value={coverLetterRecruiterInfo?.cityStateZip ?? recruiterInfo.cityStateZip}
                         placeholder="Manchester, NH 40344"
                         onChange={(e) => { setRecruiterInfo("cityStateZip", e.target.value) }}
                     />

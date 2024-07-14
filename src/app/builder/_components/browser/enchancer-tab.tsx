@@ -95,7 +95,6 @@ export const EnhancerTab = ({ resumeId } : {resumeId: Id<"resume"> }) => {
                 variant: "destructive",
             })
             setPending(false);
-
         } 
     }
 

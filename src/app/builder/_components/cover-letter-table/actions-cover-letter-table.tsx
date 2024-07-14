@@ -70,7 +70,7 @@ export const ActionsCoverLetterTable = ({
                         <AlertDialogTitle className="dark:text-neutral-200 text-neutral-800">Are you absolutely sure?</AlertDialogTitle>
                         <AlertDialogDescription className="dark:text-neutral-400 text-neutral-700">
                             This action cannot be undone. This will permanently delete your
-                            account and remove your data from our servers.
+                            cover letter and remove your data from our servers.
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>

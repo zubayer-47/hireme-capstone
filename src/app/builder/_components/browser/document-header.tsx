@@ -53,7 +53,7 @@ export const DocumentHeader = ({
                 toast({
                     title: "Success",
                     description: `Your resume is successfully saved.`,
-                    variant: "success",
+                    variant: "default",
                 })
             } else if (!isResume && coverLetter) {
                 await saveCoverLetterResults({

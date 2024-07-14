@@ -2,9 +2,10 @@
 
 import { Card } from "@/components/card";
 import { DynamicInput } from "@/components/dynamic-input";
+import { Doc } from "@/convex/_generated/dataModel";
 import { useCoverLetterStore } from "@/store/cover-letter-store";
 
-export const GreetingForm = () => {
+export const GreetingForm = ({ coverLetterGreeting }: { coverLetterGreeting: Doc<"coverLetter">["greeting"]}) => {
     const { greeting, setGreeting } = useCoverLetterStore();
 
     return (
@@ -14,7 +15,7 @@ export const GreetingForm = () => {
                     id="greeting"
                     type="text"
                     labelName="Formal Greeting"
-                    value={greeting.greeting}
+                    value={coverLetterGreeting?.greeting ?? greeting.greeting}
                     placeholder="Dear Mr./Ms. Lastname"
                     onChange={(e) => { setGreeting("greeting", e.target.value) }}
                 />

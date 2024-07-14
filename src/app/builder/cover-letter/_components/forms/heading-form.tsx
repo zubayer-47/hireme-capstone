@@ -2,11 +2,13 @@
 
 import { Card } from "@/components/card";
 import { DynamicInput } from "@/components/dynamic-input";
+import { Doc } from "@/convex/_generated/dataModel";
 import { useCoverLetterStore } from "@/store/cover-letter-store";
 
-export const HeadingForm = () => {
+export const HeadingForm = ({ coverLetterHeading }: { coverLetterHeading: Doc<"coverLetter">["heading"]}) => {
     const { heading, setHeading } = useCoverLetterStore();
 
+    
     return (
         <Card>
             <aside className="grid gap-2">
@@ -14,7 +16,7 @@ export const HeadingForm = () => {
                     id="name"
                     type="text"
                     labelName="Full Name"
-                    value={heading.name}
+                    value={coverLetterHeading?.name ?? heading.name}
                     placeholder="Steve Jobs"
                     onChange={(e) => { setHeading("name", e.target.value) }}
                 />
@@ -24,7 +26,7 @@ export const HeadingForm = () => {
                     id="role"
                     type="text"
                     labelName="Role"
-                    value={heading.role}
+                    value={coverLetterHeading?.role ?? heading.role}
                     placeholder="The role you are applying for?"
                     onChange={(e) => { setHeading("role", e.target.value) }}
                 />
@@ -34,7 +36,7 @@ export const HeadingForm = () => {
                     id="email"
                     type="email"
                     labelName="Email"
-                    value={heading.email}
+                    value={coverLetterHeading?.email ?? heading.email}
                     placeholder="steve.jobs@apple.com"
                     onChange={(e) => { setHeading("email", e.target.value) }}
                 />
@@ -44,7 +46,7 @@ export const HeadingForm = () => {
                     id="phone"
                     type="tel"
                     labelName="Phone Number"
-                    value={heading.phone}
+                    value={coverLetterHeading?.phone ?? heading.phone}
                     placeholder="+1 234 567 890"
                     onChange={(e) => { setHeading("phone", e.target.value) }}
                 />
@@ -55,7 +57,7 @@ export const HeadingForm = () => {
                         id="linkedInUrl"
                         type="url"
                         labelName="LinkedIn URL"
-                        value={heading.linkedInUrl}
+                        value={coverLetterHeading?.linkedInUrl ?? heading.linkedInUrl}
                         placeholder="www.linkedin.com/in/username"
                         onChange={(e) => { setHeading("linkedInUrl", e.target.value) }}
                     />
@@ -65,7 +67,7 @@ export const HeadingForm = () => {
                         id="githubUrl"
                         type="url"
                         labelName="Github URL"
-                        value={heading.githubUrl ?? ""}
+                        value={coverLetterHeading?.githubUrl ?? heading.githubUrl ?? ""}
                         placeholder="www.github.com/username"
                         onChange={(e) => { setHeading("githubUrl", e.target.value) }}
                     />
@@ -76,7 +78,7 @@ export const HeadingForm = () => {
                     id="dateApplied"
                     type="date"
                     labelName="Date Applied"
-                    value={heading.date}
+                    value={coverLetterHeading?.date ?? heading.date}
                     onChange={(e) => { setHeading("date", e.target.value) }}
                 />
             </aside>

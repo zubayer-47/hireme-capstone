@@ -17,11 +17,11 @@ export default function CoverLetterBuilderPage({ params } : { params: { coverLet
       <section className="relative grid grid-cols-3 md:grid-cols-6">
         <article className="col-span-3">
           <div className="sticky top-0 h-screen overflow-y-auto">
-            <CoverLetterForm />
+            <CoverLetterForm coverLetter={coverLetter}  />
           </div>
         </article>
         <article className="col-span-3 ">
-            <CoverLetter />
+            <CoverLetter coverLetterDetails={coverLetter} />
         </article>
       </section>
     </>

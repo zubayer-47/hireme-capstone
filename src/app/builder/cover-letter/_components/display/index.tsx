@@ -13,8 +13,9 @@ import { defaultSettings } from '@/store/document-default-style';
 import { FlexboxSpacer } from '@/components/flexbox-spacer';
 import { PDFIframeCSR } from '../../../_components/pdf-iframe';
 import { PDFNavbarCSR } from '../../../_components/pdf-navbar';
+import { Doc } from '@/convex/_generated/dataModel';
 
-export const CoverLetter = () => {
+export const CoverLetter = ({ coverLetterDetails }: { coverLetterDetails: Doc<"coverLetter"> }) => {
     const [scale, setScale] = useState(0.8);
     const coverLetter = useCoverLetterStore();
     const document = useMemo(() => 
