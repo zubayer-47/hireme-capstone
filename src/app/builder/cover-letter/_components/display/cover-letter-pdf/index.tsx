@@ -4,10 +4,12 @@ import { CoverLetter } from "@/store/cover-letter-types";
 import { FONT_COLOR } from "@/store/document-default-style";
 
 import { PDFHeading } from "./pdf-heading";
-import { PDFRecruiterInfo } from "./pdf-recruiter-info";
 
+import { PDFRecruiterInfo } from "./pdf-recruiter-info";
+import { PDFGreeting } from "./pdf-greeting";
 import { SuppressWarnings } from "@/app/builder/_components/supress-warnings";
 import { styles, spacing } from "@/app/builder/_components/pdf-styles";
+
 
 
 
@@ -16,7 +18,6 @@ type CoverLetterPdfProps = {
     settings: Settings;
     coverLetter: CoverLetter;
 }
-
 
 export const CoverLetterPdf = ({ 
     isPDF,
@@ -51,6 +52,9 @@ export const CoverLetterPdf = ({
                         />
                         <PDFRecruiterInfo
                             recruiterInfo={recruiterInfo}
+                        />
+                        <PDFGreeting 
+                            greeting={greeting}
                         />
                     </View>
                 </Page>
