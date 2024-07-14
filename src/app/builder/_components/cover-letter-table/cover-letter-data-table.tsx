@@ -151,7 +151,7 @@ export function CoverLetterDataTable<TData, TValue>({
                                 <TableCell colSpan={columns.length} className="h-24  gap-2 text-center dark:text-neutral-300 text-neutral-700">
                                     <div className="flex flex-col items-center justify-center py-24">
                                         <h2 className="text-base sm:text-lg dark:text-neutral-200 text-neutral-800">Start Crafting Your Cover Letter!</h2>
-                                        <p className="text-sm dark:text-neutral-400 text-neutral-600 pb-4">Don't have a cover letter yet? No problem! Start building one here.</p>
+                                        <p className="text-sm dark:text-neutral-400 text-neutral-600 pb-4">Don&apos;t have a cover letter yet? No problem! Start building one here.</p>
                                         <CreateDocumentModal />
                                     </div>
                                 </TableCell>

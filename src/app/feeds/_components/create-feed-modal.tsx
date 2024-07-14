@@ -2,7 +2,6 @@
 
 import { z } from "zod";
 import { useState } from "react";
-import { useUser } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
@@ -38,7 +37,6 @@ import { useToast } from "@/components/ui/use-toast";
 import { UploadPDFDropzone } from "./upload-pdf-dropzone";
 
 export const CreateFeedModal = () => {
-    const { user } = useUser();
     const [isOpen, setIsOpen] = useState(false);
     const [pdfFileUrl, setPdfFileUrl] = useState("");
     const { toast } = useToast();
@@ -84,7 +82,6 @@ export const CreateFeedModal = () => {
             const res = await createFeed({ 
                 ...values, 
                 fileId: storageIds[0],
-                profImgUrl: user?.imageUrl!
             });
 
             if (res) {

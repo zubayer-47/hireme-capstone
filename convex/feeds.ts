@@ -70,7 +70,6 @@ export const createFeed = mutation({
         bio: v.string(),
         fileId: v.id("_storage"),
         tags: v.array(v.string()),
-        profImgUrl: v.string(),
     },
     handler: async (ctx, args) => {
         const identity = await userIdentity(ctx);
@@ -86,6 +85,7 @@ export const createFeed = mutation({
             upVoteCount: 0,
             downVoteCount: 0,
             voterIds: [],
+            profImgUrl: identity.profileUrl
         })
     }
 });
