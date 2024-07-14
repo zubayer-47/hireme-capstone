@@ -1,8 +1,8 @@
 import {
-    ResumePDFText,
-    ResumePDFSection,
-    ResumePDFBulletList,
-} from "./common/resume-pdf-components";
+    PDFText,
+    PDFSection,
+    PDFBulletList,
+} from "../../../../_components/common/pdf-components";
 import { View } from "@react-pdf/renderer";
 import type { Skills } from "@/store/resume-types";
 import { spacing, styles } from "../../../../_components/pdf-styles";
@@ -20,15 +20,15 @@ export const PDFSkills = ({
 }: PDFSkillsProps) => {
 
     return (
-        <ResumePDFSection themeColor={themeColor} heading={heading}>
+        <PDFSection themeColor={themeColor} heading={heading}>
             {skills.map((skill, index) => (
                 <View key={index} style={{ ...styles.flexCol, paddingBottom: spacing["1"] }}>
-                    <ResumePDFText bold={true}>{skill.heading}</ResumePDFText>
+                    <PDFText bold={true}>{skill.heading}</PDFText>
                     <View style={{ ...styles.flexCol }}>
-                        <ResumePDFBulletList items={skill.featuredSkills} />
+                        <PDFBulletList items={skill.featuredSkills} />
                     </View>
                 </View>
             ))}
-        </ResumePDFSection>
+        </PDFSection>
     )
 }

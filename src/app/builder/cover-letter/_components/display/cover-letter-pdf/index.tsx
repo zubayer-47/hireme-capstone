@@ -8,6 +8,7 @@ import { Page, View, Document } from "@react-pdf/renderer";
 import { SuppressWarnings } from "@/app/builder/_components/supress-warnings";
 import { styles, spacing } from "@/app/builder/_components/pdf-styles";
 import { CoverLetter } from "@/store/cover-letter-types";
+import { PDFHeading } from "./pdf-heading";
 
 type CoverLetterPdfProps = {
     isPDF?: boolean;
@@ -21,6 +22,7 @@ export const CoverLetterPdf = ({
     settings,
     coverLetter
 }: CoverLetterPdfProps) => {
+    const { heading, recruiterInfo, greeting, firstParagraph, middleParagraph, closingParagraph} = coverLetter;
     const { themeColor: appColor, documentSize, fontFamily, fontSize } = settings;
     const themeColor = appColor || FONT_COLOR;
     return (
@@ -38,10 +40,14 @@ export const CoverLetterPdf = ({
                     <View
                         style={{
                             ...styles.flexCol,
-                            padding: `${spacing[5]} ${spacing[10]}`
+                            padding: `${spacing[10]} ${spacing[20]}`
                         }}
                     >
-
+                        <PDFHeading 
+                            isPDF={isPDF!}
+                            heading={heading}
+                            themeColor={themeColor}
+                        />
                     </View>
                 </Page>
             </Document>

@@ -1,8 +1,8 @@
 import {
-    ResumePDFText,
-    ResumePDFSection,
-    ResumePDFBulletList,
-} from './common/resume-pdf-components';
+    PDFText,
+    PDFSection,
+    PDFBulletList,
+} from '../../../../_components/common/pdf-components';
 import { View, Text } from "@react-pdf/renderer";
 import type { Experiences } from "@/store/resume-types";
 import { styles, spacing } from "../../../../_components/pdf-styles";
@@ -19,7 +19,7 @@ export const PDFWorkExperience = ({
     experiences,
 }: PDFWorkExperienceProps) => {
     return (
-        <ResumePDFSection themeColor={themeColor} heading={heading}>
+        <PDFSection themeColor={themeColor} heading={heading}>
             {experiences.map(({
                 title,
                 company,
@@ -45,9 +45,9 @@ export const PDFWorkExperience = ({
                             gap: spacing["1"],
                             paddingBottom: spacing["0.5"]
                         }}>
-                            <ResumePDFText bold={true}>{title}</ResumePDFText>
+                            <PDFText bold={true}>{title}</PDFText>
                             {company && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
-                            <ResumePDFText bold={true}>{company}</ResumePDFText>
+                            <PDFText bold={true}>{company}</PDFText>
                         </View>
                         <View style={{
                             ...styles.flexRow,
@@ -55,18 +55,18 @@ export const PDFWorkExperience = ({
                             gap: spacing["1"],
                             paddingBottom: spacing["1"]
                         }}>
-                            <ResumePDFText>{startDate}</ResumePDFText>
+                            <PDFText>{startDate}</PDFText>
                             {endDate && <Text style={{ color: "#737373", fontWeight: "bold"}}>-</Text> }
-                            <ResumePDFText>{endDate}</ResumePDFText>
+                            <PDFText>{endDate}</PDFText>
                             {location && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text> }
-                            <ResumePDFText>{location}</ResumePDFText>
+                            <PDFText>{location}</PDFText>
                         </View>
                     </View>
                     <View style={{ ...styles.flexCol }}>
-                        <ResumePDFBulletList items={descriptions} />
+                        <PDFBulletList items={descriptions} />
                     </View>
                 </View>
             ))}
-        </ResumePDFSection>
+        </PDFSection>
     )
 }

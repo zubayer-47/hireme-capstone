@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { CSS_VARIABLES, getPxPerRem } from "@/lib/utils";
-import { A4_HEIGHT_PX, LETTER_HEIGHT_PX } from "@/lib/resume-dimensions";
+import { A4_HEIGHT_PX, LETTER_HEIGHT_PX } from "@/lib/pdf-dimensions";
 
 export const useSetDefaultScale = ({
     setScale,

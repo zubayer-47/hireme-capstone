@@ -1,8 +1,8 @@
 import {
-    ResumePDFText,
-    ResumePDFSection,
-    ResumePDFLink
-} from "./common/resume-pdf-components";
+    PDFText,
+    PDFSection,
+    PDFLink
+} from "../../../../_components/common/pdf-components";
 import { View, Text, } from "@react-pdf/renderer";
 import type { Profile } from "@/store/resume-types";
 import { FONT_COLOR } from "@/store/document-default-style";
@@ -34,21 +34,21 @@ export const PDFProfile = ({
                     gap: spacing["1"]
                 }}
             >
-                <ResumePDFText
+                <PDFText
                     bold={true}
                     themeColor={themeColor}
                     style={{ fontSize: "12pt" }}
                 >
                     {name}
-                </ResumePDFText>
+                </PDFText>
                 {role && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
-                <ResumePDFText
+                <PDFText
                     bold={true}
                     themeColor={FONT_COLOR}
                     style={{ fontSize: "11pt" }}
                 >
                     {role}
-                </ResumePDFText>
+                </PDFText>
             </View>
             <View
                 style={{
@@ -57,49 +57,49 @@ export const PDFProfile = ({
                 }}
             >
                 <View style={{ ...styles.flexRow, alignItems: "center", gap: spacing["1"] }}>
-                    <ResumePDFLink
+                    <PDFLink
                         src={`mailto:${email}`}
                         isPDF={isPDF}
                         fontSize="9pt"
                         noTextDecoration
                     >
                         {email}
-                    </ResumePDFLink>
+                    </PDFLink>
 
                     {phone && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
-                    <ResumePDFLink
+                    <PDFLink
                         src={`tel:${phone}`}
                         isPDF={isPDF}
                         fontSize="9pt"
                         noTextDecoration
                     >
                         {phone}
-                    </ResumePDFLink>
+                    </PDFLink>
                 </View>
                 <View style={{ ...styles.flexRow, alignItems: "center", gap: spacing["1"] }}>
-                    <ResumePDFLink
+                    <PDFLink
                         src={linkedInUrl}
                         isPDF={isPDF}
                         fontSize="9pt"
                         noTextDecoration
                     >
                         {linkedInUrl}
-                    </ResumePDFLink>
+                    </PDFLink>
                     {githubUrl && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
-                    {githubUrl && <ResumePDFLink
+                    {githubUrl && <PDFLink
                         src={githubUrl}
                         isPDF={isPDF}
                         fontSize="9pt"
                         noTextDecoration
                     >
                         {githubUrl}
-                    </ResumePDFLink>}
+                    </PDFLink>}
                 </View>
             </View>
 
-            <ResumePDFSection heading="PROFILE" style={{ marginTop: spacing["1.5"], paddingBottom: spacing["0.5"] }} themeColor={themeColor}>
-                <ResumePDFText>{objective}</ResumePDFText>
-            </ResumePDFSection>
+            <PDFSection heading="PROFILE" style={{ marginTop: spacing["1.5"], paddingBottom: spacing["0.5"] }} themeColor={themeColor}>
+                <PDFText>{objective}</PDFText>
+            </PDFSection>
         </View>
     )
 }

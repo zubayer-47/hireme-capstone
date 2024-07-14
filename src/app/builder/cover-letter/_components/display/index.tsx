@@ -6,7 +6,7 @@ import {
 } from '@/hooks/use-register-font';
 import { useState, useMemo } from 'react';
 import { CoverLetterPdf } from './cover-letter-pdf';
-import { DEBUG_RESUME_PDF_FLAG } from '@/lib/pdf-dimensions';
+import { DEBUG_PDF_FLAG } from '@/lib/pdf-dimensions';
 import { useCoverLetterStore } from '@/store/cover-letter-store';
 import { defaultSettings } from '@/store/document-default-style';
 
@@ -32,13 +32,13 @@ export const CoverLetter = () => {
                     <section className="flex justify-center overflow-hidden md:p-[var(--resume-padding)]">
                         <PDFIframeCSR
                             scale={scale}
-                            enablePDFViewer={DEBUG_RESUME_PDF_FLAG}
+                            enablePDFViewer={DEBUG_PDF_FLAG}
                             documentSize={defaultSettings.documentSize}
                         >
                             <CoverLetterPdf
                                 coverLetter={coverLetter}
                                 settings={defaultSettings}
-                                isPDF={DEBUG_RESUME_PDF_FLAG}
+                                isPDF={DEBUG_PDF_FLAG}
                             />
                         </PDFIframeCSR>
                         

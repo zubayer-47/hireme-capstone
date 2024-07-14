@@ -1,9 +1,9 @@
 import {
-    ResumePDFText,
-    ResumePDFLink,
-    ResumePDFSection,
-    ResumePDFBulletList
-} from './common/resume-pdf-components';
+    PDFText,
+    PDFLink,
+    PDFSection,
+    PDFBulletList
+} from '../../../../_components/common/pdf-components';
 import { Text, View } from "@react-pdf/renderer";
 import type { Projects } from "@/store/resume-types";
 import { spacing, styles } from "../../../../_components/pdf-styles";
@@ -22,7 +22,7 @@ export const PDFProjects = ({
     themeColor
 }: PDFProjectsProps) => {
     return (
-        <ResumePDFSection themeColor={themeColor} heading={heading}>
+        <PDFSection themeColor={themeColor} heading={heading}>
             {projects.map(({
                 url,
                 name,
@@ -38,9 +38,9 @@ export const PDFProjects = ({
                         gap: spacing["1"],
                         paddingBottom: spacing["0.5"]
                     }}>
-                        <ResumePDFText bold={true}>{role}</ResumePDFText>
+                        <PDFText bold={true}>{role}</PDFText>
                         {role && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
-                        <ResumePDFLink 
+                        <PDFLink 
                             src={url} 
                             isPDF={isPDF} 
                             fontSize="10pt"
@@ -49,7 +49,7 @@ export const PDFProjects = ({
                             noTextDecoration={false}
                             >
                                 {name}
-                        </ResumePDFLink>
+                        </PDFLink>
                     </View>
                     
                     <View style={{
@@ -57,18 +57,18 @@ export const PDFProjects = ({
                         alignItems: "center",
                         paddingBottom: spacing["1"]
                     }}>
-                        <ResumePDFText>{date}</ResumePDFText>
+                        <PDFText>{date}</PDFText>
                         {industry && <Text style={{ paddingRight: spacing["1"]}}>,</Text>}
-                        <ResumePDFText>{industry}</ResumePDFText>
+                        <PDFText>{industry}</PDFText>
                     </View>
                     <View
                         style={{
                             ...styles.flexCol,
                         }}>
-                        <ResumePDFBulletList items={descriptions} />
+                        <PDFBulletList items={descriptions} />
                     </View>
                 </View>
             ))}
-        </ResumePDFSection>
+        </PDFSection>
     )
 }

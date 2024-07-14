@@ -8,7 +8,7 @@ import { ResumePDF } from './resume-pdf';
 import { useState, useMemo } from 'react';
 import { Doc } from '@/convex/_generated/dataModel';
 import { useResumeStore } from '@/store/resume-store';
-import { DEBUG_RESUME_PDF_FLAG } from '@/lib/pdf-dimensions';
+import { DEBUG_PDF_FLAG } from '@/lib/pdf-dimensions';
 import { defaultSettings } from '@/store/document-default-style';
 
 import { FlexboxSpacer } from '@/components/flexbox-spacer';
@@ -33,14 +33,14 @@ export const Resume = ({ resumeDetails } : { resumeDetails: Doc<"resume"> }) => 
                     <section className="flex justify-center overflow-hidden md:p-[var(--resume-padding)]">
                         <PDFIframeCSR
                             scale={scale}
-                            enablePDFViewer={DEBUG_RESUME_PDF_FLAG}
+                            enablePDFViewer={DEBUG_PDF_FLAG}
                             documentSize={defaultSettings.documentSize}
                         >
                             <ResumePDF
                                 resume={resume}
                                 resumeDetails={resumeDetails}
                                 settings={defaultSettings}
-                                isPDF={DEBUG_RESUME_PDF_FLAG}
+                                isPDF={DEBUG_PDF_FLAG}
                             />
                         </PDFIframeCSR>
                         

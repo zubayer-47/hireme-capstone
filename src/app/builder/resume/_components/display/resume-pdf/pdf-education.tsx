@@ -1,7 +1,7 @@
 import {
-    ResumePDFText,
-    ResumePDFSection,
-} from './common/resume-pdf-components';
+    PDFText,
+    PDFSection,
+} from '../../../../_components/common/pdf-components';
 import { View, Text } from "@react-pdf/renderer";
 import type { Education } from "@/store/resume-types";
 import { styles, spacing } from "../../../../_components/pdf-styles";
@@ -18,7 +18,7 @@ export const PDFEducation = ({
     themeColor,
 }: PDFEducationProps) => {
     return (
-        <ResumePDFSection themeColor={themeColor} heading={heading} >
+        <PDFSection themeColor={themeColor} heading={heading} >
             {educations.map(({
                 school,
                 degree,
@@ -32,9 +32,9 @@ export const PDFEducation = ({
                             ...styles.flexRow,
                             gap: spacing["1"]
                         }}>
-                        <ResumePDFText bold={true}>{school}</ResumePDFText>
+                        <PDFText bold={true}>{school}</PDFText>
                         {degree && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
-                        <ResumePDFText bold={true}>{degree}</ResumePDFText>
+                        <PDFText bold={true}>{degree}</PDFText>
                         </View>
                         
                         <View style={{
@@ -48,23 +48,23 @@ export const PDFEducation = ({
                                 alignItems: "center"
                             }}
                             >
-                                <ResumePDFText>
+                                <PDFText>
                                     {startDate}
-                                </ResumePDFText>
+                                </PDFText>
                                 {endDate && <Text> - </Text>}
-                                <ResumePDFText>
+                                <PDFText>
                                     {endDate}
-                                </ResumePDFText>
+                                </PDFText>
                                 {location && <Text style={{ color: "#737373", fontWeight: "bold"}}>|</Text>}
-                                <ResumePDFText>
+                                <PDFText>
                                     {location}
-                                </ResumePDFText>
+                                </PDFText>
                             </View>
                         </View>
 
                     </View>
                 )
             })}
-        </ResumePDFSection>
+        </PDFSection>
     )
 }

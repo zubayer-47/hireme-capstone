@@ -1,3 +1,4 @@
+import { CoverLetter } from "../_components/display";
 import { CoverLetterForm } from "../_components/forms";
 
 export default function CoverLetterBuilderPage() {
@@ -12,7 +13,7 @@ export default function CoverLetterBuilderPage() {
           </div>
         </article>
         <article className="col-span-3 ">
-          
+            <CoverLetter />
         </article>
       </section>
     </>

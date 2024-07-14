@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { Font } from "@react-pdf/renderer";
-import { ENGLISH_FONT_FAMILIES } from "@/lib/resume-fonts";
+import { ENGLISH_FONT_FAMILIES } from "@/lib/pdf-fonts";
 
 export const useLoadFonts = () => {
     useEffect(() => {

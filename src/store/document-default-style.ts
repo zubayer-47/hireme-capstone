@@ -4,7 +4,7 @@ import { Settings } from "./resume-types";
 export const FONT_SIZE = '11';
 export const FONT_FAMILY = 'Lato';
 export const FONT_COLOR = '#171717';
-export const SUB_COLOR = '#708090';
+export const SUB_COLOR = '#525252';
 export const COLOR_THEME = '#0B5CFF';
 
 export const defaultSettings: Settings = {

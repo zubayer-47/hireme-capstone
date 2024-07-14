@@ -1,22 +1,22 @@
 import type { Style } from "@react-pdf/types";
 import { Text, View, Link } from "@react-pdf/renderer";
 import { FONT_COLOR } from "@/store/document-default-style";
-import { DEBUG_RESUME_PDF_FLAG } from "@/lib/resume-dimensions";
-import { styles, spacing } from "../../../../../_components/pdf-styles";
+import { DEBUG_PDF_FLAG } from "@/lib/pdf-dimensions";
+import { styles, spacing } from "../pdf-styles";
 
-type ResumePDFSectionProps = {
+type PDFSectionProps = {
     style?: Style;
     heading: string;
     themeColor?: string;
     children: React.ReactNode;
 }
 
-export const ResumePDFSection = ({
+export const PDFSection = ({
     heading,
     children,
     style = {},
     themeColor
-}: ResumePDFSectionProps) => {
+}: PDFSectionProps) => {
 
     return (
         <View
@@ -34,7 +34,7 @@ export const ResumePDFSection = ({
                         fontSize: "10pt",
                         color: themeColor
                     }}
-                    debug={DEBUG_RESUME_PDF_FLAG}
+                    debug={DEBUG_PDF_FLAG}
                 >
                     {heading}
                 </Text>
@@ -45,19 +45,19 @@ export const ResumePDFSection = ({
 }
 
 
-type ResumePDFTextProps = {
+type PDFTextProps = {
     style?: Style;
     bold?: boolean;
     themeColor?: string;
     children: React.ReactNode;
 }
 
-export const ResumePDFText = ({
+export const PDFText = ({
     bold = false,
     themeColor,
     style = {},
     children
-}: ResumePDFTextProps) => {
+}: PDFTextProps) => {
     return (
         <Text
             style={{
@@ -67,14 +67,14 @@ export const ResumePDFText = ({
                 ...style,
 
             }}
-            debug={DEBUG_RESUME_PDF_FLAG}
+            debug={DEBUG_PDF_FLAG}
         >
             {children}
         </Text>
     )
 }
 
-type ResumePDFLinkProps = {
+type PDFLinkProps = {
     src: string;
     isPDF: boolean;
     isBold?: boolean;
@@ -84,7 +84,7 @@ type ResumePDFLinkProps = {
     children: React.ReactNode;
 }
 
-export const ResumePDFLink = ({
+export const PDFLink = ({
     src,
     isPDF,
     children,
@@ -92,7 +92,7 @@ export const ResumePDFLink = ({
     themeColor,
     isBold,
     noTextDecoration
-}: ResumePDFLinkProps) => {
+}: PDFLinkProps) => {
     if (isPDF) {
         return (
             <Link
@@ -100,7 +100,7 @@ export const ResumePDFLink = ({
                 style={{
                     fontWeight: isBold ? "bold" : "normal",
                     fontSize: fontSize,
-                    color: themeColor ? themeColor : "#404040",
+                    color: themeColor ? themeColor : "#525252",
                     textDecoration: noTextDecoration ? "none" : "underline"
                 }}
             >
@@ -127,19 +127,19 @@ export const ResumePDFLink = ({
 }
 
 
-type ResumePDFBulletList = {
+type PDFBulletList = {
     items: string[];
 }
 
-export const ResumePDFBulletList = ({
+export const PDFBulletList = ({
     items,
-}: ResumePDFBulletList) => {
+}: PDFBulletList) => {
     return (
         <>
             {items && items.map((item, idx) => (
                 <View style={{ ...styles.flexCol, gap: spacing["2"] }} key={idx}>
                     <View style={{ ...styles.flexRow }} >
-                        <ResumePDFText
+                        <PDFText
                             style={{
                                 lineHeight: "1.3",
                                 paddingLeft: spacing["2"],
@@ -147,10 +147,10 @@ export const ResumePDFBulletList = ({
                             }}
                         >
                             {"•"}
-                        </ResumePDFText>
-                        <ResumePDFText style={{ lineHeight: "1.3", flexGrow: 1, flexBasis: 0 }}>
+                        </PDFText>
+                        <PDFText style={{ lineHeight: "1.3", flexGrow: 1, flexBasis: 0 }}>
                             {item || ""}
-                        </ResumePDFText>
+                        </PDFText>
                     </View>
                 </View>
             ))}
