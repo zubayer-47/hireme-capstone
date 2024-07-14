@@ -15,7 +15,7 @@ export const RecruiterInfoForm = () => {
                     type="text"
                     labelName="Full Name"
                     value={recruiterInfo.name}
-                    placeholder="Steve Jobs"
+                    placeholder="Jenny Johnson"
                     onChange={(e) => { setRecruiterInfo("name", e.target.value) }}
                 />
             </aside>
@@ -23,9 +23,9 @@ export const RecruiterInfoForm = () => {
                 <DynamicInput
                     id="role"
                     type="text"
-                    labelName="Title"
+                    labelName="Job RecruiterTitle"
                     value={recruiterInfo.title}
-                    placeholder="The title of the recruiter..."
+                    placeholder="Human Resource"
                     onChange={(e) => { setRecruiterInfo("title", e.target.value) }}
                 />
             </aside>
@@ -47,7 +47,7 @@ export const RecruiterInfoForm = () => {
                         type="text"
                         labelName="Address"
                         value={recruiterInfo.address}
-                        placeholder="+1 234 567 890"
+                        placeholder="55 Bixby Way"
                         onChange={(e) => { setRecruiterInfo("address", e.target.value) }}
                     />
                 </aside>
@@ -57,7 +57,7 @@ export const RecruiterInfoForm = () => {
                         type="text"
                         labelName="City | State | Code"
                         value={recruiterInfo.cityStateZip}
-                        placeholder="www.github.com/username"
+                        placeholder="Manchester, NH 40344"
                         onChange={(e) => { setRecruiterInfo("cityStateZip", e.target.value) }}
                     />
                 </aside>

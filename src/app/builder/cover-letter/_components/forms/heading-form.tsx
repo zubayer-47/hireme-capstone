@@ -77,7 +77,6 @@ export const HeadingForm = () => {
                     type="dateApplied"
                     labelName="Date Applied"
                     value={heading.date}
-                    placeholder="www.github.com/username"
                     onChange={(e) => { setHeading("date", e.target.value) }}
                 />
             </aside>
