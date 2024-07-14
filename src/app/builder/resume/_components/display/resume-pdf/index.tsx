@@ -7,8 +7,8 @@ import { PDFSkills } from "./pdf-skills";
 import { PDFProfile } from "./pdf-profile";
 import { PDFProjects } from "./pdf-projects";
 import { PDFEducation } from "./pdf-education";
-
 import { PDFWorkExperience } from "./pdf-work-experience";
+
 import { Page, View, Document } from "@react-pdf/renderer";
 import { SuppressWarnings } from "./common/supress-warnings";
 import { styles, spacing } from './resume-pdf-utils/resume-pdf-styles';
@@ -61,18 +61,18 @@ export const ResumePDF = ({
                         <PDFProjects
                             heading="PROJECTS"
                             themeColor={themeColor}
-                            projects={resumeDetails.projects ??projects}
+                            projects={resumeDetails.projects ?? projects}
                             isPDF={isPDF!}
                         />
                         <PDFWorkExperience
                             heading="WORK EXPERIENCE"
                             themeColor={themeColor}
-                            experiences={resumeDetails.workExperience ??experiences}
+                            experiences={resumeDetails.workExperience ?? experiences}
                         />
                         <PDFEducation
                             heading="EDUCATION"
                             themeColor={themeColor}
-                            educations={resumeDetails.education ??education}
+                            educations={resumeDetails.education ?? education}
                         />
                     </View>
                 </Page>
