@@ -74,7 +74,7 @@ export const HeadingForm = () => {
             <aside className="grid gap-2">
                 <DynamicInput
                     id="dateApplied"
-                    type="dateApplied"
+                    type="date"
                     labelName="Date Applied"
                     value={heading.date}
                     onChange={(e) => { setHeading("date", e.target.value) }}

@@ -1,6 +1,5 @@
 import {
     PDFText,
-    PDFSection,
     PDFLink
 } from "../../../../_components/common/pdf-components";
 import { View, Text, } from "@react-pdf/renderer";

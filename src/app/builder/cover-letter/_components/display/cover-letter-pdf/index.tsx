@@ -1,14 +1,15 @@
-import type { Resume } from "@/store/resume-types";
-import { Doc } from "@/convex/_generated/dataModel";
+import { Page, View, Document } from "@react-pdf/renderer";
 import type { Settings } from "@/store/resume-types";
+import { CoverLetter } from "@/store/cover-letter-types";
 import { FONT_COLOR } from "@/store/document-default-style";
 
+import { PDFHeading } from "./pdf-heading";
+import { PDFRecruiterInfo } from "./pdf-recruiter-info";
 
-import { Page, View, Document } from "@react-pdf/renderer";
 import { SuppressWarnings } from "@/app/builder/_components/supress-warnings";
 import { styles, spacing } from "@/app/builder/_components/pdf-styles";
-import { CoverLetter } from "@/store/cover-letter-types";
-import { PDFHeading } from "./pdf-heading";
+
+
 
 type CoverLetterPdfProps = {
     isPDF?: boolean;
@@ -47,6 +48,9 @@ export const CoverLetterPdf = ({
                             isPDF={isPDF!}
                             heading={heading}
                             themeColor={themeColor}
+                        />
+                        <PDFRecruiterInfo
+                            recruiterInfo={recruiterInfo}
                         />
                     </View>
                 </Page>
