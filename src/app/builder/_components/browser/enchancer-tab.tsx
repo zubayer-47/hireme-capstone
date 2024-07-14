@@ -27,11 +27,11 @@ import {
     SheetContent,
     SheetDescription,
 } from "@/components/ui/sheet";
-import { Analyzing } from "./analyzing";
+import { Analyzing } from "../analyzing";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
-import { AIResults } from "./ai-results/ai-results";
+import { AIResults } from "../ai-results/ai-results";
 import { useToast } from "@/components/ui/use-toast";
 
 const schema = z.object({

@@ -1,7 +1,7 @@
 // -------------------------------------------------------------
 // ------------------- Resume Store Types ----------------------
 // -------------------------------------------------------------
-export type CoverLetterHeading = {
+export type Heading = {
     name: string;
     role: string;
     email: string;
@@ -36,7 +36,7 @@ export type ClosingParagraph = {
 }
 
 export type CoverLetter = {
-    coverLetterHeading: CoverLetterHeading;
+    heading: Heading;
     recruiterInfo: RecruiterInfo;
     greeting: Greeting;
     firstParagraph: FirstParagraph;
