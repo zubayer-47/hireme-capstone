@@ -9,6 +9,7 @@ import { PDFRecruiterInfo } from "./pdf-recruiter-info";
 import { PDFGreeting } from "./pdf-greeting";
 import { SuppressWarnings } from "@/app/builder/_components/supress-warnings";
 import { styles, spacing } from "@/app/builder/_components/pdf-styles";
+import { PDFFirstParagraph } from "./pdf-first-paragraph";
 
 
 
@@ -56,6 +57,15 @@ export const CoverLetterPdf = ({
                         <PDFGreeting 
                             greeting={greeting}
                         />
+                        <PDFFirstParagraph 
+                            firstParagraph={firstParagraph}
+                        />
+                        {/* <PDFMiddleParagraph 
+                            middleParagraph={middleParagraph}
+                        />
+                        <PDFClosingParagraph 
+                            closingParagraph={closingParagraph}
+                        /> */}
                     </View>
                 </Page>
             </Document>

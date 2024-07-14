@@ -1,22 +1,23 @@
-import { Greeting } from "@/store/cover-letter-types";
+import { FirstParagraph } from "@/store/cover-letter-types";
 import { FONT_COLOR } from "@/store/document-default-style";
 
 import { PDFText } from "../../../../_components/common/pdf-components";
 import { spacing } from "@/app/builder/_components/pdf-styles";
 
-export const PDFGreeting = ({ greeting }: { greeting: Greeting }) => {
+export const PDFFirstParagraph = ({ firstParagraph }: { firstParagraph: FirstParagraph }) => {
 
-    const { greeting: formalGreeting } = greeting;
+    const { text } = firstParagraph;
 
     return (
         <PDFText
             themeColor={FONT_COLOR}
-            style={{ 
+            style={{
                 fontSize: "10pt",
                 marginTop: spacing["4"],
+                textAlign: "justify"
             }}
         >
-            {formalGreeting}
+            {text}
         </PDFText>
 
     )
