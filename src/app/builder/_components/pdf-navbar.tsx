@@ -7,7 +7,7 @@ import { usePDF } from "@react-pdf/renderer";
 import { Download, ChevronsUpDown } from "lucide-react";
 import { useSetDefaultScale } from "@/hooks/use-set-default-scale";
 
-type ResumeNavbarProps = {
+type PDFNavbarProps = {
     scale: number;
     fileName: string;
     documentSize: string;
@@ -15,13 +15,13 @@ type ResumeNavbarProps = {
     setScale: (scale: number) => void;
 }
 
-const ResumeNavbar = ({
+const PDFNavbar = ({
     scale,
     document,
     fileName,
     setScale,
     documentSize,
-}: ResumeNavbarProps) => {
+}: PDFNavbarProps) => {
     const { setScaleOnResize } = useSetDefaultScale({
         setScale,
         documentSize
@@ -67,8 +67,8 @@ const ResumeNavbar = ({
 };
 
 
-export const ResumeNavBarCSR = dynamic(
-    () => Promise.resolve(ResumeNavbar),
+export const PDFNavbarCSR = dynamic(
+    () => Promise.resolve(PDFNavbar),
     {
         ssr: false,
     }

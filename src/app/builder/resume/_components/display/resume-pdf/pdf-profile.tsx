@@ -6,7 +6,7 @@ import {
 import { View, Text, } from "@react-pdf/renderer";
 import type { Profile } from "@/store/resume-types";
 import { FONT_COLOR } from "@/store/document-default-style";
-import { styles, spacing } from './resume-pdf-utils/resume-pdf-styles';
+import { styles, spacing } from '../../../../_components/pdf-styles';
 
 type PDFProfileProps = {
     isPDF: boolean;

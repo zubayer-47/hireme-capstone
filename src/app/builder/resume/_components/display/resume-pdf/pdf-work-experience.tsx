@@ -5,7 +5,7 @@ import {
 } from './common/resume-pdf-components';
 import { View, Text } from "@react-pdf/renderer";
 import type { Experiences } from "@/store/resume-types";
-import { styles, spacing } from "./resume-pdf-utils/resume-pdf-styles";
+import { styles, spacing } from "../../../../_components/pdf-styles";
 
 type PDFWorkExperienceProps = {
     heading: string;

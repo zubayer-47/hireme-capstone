@@ -10,8 +10,8 @@ import { PDFEducation } from "./pdf-education";
 import { PDFWorkExperience } from "./pdf-work-experience";
 
 import { Page, View, Document } from "@react-pdf/renderer";
-import { SuppressWarnings } from "./common/supress-warnings";
-import { styles, spacing } from './resume-pdf-utils/resume-pdf-styles';
+import { SuppressWarnings } from "../../../../_components/supress-warnings";
+import { styles, spacing } from '../../../../_components/pdf-styles';
 
 
 type ResumePDFProps = {

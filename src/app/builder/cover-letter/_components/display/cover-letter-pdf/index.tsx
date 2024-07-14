@@ -5,15 +5,22 @@ import { FONT_COLOR } from "@/store/document-default-style";
 
 
 import { Page, View, Document } from "@react-pdf/renderer";
-import { SuppressWarnings } from "@/app/builder/resume/_components/display/resume-pdf/common/supress-warnings";
-import { styles, spacing } from "@/app/builder/resume/_components/display/resume-pdf/resume-pdf-utils/resume-pdf-styles";
+import { SuppressWarnings } from "@/app/builder/_components/supress-warnings";
+import { styles, spacing } from "@/app/builder/_components/pdf-styles";
+import { CoverLetter } from "@/store/cover-letter-types";
 
 type CoverLetterPdfProps = {
+    isPDF?: boolean;
     settings: Settings;
+    coverLetter: CoverLetter;
 }
 
 
-export const CoverLetterPdf = ({ settings }: CoverLetterPdfProps) => {
+export const CoverLetterPdf = ({ 
+    isPDF,
+    settings,
+    coverLetter
+}: CoverLetterPdfProps) => {
     const { themeColor: appColor, documentSize, fontFamily, fontSize } = settings;
     const themeColor = appColor || FONT_COLOR;
     return (

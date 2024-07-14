@@ -2,7 +2,7 @@ import type { Style } from "@react-pdf/types";
 import { Text, View, Link } from "@react-pdf/renderer";
 import { FONT_COLOR } from "@/store/document-default-style";
 import { DEBUG_RESUME_PDF_FLAG } from "@/lib/resume-dimensions";
-import { styles, spacing } from "../resume-pdf-utils/resume-pdf-styles";
+import { styles, spacing } from "../../../../../_components/pdf-styles";
 
 type ResumePDFSectionProps = {
     style?: Style;

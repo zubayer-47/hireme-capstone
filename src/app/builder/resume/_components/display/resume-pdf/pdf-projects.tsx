@@ -6,7 +6,7 @@ import {
 } from './common/resume-pdf-components';
 import { Text, View } from "@react-pdf/renderer";
 import type { Projects } from "@/store/resume-types";
-import { spacing, styles } from "./resume-pdf-utils/resume-pdf-styles";
+import { spacing, styles } from "../../../../_components/pdf-styles";
 
 type PDFProjectsProps = {
     isPDF: boolean; 

@@ -4,23 +4,22 @@ import {
     useLoadFonts,
     useHyphenationCallback
 } from '@/hooks/use-register-font';
-import { ResumePDF } from './resume-pdf';
 import { useState, useMemo } from 'react';
-import { Doc } from '@/convex/_generated/dataModel';
-import { useResumeStore } from '@/store/resume-store';
+import { CoverLetterPdf } from './cover-letter-pdf';
 import { DEBUG_RESUME_PDF_FLAG } from '@/lib/pdf-dimensions';
+import { useCoverLetterStore } from '@/store/cover-letter-store';
 import { defaultSettings } from '@/store/document-default-style';
 
 import { FlexboxSpacer } from '@/components/flexbox-spacer';
 import { PDFIframeCSR } from '../../../_components/pdf-iframe';
 import { PDFNavbarCSR } from '../../../_components/pdf-navbar';
 
-export const Resume = ({ resumeDetails } : { resumeDetails: Doc<"resume"> }) => {
+export const CoverLetter = () => {
     const [scale, setScale] = useState(0.8);
-    const resume = useResumeStore();
+    const coverLetter = useCoverLetterStore();
     const document = useMemo(() => 
-        <ResumePDF resumeDetails={resumeDetails} resume={resume} settings={defaultSettings} isPDF={true} />
-    , [resume, resumeDetails]);
+        <CoverLetterPdf  coverLetter={coverLetter} settings={defaultSettings} isPDF={true} />
+    , [coverLetter]);
     
     useLoadFonts();
     useHyphenationCallback(defaultSettings.fontFamily)
@@ -36,9 +35,8 @@ export const Resume = ({ resumeDetails } : { resumeDetails: Doc<"resume"> }) => 
                             enablePDFViewer={DEBUG_RESUME_PDF_FLAG}
                             documentSize={defaultSettings.documentSize}
                         >
-                            <ResumePDF
-                                resume={resume}
-                                resumeDetails={resumeDetails}
+                            <CoverLetterPdf
+                                coverLetter={coverLetter}
                                 settings={defaultSettings}
                                 isPDF={DEBUG_RESUME_PDF_FLAG}
                             />
@@ -50,7 +48,7 @@ export const Resume = ({ resumeDetails } : { resumeDetails: Doc<"resume"> }) => 
                         setScale={setScale}
                         document={document}
                         documentSize={defaultSettings.documentSize}
-                        fileName={resume.profile.name + " - Resume"}
+                        fileName={"Cover Letter"}
                     />
                     
                 </div>

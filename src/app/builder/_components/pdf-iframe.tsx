@@ -7,11 +7,11 @@ import {
     LETTER_WIDTH_PX,
     LETTER_WIDTH_PT,
     LETTER_HEIGHT_PX,
-} from "@/lib/resume-dimensions";
+} from "@/lib/pdf-dimensions";
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import Frame from "react-frame-component";
-import { ENGLISH_FONT_FAMILIES } from "@/lib/resume-fonts";
+import { ENGLISH_FONT_FAMILIES } from "@/lib/pdf-fonts";
 
 const loadInitialContent = (isA4: boolean) => {
     const width = isA4 ? A4_WIDTH_PT : LETTER_WIDTH_PT;
@@ -44,19 +44,19 @@ const loadInitialContent = (isA4: boolean) => {
             </html>`
 }
 
-type ResumeIframeProps = {
+type PDFIframeProps = {
     scale: number;
     documentSize: string;
     children: React.ReactNode;
     enablePDFViewer?: boolean;
 }
 
-const ResumeIframe = ({
+const PDFIframe = ({
     scale,
     children,
     documentSize,
     enablePDFViewer = false,
-}: ResumeIframeProps) => {
+}: PDFIframeProps) => {
     const isA4 = documentSize === "A4";
     const width = isA4 ? A4_WIDTH_PX : LETTER_WIDTH_PX;
     const height = isA4 ? A4_HEIGHT_PX : LETTER_HEIGHT_PX;
@@ -95,7 +95,7 @@ const ResumeIframe = ({
     )
 }
 
-export const ResumeIframeCSR = dynamic(() => Promise.resolve(ResumeIframe), {
+export const PDFIframeCSR = dynamic(() => Promise.resolve(PDFIframe), {
     ssr: false,
 });
 

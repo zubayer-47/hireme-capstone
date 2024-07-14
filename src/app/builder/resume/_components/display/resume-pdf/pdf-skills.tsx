@@ -5,7 +5,7 @@ import {
 } from "./common/resume-pdf-components";
 import { View } from "@react-pdf/renderer";
 import type { Skills } from "@/store/resume-types";
-import { spacing, styles } from "./resume-pdf-utils/resume-pdf-styles";
+import { spacing, styles } from "../../../../_components/pdf-styles";
 
 type PDFSkillsProps = {
     skills: Skills[];
