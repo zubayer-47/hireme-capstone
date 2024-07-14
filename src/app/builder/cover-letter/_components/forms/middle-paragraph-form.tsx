@@ -6,17 +6,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { useCoverLetterStore } from "@/store/cover-letter-store";
 
 export const FirstParagraphForm = () => {
-    const { firstParagraph, setFirstParagraph } = useCoverLetterStore();
+    const { middleParagraph, setMiddleParagraph } = useCoverLetterStore();
 
     return (
         <Card>
             <aside className="grid gap-2">
-                <Label htmlFor="firstParagraph">Introduction</Label>
+                <Label htmlFor="middleParagraph">Sell Yourself</Label>
                 <Textarea
-                    id="firstParagraph"
-                    value={firstParagraph.text}
-                    placeholder="Tell the reader of the letter which position you are applying for..."
-                    onChange={(e) => { setFirstParagraph("text", e.target.value) }}
+                    id="middleParagraph"
+                    value={middleParagraph.text}
+                    placeholder="Talk about your qualities and skills that would be helpful in that job..."
+                    onChange={(e) => { setMiddleParagraph("text", e.target.value) }}
                 >
                 </Textarea>
             </aside>
