@@ -1,8 +1,8 @@
+import { UserFeedback } from "./user-feedback";
 import { ResultType } from "../../_lib/ai-result-type";
-import { CollapsibleDetails } from "./collapsible-details";
 import { ExtractedKeywords } from "./extracted-keywords";
 import { JobDescriptionSummary } from "./job-description-summary";
-import { UserFeedback } from "./user-feedback";
+import { CollapsibleDetails } from "@/components/collapsible-details";
 
 export const AIResults = ({ results }: { results: ResultType | null | undefined }) => {
     if (!results) return null;
