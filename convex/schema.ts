@@ -33,15 +33,15 @@ export default defineSchema({
         workExperience: v.optional(v.array(WorkExperience)),
     }).index("by_userId", ["userId"]),
 
-    coverLeter: defineTable({
+    coverLetter: defineTable({
         userId: v.id("users"),
         documentName: v.string(),
         heading: v.optional(Heading),
-        greeeting:  v.optional(Greeting),
-        recruiterInfo:  v.optional(RecruiterInfo),
-        firstParagraph:  v.optional(FirstParagraph),
-        middleParagraph:  v.optional(MiddleParagraph),
-        closingParagraph:  v.optional(ClosingParagraph),
+        greeeting: v.optional(Greeting),
+        recruiterInfo: v.optional(RecruiterInfo),
+        firstParagraph: v.optional(FirstParagraph),
+        middleParagraph: v.optional(MiddleParagraph),
+        closingParagraph: v.optional(ClosingParagraph),
     }).index("by_userId", ["userId"]),
 
     applications: defineTable({

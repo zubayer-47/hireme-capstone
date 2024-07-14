@@ -25,15 +25,6 @@ async function userIdentity(
     return user;
 }
 
-export const generateUploadUrl = mutation(
-    async (ctx) => {
-        const identity = await ctx.auth.getUserIdentity();
-
-        if (!identity) throw new ConvexError("Unauthorized!");
-
-        return await ctx.storage.generateUploadUrl();
-    }
-)
 
 export const readDocuments = query({
     args: {},
@@ -90,17 +81,12 @@ export const updateResumeFields = mutation({
         skills: v.optional(v.array(Skills)),
         workExperience: v.optional(v.array(WorkExperience)),
         education: v.optional(v.array(Education)),
-    }, handler: async (ctx, {
-        resumeId,
-        profile,
-        projects,
-        skills,
-        workExperience,
-        education
-    }) => {
+    }, handler: async (ctx, args) => {
         const hasAccess = await userIdentity(ctx);
 
         if (!hasAccess) throw new ConvexError("Unauthorized!");
+        
+        const { resumeId, ...updatedArgs } = args;
 
         const existingResume = await ctx.db.get(resumeId);
 
@@ -108,13 +94,7 @@ export const updateResumeFields = mutation({
             throw new ConvexError("Resume not found or not authorized to access the file.")
         }
 
-        await ctx.db.patch(existingResume._id, {
-            profile,
-            projects,
-            skills,
-            workExperience,
-            education,
-        })
+        await ctx.db.patch(existingResume._id, { ...updatedArgs })
     }
 });
 
