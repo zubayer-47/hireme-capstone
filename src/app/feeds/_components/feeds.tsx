@@ -4,11 +4,22 @@ import { CardFeed } from "./card-feed";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Button } from "@/components/ui/button";
+import { useSearchParams } from "next/navigation";
 import { CreateFeedModal } from "./create-feed-modal";
 import { SlidersHorizontal, Plus } from "lucide-react";
 
+type FilterType = "bookmarks" | "recent" | "most-upvotes" | "most-discussed";
+
 export const Feeds = () => {
-    const feeds = useQuery(api.feeds.getFeeds, { bookmarked: false });
+    const searchParams = useSearchParams();
+    let filters = searchParams.get("filter") as FilterType;
+    
+    if (!filters) filters = "recent";
+
+    const feeds = useQuery(
+        api.feeds.getFeeds,
+        filters ? {filters} : "skip"
+      );
 
     return (
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">

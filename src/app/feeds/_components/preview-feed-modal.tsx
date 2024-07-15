@@ -108,7 +108,7 @@ export const PreviewFeedModal = ({
                     <article className="md:w-1/2 w-full flex flex-col space-y-4">
                         <aside className="flex items-center gap-4">
                             <Image
-                                src={feed.profImgUrl}
+                                src={feed?.profImgUrl!}
                                 alt="User Profile Image"
                                 width={40}
                                 height={40}

@@ -25,9 +25,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import { CreateFeedModal } from "./create-feed-modal";
 import { PreviewFeedModal } from "./preview-feed-modal";
 import { CardActionsDropdown } from "./card-actions-dropdown";
-import { CreateFeedModal } from "./create-feed-modal";
 
 export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -37,7 +37,7 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
     const user = useQuery(api.users.getSelf);
     const comments = useQuery(api.comments.getAllCommentsOnFeed, { feedId: feed._id });
     const vote = useMutation(api.feeds.vote);
-
+    const bookmark = useMutation(api.feeds.bookmarkFeed);
     useEffect(() => {
         const checkIfUserVoted = () => {
             if (user) {
@@ -59,13 +59,30 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
                 feedId: feed._id,
                 voteType: voterAction
             });
-
-
         } catch (err) {
             console.error(err);
-
         }
     };
+
+    const handleBookmarkFeed = async () => {
+        try {
+            await bookmark({
+                feedId: feed._id
+            })
+            toast({
+                title: "Success",
+                description: "Feed bookmarked successfully",
+                variant: "success"
+            })
+        } catch(err) {
+            console.error(err);
+            toast({
+                title: "Error",
+                description: "Something went wrong. Please try again later.",
+                variant: "destructive"
+            })
+        }
+    }
 
 
     return (
@@ -129,7 +146,7 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
                         {comments && comments.length}
                     </Button>
                 </CreateFeedModal>
-                <Button variant="ghost" size="sm" className="gap-1">
+                <Button variant="ghost" size="sm" className="gap-1" onClick={handleBookmarkFeed}>
                     <Bookmark className="w-4 h-4" />
                 </Button>
             </CardFooter>

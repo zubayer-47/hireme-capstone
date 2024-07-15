@@ -1,6 +1,5 @@
 import { v, ConvexError } from "convex/values";
 import { mutation, QueryCtx, MutationCtx, query, } from "./_generated/server";
-import { paginationOptsValidator } from "convex/server";
 
 async function userIdentity(
     ctx: QueryCtx | MutationCtx,
@@ -29,24 +28,55 @@ export const generateUploadUrl = mutation(
     }
 )
 
+type CommentCounts = {
+    [feedId: string]: number;
+};
+
 export const getFeeds = query({
-    args: { 
-        bookmarked: v.optional(v.boolean()),
+    args: {
+        filters: v.optional(
+            v.union(
+                v.literal("bookmarks"), 
+                v.literal("recent"), 
+                v.literal("most-upvotes"), 
+                v.literal("most-discussed")
+            ))
     },
-    handler: async (ctx, { bookmarked }) => {
+    handler: async (ctx, { filters }) => {
         const identity = await userIdentity(ctx);
 
         if (!identity) throw new ConvexError("Unauthorized!");
 
         let feeds = await ctx.db.query("feeds").order("desc").collect();
 
-        if (bookmarked === true) {
+        if (filters === "bookmarks") {
             const saved = await ctx.db
                 .query("isSaved")
                 .withIndex("by_userId", q => q.eq("userId", identity._id))
                 .collect();
 
             feeds = feeds.filter(feed => saved.some((s) => s.feedId === feed._id));
+        } else if (filters === "most-upvotes") {
+            feeds.sort((a, b) => b.upVoteCount - a.upVoteCount);
+
+        } else if (filters === "most-discussed") {
+            const comments = await ctx.db.query("comments").collect();
+
+            let commentCounts: CommentCounts = {};
+            comments.forEach(comment => {
+                if (comment.feedId in commentCounts) {
+                    commentCounts[comment.feedId]++;
+                } else {
+                    commentCounts[comment.feedId] = 1;
+                }
+            });
+
+            feeds.sort((a, b) => {
+                const countA = commentCounts[a._id] || 0;
+                const countB = commentCounts[b._id] || 0;
+                return countB - countA; 
+            });
+
         }
 
         return feeds;
@@ -174,6 +204,27 @@ export const vote = mutation({
             upVoteCount: feed.upVoteCount,
             downVoteCount: feed.downVoteCount,
             voterIds: feed.voterIds,
+        })
+    }
+});
+
+
+export const bookmarkFeed = mutation({
+    args: {
+        feedId: v.id("feeds"),
+    },
+    handler: async (ctx, { feedId }) => {
+        const identity = await userIdentity(ctx);
+
+        if (!identity) throw new ConvexError("Unauthorized!");
+
+        const feed = await ctx.db.get(feedId);
+
+        if (!feed) throw new ConvexError("The ID you provided is invalid.");
+
+        return await ctx.db.insert("isSaved", {
+            feedId,
+            userId: identity._id
         })
     }
 })
