@@ -36,7 +36,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { UploadPDFDropzone } from "./upload-pdf-dropzone";
 
-export const CreateFeedModal = () => {
+export const CreateFeedModal = ({ children }: { children: React.ReactNode }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [pdfFileUrl, setPdfFileUrl] = useState("");
     const { toast } = useToast();
@@ -114,10 +114,7 @@ export const CreateFeedModal = () => {
             }}
         >
             <DialogTrigger asChild>
-                <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600" size="sm" variant="ghost">
-                    <Plus className="h-4 w-4" />
-                    New Feed
-                </Button>
+                {children}
             </DialogTrigger>
             <DialogContent className="sm:w-2/3 w-full dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
                 <DialogHeader className="pb-2">

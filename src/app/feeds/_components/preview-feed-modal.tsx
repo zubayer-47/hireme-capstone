@@ -90,7 +90,7 @@ export const PreviewFeedModal = ({
                     PREVIEW
                 </Button>
             </DialogTrigger>
-            <DialogContent className=" h-full w-[200rem] max-w-6xl dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
+            <DialogContent className="h-full w-full max-w-6xl dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2] overflow-y-auto">
                 <section className="relative flex flex-col md:flex-row gap-8 p-4 rounded-lg shadow-lg">
                     <article className="md:w-1/2 w-full rounded-xl">
                         <div className="sticky top-0 h-full overflow-y-auto rounded-lg">
@@ -120,7 +120,7 @@ export const PreviewFeedModal = ({
                             </div>
                         </aside>
                         <p className="text-md dark:text-gray-300 text-gray-700">{feed.bio}</p>
-                        <div className="flex-1 space-y-4">
+                        <div className="flex-1 space-y-2">
                             {comments && comments.map((comment) => (
                                 <div key={comment._id} className="flex flex-col gap-2 rounded-lg p-3 border dark:border-gray-600 border-gray-300 hover:dark:border-gray-400 hover:border-gray-500 transition duration-200">
                                     <div className="flex items-center justify-between">
@@ -147,7 +147,7 @@ export const PreviewFeedModal = ({
                                             <FormControl>
                                                 <Textarea
                                                     placeholder="Share your job hunting journey or experience..."
-                                                    className="w-full dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2] rounded-lg p-2"
+                                                    className="w-full dark:bg-neutral-950 bg-neutral-200 dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2] rounded-lg p-2"
                                                     {...field}
                                                 />
                                             </FormControl>
@@ -155,17 +155,18 @@ export const PreviewFeedModal = ({
                                         </FormItem>
                                     )}
                                 />
-                                <Button 
-                                    type="submit" 
+                                <Button
+                                    type="submit"
                                     disabled={isLoading}
                                     className="w-full bg-app-color hover:bg-app-color/80 text-neutral-100 font-semibold py-2 rounded-lg transition duration-200">
-                                        {isLoading ? <p className="flex items-center gap-1 text-neutral-500 "><Loader2 className="h-4 w-4 animate-spin" /> Submitting...</p>:"Submit"}
-                                    </Button>
+                                    {isLoading ? <p className="flex items-center gap-1 text-neutral-500 "><Loader2 className="h-4 w-4 animate-spin" /> Submitting...</p> : "Submit"}
+                                </Button>
                             </form>
                         </Form>
                     </article>
                 </section>
             </DialogContent>
+
         </Dialog>
     )
 }

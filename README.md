@@ -1,447 +1,130 @@
-# Project Title
 
-**Hireme**
+<h1 align="center">
+  <br>
+  <a target="_blank" href="https://hireme-silk.vercel.app/"><img src="https://github.com/user-attachments/assets/bc375820-feb5-45a1-be18-89356fcdcd29" alt="Hireme" width="200"></a>
+  <br>
+  Hireme
+  <br>
+</h1>
 
-## Overview
 
-Hireme simplifies and enhances the job application process for job seekers.
 
-### Problem
+<h4 align="center">Hireme simplifies and enhances the job application process for job seekers.</h4>
 
-Job hunting can be one of the most stressful experiences, especially for recent graduates or those re-entering the workforce. Crafting a compelling resume and cover letter is crucial, yet many struggle with this daunting task. The anxiety of rejections, coupled with the challenge of creating standout application documents, can be overwhelming. Hireme addresses these challenges with a versatile tool designed to support every aspect of the job application process.
 
-### User Profile
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#getting-started">How To Use</a> •
+  <a href="#download">Download</a> •
+  <a href="#credits">Credits</a> •
 
-**Job Seekers:**
+</p>
 
-- Create compelling resumes and cover letters using the builder tool.
-- Enhance application documents with tailored feedback based on job descriptions.
-- Engage with a supportive community to share job application journeys and receive encouragement.
-- Track and organize job applications, updating statuses to stay organized.
-- Appreciate a clean and intuitive UI.
+## Resume Builder Tool with AI Enhancer
 
-### Features
+<img width="1448" alt="builder" src="https://github.com/user-attachments/assets/50112e4b-b4cc-4dc5-8a55-1aaea86edd53">
 
-- **Private Workspace**: Protect privacy with dedicated personal workspaces.
-- **Document Management**: View, filter, sort, search, and paginate drafted documents.
-- **Resume Builder**: Create resumes using an intuitive builder tool.
-- **AI Enhancer**: Analyze and improve resumes based on job descriptions.
-- **Job Application Tracker**: Track applications with an interactive table.
-- **Application Status Updates**: Easily update application statuses.
-- **Organized Job Application Lists**: Stay on top of job search progress.
+## Cover Letter Builder Tool
 
-## Implementation
+<img width="1454" alt="cover-letter" src="https://github.com/user-attachments/assets/c5d5178e-1990-4ea5-bc2e-0744ff5d9648">
 
-### Tech Stack
+## Community Support Feed Tool
 
-**Framework:**
+<img width="1448" alt="feeds" src="https://github.com/user-attachments/assets/36fe3041-9087-4b75-9002-8882fa52aba1">
 
-- Next.js
+## Job Tracker Tool
 
-**Front-End:**
+<img width="1448" alt="tracker" src="https://github.com/user-attachments/assets/804bc627-8706-4458-a0f0-556497d0e398">
 
-- React
-- TypeScript
-- TailwindCSS
-- Shadcn-UI Library
 
-**Database:**
 
-- Convex
+## Main Key Features of Hireme
+| <div style="width:285px">**Feature**</div> | **Description** |
+|---|---|
+| **1. Privacy Workspace** | A secure, personalized environment where users can manage their job search data, including resumes, cover letters, and applications, with end-to-end encryption powered by Clerk. |
+| **2. Resume and Cover Letter Builder** | Craft professional, ATS-optimized resumes and cover letters that increase your chances of passing through applicant tracking systems and landing interviews. Our builder provides real-time feedback on keyword optimization and formatting to ensure your documents are tailored for maximum impact. |
+| **3. Social Community Engagement** | A vibrant platform for job seekers to connect, share insights, and support each other through forums, groups, and messaging, fostering a collaborative job search experience. |
+| **4. Job Application Tracker** | An organized dashboard to monitor the status of job applications, set reminders, and track key milestones, powered by Convex Database for efficient data management and real-time updates. |
+| **5. Clean, Modern UI using TailwindCSS and Shadcn-UI** | A visually appealing and user-friendly interface that provides a seamless experience across devices, built with cutting-edge technologies for optimal performance and responsiveness. |
 
-**Authentication:**
 
-- Clerk
+## 📚 Tech Stack
 
-**AI Model:**
+| <div style="width:140px">**Category**</div> | <div style="width:100px">**Choice**</div> | **Descriptions** |
+|---|---|---|
+| **Frontend** | [React](https://github.com/facebook/react) | Building a performant, interactive, and visually appealing interface. |
+| **Web Framework** | [Next.js](https://github.com/vercel/next.js) | Building a performant, interactive, and visually appealing interface. |
+| **Language** | [TypeScript](https://github.com/microsoft/TypeScript) | Building a performant, interactive, and visually appealing interface. |
+| **State Management** | [Zustand](https://github.com/pmndrs/zustand) | Building a performant, interactive, and visually appealing interface. |
+| **CSS Framework** | [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) | Building a performant, interactive, and visually appealing interface. |
+| **UI Library** | [Shadcn-UI](https://github.com/shadcn-ui/ui) | Building a performant, interactive, and visually appealing interface. |
+| **Backend** | [Convex-DB](https://github.com/get-convex/convex-backend) | Real-time data management, serverless functions, and efficient queries. |
+| **Authentication** | [Clerk](https://github.com/clerk/clerk-docs) | Seamless user authentication and authorization. |
+| **PDF Reader** | [PDF.js](https://github.com/mozilla/pdf.js) | PDF rendering and manipulation. |
+| **PDF Renderer** | [React-pdf](https://github.com/diegomura/react-pdf) | PDF rendering and manipulation. |
+| **AI Integration** | [OpenAI](https://github.com/openai/openai-quickstart-node) | Integrating AI capabilities. |
+| **Email Handling** | [EmailJS](https://github.com/eleith/emailjs) | Handling email communications. |
+| **Lucide Icon** | [Lucide-Icon](https://github.com/lucide-icons/lucide) | Intuitive and minimalist icons |
+| **Zod** | [Zod](https://github.com/colinhacks/zod) | TypeScript-first schema validation with static type inference |
+| **React-Hook-Form** | [React-Hook-Form](https://github.com/react-hook-form/react-hook-form) | React Hooks for form state management and validation. |
+| **Framer Motion** | [Framer-Motion](https://github.com/framer/motion) | Motion library for React. |
 
-- Gemini API
 
-**Client Libraries:**
+## 📁 Project Structure
 
-- Framer Motion (animation)
-- React-PDF/renderer (PDF rendering)
-- PDFJS (PDF conversion)
-- Lucide React (icons)
-- React Hook Form (form library)
-- Zod (form validation)
-- Zustand (global state management)
-- Tanstack React-Table (table component)
+Hireme have a total of 4 main routes and the project is created using NextJS App router all the codes can be found under`src/*` folder. 
 
-**Deployment:**
+<img width="739" alt="sitemap" src="https://github.com/user-attachments/assets/25cb1872-d1b0-4d9a-84b1-f35568fe59c2">
 
-- Vercel
+## Getting started
 
-### APIs
+To clone and run this application, you'll need [Git](https://github.com/achris-alonzo30/hireme.git) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
-- Gemini API
-- Clerk
-- Convex
+```bash
+# Clone this repository
+$ git clone https://github.com/achris-alonzo30/hireme.git
 
-### Sitemap
+# Go into the repository
+$ cd hireme
 
-#### Landing
+# Install dependencies
+$ npm install or bun install
 
-- **Landing Page**: `/`
-  - Sections: Header, Hero, Features, BentoGridFeatures, Highlights, CTA, Footer
-
-#### Auth
-
-- **Sign-In**: `/auth/sign-in/[[...sign-in]]`
-- **Sign-Up**: `/auth/sign-up/[[...sign-up]]`
-
-#### Feeds
-
-- **User Feeds**: `/feeds/:userId`
-  - Homepage for authenticated users.
-  - Public resume sharing.
-  - Interaction features: upvote, downvote, comment.
-
-#### Builder
-
-- **Document List**: `/builder`
-  - Main page listing all drafted documents.
-  - Toggle between Resume and Cover Letter.
-  
-- **Resume Builder**: `/builder/resume/:resumeId`
-  - Real-time updates as users fill out forms.
-  - Enhancement button for AI feedback.
-
-#### Tracker
-
-- **Job Tracker Main Page**: `/tracker`
-  - Interactive table for tracked job applications.
-  - Filter, search, and pagination features.
-  
-- **New Application**: `/tracker/application`
-  - Page for creating new job applications.
-  
-- **Edit Application**: `/tracker/application/:applicationId`
-  - Page for editing existing job applications.
-
-### Mockups
-
-#### Landing Page
-
-- **Header & Hero**
-  ![Header & Hero](./public/markdown-images/header-hero.png)
-
-- **Features**
-  ![Features](./public/markdown-images/features.png)
-
-- **Call to Action (CTA)**
-  ![CTA](./public/markdown-images/cta.png)
-
-- **Footer**
-  ![Footer](./public/markdown-images/footer.png)
-
-#### Feeds Page
-
-![Feeds](./public/markdown-images/feeds.png)
-
-#### Builder Page
-
-- **Builder Main Page**
-  ![Builder](./public/markdown-images/builder.png)
-
-- **Resume Builder Main Page**
-  ![Resume Builder](./public/markdown-images/resume-builder.png)
-
-- **Enhance Tab**
-  ![Enhance Tab](./public/markdown-images/enhance-tab.png)
-
-- **Stepper Form**
-  ![Stepper Form](./public/markdown-images/stepper-form.png)
-
-#### Job Tracker Page
-
-![Tracker](./public/markdown-images/tracker.png)
-
-### Data Schema
-
-![Schema Diagram](./public/markdown-images/schema-diagram.png)
-
-### Server HTTP Methods Functions
-
-#### Fetching & Storing User to the Database
-
-- **Get Self Function**: Fetch current login user.
-- **POST /auth.sign-up**: Create new user
-> Both endpoints don't need any parameters and have the same response
-
-RESPONSE:
-```
-_id: j690v3qbgp5wz7havc97042fcs8v9erq,
-_creationTime: 1718490378117.305,
-name: John Doe,
-tokenIdentifier: https://prompt-shiner-30.clerk.accounts.dev|user_0gFlb69T0j8EBOBlBJIOUkfpAAkq
+# Run the app
+$ npm run dev or bun run dev
 ```
 
-#### Job Tracker
+## **Prerequisites**
 
-- **GET: /tracker**: Retrieve all user applications.
-> No parameters needed
+**Convex**
+> [Convex](https://docs.convex.dev/quickstart/nextjs) Create your account on Convex for free and get your API keys by following the instructions on the given link.
 
-RESPONSE:
+> [Clerk](https://clerk.com/docs/quickstarts/nextjs?_gl=1*16h2u9o*_gcl_au*MTA1NjE5MjEyNS4xNzAzNDYxNjMx*_ga*NjUzNTQzNzQ2LjE3MDM0NjE2MzE.*_ga_1WMF5X234K*MTcwMzQ2MTYzMC4xLjEuMTcwMzQ2MTc4Ny4wLjAuMA..) Create your account on Clerk for free and get your API keys by following the instructions on the given link.
+
+> [OpenAI](https://platform.openai.com/api-keys) Get your API Key from the link but you must have credits to be able to use it.
+
+> [EmailJS](https://www.emailjs.com/) Create your account on EmailJS for free and get your API keys by following the instructions on the given link.
+
+Copy this and paste it in your .env or .env.local.
 ```
-_id: j690v3qbgp5wz7havc97042fcs8v9erq,
-_creationTime: 1718490378117.305,
-userId: 9bc46cb7-b00e-4957-af8b-a817b6355cfd,
-company: Amazon,
-jobLink: https://www.linkedin.com/jobs/view/3931258842,
-jobTitle: Software Development Engineer, AWS AppFabric,
-location: Vancouver, BC,
-dateApplied: July 06, 2024,
-status: Applied,
-notes: null,
-salary: 114,800 - 191,800
-recruiterInfo: null,
-```
-
-- **POST /tracker/application**: Create new application.
-
-Parameters
-- company
-- jobLink
-- jobTitle
-- location
-- dateApplied
-- status
-- salary
-- recruiterInfo
-
-RESPONSE:
-```
-_id: j690v3qbgp5wz7havc97042fcs8v9erq,
-_creationTime: 1718490378117.305,
-userId: 9bc46cb7-b00e-4957-af8b-a817b6355cfd,
-company: Amazon,
-jobLink: https://www.linkedin.com/jobs/view/3931258842,
-jobTitle: Software Development Engineer, AWS AppFabric,
-location: Vancouver, BC,
-dateApplied: July 06, 2024,
-status: Applied,
-notes: null,
-salary: 114,800 - 191,800
-recruiterInfo: null,
+CONVEX_DEPLOYMENT= 
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CONVEX_URL=https://<PROJECT_NAME>.convex.cloud
+OPENAI_API_KEY=
+EMAILJS_API_KEY=
+EMAILJS_EMAIL_ID=
+EMAILJS_PUBLIC_KEY=
+EMAILJS_PRIVATE_KEY=
 ```
 
-- **PUT or PATCH /tracker/application/:applicationId**: Update existing application.
 
-Parameters (they will be all optional except applicationId):
-- applicationId
-- company
-- jobLink
-- jobTitle
-- location
-- dateApplied
-- status
-- salary
-- recruiterInfo
+## Acknowledgements
 
-RESPONSE:
-```
-_id: j690v3qbgp5wz7havc97042fcs8v9erq,
-_creationTime: 1718490378117.305,
-userId: 9bc46cb7-b00e-4957-af8b-a817b6355cfd,
-company: Amazon,
-jobLink: https://www.linkedin.com/jobs/view/3931258842,
-jobTitle: Software Development Engineer, AWS AppFabric,
-location: Vancouver, BC,
-dateApplied: July 06, 2024,
-status: Applied,
-notes: null,
-salary: 114,800 - 191,800
-recruiterInfo: null,
-```
-
-- **DELETE /tracker**: Delete existing application.
-
-Parameters
-- applicationId
-
-RESPONSE:
-```
-null
-```
-
-#### Builder
-
-- **GET /builder**: Retrieve documents.
-- **PUT or PATCH /builder/resume/:resumeId**: Edit existing document.
-> Both have the same response
-> For the GET request no parameters needed
-
-Parameter:
-- resumeId
-
-RESPONSE:
-```
-_id: j690v3qbgp5wz7havc97042fcs8v9erq,
-_creationTime: 1718490378117.305,
-userId: 9bc46cb7-b00e-4957-af8b-a817b6355cfd,
-documentName: Untitled,
-skills: {
-    heading: Frontend,
-    featuredSkills: HTML, CSS, Javascript,
-},
-profile: {
-    name: John Doe,
-    role: Software Engineer,
-    email: john.doe@gmail.com,
-    phone: 123-456-7890,
-    objective: I'm john doe,
-    linkedInUrl: www.linkedin.com/in/johndoe,
-    githubUrl: www.github.com/johndoe,
-},
-projects: {
-    url: https://johndoe-portfolio.com,
-    name: My Portfolio,
-    role: Lead Coder,
-    date: July 2024,
-    industry: BrainStation,
-    descriptions: Amazing experience!,
-},
-education: {
-    school: BrainStation,
-    degree: Diploma, Software Engineer,
-    location: Remote,
-    endDate: July 2024,
-    startDate: Apr 2024,
-},
-workExperience: {
-    title: Senior Software Developer III,
-    company: Google,
-    endDate: Present,
-    startDate: Sept 2019,
-    location: Remote,
-    descriptions: Amazing experience!,
-},
-```
-
-- **POST /builder**: Create new document.
-
-Parameters:
-- DocumentName
-
-Response:
-```
-_id: j690v3qbgp5wz7havc97042fcs8v9erq,
-_creationTime: 1718490378117.305,
-userId: 9bc46cb7-b00e-4957-af8b-a817b6355cfd,
-documentName: Untitled,
-skills: null,
-profile: null,
-projects: null,
-education: null,
-workExperience: null,
-```
-
-- **DELETE /builder**: Delete existing document.
-
-Parameter:
-- resumeId
-
-RESPONSE:
-```
-null
-```
-
-#### FETCH & Generate AI Results
-
-- **GET /builder/resume/:resumeId**: Query AI results.
-- **POST /builder/resume/:resumeId**: Generate AI feedback.
-> Both have the same response
+- [BrainStation](https://brainstation.io/): Software Development Summer Cohort 2024 
+- [Code To Career](https://codetocareer.ca/program): Supporting me getting into this program
+- [Open-Resume](https://www.open-resume.com/): Inspired by the creator by this site.
+- BrainStation Educators, TA's, and my peers.
 
 
-Parameters(Query AI Result):
-- resumeId 
-
-Parameters(Generating AI Result):
-- jobDescription
-- resumePrompt
-
-RESPONSE:
-```
-_id: Unix Timestamp,
-_creationTime: Unix Timestamp,
-resumeId: Number,
-jobDescriptionSummary: {
-	jobPosition: String,
-	companyName: String,
-	location: String,
-	employmentType: Full-Time | Part-Time | Remote,
-	responsibilities: String,
-	requiredSkills: Array of Strings,
-	preferredQualification: String,
-	experienceLevel: String,
-	educationalRequirements: String,
-	salaryRange: String,
-	benefits: String
-},
-extractedKeywords: {
-	highImportance: Array of String,
-	mediumImportance: Array of String,
-	lowImportance: Array of String,
-},
-userFeedback: {
-	missingKeywords: Array of String,
-	suggestions: Array of String
-}
-```
-
-## Roadmap
-
-- **Create Project using React - NextJS**
-  - Install dependencies, set up folder structure and routes.
-
-- **Build ResumeStore for global state management**
-  - Implement resume store files.
-
-- **Integrate Clerk Authentication**
-  - Create authentication pages and routes.
-
-- **Hook AI with Convex Database**
-  - Synchronize user data.
-
-- **Build Landing Page**
-  - Design and integrate components.
-
-- **Create Global Browser Layout Component**
-  - Implement reusable layout.
-
-- **Build Feeds Page**
-  - Develop feed components.
-
-- **Build Builder Page**
-  - Implement document management and creation.
-
-- **Build Resume Builder**
-  - Develop resume creation and AI integration.
-
-- **Build Enhance Tab**
-  - Implement AI feedback feature.
-
-- **Build Tracker Page**
-  - Implement job application tracking.
-
-- **Deployment**
-  - Deploy application on Vercel.
-
-- **Testing, Styling, Bug Fixes**
-  - Ensure application functionality and design.
-
-- **Create Presentation and Demo**
-
-## Nice-to-haves
-
-- **Integrate Sentry for error tracking**
-- **Use Jest for testing**
-- **Implement Cover Letter Builder**
-- **Add Calendar feature**
-- **Implement Interview Prep and Career Path Generator**
-- **Upload and parse resume/cover letter**
-- **Create Dashboard for analytics**
-- **Integrate Gamification**
-- **Add caching mechanism**
 
