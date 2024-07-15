@@ -38,8 +38,6 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
     const comments = useQuery(api.comments.getAllCommentsOnFeed, { feedId: feed._id });
     const vote = useMutation(api.feeds.vote);
 
-    console.log(comments)
-
     useEffect(() => {
         const checkIfUserVoted = () => {
             if (user) {
