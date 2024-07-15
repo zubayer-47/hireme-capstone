@@ -91,7 +91,7 @@ export default defineSchema({
         bio: v.string(),
         fileUrl: v.string(),
         username: v.string(),
-        profImgUrl: v.string(),
+        profImgUrl: v.optional(v.string()),
         userId: v.id("users"),
         fileId: v.id("_storage"),
         tags: v.array(v.string()),

@@ -24,7 +24,7 @@ export const Feeds = () => {
                     </Button>
                 </CreateFeedModal>
             </div>
-            <div className={`${feeds && feeds.length > 0 ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  gap-4 md:gap-6 lg:gap-8 mx-auto" : "h-full w-full"}`}>
+            <div className={`${feeds && feeds.length > 0 ? "flex flex-wrap items-center justify-evenly gap-4 md:gap-6 lg:gap-8 w-full" : "h-full w-full"}`}>
                 {feeds && feeds.length > 0 ? (
                     feeds.map((feed) => (
                         <CardFeed key={feed._id} feed={feed} />

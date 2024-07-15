@@ -69,11 +69,11 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
 
 
     return (
-        <Card className="w-full sm:w-auto rounded-2xl dark:bg-neutral-900 dark:border-white/[0.2] hover:dark:border-white/[0.5]">
+        <Card className="w-[20rem] rounded-2xl dark:bg-neutral-900 dark:border-white/[0.2] hover:dark:border-white/[0.5]">
             <CardHeader>
                 <section className="flex items-center justify-between">
                     <article className="flex items-center gap-2">
-                        <Image src={feed.profImgUrl} alt={`${feed.username} Profile Placeholder`} width="30" height="30" className="rounded-full object-cover" />
+                        <Image src={feed?.profImgUrl!} alt={`${feed.username} Profile Placeholder`} width="30" height="30" className="rounded-full object-cover" />
                         <hgroup>
                             <h2 className="text-xs dark:text-neutral-200 font-semibold capitalize">{feed.username}</h2>
                             <p className="text-xs dark:text-neutral-400">{formatRelative(new Date(feed._creationTime), new Date())}</p>
