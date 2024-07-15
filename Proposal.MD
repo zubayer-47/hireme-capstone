@@ -91,7 +91,7 @@ making job hunting even more challenging. This process can be one of the most st
 
 ### APIs
 
-- Gemini API
+- OpenAI API
 - Clerk
 - Convex
 - EmailJS
