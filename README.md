@@ -12,14 +12,6 @@
 <h4 align="center">Hireme simplifies and enhances the job application process for job seekers.</h4>
 
 
-<p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#getting-started">How To Use</a> •
-  <a href="#download">Download</a> •
-  <a href="#credits">Credits</a> •
-
-</p>
-
 ## Resume Builder Tool with AI Enhancer
 
 <img width="1448" alt="builder" src="https://github.com/user-attachments/assets/50112e4b-b4cc-4dc5-8a55-1aaea86edd53">
@@ -96,7 +88,6 @@ $ npm run dev or bun run dev
 
 ## **Prerequisites**
 
-**Convex**
 > [Convex](https://docs.convex.dev/quickstart/nextjs) Create your account on Convex for free and get your API keys by following the instructions on the given link.
 
 > [Clerk](https://clerk.com/docs/quickstarts/nextjs?_gl=1*16h2u9o*_gcl_au*MTA1NjE5MjEyNS4xNzAzNDYxNjMx*_ga*NjUzNTQzNzQ2LjE3MDM0NjE2MzE.*_ga_1WMF5X234K*MTcwMzQ2MTYzMC4xLjEuMTcwMzQ2MTc4Ny4wLjAuMA..) Create your account on Clerk for free and get your API keys by following the instructions on the given link.
