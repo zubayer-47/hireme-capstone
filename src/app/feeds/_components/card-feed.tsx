@@ -25,19 +25,23 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { CreateFeedModal } from "./create-feed-modal";
 import { PreviewFeedModal } from "./preview-feed-modal";
 import { CardActionsDropdown } from "./card-actions-dropdown";
+import { FilterType } from "./feeds";
 
-export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
+export const CardFeed = ({ feed, filters }: { feed: Doc<"feeds">; filters: FilterType }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [userVoteType, setUserVoteType] = useState<"upvote" | "downvote" | null>(null);
+    const [isBookmarked, setIsBookmarked] = useState(filters === "bookmarks")
+
     const { toast } = useToast();
 
     const user = useQuery(api.users.getSelf);
     const comments = useQuery(api.comments.getAllCommentsOnFeed, { feedId: feed._id });
     const vote = useMutation(api.feeds.vote);
     const bookmark = useMutation(api.feeds.bookmarkFeed);
+    const unBookmark = useMutation(api.feeds.unbookmarkFeed);
+
     useEffect(() => {
         const checkIfUserVoted = () => {
             if (user) {
@@ -66,15 +70,28 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
 
     const handleBookmarkFeed = async () => {
         try {
-            await bookmark({
-                feedId: feed._id
-            })
-            toast({
-                title: "Success",
-                description: "Feed bookmarked successfully",
-                variant: "success"
-            })
-        } catch(err) {
+            if (isBookmarked) {
+                await unBookmark({
+                    feedId: feed._id
+                });
+                setIsBookmarked(false);
+                toast({
+                    title: "Success",
+                    description: "Feed unbookmarked successfully",
+                    variant: "success"
+                });
+            } else {
+                await bookmark({
+                    feedId: feed._id
+                });
+                setIsBookmarked(true);
+                toast({
+                    title: "Success",
+                    description: "Feed bookmarked successfully",
+                    variant: "success"
+                });
+            }
+        } catch (err) {
             console.error(err);
             toast({
                 title: "Error",
@@ -114,7 +131,7 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
                 <aside
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
-                    className="relative w-full h-[14rem] border border-white/[0.2] shadow-2xl rounded-2xl overflow-hidden"
+                    className="relative w-full h-[12rem] border border-white/[0.2] shadow-2xl rounded-2xl overflow-hidden"
                 >
                     {isHovered && (
                         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -140,14 +157,12 @@ export const CardFeed = ({ feed }: { feed: Doc<"feeds"> }) => {
                     <ArrowDown className="w-4 h-4" />
                     {feed.downVoteCount}
                 </Button>
-                <CreateFeedModal>
-                    <Button variant="ghost" size="sm" className="gap-1">
-                        <MessageCircle className="w-4 h-4" />
-                        {comments && comments.length}
-                    </Button>
-                </CreateFeedModal>
+                <Button variant="ghost" size="sm" className="gap-1">
+                    <MessageCircle className="w-4 h-4" />
+                    {comments && comments.length}
+                </Button>
                 <Button variant="ghost" size="sm" className="gap-1" onClick={handleBookmarkFeed}>
-                    <Bookmark className="w-4 h-4" />
+                    <Bookmark className={cn("w-4 h-4", isBookmarked ? "text-app-color" : "")} />
                 </Button>
             </CardFooter>
         </Card>

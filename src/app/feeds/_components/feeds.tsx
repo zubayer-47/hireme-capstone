@@ -3,12 +3,11 @@
 import { CardFeed } from "./card-feed";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import { CreateFeedModal } from "./create-feed-modal";
-import { SlidersHorizontal, Plus } from "lucide-react";
+import { FilterFeedDropdown } from "./filter-feed-dropdown";
 
-type FilterType = "bookmarks" | "recent" | "most-upvotes" | "most-discussed";
+export type FilterType = "bookmarks" | "recent" | "most-upvotes" | "most-discussed";
 
 export const Feeds = () => {
     const searchParams = useSearchParams();
@@ -22,34 +21,21 @@ export const Feeds = () => {
       );
 
     return (
-        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+        <main className="flex flex-1 h-full flex-col gap-4 lg:gap-6 p-4 md:p-8 lg:p-12 xl:p-14 ">
             <div className="flex items-center justify-between">
-                <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600  dark:bg-neutral-800 hover:dark:bg-neutral-900 bg-neutral-200 hover:bg-neutral-100 border" size="sm">
-                    <SlidersHorizontal className="h-4 w-4" />
-                    Filter Feed
-                </Button>
-                <CreateFeedModal>
-                    <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600" size="sm" variant="ghost">
-                        <Plus className="h-4 w-4" />
-                        New Feed
-                    </Button>
-                </CreateFeedModal>
+                <FilterFeedDropdown />
+                <CreateFeedModal />
             </div>
-            <div className={`${feeds && feeds.length > 0 ? "flex flex-wrap items-center justify-evenly gap-4 md:gap-6 lg:gap-8 w-full" : "h-full w-full"}`}>
+            <div className={`${feeds && feeds.length > 0 ? "flex flex-wrap items-center justify-center md:justify-between mx-auto  gap-2 md:gap-4 lg:gap-6 w-full" : "h-full w-full"}`}>
                 {feeds && feeds.length > 0 ? (
                     feeds.map((feed) => (
-                        <CardFeed key={feed._id} feed={feed} />
+                        <CardFeed key={feed._id} feed={feed} filters={filters} />
                     ))
                 ) : (
                     <div className="flex flex-col gap-2 h-full w-full items-center justify-center mx-auto">
                         <h2 className="text-base sm:text-lg dark:text-neutral-200 text-neutral-800">Nothing here yet!</h2>
                         <p className="text-sm dark:text-neutral-400 text-neutral-600">Don&apos;t be shy. Be the first one to create a feed.</p>
-                        <CreateFeedModal>
-                            <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600" size="sm" variant="ghost">
-                                <Plus className="h-4 w-4" />
-                                New Feed
-                            </Button>
-                        </CreateFeedModal>
+                        <CreateFeedModal />
                     </div>
                 )}
             </div>

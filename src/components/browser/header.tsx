@@ -5,7 +5,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
 export const Header = () => {
     return (
-        <header className="flex h-14 items-center gap-4 border-b dark:border-white/[0.2] border-black/[0.2] bg-neutral-50 dark:bg-neutral-900 px-4 lg:h-[60px] lg:px-6">
+        <header className="flex items-center gap-4 border-b dark:border-white/[0.2] border-black/[0.2] bg-neutral-50 dark:bg-neutral-900 px-4 h-[60px] lg:px-6">
             <MobileSidebar>
                 <DynamicSidebar  />
             </MobileSidebar>

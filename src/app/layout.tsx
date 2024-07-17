@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <ConvexClientProvider>
-        <body className={font.className}>
+        <body className={`${font.className} antialiased`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

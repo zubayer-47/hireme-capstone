@@ -42,26 +42,26 @@ export const Header = ({
               <ProductItem
                 title="Resume Builder"
                 href={`${WEBSITE_URL}/builder`}
-                src="https://assets.aceternity.com/demos/algochurn.webp"
-                description="Prepare for tech interviews like never before."
+                src="/landing-images/builder.png"
+                description="Build your professional ATS resume  in just 5 minutes and with our AI-powered resume enhancer."
               />
               <ProductItem
                 title="Cover Letter Builder"
                 href={`${WEBSITE_URL}/builder`}
-                src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
-                description="Production ready Tailwind css components for your next project"
+                src="/landing-images/cover-letter.png"
+                description="Build your professional cover letter in just 5 minutes."
               />
               <ProductItem
                 title="Job Tracker"
                 href={`${WEBSITE_URL}/tracker`}
-                src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
-                description="Never write from scratch again. Go from idea to blog in minutes."
+                src="/landing-images/tracker.png"
+                description="Track your job application progress and stay motivated throughout the job search journey."
               />
               <ProductItem
                 title="Community Support"
                 href={`${WEBSITE_URL}/feeds`}
-                src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-                description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+                src="/landing-images/feeds.png"
+                description="Connect with a network of job seekers, share experiences, and learn valuable tips to land your next interview."
               />
             </div>
           </MenuItem>

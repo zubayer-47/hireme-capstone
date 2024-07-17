@@ -115,6 +115,7 @@ export default defineSchema({
     isSaved: defineTable({
         feedId: v.id("feeds"),
         userId: v.id("users"),
-    }).index("by_userId", ["userId"]),
+    }).index("by_userId", ["userId"])
+    .index("by_userId_feedId", ["userId", "feedId"]),
 
 })

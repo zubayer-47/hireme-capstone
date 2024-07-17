@@ -23,12 +23,12 @@ import { dataLinks } from "../../lib/links";
 
 
 export const DynamicSidebar = () => {
-    const { user } =  useUser();
+    const { user } = useUser();
     const pathname = usePathname();
-    
+
     return (
-        <div className="flex h-full max-h-screen flex-col gap-2">
-            <div className="flex h-14 items-center border-b border-white/[0.2] px-4 lg:h-[60px] ">
+        <div className="flex h-full flex-col gap-2">
+            <div className="flex items-center border-b border-white/[0.2] px-4 h-[60px] ">
                 <AppLogo href={"/feeds"} width={25} height={25} />
                 <Button variant="outline" size="icon" className="ml-auto h-6 w-6 dark:bg-neutral-950 hover:dark:bg-neutral-900 bg-neutral-200 dark:border-white/[0.2] border-black/[0.2] translate-hover">
                     <Bell className="h-4 w-4 dark:text-neutral-300  text-neutral-950" />
@@ -36,26 +36,26 @@ export const DynamicSidebar = () => {
                 </Button>
             </div>
             <div className="flex-1">
-                <nav className="grid items-start px-2 text-sm font-medium lg:px-4 space-y-4">
-                    <Link 
+                <nav className="grid items-start px-2 text-sm font-medium lg:px-4 space-y-4 pt-4">
+                    <Link
                         href="/feeds"
-                        className={cn(pathname.includes("feeds") && "dark:bg-neutral-950 bg-neutral-200 rounded-md py-1 px-1","flex items-center gap-3")}>
-                        <Image 
-                            width={20} 
+                        className={cn(pathname.includes("feeds") && "dark:bg-neutral-950 bg-neutral-200 rounded-md py-1 px-1", "flex items-center gap-3")}>
+                        <Image
+                            width={20}
                             height={20}
-                            alt="User Profile Picture"  
+                            alt="User Profile Picture"
                             className="object-cover rounded-md"
 
-                            src={user?.imageUrl || `/svg/user-profile-placeholder.svg`}  />
+                            src={user?.imageUrl || `/svg/user-profile-placeholder.svg`} />
                         <h2 className="capitalize dark:text-neutral-200 text-neutral-950 text-sm">{user?.firstName} Feed</h2>
                     </Link>
-                    
+
                     {dataLinks.map(({ titleSection, links }, index) => (
-                        <NavLinks 
-                            key={index} 
+                        <NavLinks
+                            key={index}
                             links={links}
                             pathname={pathname}
-                            titleSection={titleSection}  
+                            titleSection={titleSection}
                         />
                     ))}
                 </nav>

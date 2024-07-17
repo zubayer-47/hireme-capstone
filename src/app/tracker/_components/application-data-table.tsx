@@ -153,12 +153,14 @@ export function ApplicationDataTable<TData, TValue>({
                         ) : (
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center dark:text-neutral-300 text-neutral-700">
-                                    <h2 className="text-base sm:text-lg dark:text-neutral-200 text-neutral-800">Nothing here yet!</h2>
-                                    <p className="text-sm dark:text-neutral-400 text-neutral-600">Start tracking your application.</p>
-                                    <Link href="/tracker/applications" className="flex items-center h-9 px-3 gap-2 rounded-lg text-neutral-100 bg-app-color hover:bg-app-color/80 text-sm translate-hover">
-                                        <ListPlus className="h-4 w-4" />
-                                        Track
-                                    </Link>
+                                    <div className="flex flex-col items-center justify-center py-24">
+                                        <h2 className="text-base sm:text-lg dark:text-neutral-200 text-neutral-800">Nothing here yet!</h2>
+                                        <p className="text-sm dark:text-neutral-400 text-neutral-600 pb-4">Start tracking your application.</p>
+                                        <Link href="/tracker/applications" className="flex items-center h-9 px-3 gap-2 rounded-lg text-neutral-100 bg-app-color hover:bg-app-color/80 text-sm translate-hover">
+                                            <ListPlus className="h-4 w-4" />
+                                            Track
+                                        </Link>
+                                    </div>
                                 </TableCell>
                             </TableRow>
                         )}

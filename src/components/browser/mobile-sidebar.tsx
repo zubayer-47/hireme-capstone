@@ -19,7 +19,7 @@ export const MobileSidebar = ({ children }: { children: React.ReactNode }) => {
                     <span className="sr-only">Toggle navigation menu</span>
                 </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="flex flex-col w-2/3">
+            <SheetContent side="left" className="flex flex-col w-full dark:border-white/[0.2] border-black/[0.2] bg-neutral-50 dark:bg-neutral-900">
                 {children}
             </SheetContent>
         </Sheet>

@@ -36,7 +36,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { UploadPDFDropzone } from "./upload-pdf-dropzone";
 
-export const CreateFeedModal = ({ children }: { children: React.ReactNode }) => {
+export const CreateFeedModal = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [pdfFileUrl, setPdfFileUrl] = useState("");
     const { toast } = useToast();
@@ -79,8 +79,8 @@ export const CreateFeedModal = ({ children }: { children: React.ReactNode }) => 
 
             const storageIds = await Promise.all(uploadPromises);
 
-            const res = await createFeed({ 
-                ...values, 
+            const res = await createFeed({
+                ...values,
                 fileId: storageIds[0],
             });
 
@@ -91,7 +91,7 @@ export const CreateFeedModal = ({ children }: { children: React.ReactNode }) => 
                     variant: "success",
                 });
                 setIsOpen(false);
-            } 
+            }
 
         } catch (err) {
             console.error(err);
@@ -104,7 +104,7 @@ export const CreateFeedModal = ({ children }: { children: React.ReactNode }) => 
     };
 
     const isLoading = form.formState.isSubmitting;
- 
+
     return (
         <Dialog
             open={isOpen}
@@ -114,7 +114,10 @@ export const CreateFeedModal = ({ children }: { children: React.ReactNode }) => 
             }}
         >
             <DialogTrigger asChild>
-                {children}
+                <Button className="flex items-center gap-2 bg-app-color text-neutral-100" size="sm" variant="ghost">
+                    <Plus className="h-4 w-4" />
+                    New Feed
+                </Button>
             </DialogTrigger>
             <DialogContent className="sm:w-2/3 w-full dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
                 <DialogHeader className="pb-2">

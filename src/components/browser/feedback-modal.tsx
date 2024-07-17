@@ -2,7 +2,6 @@
 
 import { z } from "zod";
 import { useState } from "react";
-import emailjs from '@emailjs/browser';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -36,9 +35,6 @@ const formSchema = z.object({
     message: z.string().min(2),
 });
 
-const serviceID = process.env.EMAILJS_API_KEY!;
-const templateID = process.env.EMAILJS_EMAIL_ID!;
-const options = { publicKey: process.env.EMAILJS_PUBLIC_KEY! };
 
 export const FeedbackModal = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -59,25 +55,23 @@ export const FeedbackModal = () => {
         try {
             const input = values;
 
-            const res = await emailjs.send(serviceID, templateID, input, options)
+            if (input) {
+               toast({
+                    title: "500",
+                    description: `This feature is still on progress. Please try again later.`,
+                    variant: "default",
+            });
 
-            if (res.status === 200) {
-                toast({
-                    title: "Success",
-                    description: `Email sent! Your feed is very helpful. Our team will take a look over it.`,
-                    variant: "success",
-                });
-
-                setIsOpen(false);
+            setIsOpen(false); 
             }
+            
 
-            setIsOpen(false);
         } catch (error) {
             console.error(error);
             toast({
-                title: "Error",
-                description: `We couldn't process your email. Please try again later.`,
-                variant: "destructive",
+                title: "500",
+                description: `This feature is still on progress. Please try again later.`,
+                variant: "default",
             })
         }
     }

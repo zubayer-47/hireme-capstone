@@ -229,4 +229,25 @@ export const bookmarkFeed = mutation({
     }
 })
 
+export const unbookmarkFeed = mutation({
+    args: {
+        feedId: v.id("feeds"),
+    },
+    handler: async (ctx, { feedId }) => {
+        const identity = await userIdentity(ctx);
+
+        if (!identity) throw new ConvexError("Unauthorized!");
+
+        const feed = await ctx.db.get(feedId);
+
+        if (!feed) throw new ConvexError("The ID you provided is invalid.");
+
+        const savedFeed = await ctx.db.query("isSaved").withIndex("by_userId_feedId", q => q.eq("userId", identity._id).eq("feedId", feedId)).unique();
+
+        if (!savedFeed) throw new ConvexError("The ID you provided is invalid.");
+
+        return await ctx.db.delete(savedFeed._id)
+    }
+})
+
 

@@ -8,7 +8,7 @@ export const Footer = () => {
         <footer className="flex-1">
             <section className="h-full px-8 py-24 mx-auto md:px-12 lg:px-32 max-w-7xl">
                 <aside className="pt-12 border-t border-gray-600 xl:grid xl:grid-cols-2 xl:gap-12">
-                    <hgroup className="text-black">
+                    <hgroup className="text-black pb-4">
                         <div className="inline-flex items-center gap-3">
                             <AppLogo href="/" width={25} height={25} />
                         </div>
