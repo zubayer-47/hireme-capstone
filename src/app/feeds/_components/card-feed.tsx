@@ -22,12 +22,13 @@ import {
     CardContent,
     CardDescription,
 } from "@/components/ui/card";
+import { FilterType } from "./feeds";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { PreviewFeedModal } from "./preview-feed-modal";
 import { CardActionsDropdown } from "./card-actions-dropdown";
-import { FilterType } from "./feeds";
+
 
 export const CardFeed = ({ feed, filters }: { feed: Doc<"feeds">; filters: FilterType }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -37,10 +38,12 @@ export const CardFeed = ({ feed, filters }: { feed: Doc<"feeds">; filters: Filte
     const { toast } = useToast();
 
     const user = useQuery(api.users.getSelf);
-    const comments = useQuery(api.comments.getAllCommentsOnFeed, { feedId: feed._id });
     const vote = useMutation(api.feeds.vote);
     const bookmark = useMutation(api.feeds.bookmarkFeed);
     const unBookmark = useMutation(api.feeds.unbookmarkFeed);
+    const comments = useQuery(api.comments.getAllCommentsOnFeed, { feedId: feed._id });
+
+    const isOwner = user?._id === feed.userId;
 
     useEffect(() => {
         const checkIfUserVoted = () => {
@@ -113,7 +116,7 @@ export const CardFeed = ({ feed, filters }: { feed: Doc<"feeds">; filters: Filte
                             <p className="text-xs dark:text-neutral-400">{formatRelative(new Date(feed._creationTime), new Date())}</p>
                         </hgroup>
                     </article>
-                    <CardActionsDropdown feedId={feed._id} />
+                    {isOwner && <CardActionsDropdown feedId={feed._id} />}
                 </section>
             </CardHeader>
 

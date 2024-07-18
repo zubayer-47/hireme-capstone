@@ -32,8 +32,8 @@ export default function RootLayout({
               <main className="h-full w-full mx-auto flex items-center justify-center">
                 <LoadingSpinner />
               </main>
-              
             </ClerkLoading>
+            
             <ClerkLoaded>
               {children}
             </ClerkLoaded>
