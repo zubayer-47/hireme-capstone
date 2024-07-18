@@ -3,7 +3,7 @@ import { Metadata } from "next"
 export function constructMetadata({
     title = "Hireme",
     description = "Hireme simplifies our job application process.",
-    image = "/thumbnail/HireMe-thumbnail.png",
+    image = "/hireme-thumbnail.png",
     icons = "/svg/logo.svg",
     noIndex = false
   }: {
