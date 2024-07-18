@@ -1,7 +1,7 @@
-import { Browser } from "@/components/browser/browser"
+import type { Metadata } from "next"
 import { LoadingSpinner } from "@/components/loading-spinner"
 import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs"
-import type { Metadata } from "next"
+
 
 export const metadata: Metadata = {
     title: 'Hireme | Builder',
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function BuilderLayout({ children }: { children: React.ReactNode }) {
     return (
-        <Browser>
+        <>
             <ClerkLoading>
                 <main className="h-full w-full mx-auto flex items-center justify-center">
                     <LoadingSpinner />
@@ -21,6 +21,6 @@ export default function BuilderLayout({ children }: { children: React.ReactNode 
                     {children}
                 </main>
             </ClerkLoaded>
-        </Browser>
+        </>
     )
 }

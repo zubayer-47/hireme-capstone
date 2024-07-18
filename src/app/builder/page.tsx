@@ -3,8 +3,10 @@ import { DocumentTab } from "./_components/browser/document-tab"
 
 export default function BuilderPage() {
     return (
-        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-8 w-full pt-24">
-            <DocumentTab /> 
-        </main>
+        <Browser> 
+            <main className="flex flex-1 h-full flex-col gap-4 lg:gap-6 p-4 md:p-8 lg:p-12 xl:p-14">
+                <DocumentTab /> 
+            </main>
+        </Browser>
     )
 }

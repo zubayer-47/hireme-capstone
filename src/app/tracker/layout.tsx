@@ -17,7 +17,7 @@ export default function JobTrackerLayout({ children }: { children: React.ReactNo
                 </main>
             </ClerkLoading>
             <ClerkLoaded>
-                <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 w-full">
+                <main className="flex flex-1 flex-col gap-4 lg:gap-6 p-4 md:p-8 lg:p-12 xl:p-14  w-full">
                     {children}
                 </main>
             </ClerkLoaded>
