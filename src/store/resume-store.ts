@@ -245,7 +245,11 @@ export const useResumeStore = create<Resume & UpdateResume>()((set) => ({
                 }
 
                 case "skills": {
-
+                    const skills = [...state.skills];
+                    if (targetIndex < skills.length) {
+                        skills.splice(targetIndex, 1)
+                    }
+                    return { ...state.skills, skills }
                 }
 
                 default:
