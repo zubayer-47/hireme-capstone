@@ -19,11 +19,7 @@ export function constructMetadata({
       openGraph: {
         title,
         description,
-        images: [
-          {
-            url: image
-          }
-        ]
+        images: [image]
       },
       twitter: {
         card: "summary_large_image",
