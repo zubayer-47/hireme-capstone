@@ -28,7 +28,7 @@ export const generateResults = action({
                 temperature: 0.3,
                 max_tokens: 4096,
                 top_p: 0.95,
-                model: "gpt-3.5-turbo",
+                model: "gpt-4o-mini",
                 messages: [
                     { role: "system", content: instructions },
                     { role: "user", content: firstPrompt },
