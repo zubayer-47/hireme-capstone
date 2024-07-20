@@ -1,4 +1,4 @@
-import { v, ConvexError } from "convex/values";
+import { v } from "convex/values";
 import { mutation, QueryCtx, MutationCtx, query, } from "./_generated/server";
 
 async function userIdentity(
@@ -22,7 +22,7 @@ export const generateUploadUrl = mutation(
     async (ctx) => {
         const identity = await ctx.auth.getUserIdentity();
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         return await ctx.storage.generateUploadUrl();
     }
@@ -45,7 +45,7 @@ export const getFeeds = query({
     handler: async (ctx, { filters }) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         let feeds = await ctx.db.query("feeds").order("desc").collect();
 
@@ -89,7 +89,7 @@ export const getFeedWithId = query({
     handler: async (ctx, { feedId }) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized");
+        if (!identity) throw new Error("Unauthorized");
 
         return await ctx.db.get(feedId);
     }
@@ -104,7 +104,7 @@ export const createFeed = mutation({
     handler: async (ctx, args) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         const fileUrl = await ctx.storage.getUrl(args.fileId);
         return await ctx.db.insert("feeds", {
@@ -129,11 +129,11 @@ export const editBioTagFeed = mutation({
     handler: async (ctx, { bio, tags, feedId }) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         const feed = await ctx.db.get(feedId);
 
-        if (!feed) throw new ConvexError("The feed you requested doesn't exist.");
+        if (!feed) throw new Error("The feed you requested doesn't exist.");
 
         return await ctx.db.patch(feedId, {
             bio,
@@ -149,7 +149,7 @@ export const deleteFeed = mutation({
     handler: async (ctx, { feedId }) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         return await ctx.db.delete(feedId);
     }
@@ -164,11 +164,11 @@ export const vote = mutation({
     handler: async (ctx, { feedId, voteType }) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         const feed = await ctx.db.get(feedId);
 
-        if (!feed) throw new ConvexError("The ID you provided is invalid.");
+        if (!feed) throw new Error("The ID you provided is invalid.");
 
         const voterIndex = feed.voterIds.findIndex(v => v.voterId === identity._id);
         if (voterIndex !== -1) {
@@ -216,11 +216,11 @@ export const bookmarkFeed = mutation({
     handler: async (ctx, { feedId }) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         const feed = await ctx.db.get(feedId);
 
-        if (!feed) throw new ConvexError("The ID you provided is invalid.");
+        if (!feed) throw new Error("The ID you provided is invalid.");
 
         return await ctx.db.insert("isSaved", {
             feedId,
@@ -236,15 +236,15 @@ export const unbookmarkFeed = mutation({
     handler: async (ctx, { feedId }) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         const feed = await ctx.db.get(feedId);
 
-        if (!feed) throw new ConvexError("The ID you provided is invalid.");
+        if (!feed) throw new Error("The ID you provided is invalid.");
 
         const savedFeed = await ctx.db.query("isSaved").withIndex("by_userId_feedId", q => q.eq("userId", identity._id).eq("feedId", feedId)).unique();
 
-        if (!savedFeed) throw new ConvexError("The ID you provided is invalid.");
+        if (!savedFeed) throw new Error("The ID you provided is invalid.");
 
         return await ctx.db.delete(savedFeed._id)
     }

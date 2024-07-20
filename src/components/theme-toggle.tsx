@@ -23,13 +23,13 @@ export function ThemeToggle() {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setTheme("light")} className="dark:text-neutral-200 text-neutral-900">
+                <DropdownMenuItem onClick={() => setTheme("light")} className="dark:text-white text-neutral-900">
                     Light
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("dark")} className="dark:text-neutral-200 text-neutral-900">
+                <DropdownMenuItem onClick={() => setTheme("dark")} className="dark:text-white text-neutral-900">
                     Dark
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("system")} className="dark:text-neutral-200 text-neutral-900">
+                <DropdownMenuItem onClick={() => setTheme("system")} className="dark:text-white text-neutral-900">
                     System
                 </DropdownMenuItem>
             </DropdownMenuContent>

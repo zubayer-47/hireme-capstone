@@ -112,8 +112,8 @@ export const AddNotesModal = ({
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px] w-full dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
                 <DialogHeader>
-                    <DialogTitle className="dark:text-neutral-200 text-neutral-800 capitalize">Application for {company} as {jobTitle}</DialogTitle>
-                    <DialogDescription className="dark:text-neutral-400 text-neutral-600">Keep track of important details and decisions.</DialogDescription>
+                    <DialogTitle className="dark:text-white text-neutral-800 capitalize">Application for {company} as {jobTitle}</DialogTitle>
+                    <DialogDescription className="dark:text-neutral-200 text-neutral-600">Keep track of important details and decisions.</DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -124,7 +124,7 @@ export const AddNotesModal = ({
                                 <FormItem>
                                     <FormLabel className="dark:text-neutral-300 text-neutral-700">Notes</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="List action items and next steps..." className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
+                                        <Textarea placeholder="List action items and next steps..." className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]"  {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

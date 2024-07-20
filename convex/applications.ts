@@ -1,5 +1,5 @@
 import { ApplicationStatus } from "./types";
-import { v, ConvexError } from "convex/values";
+import { v } from "convex/values";
 import { mutation, MutationCtx, QueryCtx, query } from "./_generated/server";
 import { Doc } from "./_generated/dataModel";
 
@@ -26,12 +26,12 @@ const checkExistingApplication = async (
 ) => {
     const hasAccess = await userIdentity(ctx);
 
-    if (!hasAccess) throw new ConvexError("Unauthorized!");
+    if (!hasAccess) throw new Error("Unauthorized!");
 
     const existingApplication = await ctx.db.get(applicationId);
 
     if (!existingApplication || existingApplication.userId !== hasAccess._id) {
-        throw new ConvexError("Job Application not found or not authorized to access the file.")
+        throw new Error("Job Application not found or not authorized to access the file.")
     }
 
     return {
@@ -54,7 +54,7 @@ export const createApplication = mutation({
 
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new ConvexError("Unauthorized!");
+        if (!hasAccess) throw new Error("Unauthorized!");
 
         return await ctx.db.insert("applications", {
             userId: hasAccess._id,
@@ -69,7 +69,7 @@ export const readApplications = query({
     }, handler: async (ctx, args) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new ConvexError("Unauthorized!");
+        if (!hasAccess) throw new Error("Unauthorized!");
 
         return await ctx.db
             .query("applications")

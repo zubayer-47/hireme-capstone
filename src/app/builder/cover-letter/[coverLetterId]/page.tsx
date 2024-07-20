@@ -1,11 +1,12 @@
 "use client";
 
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { CoverLetter } from "../_components/display";
 import { CoverLetterForm } from "../_components/forms";
 import { DocumentHeader } from "../../_components/browser/document-header";
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+
 
 export default function CoverLetterBuilderPage({ params } : { params: { coverLetterId: Id<"coverLetter"> }}) {
   const coverLetter = useQuery(api.coverLetter.getCoverLetter, { coverLetterId: params.coverLetterId });

@@ -67,14 +67,14 @@ export const CardActionsDropdown = ({ feedId }: { feedId: Id<"feeds"> }) => {
         <AlertDialog open={isAlertDialogOpen} onOpenChange={setIsAlertDialogOpen}>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle className="dark:text-neutral-200 text-neutral-800">Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription className="dark:text-neutral-400 text-neutral-700">
+              <AlertDialogTitle className="dark:text-white text-neutral-800">Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription className="dark:text-neutral-200 text-neutral-700">
                 This action cannot be undone. This will permanently delete your
                 post and remove your data from our servers.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel className="h-9 px-3 translate-hover border-none dark:text-neutral-200 text-neutral-600" onClick={() => setIsAlertDialogOpen(false)}>Cancel</AlertDialogCancel>
+              <AlertDialogCancel className="h-9 px-3 translate-hover border-none dark:text-white text-neutral-600" onClick={() => setIsAlertDialogOpen(false)}>Cancel</AlertDialogCancel>
               <AlertDialogAction
                 onClick={handleDelete}
                 className="bg-app-color h-9 px-3 text-neutral-100 hover:bg-app-color/80 translate-hover"

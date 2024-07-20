@@ -1,5 +1,3 @@
-"use client"
-
 import { DynamicFormProps } from "../_lib/application-lib";
 
 import { Loader2 } from "lucide-react";
@@ -35,8 +33,8 @@ export const DynamicForm = ({
     return (
         <>
             <hgroup className="my-4 pb-4 border-b dark:border-white/[0.2] border-black/[0.2]">
-                <h2 className="dark:text-neutral-200 text-neutral-800 text-md">{formHeading}</h2>
-                <p className="dark:text-neutral-400 text-neutral-600 text-sm">{formSubheading}</p>
+                <h2 className="dark:text-white text-neutral-800 text-md">{formHeading}</h2>
+                <p className="dark:text-neutral-200 text-neutral-600 text-sm">{formSubheading}</p>
             </hgroup>
             <Form {...form} >
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -48,7 +46,7 @@ export const DynamicForm = ({
                                 <FormItem>
                                     <FormLabel className="dark:text-neutral-300 text-neutral-700">Company Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Apple" className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
+                                        <Input placeholder="Apple" className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]"  {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -65,7 +63,7 @@ export const DynamicForm = ({
                                             {...field}
                                             type="text"
                                             placeholder="Software Engineer (Full stack)" 
-                                            className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  
+                                            className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]"  
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -85,7 +83,7 @@ export const DynamicForm = ({
                                             {...field} 
                                             type="url"
                                             placeholder="https://www.apple.com/careers/ca/" 
-                                            className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"     
+                                            className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]"     
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -103,7 +101,7 @@ export const DynamicForm = ({
                                             {...field}
                                             type="text"
                                             placeholder="Toronto" 
-                                            className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"
+                                            className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]"
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -122,7 +120,7 @@ export const DynamicForm = ({
                                         <Input 
                                             {...field}
                                             type="date" 
-                                className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  
+                                className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]"  
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -137,11 +135,11 @@ export const DynamicForm = ({
                                     <FormLabel className="dark:text-neutral-300 text-neutral-700">Status</FormLabel>
                                     <Select onValueChange={field.onChange} defaultValue={field.value} >
                                         <FormControl>
-                                            <SelectTrigger className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]">
+                                            <SelectTrigger className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]">
                                                 <SelectValue placeholder="Select a status for your application" />
                                             </SelectTrigger>
                                         </FormControl>
-                                        <SelectContent className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]">
+                                        <SelectContent className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]">
                                             <SelectItem value="applied">Applied</SelectItem>
                                             <SelectItem value="interviewed">Interviewed</SelectItem>
                                             <SelectItem value="offered">Offered</SelectItem>
@@ -165,7 +163,7 @@ export const DynamicForm = ({
                                             {...field}
                                             min="0"
                                             type="number" 
-                                            className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]" />
+                                            className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -182,7 +180,7 @@ export const DynamicForm = ({
                                             {...field}
                                             type="text" 
                                             placeholder="Write your recruiter name..." 
-                                            className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]" />
+                                            className="dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -195,7 +193,7 @@ export const DynamicForm = ({
                             type="button"
                             variant="ghost"
                             disabled={isLoading}
-                            className="translate-hover dark:text-neutral-200 text-neutral-800"
+                            className="translate-hover dark:text-white text-neutral-800"
                             onClick={() => router.push("/tracker")}
                         >
                             Cancel

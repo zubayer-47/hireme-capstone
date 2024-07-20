@@ -1,4 +1,4 @@
-import { ConvexError, v } from 'convex/values';
+import { v } from 'convex/values';
 import { query, mutation, QueryCtx, MutationCtx } from './_generated/server';
 
 async function userIdentity(
@@ -23,7 +23,7 @@ export const getAllCommentsOnFeed = query({
     handler: async (ctx, { feedId }) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         return await ctx.db.query("comments")
             .withIndex("by_feedId", (q) => q.eq("feedId", feedId))
@@ -40,7 +40,7 @@ export const createComment = mutation({
     handler: async (ctx, args) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         await ctx.db.insert("comments", {
             ...args,
@@ -56,7 +56,7 @@ export const editComment = mutation({
     handler: async (ctx, { commentId, comment }) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         return await ctx.db.patch(commentId, {
             comment
@@ -69,7 +69,7 @@ export const deleteComment = mutation({
     handler: async (ctx, { commentId }) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         return await ctx.db.delete(commentId);
     }

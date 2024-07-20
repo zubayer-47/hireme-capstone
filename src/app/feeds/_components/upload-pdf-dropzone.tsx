@@ -72,7 +72,7 @@ export const UploadPDFDropzone = ({ onFileUrlChange }: { onFileUrlChange: (fileU
                 {!hasFile ? (
                     <>
                         <Inbox className="h-10 w-10 mx-auto text-app-color" />
-                        <p className="pt-3 dark:text-neutral-200 text-neutral-800 text-base font-semibold">
+                        <p className="pt-3 dark:text-white text-neutral-800 text-base font-semibold">
                             Drag & Drop Your PDF File here
                         </p>
                     </>
@@ -80,7 +80,7 @@ export const UploadPDFDropzone = ({ onFileUrlChange }: { onFileUrlChange: (fileU
                     <>
                         <FileText className="h-10 w-10 mx-auto text-app-color" />
                         <hgroup className="flex items-center justify-center gap-3 pt-3">
-                            <h3 className="text-sm pl-7 font-semibold dark:text-neutral-200 text-neutral-800">
+                            <h3 className="text-sm pl-7 font-semibold dark:text-white text-neutral-800">
                                 {file.name} - {getFileSizeString(file.size)}
                             </h3>
                             <Button onClick={() => onRemove()} type="button" variant="ghost" size="icon" className="rounded-full" >
@@ -92,7 +92,7 @@ export const UploadPDFDropzone = ({ onFileUrlChange }: { onFileUrlChange: (fileU
                 <div className="pt-4">
                     {!hasFile ? (
                         <>
-                            <label className="cursor-pointer text-sm dark:text-neutral-400 text-neutral-600 hover:text-app-color transition-all">
+                            <label className="cursor-pointer text-sm dark:text-neutral-200 text-neutral-600 hover:text-app-color transition-all">
                                 Browse File
                                 <input
                                     type="file"

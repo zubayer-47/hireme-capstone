@@ -28,7 +28,7 @@ export const Hero = ({ isAuthenticated }: { isAuthenticated: boolean; }) => {
                         <AnimatedTextUnderline /> designed to simplify and enhance
                         job application process for job seekers.
                     </h1>
-                    <p className="w-3/4 mx-auto mt-4 text-sm sm:text-base font-medium text-gray-500 text-balance">
+                    <p className="w-3/4 mx-auto mt-4 text-sm sm:text-base font-medium text-neutral-300 text-balance">
                         Your tool to improve your resume and cover letter, gives helpful feedback, and helps you track your job applications.
                     </p>
                     <div className="flex flex-col items-center justify-center gap-2 mx-auto mt-4 sm:mt-8 md:flex-row">

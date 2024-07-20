@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link";
 import * as React from "react";
 
@@ -77,12 +75,12 @@ export function ApplicationDataTable<TData, TValue>({
                     onChange={(event) =>
                         table.getColumn("company")?.setFilterValue(event.target.value)
                     }
-                    className="max-w-sm dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 pl-8 shadow-none md:w-2/3 lg:w-1/3 border-black/[0.2]"
+                    className="max-w-sm dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white pl-8 shadow-none md:w-2/3 lg:w-1/3 border-black/[0.2]"
                 />
                 <div className="flex items-center py-4 gap-2 ml-auto">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="sm" className="translate-hover dark:text-neutral-200 text-neutral-600">
+                            <Button variant="ghost" size="sm" className="translate-hover dark:text-white text-neutral-600">
                                 <SlidersHorizontal className="h-4 w-4 mr-2" />
                                 Filter
                             </Button>
@@ -154,8 +152,8 @@ export function ApplicationDataTable<TData, TValue>({
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center dark:text-neutral-300 text-neutral-700">
                                     <div className="flex flex-col items-center justify-center py-24">
-                                        <h2 className="text-base sm:text-lg dark:text-neutral-200 text-neutral-800">Nothing here yet!</h2>
-                                        <p className="text-sm dark:text-neutral-400 text-neutral-600 pb-4">Start tracking your application.</p>
+                                        <h2 className="text-base sm:text-lg dark:text-white text-neutral-800">Nothing here yet!</h2>
+                                        <p className="text-sm dark:text-neutral-200 text-neutral-600 pb-4">Start tracking your application.</p>
                                         <Link href="/tracker/applications" className="flex items-center h-9 px-3 gap-2 rounded-lg text-neutral-100 bg-app-color hover:bg-app-color/80 text-sm translate-hover">
                                             <ListPlus className="h-4 w-4" />
                                             Track

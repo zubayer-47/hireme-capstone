@@ -77,12 +77,12 @@ export function CoverLetterDataTable<TData, TValue>({
                     onChange={(event) =>
                         table.getColumn("documentName")?.setFilterValue(event.target.value)
                     }
-                    className="max-w-sm dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] hover:dark:border-white/[0.5] placeholder:text-neutral-400 dark:text-neutral-200 pl-8 shadow-none md:w-2/3 lg:w-1/3 border-black/[0.2] hover:border-black/[0.5]"
+                    className="max-w-sm dark:bg-neutral-950 bg-neutral-100  dark:border-white/[0.2] hover:dark:border-white/[0.5] placeholder:text-neutral-400 dark:text-white pl-8 shadow-none md:w-2/3 lg:w-1/3 border-black/[0.2] hover:border-black/[0.5]"
                 />
                 <div className="flex items-center py-4 gap-2 ml-auto">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="sm" className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600 translate-hover">
+                            <Button variant="ghost" size="sm" className="flex items-center gap-2 dark:text-white text-neutral-600 translate-hover">
                                 <SlidersHorizontal className="h-4 w-4 mr-2" />
                                 Filter
                             </Button>
@@ -150,8 +150,8 @@ export function CoverLetterDataTable<TData, TValue>({
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24  gap-2 text-center dark:text-neutral-300 text-neutral-700">
                                     <div className="flex flex-col items-center justify-center py-24">
-                                        <h2 className="text-base sm:text-lg dark:text-neutral-200 text-neutral-800">Start Crafting Your Cover Letter!</h2>
-                                        <p className="text-sm dark:text-neutral-400 text-neutral-600 pb-4">Don&apos;t have a cover letter yet? No problem! Start building one here.</p>
+                                        <h2 className="text-base sm:text-lg dark:text-white text-neutral-800">Start Crafting Your Cover Letter!</h2>
+                                        <p className="text-sm dark:text-neutral-200 text-neutral-600 pb-4">Don&apos;t have a cover letter yet? No problem! Start building one here.</p>
                                         <CreateDocumentModal />
                                     </div>
                                 </TableCell>

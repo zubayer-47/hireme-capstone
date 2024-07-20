@@ -1,4 +1,3 @@
-import { ConvexError } from "convex/values";
 import { mutation, MutationCtx, QueryCtx, query  } from "./_generated/server";
 
 export const store = mutation({
@@ -6,7 +5,7 @@ export const store = mutation({
     handler: async (ctx) => {
         const identity = await ctx.auth.getUserIdentity();
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
         
         // Check if the user is already stored in the database
         const user = await ctx.db
@@ -41,7 +40,7 @@ export const getUser = async (
 ) => {
     const user = await ctx.db.query("users").withIndex("by_token", (q) => q.eq("tokenIdentifier", tokenIdentifier)).unique();
 
-    if (!user) throw new ConvexError("User not found!");
+    if (!user) throw new Error("User not found!");
 
     return user;
 }

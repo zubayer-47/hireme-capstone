@@ -1,6 +1,3 @@
-"use client"
-
-
 import { Doc } from "@/convex/_generated/dataModel";
 
 import { 
@@ -103,7 +100,7 @@ export const applicationColumns: ColumnDef<Doc<"applications">>[] = [
             switch (status) {
                 case "applied": 
                     return <Badge className="dark:bg-neutral-600/50 hover:dark:bg-neutral-800 bg-neutral-600 hover:bg-neutral-800 dark:text-neutral-300 -py-1">
-                        <Dot className="h-8 w-8 dark:text-neutral-400 text-neutral-200" />
+                        <Dot className="h-8 w-8 dark:text-neutral-200 text-neutral-200" />
                         Applied
                     </Badge>
                 case "interviewed":

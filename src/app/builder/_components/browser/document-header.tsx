@@ -85,7 +85,7 @@ export const DocumentHeader = ({
     return (
         <header className="flex h-14 items-center justify-between gap-4 border-b dark:border-white/[0.2] border-black/[0.2] bg-neutral-50 dark:bg-neutral-900 px-4 lg:h-[60px] lg:px-6">
             <nav>
-                <h2 className="dark:text-neutral-200 text-neutral-800 text-sm font-bold">
+                <h2 className="dark:text-white text-neutral-800 text-sm font-bold">
                 {isResume ? resume?.documentName : coverLetter?.documentName}
                 </h2>
             </nav>

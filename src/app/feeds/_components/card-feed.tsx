@@ -112,8 +112,8 @@ export const CardFeed = ({ feed, filters }: { feed: Doc<"feeds">; filters: Filte
                     <article className="flex items-center gap-2">
                         <Image src={feed?.profImgUrl!} alt={`${feed.username} Profile Placeholder`} width="30" height="30" className="rounded-full object-cover" />
                         <hgroup>
-                            <h2 className="text-xs dark:text-neutral-200 font-semibold capitalize">{feed.username}</h2>
-                            <p className="text-xs dark:text-neutral-400">{formatRelative(new Date(feed._creationTime), new Date())}</p>
+                            <h2 className="text-xs dark:text-white font-semibold capitalize">{feed.username}</h2>
+                            <p className="text-xs dark:text-neutral-200">{formatRelative(new Date(feed._creationTime), new Date())}</p>
                         </hgroup>
                     </article>
                     {isOwner && <CardActionsDropdown feedId={feed._id} />}
@@ -122,7 +122,7 @@ export const CardFeed = ({ feed, filters }: { feed: Doc<"feeds">; filters: Filte
 
             <CardContent>
                 <hgroup className="py-2">
-                    <CardDescription className="truncate text-sm dark:text-neutral-400">
+                    <CardDescription className="truncate text-sm dark:text-neutral-200">
                         {feed.bio}
                     </CardDescription>
                     <div className="flex items-center flex-wrap space-x-0.5 pt-2">

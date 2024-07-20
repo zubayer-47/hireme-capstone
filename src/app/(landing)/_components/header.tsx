@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { UserButton } from "@clerk/nextjs";
 import {
   Menu,
   MenuItem,
@@ -10,6 +9,7 @@ import {
   ProductItem
 } from "@/components/animation/navbar-menu";
 import { AppLogo } from "@/components/app-logo";
+import { SignOut } from "@/components/sign-out-button";
 
 const WEBSITE_URL = process.env.WEBSITE_URL;
 
@@ -66,7 +66,7 @@ export const Header = ({
             </div>
           </MenuItem>
           {isAuthenticated ? (
-              <UserButton afterSignOutUrl="/" />
+              <SignOut />
           ) : (
             <Link href="/auth/sign-in" className="h-9 px-3 bg-neutral-200 hover:bg-accent text-neutral-950 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:text-accent-foreground" >
               Sign In

@@ -90,8 +90,8 @@ export const FeedbackModal = () => {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px] w-full dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
                 <DialogHeader>
-                    <DialogTitle className="dark:text-neutral-200 text-neutral-800 capitalize">Send Feedback</DialogTitle>
-                    <DialogDescription className="dark:text-neutral-400 text-neutral-600">Your feedback helps us improve. Please share your insights, suggestion, or issues you encountered.</DialogDescription>
+                    <DialogTitle className="dark:text-white text-neutral-800 capitalize">Send Feedback</DialogTitle>
+                    <DialogDescription className="dark:text-neutral-200 text-neutral-600">Your feedback helps us improve. Please share your insights, suggestion, or issues you encountered.</DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -106,7 +106,7 @@ export const FeedbackModal = () => {
                                             {...field}
                                             type="text"
                                             placeholder="Enter your name..."
-                                            className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"
+                                            className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]"
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -124,7 +124,7 @@ export const FeedbackModal = () => {
                                             {...field}
                                             type="email"
                                             placeholder="Enter your email..."
-                                            className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"
+                                            className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]"
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -141,7 +141,7 @@ export const FeedbackModal = () => {
                                         <Textarea
                                             {...field}
                                             placeholder="Explain the what happened..."
-                                            className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"
+                                            className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]"
                                         />
                                     </FormControl>
                                     <FormMessage />

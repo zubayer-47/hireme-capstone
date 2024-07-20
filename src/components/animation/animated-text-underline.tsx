@@ -39,7 +39,7 @@ export const AnimatedTextUnderline = () => {
               stroke="#0B5CFF"
             />
           </motion.svg>
-          <span className="relative text-blue-700 font-alliance">HireMe</span>
+          <span className="relative text-blue-700 font-alliance">Hireme</span>
         </span>
       </h1>
     </Link>

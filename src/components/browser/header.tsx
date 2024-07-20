@@ -2,6 +2,7 @@ import { UserButton } from "@clerk/nextjs";
 import { MobileSidebar } from "./mobile-sidebar";
 import { DynamicSidebar } from "./dynamic-sidebar";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { SignOut } from "../sign-out-button";
 
 export const Header = () => {
     return (
@@ -11,7 +12,7 @@ export const Header = () => {
             </MobileSidebar>
             <div className="flex items-center justify-end  w-full gap-4">
                 <ThemeToggle />
-                <UserButton afterSignOutUrl="/" />
+                <SignOut />
             </div>
         </header>
     )

@@ -1,4 +1,4 @@
-"use client";
+
 
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ export const FilterFeedDropdown = () => {
     return (
       <DropdownMenu>
           <DropdownMenuTrigger asChild>
-          <Button className="flex items-center gap-2 dark:text-neutral-200 text-neutral-600  dark:bg-neutral-800 hover:dark:bg-neutral-900 bg-neutral-200 hover:bg-neutral-100 border" size="sm">
+          <Button className="flex items-center gap-2 dark:text-white text-neutral-600  dark:bg-neutral-800 hover:dark:bg-neutral-900 bg-neutral-200 hover:bg-neutral-100 border" size="sm">
                     <SlidersHorizontal className="h-4 w-4" />
                     Filter Feed
                 </Button>

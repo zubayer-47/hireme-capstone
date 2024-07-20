@@ -12,7 +12,7 @@ export const Footer = () => {
                         <div className="inline-flex items-center gap-3">
                             <AppLogo href="/" width={25} height={25} />
                         </div>
-                        <p className="mt-2 text-sm text-gray-500 ">
+                        <p className="mt-2 text-sm text-neutral-300 ">
                             Our app simplifies and enhance your job application process to get your dream job.
                         </p>
                     </hgroup>
@@ -22,7 +22,7 @@ export const Footer = () => {
                             <ul role="list" className="mt-4 space-y-2">
                                     {resources.map(({ href, title }, index) => (
                                         <li key={index}>
-                                            <Link href={href} className="text-sm text-gray-500 hover:text-gray-400">
+                                            <Link href={href} className="text-sm text-neutral-300 hover:text-gray-400">
                                                 {title}
                                             </Link>
                                         </li>
@@ -34,7 +34,7 @@ export const Footer = () => {
                             <ul role="list" className="mt-4 space-y-2">
                                 {services.map(({ href, title }, index) => (
                                 <li key={index} >
-                                        <Link href={href} className="text-sm text-gray-500 hover:text-gray-400">
+                                        <Link href={href} className="text-sm text-neutral-300 hover:text-gray-400">
                                             {title}
                                         </Link>
                                 </li>
@@ -46,7 +46,7 @@ export const Footer = () => {
                 <aside className="flex flex-col gap-2 md:gap-0 pt-12 md:flex-row md:items-center md:justify-between">
                     <nav className="text-left">
                         <span className="mx-auto mt-2 text-sm text-neutral-300 lg:mx-0">
-                            © HireMe. By:
+                            © Hireme. By:
                             <Link className="text-app-color hover:text-app-color/80 font-bold" target="_blank" href="https://developer-portfolio-sepia-phi.vercel.app/"> Alonzo Christopher</Link>
                         </span>
                     </nav>

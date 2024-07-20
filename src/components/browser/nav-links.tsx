@@ -20,7 +20,7 @@ export const NavLinks = ({
 }: NavLinksProps) => {
     return (
         <ul>
-            <p className="font-semibold dark:text-neutral-400 text-neutral-500">{titleSection}</p>
+            <p className="font-semibold dark:text-neutral-200 text-neutral-500">{titleSection}</p>
             {links.map(({ href, navLinkTitle, icon: Icon }, index) => (
                 <li key={index} className={cn(pathname.includes(navLinkTitle) && "dark:bg-neutral-950 bg-neutral-200 rounded-md px-1")}>
                     <Link

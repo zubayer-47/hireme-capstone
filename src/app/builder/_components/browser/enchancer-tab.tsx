@@ -119,16 +119,16 @@ export const EnhancerTab = ({ resumeId } : {resumeId: Id<"resume"> }) => {
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className={`flex flex-col items-center justify-center mx-auto ${steps === 4 ? "h-50" : "h-full"} overflow-y-auto `}>
                         <SheetHeader className="w-2/3 ">
-                            <SheetTitle className="dark:text-neutral-200 text-neutral-800 text-md">{formSteps[steps - 1]}</SheetTitle>
+                            <SheetTitle className="dark:text-white text-neutral-800 text-md">{formSteps[steps - 1]}</SheetTitle>
                             {steps === 1 && (
-                                <SheetDescription className="dark:text-neutral-400 text-neutral-600 text-sm">
+                                <SheetDescription className="dark:text-neutral-200 text-neutral-600 text-sm">
                                     Take advantage of this feature to tailor your resume to match specific job descriptions.
                                     We&apos;ll analyze key terms and provide actionable suggestions to help you stand out.
                                 </SheetDescription>
                             )}
                             {steps === 2 && (
                                 <aside className="flex flex-col gap-2 text-sm">
-                                    <SheetDescription className="dark:text-neutral-400 text-neutral-600 text-sm">Find the job listing you are applying for and copy the job description text.</SheetDescription>
+                                    <SheetDescription className="dark:text-neutral-200 text-neutral-600 text-sm">Find the job listing you are applying for and copy the job description text.</SheetDescription>
                                     <div className="border-2 rounded-2xl bg-neutral-600 border-neutral-600 p-1">
                                         <video autoPlay muted src="/videos/how-to-copy-job-description.mov" className="w-100 h-100 rounded-2xl border-2 border-neutral-500" />
                                     </div>
@@ -136,7 +136,7 @@ export const EnhancerTab = ({ resumeId } : {resumeId: Id<"resume"> }) => {
                             )}
                             {steps === 3 && (
                                 <aside className="flex flex-col gap-2 text-sm w-full">
-                                    <SheetDescription className="dark:text-neutral-400 text-neutral-600 text-sm">Paste the job description text into the field below for analysis.</SheetDescription>
+                                    <SheetDescription className="dark:text-neutral-200 text-neutral-600 text-sm">Paste the job description text into the field below for analysis.</SheetDescription>
                                     <FormField
                                         control={form.control}
                                         name="description"
@@ -159,7 +159,7 @@ export const EnhancerTab = ({ resumeId } : {resumeId: Id<"resume"> }) => {
                             )}
                             {steps === 4 && (
                                 <aside className="flex flex-col  gap-2 text-sm w-full">
-                                    <SheetDescription className="dark:text-neutral-400 text-neutral-600 text-sm">View the matched keywords, suggestions for improvement, and your match score.</SheetDescription>
+                                    <SheetDescription className="dark:text-neutral-200 text-neutral-600 text-sm">View the matched keywords, suggestions for improvement, and your match score.</SheetDescription>
                                     {pending ? (
                                        <Analyzing />
                                     ) : ( 

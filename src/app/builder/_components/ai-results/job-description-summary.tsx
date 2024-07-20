@@ -19,10 +19,10 @@ export const JobDescriptionSummary = ({ jobDescriptionSummary }: { jobDescriptio
             <hgroup className="flex items-start gap-2">
                 <Avatar initials={companyInitials} />
                 <aside>
-                    <p className="flex items-center gap-1 text-sm dark:text-neutral-200 text-neutral-800 tracking-tight truncate"><BriefcaseBusiness className="h-4 w-4 text-app-color" /> {jobDescriptionSummary.jobPosition}</p>
-                    <p className="flex items-center gap-1 text-sm dark:text-neutral-200 text-neutral-800 tracking-tight truncate"><Building2 className="h-4 w-4 text-app-color" /> {jobDescriptionSummary.companyName}</p>
-                    <p className="flex items-center gap-1 text-sm dark:text-neutral-200 text-neutral-800 tracking-tight truncate"><MapPinned className="h-4 w-4 text-app-color" />  {jobDescriptionSummary.location}</p>
-                    <p className="flex items-center gap-1 text-sm dark:text-neutral-200 text-neutral-800 tracking-tight truncate"><Type className="h-4 w-4 text-app-color" />  {jobDescriptionSummary.employmentType}</p>
+                    <p className="flex items-center gap-1 text-sm dark:text-white text-neutral-800 tracking-tight truncate"><BriefcaseBusiness className="h-4 w-4 text-app-color" /> {jobDescriptionSummary.jobPosition}</p>
+                    <p className="flex items-center gap-1 text-sm dark:text-white text-neutral-800 tracking-tight truncate"><Building2 className="h-4 w-4 text-app-color" /> {jobDescriptionSummary.companyName}</p>
+                    <p className="flex items-center gap-1 text-sm dark:text-white text-neutral-800 tracking-tight truncate"><MapPinned className="h-4 w-4 text-app-color" />  {jobDescriptionSummary.location}</p>
+                    <p className="flex items-center gap-1 text-sm dark:text-white text-neutral-800 tracking-tight truncate"><Type className="h-4 w-4 text-app-color" />  {jobDescriptionSummary.employmentType}</p>
                 </aside>
             </hgroup>
 

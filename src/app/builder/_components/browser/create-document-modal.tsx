@@ -118,7 +118,7 @@ export const CreateDocumentModal = () => {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px] w-full dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
                 <DialogHeader>
-                    <DialogTitle className="dark:text-neutral-200 text-neutral-800 capitalize">New Document</DialogTitle>
+                    <DialogTitle className="dark:text-white text-neutral-800 capitalize">New Document</DialogTitle>
                 </DialogHeader>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -129,7 +129,7 @@ export const CreateDocumentModal = () => {
                                 <FormItem>
                                     <FormLabel className="dark:text-neutral-300 text-neutral-700">Document</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Untitled" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
+                                        <Input placeholder="Untitled" className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]"  {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -143,11 +143,11 @@ export const CreateDocumentModal = () => {
                                     <FormLabel className="dark:text-neutral-300 text-neutral-700">Document Type</FormLabel>
                                     <Select onValueChange={field.onChange} defaultValue={field.value} >
                                         <FormControl>
-                                            <SelectTrigger className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]">
+                                            <SelectTrigger className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]">
                                                 <SelectValue placeholder="Select a status for your application" />
                                             </SelectTrigger>
                                         </FormControl>
-                                        <SelectContent className="dark:bg-neutral-950 bg-neutral-200 dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 text-neutral-800 border-black/[0.2]">
+                                        <SelectContent className="dark:bg-neutral-950 bg-neutral-200 dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white text-neutral-800 border-black/[0.2]">
                                             <SelectItem value="resume">Resume</SelectItem>
                                             <SelectItem value="cover letter">Cover Letter</SelectItem>
                                         </SelectContent>
@@ -164,7 +164,7 @@ export const CreateDocumentModal = () => {
                                 variant="ghost"  
                                 disabled={isLoading} 
                                 onClick={() => setIsOpen(false)}
-                                className="translate-hover dark:text-neutral-200 text-neutral-800"
+                                className="translate-hover dark:text-white text-neutral-800"
                             >
                                 Cancel
                             </Button>

@@ -16,8 +16,8 @@ export const AppLogo = ({
 }: AppLogoProps) => {
     return (
         <Link href={href} className={`flex items-center gap-1 group transition ${className}`}>
-            <Image src="/svg/logo.svg" alt="Letter H Logo & App Logo for the website HireMe" width={width} height={height} className="group-hover:animate-spin" />
-            <p className="text-neutral-800 dark:text-neutral-200 text-sm font-semibold group-hover:dark:text-neutral-300 group-hover:text-neutral-700">Hireme</p>
+            <Image src="/svg/logo.svg" alt="Letter H Logo & App Logo for the website Hireme" width={width} height={height} className="group-hover:animate-spin" />
+            <p className="text-neutral-800 dark:text-white text-sm font-semibold group-hover:dark:text-neutral-300 group-hover:text-neutral-700">Hireme</p>
         </Link>
 
     )

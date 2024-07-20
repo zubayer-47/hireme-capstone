@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { usePDF } from "@react-pdf/renderer";
@@ -41,7 +40,7 @@ const PDFNavbar = ({
     return (
         <div className="relative border dark:border-white/[0.2] border-black/[0.2] shadow-md rounded-lg bg-card text-card-foreground py-2 flex items-center justify-center px-1 sm:px-2 md:px-4 flex-grow text-neutral-600 md:justify-between">
             <div className="flex items-center gap-2">
-                <ChevronsUpDown className="h-5 w-5 dark:text-neutral-400 text-neutral-600" aria-hidden="true" />
+                <ChevronsUpDown className="h-5 w-5 dark:text-neutral-200 text-neutral-600" aria-hidden="true" />
                 <input
                     type="range"
                     min={0.5}
@@ -54,12 +53,12 @@ const PDFNavbar = ({
                     }}
                     className="bg-app-color"
                 />
-                <div className="w-10 dark:text-neutral-400 text-neutral-600">{`${Math.round(scale * 100)}%`}</div>
+                <div className="w-10 dark:text-neutral-200 text-neutral-600">{`${Math.round(scale * 100)}%`}</div>
             </div>
             <a
                 download={fileName}
                 href={instance.url!}
-                className="mr-2 h-10 px-4 py-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground dark:text-neutral-200 text-neutral-800"
+                className="mr-2 h-10 px-4 py-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground dark:text-white text-neutral-800"
             >
                 <Download className="h-4 w-4 mr-2" />
                 <span className="whitespace-nowrap capitalize">Download {buttonName}</span>

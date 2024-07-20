@@ -40,7 +40,7 @@ export const TagsInput = ({ value, onChange }: TagsInputProps) => {
             {value.length > 0 && (
                 <div className="flex items-center  flex-wrap flex-grow overflow-x-auto w-full space-x-0.5">
                     {value.map((tag, index) => (
-                        <Badge key={index} className="mb-1 flex items-center gap-1 dark:bg-neutral-950 hover:dark:bg-neutral-800 dark:border-white/[0.1] hover:dark:border-white/[0.3] border-black/[0.1] hover:border-black/[0.3] bg-neutral-300 dark:text-neutral-400 text-neutral-600" >
+                        <Badge key={index} className="mb-1 flex items-center gap-1 dark:bg-neutral-950 hover:dark:bg-neutral-800 dark:border-white/[0.1] hover:dark:border-white/[0.3] border-black/[0.1] hover:border-black/[0.3] bg-neutral-300 dark:text-neutral-200 text-neutral-600" >
                             {tag}
                             <X className="text-app-color h-4 w-4 cursor-pointer" onClick={() => handleTagRemove(index)} />
                         </Badge>

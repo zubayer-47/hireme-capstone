@@ -121,8 +121,8 @@ export const CreateFeedModal = () => {
             </DialogTrigger>
             <DialogContent className="sm:w-2/3 w-full dark:bg-neutral-950 dark:border-white/[0.2] bg-neutral-100 border-black/[0.2]">
                 <DialogHeader className="pb-2">
-                    <DialogTitle className="dark:text-neutral-200 text-neutral-800 capitalize">Share Your Resume to the Community</DialogTitle>
-                    <DialogDescription className="dark:text-neutral-400 text-neutral-600">Start filling up the details and get feedback from your peers.</DialogDescription>
+                    <DialogTitle className="dark:text-white text-neutral-800 capitalize">Share Your Resume to the Community</DialogTitle>
+                    <DialogDescription className="dark:text-neutral-200 text-neutral-600">Start filling up the details and get feedback from your peers.</DialogDescription>
                 </DialogHeader>
                 <UploadPDFDropzone onFileUrlChange={setPdfFileUrl} />
                 <Form {...form}>
@@ -134,7 +134,7 @@ export const CreateFeedModal = () => {
                                 <FormItem>
                                     <FormLabel className="dark:text-neutral-300 text-neutral-700">Bio</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Share your job hunting journey or experience..." className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-neutral-200 border-black/[0.2]"  {...field} />
+                                        <Textarea placeholder="Share your job hunting journey or experience..." className="dark:bg-neutral-950 bg-neutral-200  dark:border-white/[0.2] placeholder:text-neutral-400 dark:text-white border-black/[0.2]"  {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

@@ -5,7 +5,7 @@ import {
     Education,   
     WorkExperience 
 } from "./types";
-import { v, ConvexError } from "convex/values";
+import { v } from "convex/values";
 import { mutation, QueryCtx, MutationCtx, query, } from "./_generated/server";
 
 async function userIdentity(
@@ -31,7 +31,7 @@ export const readDocuments = query({
     handler: async(ctx, args) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new ConvexError("Unauthorized!");
+        if (!hasAccess) throw new Error("Unauthorized!");
 
         return await ctx.db
             .query("resume")
@@ -45,12 +45,12 @@ export const getResume = query({
     handler: async (ctx, {resumeId}) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new ConvexError("Unauthorized!");
+        if (!hasAccess) throw new Error("Unauthorized!");
 
         const existingResume = await ctx.db.get(resumeId);
 
         if (!existingResume || existingResume.userId !== hasAccess._id) {
-            throw new ConvexError("Resume not found or not authorized to access the file.")
+            throw new Error("Resume not found or not authorized to access the file.")
         }
 
         return existingResume;
@@ -64,7 +64,7 @@ export const createDocument = mutation({
     }) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new ConvexError("Unauthorized!");
+        if (!hasAccess) throw new Error("Unauthorized!");
 
         return await ctx.db.insert("resume", {
             userId: hasAccess._id,
@@ -84,14 +84,14 @@ export const updateResumeFields = mutation({
     }, handler: async (ctx, args) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new ConvexError("Unauthorized!");
+        if (!hasAccess) throw new Error("Unauthorized!");
         
         const { resumeId, ...updatedArgs } = args;
 
         const existingResume = await ctx.db.get(resumeId);
 
         if (!existingResume || existingResume.userId !== hasAccess._id) {
-            throw new ConvexError("Resume not found or not authorized to access the file.")
+            throw new Error("Resume not found or not authorized to access the file.")
         }
 
         await ctx.db.patch(existingResume._id, { ...updatedArgs })
@@ -103,12 +103,12 @@ export const deleteDocument = mutation({
     handler: async (ctx, { resumeId }) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new ConvexError("Unauthorized!");
+        if (!hasAccess) throw new Error("Unauthorized!");
 
         const existingResume = await ctx.db.get(resumeId);
 
         if (!existingResume || existingResume.userId !== hasAccess._id) {
-            throw new ConvexError("Resume not found or not authorized to access the file.")
+            throw new Error("Resume not found or not authorized to access the file.")
         }
 
         await ctx.db.delete(existingResume._id);

@@ -47,7 +47,7 @@ export const DynamicSidebar = () => {
                             className="object-cover rounded-md"
 
                             src={user?.imageUrl || `/svg/user-profile-placeholder.svg`} />
-                        <h2 className="capitalize dark:text-neutral-200 text-neutral-950 text-sm">{user?.firstName} Feed</h2>
+                        <h2 className="capitalize dark:text-white text-neutral-950 text-sm">{user?.firstName} Feed</h2>
                     </Link>
 
                     {dataLinks.map(({ titleSection, links }, index) => (
@@ -63,7 +63,7 @@ export const DynamicSidebar = () => {
             <div className="mt-auto p-4">
                 <Card className="dark:bg-neutral-900 bg-neutral-50 dark:border-white/[0.2] hover:dark:border-white/[0.5] border-black/[0.2] hover:border-black/[0.5]">
                     <CardHeader>
-                        <CardDescription className="dark:text-neutral-400 text-neutral-600 text-center">
+                        <CardDescription className="dark:text-neutral-200 text-neutral-600 text-center">
                             We value your feedback. It helps us make things better!
                         </CardDescription>
                     </CardHeader>

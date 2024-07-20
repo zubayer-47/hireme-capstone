@@ -7,7 +7,7 @@ export const Highlights = () => {
                 <aside className="text-center">
                     <h2 className="text-2xl sm:text-4xl font-semibold tracking-tighter text-neutral-200">
                         Experience the true power of {" "}
-                        <span className="text-app-color ">HireMe</span>
+                        <span className="text-app-color ">Hireme</span>
                     </h2>
                     <p className="max-w-lg mx-auto mt-4 text-sm sm:text-base text-gray-400">
                         All these features are right at your fingertips within the browser. And
@@ -21,7 +21,7 @@ export const Highlights = () => {
                             <highlight.icon className="text-app-color h-8 w-8" />
                             <hgroup className="mt-3 sm:mt-6">
                                 <h3 className="font-medium text-neutral-300 text-sm sm:text-base">{highlight.title}</h3>
-                                <p className="mt-2 text-xs sm:text-sm text-gray-500">
+                                <p className="mt-2 text-xs sm:text-sm text-neutral-300">
                                     {highlight.description}
                                 </p>
                             </hgroup>

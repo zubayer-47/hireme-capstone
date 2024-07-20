@@ -1,4 +1,4 @@
-import { ConvexError, v } from "convex/values";
+import { v } from "convex/values";
 import { internalMutation, MutationCtx, query, QueryCtx } from "./_generated/server";
 
 const userIdentity = async (
@@ -25,7 +25,7 @@ export const getResults = query({
     handler: async (ctx, { resumeId }) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         const results = await ctx.db
             .query("results")
@@ -68,7 +68,7 @@ export const saveResults = internalMutation({
     handler: async (ctx, args) => {
         const identity = await userIdentity(ctx);
 
-        if (!identity) throw new ConvexError("Unauthorized!");
+        if (!identity) throw new Error("Unauthorized!");
 
         const existingAIResults = await ctx.db
             .query("results")

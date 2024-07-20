@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * Suppressing ResumePDF development errors.
  */
