@@ -56,7 +56,6 @@
 | **PDF Reader** | [PDF.js](https://github.com/mozilla/pdf.js) | PDF rendering and manipulation. |
 | **PDF Renderer** | [React-pdf](https://github.com/diegomura/react-pdf) | PDF rendering and manipulation. |
 | **AI Integration** | [OpenAI](https://github.com/openai/openai-quickstart-node) | Integrating AI capabilities. |
-| **Email Handling** | [EmailJS](https://github.com/eleith/emailjs) | Handling email communications. |
 | **Lucide Icon** | [Lucide-Icon](https://github.com/lucide-icons/lucide) | Intuitive and minimalist icons |
 | **Zod** | [Zod](https://github.com/colinhacks/zod) | TypeScript-first schema validation with static type inference |
 | **React-Hook-Form** | [React-Hook-Form](https://github.com/react-hook-form/react-hook-form) | React Hooks for form state management and validation. |
