@@ -94,8 +94,6 @@ $ npm run dev or bun run dev
 
 > [OpenAI](https://platform.openai.com/api-keys) Get your API Key from the link but you must have credits to be able to use it.
 
-> [EmailJS](https://www.emailjs.com/) Create your account on EmailJS for free and get your API keys by following the instructions on the given link.
-
 Copy this and paste it in your .env or .env.local.
 ```
 CONVEX_DEPLOYMENT= 
@@ -103,10 +101,6 @@ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
 CLERK_SECRET_KEY=
 NEXT_PUBLIC_CONVEX_URL=https://<PROJECT_NAME>.convex.cloud
 OPENAI_API_KEY=
-EMAILJS_API_KEY=
-EMAILJS_EMAIL_ID=
-EMAILJS_PUBLIC_KEY=
-EMAILJS_PRIVATE_KEY=
 ```
 
 
