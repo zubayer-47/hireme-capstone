@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a target="_blank" href="https://hireme-silk.vercel.app/"><img src="https://github.com/user-attachments/assets/bc375820-feb5-45a1-be18-89356fcdcd29" alt="Hireme" width="200"></a>
+  <img src="https://github.com/user-attachments/assets/bc375820-feb5-45a1-be18-89356fcdcd29" alt="Hireme" width="200">
   <br>
   Hireme
   <br>
@@ -10,6 +10,7 @@
 
 
 <h4 align="center">Hireme simplifies and enhances the job application process for job seekers.</h4>
+<p align="center">🛠️ Site is under maintenance, will be reopen soon 🛠️</p>
 
 
 ## Resume Builder Tool with AI Enhancer
