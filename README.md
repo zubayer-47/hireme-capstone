@@ -13,25 +13,25 @@
 <p align="center">🛠️ Site is under maintenance, will be reopen soon 🛠️</p>
 
 
-## Resume Builder Tool with AI Enhancer
+## 📝 Resume Builder Tool with AI Enhancer 📝
 
 <img width="1448" alt="builder" src="https://github.com/user-attachments/assets/50112e4b-b4cc-4dc5-8a55-1aaea86edd53">
 
-## Cover Letter Builder Tool
+## 🖋️ Cover Letter Builder Tool 🖋️
 
 <img width="1454" alt="cover-letter" src="https://github.com/user-attachments/assets/c5d5178e-1990-4ea5-bc2e-0744ff5d9648">
 
-## Community Support Feed Tool
+## 🎗️ Community Support Feed Tool 🎗️
 
 <img width="1448" alt="feeds" src="https://github.com/user-attachments/assets/36fe3041-9087-4b75-9002-8882fa52aba1">
 
-## Job Tracker Tool
+## 🎯 Job Tracker Tool 🎯
 
 <img width="1448" alt="tracker" src="https://github.com/user-attachments/assets/804bc627-8706-4458-a0f0-556497d0e398">
 
 
 
-## Main Key Features of Hireme
+## ✨ Main Key Features of Hireme ✨
 | <div style="width:285px">**Feature**</div> | **Description** |
 |---|---|
 | **1. Privacy Workspace** | A secure, personalized environment where users can manage their job search data, including resumes, cover letters, and applications, with end-to-end encryption powered by Clerk. |
@@ -41,7 +41,7 @@
 | **5. Clean, Modern UI using TailwindCSS and Shadcn-UI** | A visually appealing and user-friendly interface that provides a seamless experience across devices, built with cutting-edge technologies for optimal performance and responsiveness. |
 
 
-## 📚 Tech Stack
+## 📚 Tech Stack 📚
 
 | <div style="width:140px">**Category**</div> | <div style="width:100px">**Choice**</div> | **Descriptions** |
 |---|---|---|
@@ -62,13 +62,13 @@
 | **Framer Motion** | [Framer-Motion](https://github.com/framer/motion) | Motion library for React. |
 
 
-## 📁 Project Structure
+## 📁 Project Structure 📁
 
 Hireme have a total of 4 main routes and the project is created using NextJS App router all the codes can be found under`src/*` folder. 
 
 <img width="739" alt="sitemap" src="https://github.com/user-attachments/assets/25cb1872-d1b0-4d9a-84b1-f35568fe59c2">
 
-## Getting started
+## 🔥 Getting started 🔥
 
 To clone and run this application, you'll need [Git](https://github.com/achris-alonzo30/hireme.git) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
@@ -86,11 +86,11 @@ $ npm install or bun install
 $ npm run dev or bun run dev
 ```
 
-## **Prerequisites**
+## ‼️ **Prerequisites** ‼️
 
 > [Convex](https://docs.convex.dev/quickstart/nextjs) Create your account on Convex for free and get your API keys by following the instructions on the given link.
 
-> [Clerk](https://clerk.com/docs/quickstarts/nextjs?_gl=1*16h2u9o*_gcl_au*MTA1NjE5MjEyNS4xNzAzNDYxNjMx*_ga*NjUzNTQzNzQ2LjE3MDM0NjE2MzE.*_ga_1WMF5X234K*MTcwMzQ2MTYzMC4xLjEuMTcwMzQ2MTc4Ny4wLjAuMA..) Create your account on Clerk for free and get your API keys by following the instructions on the given link.
+> [Clerk](https://clerk.com/docs) Create your account on Clerk for free and get your API keys by following the instructions on the given link.
 
 > [OpenAI](https://platform.openai.com/api-keys) Get your API Key from the link but you must have credits to be able to use it.
 
@@ -104,7 +104,7 @@ OPENAI_API_KEY=
 ```
 
 
-## Acknowledgements
+## 🙏 Acknowledgements 🙏
 
 - [BrainStation](https://brainstation.io/): Software Development Summer Cohort 2024 
 - [Code To Career](https://codetocareer.ca/program): Supporting me getting into this program
