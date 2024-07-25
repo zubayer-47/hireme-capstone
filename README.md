@@ -45,12 +45,12 @@
 
 | <div style="width:140px">**Category**</div> | <div style="width:100px">**Choice**</div> | **Descriptions** |
 |---|---|---|
-| **Frontend** | [React](https://github.com/facebook/react) | Building a performant, interactive, and visually appealing interface. |
-| **Web Framework** | [Next.js](https://github.com/vercel/next.js) | Building a performant, interactive, and visually appealing interface. |
-| **Language** | [TypeScript](https://github.com/microsoft/TypeScript) | Building a performant, interactive, and visually appealing interface. |
-| **State Management** | [Zustand](https://github.com/pmndrs/zustand) | Building a performant, interactive, and visually appealing interface. |
-| **CSS Framework** | [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) | Building a performant, interactive, and visually appealing interface. |
-| **UI Library** | [Shadcn-UI](https://github.com/shadcn-ui/ui) | Building a performant, interactive, and visually appealing interface. |
+| **Frontend** | [React](https://github.com/facebook/react) | Declarative and component-based for building interactive UIs. |
+| **Web Framework** | [Next.js](https://github.com/vercel/next.js) | Server-side rendering and static site generation for SEO and performance. |
+| **Language** | [TypeScript](https://github.com/microsoft/TypeScript) | Static typing for improved code maintainability and fewer errors. |
+| **CSS Framework** | [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss) | Utility-first approach for rapid UI development and customization. |
+| **UI Library** | [Shadcn-UI](https://github.com/shadcn-ui/ui) | Pre-built components for a consistent and modern UI experience. |
+| **State Management** | [Zustand](https://github.com/pmndrs/zustand) | Lightweight and performant for managing application state. |
 | **Backend** | [Convex-DB](https://github.com/get-convex/convex-backend) | Real-time data management, serverless functions, and efficient queries. |
 | **Authentication** | [Clerk](https://github.com/clerk/clerk-docs) | Seamless user authentication and authorization. |
 | **PDF Reader** | [PDF.js](https://github.com/mozilla/pdf.js) | PDF rendering and manipulation. |
