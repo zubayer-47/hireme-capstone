@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from "next/image";
-export default async function NotFound() {
+export default function NotFound() {
     
     return (
         <main className="h-full w-full flex justify-center items-center mx-auto">

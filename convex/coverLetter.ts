@@ -14,14 +14,14 @@ async function userIdentity(
 ) {
     const identity = await ctx.auth.getUserIdentity();
 
-    if (!identity) return null;
+    if (!identity) throw new Error("Unauthorized!");
 
     const user = await ctx.db
         .query("users")
         .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
         .unique();
 
-    if (!user) return null;
+    if (!user) throw new Error("User not found!");
 
     return user;
 }
@@ -31,12 +31,12 @@ async function userIdentity(
 export const readDocuments = query({
     args: {},
     handler: async (ctx, args) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         return await ctx.db.query("coverLetter")
-            .withIndex("by_userId", q => q.eq("userId", identity._id))
+            .withIndex("by_userId", q => q.eq("userId", hasAccess._id))
             .collect();
     }
 });
@@ -44,13 +44,13 @@ export const readDocuments = query({
 export const getCoverLetter = query({
     args: { coverLetterId: v.id("coverLetter") },
     handler: async (ctx, { coverLetterId }) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const existingCoverLetter = await ctx.db.get(coverLetterId);
 
-        if (!existingCoverLetter || existingCoverLetter.userId !== identity._id) {
+        if (!existingCoverLetter || existingCoverLetter.userId !== hasAccess._id) {
             throw new Error("Resume not found or not authorized to access the file.")
         }
 
@@ -65,7 +65,7 @@ export const createDocument = mutation({
     }) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         return await ctx.db.insert("coverLetter", {
             userId: hasAccess._id,
@@ -85,15 +85,15 @@ export const updateCoverLetterFields = mutation({
         closingParagraph: v.optional(ClosingParagraph),
     },
     handler: async (ctx, args) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const { coverLetterId, ...updatedArgs } = args;
 
         const existingCoverLetter = await ctx.db.get(coverLetterId);
 
-        if (!existingCoverLetter || existingCoverLetter.userId !== identity._id) {
+        if (!existingCoverLetter || existingCoverLetter.userId !== hasAccess._id) {
             throw new Error("Resume not found or not authorized to access the file.")
         }
 
@@ -105,13 +105,13 @@ export const updateCoverLetterFields = mutation({
 export const deleteDocument = mutation({
     args: { coverLetterId: v.id("coverLetter") },
     handler: async (ctx, { coverLetterId }) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const existingCoverLetter = await ctx.db.get(coverLetterId);
 
-        if (!existingCoverLetter || existingCoverLetter.userId !== identity._id) {
+        if (!existingCoverLetter || existingCoverLetter.userId !== hasAccess._id) {
             throw new Error("Resume not found or not authorized to access the file.")
         }
 

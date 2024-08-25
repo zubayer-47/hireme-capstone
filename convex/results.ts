@@ -6,14 +6,14 @@ const userIdentity = async (
 ) => {
     const identity = await ctx.auth.getUserIdentity();
 
-    if (!identity) return null;
+    if (!identity) throw new Error("Unauthorized!");
 
     const user = await ctx.db
         .query("users")
         .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
         .unique();
 
-    if (!user) return null;
+    if (!user) throw new Error("User not found!");
 
     return user;
 }
@@ -23,13 +23,13 @@ export const getResults = query({
         resumeId: v.id("resume"),
     },
     handler: async (ctx, { resumeId }) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const results = await ctx.db
             .query("results")
-            .withIndex("by_userId_resume_id", (q) => q.eq("userId", identity._id).eq("resumeId", resumeId))
+            .withIndex("by_userId_resume_id", (q) => q.eq("userId", hasAccess._id).eq("resumeId", resumeId))
             .unique();
 
         if (!results) return null;
@@ -66,20 +66,20 @@ export const saveResults = internalMutation({
         })
     },
     handler: async (ctx, args) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const existingAIResults = await ctx.db
             .query("results")
-            .withIndex("by_userId_resume_id", (q) => q.eq("userId", identity._id).eq("resumeId", args.resumeId))
+            .withIndex("by_userId_resume_id", (q) => q.eq("userId", hasAccess._id).eq("resumeId", args.resumeId))
             .unique();
 
         // If the current resumeId being formatted doesn't have AI results generated
         // Create a new one else patch the exisitng one.    
         if (!existingAIResults) {
             await ctx.db.insert("results", {
-                userId: identity._id,
+                userId: hasAccess._id,
                 ...args
             })
         } else {

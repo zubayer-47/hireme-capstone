@@ -13,14 +13,14 @@ async function userIdentity(
 ) {
     const identity = await ctx.auth.getUserIdentity();
 
-    if (!identity) return null;
+    if (!identity) throw new Error("Unauthorized!");
 
     const user = await ctx.db
         .query("users")
         .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
         .unique();
     
-    if (!user) return null;
+    if (!user) throw new Error("User not found!");
 
     return user;
 }
@@ -31,7 +31,7 @@ export const readDocuments = query({
     handler: async(ctx, args) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         return await ctx.db
             .query("resume")
@@ -45,7 +45,7 @@ export const getResume = query({
     handler: async (ctx, {resumeId}) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const existingResume = await ctx.db.get(resumeId);
 
@@ -64,7 +64,7 @@ export const createDocument = mutation({
     }) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         return await ctx.db.insert("resume", {
             userId: hasAccess._id,
@@ -84,7 +84,7 @@ export const updateResumeFields = mutation({
     }, handler: async (ctx, args) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
         
         const { resumeId, ...updatedArgs } = args;
 
@@ -103,7 +103,7 @@ export const deleteDocument = mutation({
     handler: async (ctx, { resumeId }) => {
         const hasAccess = await userIdentity(ctx);
 
-        if (!hasAccess) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const existingResume = await ctx.db.get(resumeId);
 

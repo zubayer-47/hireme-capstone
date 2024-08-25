@@ -1,11 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { SignOutButton, useUser } from "@clerk/nextjs";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 
+
 export const SignOut = () => {
     const { user } = useUser();
+    const router = useRouter();
+
+    useEffect(() => {
+        router.refresh()
+    }, [])
     return (
         <SignOutButton redirectUrl="/">
             <DropdownMenu>

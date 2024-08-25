@@ -6,14 +6,14 @@ async function userIdentity(
 ) {
     const identity = await ctx.auth.getUserIdentity();
 
-    if (!identity) return null;
+    if (!identity) throw new Error("Unauthorized!");
 
     const user = await ctx.db
         .query("users")
         .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
         .unique();
 
-    if (!user) return null;
+    if (!user) throw new Error("User not found!");
 
     return user;
 }
@@ -43,16 +43,16 @@ export const getFeeds = query({
             ))
     },
     handler: async (ctx, { filters }) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         let feeds = await ctx.db.query("feeds").order("desc").collect();
 
         if (filters === "bookmarks") {
             const saved = await ctx.db
                 .query("isSaved")
-                .withIndex("by_userId", q => q.eq("userId", identity._id))
+                .withIndex("by_userId", q => q.eq("userId", hasAccess._id))
                 .collect();
 
             feeds = feeds.filter(feed => saved.some((s) => s.feedId === feed._id));
@@ -102,20 +102,20 @@ export const createFeed = mutation({
         tags: v.array(v.string()),
     },
     handler: async (ctx, args) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const fileUrl = await ctx.storage.getUrl(args.fileId);
         return await ctx.db.insert("feeds", {
             ...args,
-            userId: identity._id,
+            userId: hasAccess._id,
             fileUrl: fileUrl ?? "",
-            username: identity.name,
+            username: hasAccess.name,
             upVoteCount: 0,
             downVoteCount: 0,
             voterIds: [],
-            profImgUrl: identity.profileUrl
+            profImgUrl: hasAccess.profileUrl
         })
     }
 });
@@ -127,9 +127,9 @@ export const editBioTagFeed = mutation({
         tags: v.array(v.string()),
     },
     handler: async (ctx, { bio, tags, feedId }) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const feed = await ctx.db.get(feedId);
 
@@ -147,9 +147,9 @@ export const editBioTagFeed = mutation({
 export const deleteFeed = mutation({
     args: { feedId: v.id("feeds") },
     handler: async (ctx, { feedId }) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         return await ctx.db.delete(feedId);
     }
@@ -162,18 +162,18 @@ export const vote = mutation({
         voteType: v.union(v.literal("upvote"), v.literal("downvote"))
     },
     handler: async (ctx, { feedId, voteType }) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const feed = await ctx.db.get(feedId);
 
         if (!feed) throw new Error("The ID you provided is invalid.");
 
-        const voterIndex = feed.voterIds.findIndex(v => v.voterId === identity._id);
+        const voterIndex = feed.voterIds.findIndex(v => v.voterId === hasAccess._id);
         if (voterIndex !== -1) {
             const existingVote = feed.voterIds[voterIndex]
-            if (existingVote.voterId === identity._id) {
+            if (existingVote.voterId === hasAccess._id) {
                 if (voteType === "upvote") {
                     feed.upVoteCount -= 1;
                 } else if (voteType === "downvote") {
@@ -197,7 +197,7 @@ export const vote = mutation({
             } else if (voteType === "downvote") {
                 feed.downVoteCount += 1;
             }
-            feed.voterIds.push({ voterId: identity._id, voteType })
+            feed.voterIds.push({ voterId: hasAccess._id, voteType })
         }
 
         await ctx.db.patch(feedId, {
@@ -214,9 +214,9 @@ export const bookmarkFeed = mutation({
         feedId: v.id("feeds"),
     },
     handler: async (ctx, { feedId }) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const feed = await ctx.db.get(feedId);
 
@@ -224,7 +224,7 @@ export const bookmarkFeed = mutation({
 
         return await ctx.db.insert("isSaved", {
             feedId,
-            userId: identity._id
+            userId: hasAccess._id
         })
     }
 })
@@ -234,15 +234,15 @@ export const unbookmarkFeed = mutation({
         feedId: v.id("feeds"),
     },
     handler: async (ctx, { feedId }) => {
-        const identity = await userIdentity(ctx);
+        const hasAccess = await userIdentity(ctx);
 
-        if (!identity) throw new Error("Unauthorized!");
+        if (!hasAccess) return null;
 
         const feed = await ctx.db.get(feedId);
 
         if (!feed) throw new Error("The ID you provided is invalid.");
 
-        const savedFeed = await ctx.db.query("isSaved").withIndex("by_userId_feedId", q => q.eq("userId", identity._id).eq("feedId", feedId)).unique();
+        const savedFeed = await ctx.db.query("isSaved").withIndex("by_userId_feedId", q => q.eq("userId", hasAccess._id).eq("feedId", feedId)).unique();
 
         if (!savedFeed) throw new Error("The ID you provided is invalid.");
 

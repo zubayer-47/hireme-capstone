@@ -6,10 +6,12 @@ import { useEffect, useState } from "react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useConvexAuth, useMutation } from "convex/react"
+import { useRouter } from "next/navigation";
 
 export const useStoreUserEffect = () => {
     const { isLoading, isAuthenticated } = useConvexAuth();
     const { user } = useUser();
+    const router = useRouter();
 
     const [userId, setUserId] = useState<Id<"users"> | null>(null);
     const storeUser = useMutation(api.users.store);
@@ -25,6 +27,7 @@ export const useStoreUserEffect = () => {
         }
 
         createUser();
+        router.refresh();
         return () => setUserId(null)
 
     }, [isAuthenticated, storeUser, user?.id])
