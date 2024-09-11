@@ -10,8 +10,6 @@
 
 
 <h4 align="center">Hireme simplifies and enhances the job application process for job seekers.</h4>
-<p align="center">🛠️ Site is under maintenance, will be reopen soon 🛠️</p>
-
 
 ## 📝 Resume Builder Tool with AI Enhancer 📝
 
