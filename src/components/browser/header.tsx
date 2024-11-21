@@ -1,8 +1,7 @@
-import { UserButton } from "@clerk/nextjs";
-import { MobileSidebar } from "./mobile-sidebar";
-import { DynamicSidebar } from "./dynamic-sidebar";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SignOut } from "../sign-out-button";
+import { DynamicSidebar } from "./dynamic-sidebar";
+import { MobileSidebar } from "./mobile-sidebar";
 
 export const Header = () => {
     return (

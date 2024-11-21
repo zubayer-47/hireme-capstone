@@ -1,21 +1,69 @@
 import { v } from "convex/values";
-import { mutation, QueryCtx, MutationCtx, query, } from "./_generated/server";
+import { mutation, MutationCtx, query, QueryCtx, } from "./_generated/server";
+// import { GenericMutationCtx } from "convex/server";
 
-async function userIdentity(
-    ctx: QueryCtx | MutationCtx,
-) {
-    const identity = await ctx.auth.getUserIdentity();
+// async function userIdentity(
+//     ctx: QueryCtx | MutationCtx,
+// ) {
+//     const identity = await ctx.auth.getUserIdentity();
+//         console.log({identity}, "feedUserIdentity")
+
+//     if (!identity) throw new Error("Unauthorized!");
+
+//     const user = await ctx.db
+//         .query("users")
+//         .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
+//         .unique();
+
+//     if (!user) {
+//         // await ctx.db.insert("users", {
+//         //     name: identity.name!,
+//         //     profileUrl: identity.pictureUrl!,
+//         //     tokenIdentifier: identity.tokenIdentifier,
+//         // })
+//     }
+    
+//     // if (!user) throw new Error("User not found!");
+
+//     return user;
+// }
+
+async function userIdentity(ctx: QueryCtx | MutationCtx) {
+    // Get the authenticated user's identity
+    // try {
+        const identity = await ctx.auth.getUserIdentity();
+    console.log({ identity, have: "insert" in ctx.db }, "feedUserIdentity");
 
     if (!identity) throw new Error("Unauthorized!");
 
-    const user = await ctx.db
+    // Check if the user exists in the database
+    let user = await ctx.db
         .query("users")
         .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
         .unique();
 
-    if (!user) throw new Error("User not found!");
+        // console.log({user})
 
+    // If the user does not exist, create a new user record
+    if (!user && "insert" in ctx.db) {
+
+        console.log("insert" in ctx.db, "is insert exist")
+       const user = await ctx.db.insert("users", {
+            name: identity.name!,
+            profileUrl: identity.pictureUrl!,
+            tokenIdentifier: identity.tokenIdentifier,
+        });
+
+        // return user;
+
+        // throw new Error("User not found! XXXXX");
+    }
+
+    // Return the user (whether newly created or pre-existing)
     return user;
+    // } catch (error) {
+    //     console.log(error, "Not Found! User XXXXXXX")
+    // }
 }
 
 export const generateUploadUrl = mutation(
@@ -43,7 +91,8 @@ export const getFeeds = query({
             ))
     },
     handler: async (ctx, { filters }) => {
-        const hasAccess = await userIdentity(ctx);
+        try {
+            const hasAccess = await userIdentity(ctx);
 
         if (!hasAccess) return null;
 
@@ -80,6 +129,9 @@ export const getFeeds = query({
         }
 
         return feeds;
+        } catch (error) {
+            console.log({error}, "Error from GetFeeds")
+        }
 
     }
 });

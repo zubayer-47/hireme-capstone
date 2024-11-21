@@ -1,7 +1,7 @@
-import { Metadata } from "next";
 import { Browser } from "@/components/browser/browser";
-import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import { LoadingSpinner } from "@/components/loading-spinner";
+import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: 'Hireme | Community Feeds',
@@ -21,6 +21,4 @@ export default function FeedsLayout({ children }: { children: React.ReactNode })
             </ClerkLoaded>
         </Browser>
     )
-
-
 }

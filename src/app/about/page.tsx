@@ -1,9 +1,9 @@
 "use client";
 
-import { Header } from "../(landing)/_components/header";
-import { Footer } from "../(landing)/_components/footer";
-import { useStoreUserEffect } from "@/hooks/use-store-user-effect";
 import { AnimatedTextUnderline } from "@/components/animation/animated-text-underline";
+import { useStoreUserEffect } from "@/hooks/use-store-user-effect";
+import { Footer } from "../(landing)/_components/footer";
+import { Header } from "../(landing)/_components/header";
 
 export default function AboutPage() {
     const { isAuthenticated } = useStoreUserEffect();

@@ -1,5 +1,5 @@
-import { Header } from "./header";
 import { DynamicSidebar } from "./dynamic-sidebar";
+import { Header } from "./header";
 
 type BrowserProps = {
     children: React.ReactNode;

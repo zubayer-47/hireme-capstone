@@ -1,12 +1,13 @@
 "use client";
 
+import { AnimatedTextUnderline } from "@/components/animation/animated-text-underline";
+import {
+    motion,
+    useScroll,
+    useTransform
+} from "framer-motion";
 import Link from "next/link";
 import { useRef } from "react";
-import { 
-    motion, 
-    useScroll, 
-    useTransform } from "framer-motion";
-import { AnimatedTextUnderline } from "@/components/animation/animated-text-underline";
 
 export const Hero = ({ isAuthenticated }: { isAuthenticated: boolean; }) => {
     const path = isAuthenticated ? "/feeds" : "/auth/sign-in";

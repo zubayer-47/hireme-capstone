@@ -1,9 +1,9 @@
 "use client";
 
-import { CardFeed } from "./card-feed";
-import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { useQuery } from "convex/react";
 import { useSearchParams } from "next/navigation";
+import { CardFeed } from "./card-feed";
 import { CreateFeedModal } from "./create-feed-modal";
 import { FilterFeedDropdown } from "./filter-feed-dropdown";
 

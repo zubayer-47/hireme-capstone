@@ -1,9 +1,11 @@
-import { mutation, MutationCtx, QueryCtx, query  } from "./_generated/server";
+import { mutation, MutationCtx, query, QueryCtx } from "./_generated/server";
 
 export const store = mutation({
     args: {},
     handler: async (ctx) => {
         const identity = await ctx.auth.getUserIdentity();
+
+        console.log({identity}, "customUserIdentity")
 
         if (!identity) throw new Error("Unauthorized!");
         

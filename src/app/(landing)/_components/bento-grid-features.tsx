@@ -1,6 +1,6 @@
+import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { features } from "../_lib/data"
-import { cn } from "@/lib/utils"
 
 export const BentoGridFeatures = () => {
     return (

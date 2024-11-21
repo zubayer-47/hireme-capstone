@@ -1,15 +1,15 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
 import {
+  HoveredLink,
   Menu,
   MenuItem,
-  HoveredLink,
   ProductItem
 } from "@/components/animation/navbar-menu";
 import { AppLogo } from "@/components/app-logo";
 import { SignOut } from "@/components/sign-out-button";
+import Link from "next/link";
+import { useState } from "react";
 
 const WEBSITE_URL = process.env.WEBSITE_URL;
 

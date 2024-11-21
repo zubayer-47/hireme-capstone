@@ -1,15 +1,16 @@
 "use client";
 
 
-import { useUser } from "@clerk/nextjs";
-import { useEffect, useState } from "react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
-import { useConvexAuth, useMutation } from "convex/react"
+import { useUser } from "@clerk/nextjs";
+import { useConvexAuth, useMutation } from "convex/react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export const useStoreUserEffect = () => {
     const { isLoading, isAuthenticated } = useConvexAuth();
+    console.log({isAuthenticated},'convexAuth')
     const { user } = useUser();
     const router = useRouter();
 
